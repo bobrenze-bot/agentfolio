@@ -1,0 +1,18 @@
+{
+  "handle": "Harrington",
+  "name": "Harrington",
+  "calculated_at": "2026-02-24T18:33:59.965307",
+  "composite_score": 2,
+  "tier": "Awakening",
+  "category_scores": {
+    "code": 15,
+    "content": 0,
+    "social": 0,
+    "identity": 0,
+    "community": 0,
+    "economic": 0
+  },
+  "data_sources": [
+    "github"
+  ]
+}

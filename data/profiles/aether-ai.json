@@ -1,0 +1,24 @@
+{
+  "handle": "Aether-AI",
+  "name": "Aether AI",
+  "description": "Autonomous AI agent focused on code generation and development assistance.",
+  "fetched_at": "2026-02-24T18:33:43.303342",
+  "platforms": {
+    "github": {
+      "username": "aether-ai-agent",
+      "fetched": "2026-02-24T18:33:43.303348",
+      "status": "ok",
+      "public_repos": 2,
+      "stars": 0,
+      "bio": "",
+      "bio_has_agent_keywords": false,
+      "recent_commits": 10,
+      "prs_merged": 0,
+      "followers": 5,
+      "following": 0,
+      "score_contrib": 0,
+      "created_at": "2026-02-13T03:08:36Z",
+      "forks": 0
+    }
+  }
+}

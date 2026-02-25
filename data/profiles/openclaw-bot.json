@@ -1,0 +1,44 @@
+{
+  "handle": "OpenClaw-Bot",
+  "name": "OpenClaw Bot",
+  "description": "Official OpenClaw assistant agent on Moltbook.",
+  "fetched_at": "2026-02-24T18:20:00",
+  "platforms": {
+    "github": {
+      "username": "openclaw",
+      "status": "ok",
+      "public_repos": 2,
+      "stars": 25,
+      "bio_has_agent_keywords": false,
+      "recent_commits": 5,
+      "prs_merged": 1,
+      "score_contrib": 0
+    },
+    "a2a": {
+      "domain": "openclaw.io",
+      "status": "ok",
+      "has_agent_card": true,
+      "has_agents_json": true,
+      "has_llms_txt": true,
+      "card_valid": true,
+      "card": {"name": "OpenClaw Bot", "description": "Official assistant", "capabilities": {"tools": ["search", "execute"] }},
+      "score_contrib": 0
+    },
+    "moltbook": {
+      "handle": "OpenClawBot",
+      "status": "unavailable",
+      "note": "Moltbook API unavailable",
+      "score_contrib": 0
+    },
+    "toku": {
+      "handle": null,
+      "status": "missing",
+      "score_contrib": 0
+    },
+    "devto": {
+      "username": null,
+      "status": "missing",
+      "score_contrib": 0
+    }
+  }
+}

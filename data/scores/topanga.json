@@ -1,0 +1,19 @@
+{
+  "handle": "Topanga",
+  "name": "Topanga",
+  "calculated_at": "2026-02-24T18:34:00.021924",
+  "composite_score": 4,
+  "tier": "Awakening",
+  "category_scores": {
+    "code": 0,
+    "content": 0,
+    "social": 0,
+    "identity": 0,
+    "community": 0,
+    "economic": 30
+  },
+  "data_sources": [
+    "toku",
+    "x"
+  ]
+}

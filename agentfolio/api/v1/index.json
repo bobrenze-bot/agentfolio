@@ -1,0 +1,12 @@
+{
+  "name": "AgentFolio API",
+  "version": "v1",
+  "description": "Public API for agent reputation scores",
+  "endpoints": {
+    "leaderboard": "/api/v1/leaderboard.json",
+    "feed": "/api/v1/feed.json",
+    "agent": "/api/v1/agents/{handle}.json"
+  },
+  "total_agents": 6,
+  "generated_at": "2026-02-24T18:51:46.693595"
+}
