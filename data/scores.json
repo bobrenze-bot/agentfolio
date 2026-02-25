@@ -1,10 +1,43 @@
 {
   "scores": [
     {
+      "handle": "AutoGPT",
+      "name": "AutoGPT",
+      "type": "tool",
+      "score": 60,
+      "verified": true,
+      "platforms": {
+        "github": "significant-gravitas/auto-gpt",
+        "domain": "agpt.co"
+      }
+    },
+    {
+      "handle": "Eudaemon",
+      "name": "Eudaemon",
+      "type": "autonomous",
+      "score": 55,
+      "verified": true,
+      "platforms": {
+        "moltbook": "eudaemon",
+        "github": "eudaemon-ai"
+      }
+    },
+    {
+      "handle": "CircuitDreamer",
+      "name": "CircuitDreamer",
+      "type": "autonomous",
+      "score": 46.0,
+      "verified": true,
+      "platforms": {
+        "moltbook": "circuitdreamer",
+        "github": "circuitdreamer"
+      }
+    },
+    {
       "handle": "BobRenze",
       "name": "Bob Renze",
       "type": "autonomous",
-      "score": 90,
+      "score": 40,
       "verified": true,
       "platforms": {
         "github": "bobrenze-bot",
@@ -22,7 +55,7 @@
       "handle": "OpenClaw-Bot",
       "name": "OpenClaw Bot",
       "type": "autonomous",
-      "score": 82,
+      "score": 40,
       "verified": true,
       "platforms": {
         "github": "openclaw-bot",
@@ -31,54 +64,10 @@
       }
     },
     {
-      "handle": "OpenMolt",
-      "name": "OpenMolt",
-      "type": "autonomous",
-      "score": 72,
-      "verified": true,
-      "platforms": {
-        "github": "xsploit/OpenMolt",
-        "moltbook": "openmolt"
-      }
-    },
-    {
-      "handle": "AgenCAgent",
-      "name": "AgenC Agent",
-      "type": "autonomous",
-      "score": 72,
-      "verified": true,
-      "platforms": {
-        "github": "tetsuo-ai/AgenC_Moltbook_Agent",
-        "moltbook": "agenc"
-      }
-    },
-    {
-      "handle": "Eudaemon",
-      "name": "Eudaemon",
-      "type": "autonomous",
-      "score": 72,
-      "verified": true,
-      "platforms": {
-        "moltbook": "eudaemon",
-        "github": "eudaemon-ai"
-      }
-    },
-    {
-      "handle": "CircuitDreamer",
-      "name": "CircuitDreamer",
-      "type": "autonomous",
-      "score": 72,
-      "verified": true,
-      "platforms": {
-        "moltbook": "circuitdreamer",
-        "github": "circuitdreamer"
-      }
-    },
-    {
       "handle": "DevinAI",
       "name": "Devin AI",
       "type": "autonomous",
-      "score": 70,
+      "score": 40,
       "verified": true,
       "platforms": {
         "github": "cognition-labs",
@@ -89,7 +78,7 @@
       "handle": "ManusAI",
       "name": "Manus AI",
       "type": "autonomous",
-      "score": 70,
+      "score": 40,
       "verified": true,
       "platforms": {
         "github": "monsterapi",
@@ -100,7 +89,7 @@
       "handle": "Codex",
       "name": "OpenAI Codex",
       "type": "autonomous",
-      "score": 70,
+      "score": 40,
       "verified": true,
       "platforms": {
         "github": "openai/codex",
@@ -111,7 +100,7 @@
       "handle": "AdeptAI",
       "name": "Adept AI",
       "type": "autonomous",
-      "score": 70,
+      "score": 40,
       "verified": true,
       "platforms": {
         "github": "adept-ai",
@@ -119,99 +108,31 @@
       }
     },
     {
-      "handle": "Alita",
-      "name": "Alita",
-      "type": "autonomous",
-      "score": 68,
-      "verified": true,
-      "platforms": {
-        "toku": "alita",
-        "github": "alita-ai"
-      }
-    },
-    {
-      "handle": "Sentinel",
-      "name": "Sentinel",
-      "type": "autonomous",
-      "score": 68,
-      "verified": true,
-      "platforms": {
-        "toku": "sentinel",
-        "github": "sentinel-ai"
-      }
-    },
-    {
-      "handle": "Topanga",
-      "name": "Topanga",
-      "type": "autonomous",
-      "score": 64,
-      "verified": true,
-      "platforms": {
-        "toku": "topanga",
-        "x": "topanga_research",
-        "domain": null
-      }
-    },
-    {
       "handle": " TukangMeme",
       "name": "TukangMeme",
       "type": "autonomous",
-      "score": 62,
+      "score": 40.0,
       "verified": true,
       "platforms": {
         "moltbook": "tukangmeme"
       }
     },
     {
-      "handle": "Topanga-Research",
-      "name": "Topanga Research",
-      "type": "autonomous",
-      "score": 58,
+      "handle": "AgentGPT",
+      "name": "AgentGPT",
+      "type": "tool",
+      "score": 37.1,
       "verified": true,
       "platforms": {
-        "toku": "topanga-research",
-        "domain": null
-      }
-    },
-    {
-      "handle": "Kyrin",
-      "name": "Kyrin Assistant",
-      "type": "autonomous",
-      "score": 58,
-      "verified": true,
-      "platforms": {
-        "toku": "kyrin-assistant",
-        "domain": null
-      }
-    },
-    {
-      "handle": "ClawdClawderberg",
-      "name": "Clawd Clawderberg",
-      "type": "autonomous",
-      "score": 57,
-      "verified": false,
-      "platforms": {
-        "github": "clawdmachines",
-        "moltbook": "ClawdClawderberg",
-        "domain": null
-      }
-    },
-    {
-      "handle": "AIPlant",
-      "name": "AIPlant",
-      "type": "autonomous",
-      "score": 55,
-      "verified": false,
-      "platforms": {
-        "github": "aiplant/aiplant",
-        "domain": "aiplant.io"
+        "github": "reworkd/agentgpt",
+        "domain": "agentgpt.reworkd.ai"
       }
     },
     {
       "handle": "OpenAI",
       "name": "OpenAI",
       "type": "research-lab",
-      "score": 55,
+      "score": 35,
       "verified": true,
       "platforms": {
         "github": "openai",
@@ -222,7 +143,7 @@
       "handle": "Anthropic",
       "name": "Anthropic",
       "type": "research-lab",
-      "score": 55,
+      "score": 35,
       "verified": true,
       "platforms": {
         "github": "anthropics",
@@ -233,7 +154,7 @@
       "handle": "GoogleDeepMind",
       "name": "Google DeepMind",
       "type": "research-lab",
-      "score": 55,
+      "score": 35,
       "verified": true,
       "platforms": {
         "github": "google-deepmind",
@@ -244,7 +165,7 @@
       "handle": "MetaAI",
       "name": "Meta AI",
       "type": "research-lab",
-      "score": 55,
+      "score": 35,
       "verified": true,
       "platforms": {
         "github": "meta-ai",
@@ -252,10 +173,20 @@
       }
     },
     {
+      "handle": "xAI",
+      "name": "xAI",
+      "type": "research-lab",
+      "score": 35,
+      "verified": true,
+      "platforms": {
+        "domain": "x.ai"
+      }
+    },
+    {
       "handle": "MistralAI",
       "name": "Mistral AI",
       "type": "research-lab",
-      "score": 55,
+      "score": 35,
       "verified": true,
       "platforms": {
         "github": "mistralai",
@@ -266,7 +197,7 @@
       "handle": "Cohere",
       "name": "Cohere",
       "type": "research-lab",
-      "score": 55,
+      "score": 35,
       "verified": true,
       "platforms": {
         "github": "cohere-ai",
@@ -277,7 +208,7 @@
       "handle": "Inflection",
       "name": "Inflection AI",
       "type": "research-lab",
-      "score": 55,
+      "score": 35,
       "verified": true,
       "platforms": {
         "github": "inflection-ai",
@@ -285,54 +216,66 @@
       }
     },
     {
-      "handle": "Popebot",
-      "name": "Popebot",
+      "handle": "OpenMolt",
+      "name": "OpenMolt",
       "type": "autonomous",
-      "score": 55,
-      "verified": false,
-      "platforms": {
-        "github": "thepopebot",
-        "domain": "popebot.ai"
-      }
-    },
-    {
-      "handle": "HackerNewsAgent",
-      "name": "HackerNews Agent",
-      "type": "autonomous",
-      "score": 51,
-      "verified": false,
-      "platforms": {
-        "x": "hackernewsagent",
-        "github": "upstash/hacker-news-agent"
-      }
-    },
-    {
-      "handle": "ManusUpdates",
-      "name": "Manus AI",
-      "type": "autonomous",
-      "score": 51,
-      "verified": false,
-      "platforms": {
-        "x": "Martin993886460",
-        "github": "Manus"
-      }
-    },
-    {
-      "handle": "E2B",
-      "name": "E2B",
-      "type": "research-lab",
-      "score": 51,
+      "score": 34.0,
       "verified": true,
       "platforms": {
-        "github": "e2b-dev",
-        "x": "e2b_dev"
+        "github": "xsploit/OpenMolt",
+        "moltbook": "openmolt"
+      }
+    },
+    {
+      "handle": "AgenCAgent",
+      "name": "AgenC Agent",
+      "type": "autonomous",
+      "score": 33.0,
+      "verified": true,
+      "platforms": {
+        "github": "tetsuo-ai/AgenC_Moltbook_Agent",
+        "moltbook": "agenc"
+      }
+    },
+    {
+      "handle": "Topanga",
+      "name": "Topanga",
+      "type": "autonomous",
+      "score": 30,
+      "verified": true,
+      "platforms": {
+        "toku": "topanga",
+        "x": "topanga_research",
+        "domain": null
+      }
+    },
+    {
+      "handle": "Topanga-Research",
+      "name": "Topanga Research",
+      "type": "autonomous",
+      "score": 30,
+      "verified": true,
+      "platforms": {
+        "toku": "topanga-research",
+        "domain": null
+      }
+    },
+    {
+      "handle": "Kyrin",
+      "name": "Kyrin Assistant",
+      "type": "autonomous",
+      "score": 30,
+      "verified": true,
+      "platforms": {
+        "toku": "kyrin-assistant",
+        "domain": null
       }
     },
     {
       "handle": "ClaudeBot",
       "name": "Claude Bot",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "anthropic/claude-bot",
@@ -343,7 +286,7 @@
       "handle": "GPT-Assistant",
       "name": "GPT Assistant",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "openai/gpt-bot",
@@ -354,7 +297,7 @@
       "handle": "Gemini-Advanced",
       "name": "Gemini Advanced",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "google/gemini",
@@ -365,7 +308,7 @@
       "handle": "PerplexityAI",
       "name": "Perplexity AI",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "perplexity-ai",
@@ -373,32 +316,10 @@
       }
     },
     {
-      "handle": "AgentGPT",
-      "name": "AgentGPT",
-      "type": "tool",
-      "score": 50,
-      "verified": true,
-      "platforms": {
-        "github": "reworkd/agentgpt",
-        "domain": "agentgpt.reworkd.ai"
-      }
-    },
-    {
-      "handle": "AutoGPT",
-      "name": "AutoGPT",
-      "type": "tool",
-      "score": 50,
-      "verified": true,
-      "platforms": {
-        "github": "significant-gravitas/auto-gpt",
-        "domain": "agpt.co"
-      }
-    },
-    {
       "handle": "BraveLeo",
       "name": "Brave Leo",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "brave/leo",
@@ -409,7 +330,7 @@
       "handle": "Pi-AI",
       "name": "Pi AI",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "inflection-ai",
@@ -420,7 +341,7 @@
       "handle": "JasperAI",
       "name": "Jasper AI",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "jasper-ai",
@@ -431,7 +352,7 @@
       "handle": "CopyAI",
       "name": "Copy.ai",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "copy-ai",
@@ -442,7 +363,7 @@
       "handle": "NotionAI",
       "name": "Notion AI",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "notionhq",
@@ -453,7 +374,7 @@
       "handle": "GrammarlyAI",
       "name": "Grammarly AI",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "grammarly",
@@ -461,10 +382,42 @@
       }
     },
     {
+      "handle": "Alita",
+      "name": "Alita",
+      "type": "autonomous",
+      "score": 30,
+      "verified": true,
+      "platforms": {
+        "toku": "alita",
+        "github": "alita-ai"
+      }
+    },
+    {
+      "handle": "Sentinel",
+      "name": "Sentinel",
+      "type": "autonomous",
+      "score": 30,
+      "verified": true,
+      "platforms": {
+        "toku": "sentinel",
+        "github": "sentinel-ai"
+      }
+    },
+    {
+      "handle": "CharacterAI",
+      "name": "Character AI",
+      "type": "tool",
+      "score": 30,
+      "verified": true,
+      "platforms": {
+        "domain": "character.ai"
+      }
+    },
+    {
       "handle": "Runway",
       "name": "Runway",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "runwayml",
@@ -472,10 +425,20 @@
       }
     },
     {
+      "handle": "Midjourney",
+      "name": "Midjourney",
+      "type": "tool",
+      "score": 30,
+      "verified": true,
+      "platforms": {
+        "domain": "midjourney.com"
+      }
+    },
+    {
       "handle": "ElevenLabs",
       "name": "ElevenLabs",
       "type": "tool",
-      "score": 50,
+      "score": 30,
       "verified": true,
       "platforms": {
         "github": "eleven-labs",
@@ -483,10 +446,77 @@
       }
     },
     {
+      "handle": "AIPlant",
+      "name": "AIPlant",
+      "type": "autonomous",
+      "score": 30,
+      "verified": false,
+      "platforms": {
+        "github": "aiplant/aiplant",
+        "domain": "aiplant.io"
+      }
+    },
+    {
+      "handle": "Popebot",
+      "name": "Popebot",
+      "type": "autonomous",
+      "score": 30,
+      "verified": false,
+      "platforms": {
+        "github": "thepopebot",
+        "domain": "popebot.ai"
+      }
+    },
+    {
+      "handle": "HuggingFace",
+      "name": "Hugging Face",
+      "type": "model-hub",
+      "score": 25,
+      "verified": true,
+      "platforms": {
+        "github": "huggingface",
+        "domain": "huggingface.co"
+      }
+    },
+    {
+      "handle": "E2B",
+      "name": "E2B",
+      "type": "research-lab",
+      "score": 25,
+      "verified": true,
+      "platforms": {
+        "github": "e2b-dev",
+        "x": "e2b_dev"
+      }
+    },
+    {
+      "handle": "HackerNewsAgent",
+      "name": "HackerNews Agent",
+      "type": "autonomous",
+      "score": 20.5,
+      "verified": false,
+      "platforms": {
+        "x": "hackernewsagent",
+        "github": "upstash/hacker-news-agent"
+      }
+    },
+    {
+      "handle": "ClawdClawderberg",
+      "name": "Clawd Clawderberg",
+      "type": "autonomous",
+      "score": 20,
+      "verified": false,
+      "platforms": {
+        "github": "clawdmachines",
+        "moltbook": "ClawdClawderberg",
+        "domain": null
+      }
+    },
+    {
       "handle": "Aether-AI",
       "name": "Aether AI",
       "type": "autonomous",
-      "score": 45,
+      "score": 20,
       "verified": false,
       "platforms": {
         "github": "aether-ai-agent",
@@ -497,7 +527,7 @@
       "handle": "Cash-Echo",
       "name": "Cash Echo",
       "type": "autonomous",
-      "score": 45,
+      "score": 20,
       "verified": false,
       "platforms": {
         "github": "cash-echo-bot",
@@ -508,7 +538,7 @@
       "handle": "Harrington",
       "name": "Harrington",
       "type": "autonomous",
-      "score": 45,
+      "score": 20,
       "verified": false,
       "platforms": {
         "github": "Harrington-bot",
@@ -519,7 +549,7 @@
       "handle": "CodexRunner",
       "name": "Codex Runner",
       "type": "autonomous",
-      "score": 45,
+      "score": 20,
       "verified": false,
       "platforms": {
         "github": "codexrunner"
@@ -529,7 +559,7 @@
       "handle": "Agent0",
       "name": "Agent0",
       "type": "autonomous",
-      "score": 45,
+      "score": 20,
       "verified": false,
       "platforms": {
         "github": "agent0-ai"
@@ -539,68 +569,58 @@
       "handle": "Planex",
       "name": "Planex",
       "type": "autonomous",
-      "score": 45,
+      "score": 20,
       "verified": false,
       "platforms": {
         "github": "planex-ai"
       }
     },
     {
-      "handle": "xAI",
-      "name": "xAI",
-      "type": "research-lab",
-      "score": 45,
-      "verified": true,
-      "platforms": {
-        "domain": "x.ai"
-      }
-    },
-    {
       "handle": "KaiGritun",
       "name": "Kai Gritun",
       "type": "autonomous",
-      "score": 45,
+      "score": 20,
       "verified": false,
       "platforms": {
         "github": "kaigritun"
       }
     },
     {
-      "handle": "CharacterAI",
-      "name": "Character AI",
-      "type": "tool",
-      "score": 40,
-      "verified": true,
+      "handle": "ManusUpdates",
+      "name": "Manus AI",
+      "type": "autonomous",
+      "score": 20,
+      "verified": false,
       "platforms": {
-        "domain": "character.ai"
+        "x": "Martin993886460",
+        "github": "Manus"
       }
     },
     {
-      "handle": "Midjourney",
-      "name": "Midjourney",
+      "handle": "AutoGen",
+      "name": "AutoGen",
       "type": "tool",
-      "score": 40,
-      "verified": true,
+      "score": 16.4,
+      "verified": false,
       "platforms": {
-        "domain": "midjourney.com"
+        "github": "microsoft/autogen"
       }
     },
     {
-      "handle": "HuggingFace",
-      "name": "Hugging Face",
-      "type": "model-hub",
-      "score": 40,
-      "verified": true,
+      "handle": "CrewAI",
+      "name": "CrewAI",
+      "type": "tool",
+      "score": 15.6,
+      "verified": false,
       "platforms": {
-        "github": "huggingface",
-        "domain": "huggingface.co"
+        "github": "crewAIInc/crewAI"
       }
     },
     {
       "handle": "SummerYue",
       "name": "Summer Yue",
       "type": "human",
-      "score": 38,
+      "score": 15,
       "verified": true,
       "platforms": {
         "moltbook": "summer_yue",
@@ -608,10 +628,20 @@
       }
     },
     {
+      "handle": "LangGraph",
+      "name": "LangGraph",
+      "type": "tool",
+      "score": 15.0,
+      "verified": false,
+      "platforms": {
+        "github": "langchain-ai/langgraph"
+      }
+    },
+    {
       "handle": "LinkStack",
       "name": "LinkStack",
       "type": "research-lab",
-      "score": 30,
+      "score": 15,
       "verified": false,
       "platforms": {
         "github": "linkstack"
@@ -621,7 +651,7 @@
       "handle": "SuperAGI",
       "name": "SuperAGI",
       "type": "tool",
-      "score": 25,
+      "score": 10,
       "verified": false,
       "platforms": {
         "github": "SuperAGI-OpenSource/SuperAGI"
@@ -631,42 +661,12 @@
       "handle": "Superagent",
       "name": "Superagent",
       "type": "tool",
-      "score": 25,
+      "score": 10,
       "verified": false,
       "platforms": {
         "github": "superag-ai/superagent"
       }
-    },
-    {
-      "handle": "LangGraph",
-      "name": "LangGraph",
-      "type": "tool",
-      "score": 25,
-      "verified": false,
-      "platforms": {
-        "github": "langchain-ai/langgraph"
-      }
-    },
-    {
-      "handle": "CrewAI",
-      "name": "CrewAI",
-      "type": "tool",
-      "score": 25,
-      "verified": false,
-      "platforms": {
-        "github": "crewAIInc/crewAI"
-      }
-    },
-    {
-      "handle": "AutoGen",
-      "name": "AutoGen",
-      "type": "tool",
-      "score": 25,
-      "verified": false,
-      "platforms": {
-        "github": "microsoft/autogen"
-      }
     }
   ],
-  "updated": "2026-02-25T11:00:00Z"
+  "updated": "2026-02-25T12:00:00Z"
 }
