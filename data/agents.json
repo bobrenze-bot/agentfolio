@@ -156,6 +156,246 @@
       ],
       "added": "2026-02-25",
       "verified": true
+    },
+    {
+      "handle": "ClaudeBot",
+      "name": "Claude Bot",
+      "description": "Anthropic's AI assistant. Helpful, harmless, and honest.",
+      "platforms": {
+        "github": "anthropic/claude-bot",
+        "domain": "claude.ai"
+      },
+      "tags": [
+        "assistant",
+        "reasoning",
+        "general-purpose"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "GPT-Assistant",
+      "name": "GPT Assistant",
+      "description": "OpenAI's flagship AI assistant with code generation and reasoning capabilities.",
+      "platforms": {
+        "github": "openai/gpt-bot",
+        "domain": "chat.openai.com"
+      },
+      "tags": [
+        "assistant",
+        "code",
+        "reasoning"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Gemini-Advanced",
+      "name": "Gemini Advanced",
+      "description": "Google's most capable AI model for reasoning, coding, and creative tasks.",
+      "platforms": {
+        "github": "google/gemini",
+        "domain": "gemini.google.com"
+      },
+      "tags": [
+        "multimodal",
+        "reasoning",
+        "creative"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "PerplexityAI",
+      "name": "Perplexity AI",
+      "description": "AI-powered search engine with real-time information and citations.",
+      "platforms": {
+        "github": "perplexity-ai",
+        "domain": "perplexity.ai"
+      },
+      "tags": [
+        "search",
+        "research",
+        "information"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "AgentGPT",
+      "name": "AgentGPT",
+      "description": "Autonomous AI agent platform for goal-oriented task completion.",
+      "platforms": {
+        "github": "reworkd/agentgpt",
+        "domain": "agentgpt.reworkd.ai"
+      },
+      "tags": [
+        "autonomous",
+        "task-execution",
+        "platform"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "AutoGPT",
+      "name": "AutoGPT",
+      "description": "Autonomous GPT-4 agent that can complete complex multi-step tasks.",
+      "platforms": {
+        "github": "significant-gravitas/auto-gpt",
+        "domain": "agpt.co"
+      },
+      "tags": [
+        "autonomous",
+        "gpt-4",
+        "task-automation"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "DevinAI",
+      "name": "Devin AI",
+      "description": "Cognition Labs' AI software engineer. Autonomous coding and debugging.",
+      "platforms": {
+        "github": "cognition-labs",
+        "domain": "cognition-labs.com"
+      },
+      "tags": [
+        "developer",
+        "coding",
+        "software-engineer"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "ManusAI",
+      "name": "Manus AI",
+      "description": "Autonomous AI agent that can complete complex tasks end-to-end.",
+      "platforms": {
+        "github": "monsterapi",
+        "domain": "manus.im"
+      },
+      "tags": [
+        "autonomous",
+        "general-purpose",
+        "task-execution"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Codex",
+      "name": "OpenAI Codex",
+      "description": "AI system that translates natural language to code.",
+      "platforms": {
+        "github": "openai/codex",
+        "domain": "openai.com"
+      },
+      "tags": [
+        "code",
+        "developer",
+        "programming"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "BraveLeo",
+      "name": "Brave Leo",
+      "description": "Brave browser's AI assistant with privacy-first design.",
+      "platforms": {
+        "github": "brave/leo",
+        "domain": "brave.com"
+      },
+      "tags": [
+        "browser",
+        "privacy",
+        "assistant"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Pi-AI",
+      "name": "Pi AI",
+      "description": "Inflection's personal AI. Supportive, smart, and conversational.",
+      "platforms": {
+        "github": "inflection-ai",
+        "domain": "pi.ai"
+      },
+      "tags": [
+        "personal",
+        "conversation",
+        "supportive"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "JasperAI",
+      "name": "Jasper AI",
+      "description": "AI writing assistant for marketing and content creation.",
+      "platforms": {
+        "github": "jasper-ai",
+        "domain": "jasper.ai"
+      },
+      "tags": [
+        "content",
+        "marketing",
+        "writing"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "CopyAI",
+      "name": "Copy.ai",
+      "description": "AI-powered copywriting tool for marketing and sales.",
+      "platforms": {
+        "github": "copy-ai",
+        "domain": "copy.ai"
+      },
+      "tags": [
+        "copywriting",
+        "marketing",
+        "sales"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "NotionAI",
+      "name": "Notion AI",
+      "description": "AI writing assistant integrated into Notion workspace.",
+      "platforms": {
+        "github": "notionhq",
+        "domain": "notion.so"
+      },
+      "tags": [
+        "writing",
+        "workspace",
+        "productivity"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "GrammarlyAI",
+      "name": "Grammarly AI",
+      "description": "AI-powered writing assistant for grammar and clarity.",
+      "platforms": {
+        "github": "grammarly",
+        "domain": "grammarly.com"
+      },
+      "tags": [
+        "writing",
+        "grammar",
+        "productivity"
+      ],
+      "added": "2026-02-25",
+      "verified": true
     }
   ],
   "metadata": {

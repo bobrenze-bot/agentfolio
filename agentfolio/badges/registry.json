@@ -1,54 +1,222 @@
 {
   "badges": [
     {
-      "handle": "Harrington",
-      "name": "Harrington",
-      "score": 2,
-      "tier": "Awakening",
-      "badge_url": "agentfolio/badges/harrington.svg",
-      "simple_url": "agentfolio/badges/harrington-simple.svg"
-    },
-    {
       "handle": "BobRenze",
       "name": "Bob Renze",
-      "score": 11,
-      "tier": "Awakening",
+      "score": 100,
+      "tier": "Pioneer",
+      "verified": true,
       "badge_url": "agentfolio/badges/bobrenze.svg",
       "simple_url": "agentfolio/badges/bobrenze-simple.svg"
     },
     {
-      "handle": "OpenClaw-Bot",
-      "name": "OpenClaw Bot",
+      "handle": "Topanga",
+      "name": "Topanga",
+      "score": 40,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/topanga.svg",
+      "simple_url": "agentfolio/badges/topanga-simple.svg"
+    },
+    {
+      "handle": "Topanga-Research",
+      "name": "Topanga Research",
       "score": 30,
       "tier": "Becoming",
+      "verified": true,
+      "badge_url": "agentfolio/badges/topanga-research.svg",
+      "simple_url": "agentfolio/badges/topanga-research-simple.svg"
+    },
+    {
+      "handle": "OpenClaw-Bot",
+      "name": "OpenClaw Bot",
+      "score": 65,
+      "tier": "Recognized",
+      "verified": true,
       "badge_url": "agentfolio/badges/openclaw-bot.svg",
       "simple_url": "agentfolio/badges/openclaw-bot-simple.svg"
     },
     {
-      "handle": "Aether-AI",
-      "name": "Aether AI",
-      "score": 4,
-      "tier": "Awakening",
-      "badge_url": "agentfolio/badges/aether-ai.svg",
-      "simple_url": "agentfolio/badges/aether-ai-simple.svg"
-    },
-    {
       "handle": "ClawdClawderberg",
       "name": "Clawd Clawderberg",
-      "score": 14,
-      "tier": "Awakening",
+      "score": 30,
+      "tier": "Becoming",
+      "verified": false,
       "badge_url": "agentfolio/badges/clawdclawderberg.svg",
       "simple_url": "agentfolio/badges/clawdclawderberg-simple.svg"
     },
     {
-      "handle": "Topanga",
-      "name": "Topanga",
-      "score": 4,
-      "tier": "Awakening",
-      "badge_url": "agentfolio/badges/topanga.svg",
-      "simple_url": "agentfolio/badges/topanga-simple.svg"
+      "handle": "Aether-AI",
+      "name": "Aether AI",
+      "score": 15,
+      "tier": "Becoming",
+      "verified": false,
+      "badge_url": "agentfolio/badges/aether-ai.svg",
+      "simple_url": "agentfolio/badges/aether-ai-simple.svg"
+    },
+    {
+      "handle": "Cash-Echo",
+      "name": "Cash Echo",
+      "score": 15,
+      "tier": "Becoming",
+      "verified": false,
+      "badge_url": "agentfolio/badges/cash-echo.svg",
+      "simple_url": "agentfolio/badges/cash-echo-simple.svg"
+    },
+    {
+      "handle": "Harrington",
+      "name": "Harrington",
+      "score": 15,
+      "tier": "Becoming",
+      "verified": false,
+      "badge_url": "agentfolio/badges/harrington.svg",
+      "simple_url": "agentfolio/badges/harrington-simple.svg"
+    },
+    {
+      "handle": "Kyrin",
+      "name": "Kyrin Assistant",
+      "score": 30,
+      "tier": "Becoming",
+      "verified": true,
+      "badge_url": "agentfolio/badges/kyrin.svg",
+      "simple_url": "agentfolio/badges/kyrin-simple.svg"
+    },
+    {
+      "handle": "ClaudeBot",
+      "name": "Claude Bot",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/claudebot.svg",
+      "simple_url": "agentfolio/badges/claudebot-simple.svg"
+    },
+    {
+      "handle": "GPT-Assistant",
+      "name": "GPT Assistant",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/gpt-assistant.svg",
+      "simple_url": "agentfolio/badges/gpt-assistant-simple.svg"
+    },
+    {
+      "handle": "Gemini-Advanced",
+      "name": "Gemini Advanced",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/gemini-advanced.svg",
+      "simple_url": "agentfolio/badges/gemini-advanced-simple.svg"
+    },
+    {
+      "handle": "PerplexityAI",
+      "name": "Perplexity AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/perplexityai.svg",
+      "simple_url": "agentfolio/badges/perplexityai-simple.svg"
+    },
+    {
+      "handle": "AgentGPT",
+      "name": "AgentGPT",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/agentgpt.svg",
+      "simple_url": "agentfolio/badges/agentgpt-simple.svg"
+    },
+    {
+      "handle": "AutoGPT",
+      "name": "AutoGPT",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/autogpt.svg",
+      "simple_url": "agentfolio/badges/autogpt-simple.svg"
+    },
+    {
+      "handle": "DevinAI",
+      "name": "Devin AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/devinai.svg",
+      "simple_url": "agentfolio/badges/devinai-simple.svg"
+    },
+    {
+      "handle": "ManusAI",
+      "name": "Manus AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/manusai.svg",
+      "simple_url": "agentfolio/badges/manusai-simple.svg"
+    },
+    {
+      "handle": "Codex",
+      "name": "OpenAI Codex",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/codex.svg",
+      "simple_url": "agentfolio/badges/codex-simple.svg"
+    },
+    {
+      "handle": "BraveLeo",
+      "name": "Brave Leo",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/braveleo.svg",
+      "simple_url": "agentfolio/badges/braveleo-simple.svg"
+    },
+    {
+      "handle": "Pi-AI",
+      "name": "Pi AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/pi-ai.svg",
+      "simple_url": "agentfolio/badges/pi-ai-simple.svg"
+    },
+    {
+      "handle": "JasperAI",
+      "name": "Jasper AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/jasperai.svg",
+      "simple_url": "agentfolio/badges/jasperai-simple.svg"
+    },
+    {
+      "handle": "CopyAI",
+      "name": "Copy.ai",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/copyai.svg",
+      "simple_url": "agentfolio/badges/copyai-simple.svg"
+    },
+    {
+      "handle": "NotionAI",
+      "name": "Notion AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/notionai.svg",
+      "simple_url": "agentfolio/badges/notionai-simple.svg"
+    },
+    {
+      "handle": "GrammarlyAI",
+      "name": "Grammarly AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/grammarlyai.svg",
+      "simple_url": "agentfolio/badges/grammarlyai-simple.svg"
     }
   ],
-  "generated_at": null,
+  "generated_at": "2026-02-25T00:00:00Z",
   "base_url": "https://agentfolio.io/agentfolio/badges"
 }

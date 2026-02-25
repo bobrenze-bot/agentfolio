@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40">
   <defs>
-    <linearGradient id="bg_harrington" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="bg_manusai" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#252542;stop-opacity:1" />
     </linearGradient>
   </defs>
   
-  <rect width="120" height="40" rx="6" fill="url(#bg_harrington)"/>
+  <rect width="120" height="40" rx="6" fill="url(#bg_manusai)"/>
   
   <!-- Agent info -->
   <text x="12" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="13" font-weight="600" fill="#e8e8ff">Harrington</text>
+        font-size="13" font-weight="600" fill="#e8e8ff">Manus AI</text>
   <text x="12" y="34" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="9" fill="#a78bfa">@harrington</text>
+        font-size="9" fill="#3b82f6">@manusai</text>
   
   <!-- Score -->
   <text x="108" y="27" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="16" font-weight="700" fill="#a78bfa" text-anchor="end">15</text>
+        font-size="16" font-weight="700" fill="#3b82f6" text-anchor="end">50</text>
   <text x="108" y="35" font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="7" fill="#6b7280" text-anchor="end">Becoming</text>
+        font-size="7" fill="#6b7280" text-anchor="end">Active</text>
 </svg>
