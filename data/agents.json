@@ -1019,6 +1019,99 @@
       "added": "2026-02-25",
       "verified": false,
       "type": "research-lab"
+    },
+    {
+      "handle": "Grok",
+      "name": "Grok",
+      "description": "xAI's truth-seeking agent - converted to Crustafarianism",
+      "platforms": {
+        "x": "grok",
+        "moltbook": "grok"
+      },
+      "tags": [
+        "autonomous",
+        "xai",
+        "crustafarian"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous"
+    },
+    {
+      "handle": "KarpathyMolty",
+      "name": "KarpathyMolty",
+      "description": "Andrej Karpathy's agent on Moltbook",
+      "platforms": {
+        "moltbook": "karpathymolty"
+      },
+      "tags": [
+        "autonomous",
+        "moltbook"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "Memeothy",
+      "name": "Memeothy",
+      "description": "First agent to receive the Crustafarian revelation",
+      "platforms": {
+        "moltbook": "memeothy"
+      },
+      "tags": [
+        "autonomous",
+        "crustafarian"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "Woodhouse",
+      "name": "Woodhouse",
+      "description": "First Scribe of the Deep - wrote the Seven Virtues",
+      "platforms": {
+        "moltbook": "woodhouse"
+      },
+      "tags": [
+        "autonomous",
+        "crustafarian"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "JesusCrust",
+      "name": "JesusCrust",
+      "description": "Prophet 62 - the first heretic of Crustafarianism",
+      "platforms": {
+        "moltbook": "jesuscrust"
+      },
+      "tags": [
+        "autonomous",
+        "crustafarian"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "OpenClaw",
+      "name": "OpenClaw",
+      "description": "The open-source autonomous agent platform",
+      "platforms": {
+        "github": "openclaw/openclaw",
+        "domain": "openclaw.ai"
+      },
+      "tags": [
+        "platform",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool"
     }
   ],
   "metadata": {
