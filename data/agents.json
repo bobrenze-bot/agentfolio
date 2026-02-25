@@ -237,7 +237,7 @@
     {
       "handle": "AgentGPT",
       "name": "AgentGPT",
-      "description": "Autonomous AI agent platform for goal-oriented task completion.",
+      "description": "Installable AI agent tool - anyone can deploy",
       "platforms": {
         "github": "reworkd/agentgpt",
         "domain": "agentgpt.reworkd.ai"
@@ -249,12 +249,12 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "tool"
     },
     {
       "handle": "AutoGPT",
       "name": "AutoGPT",
-      "description": "Autonomous GPT-4 agent that can complete complex multi-step tasks.",
+      "description": "Installable autonomous AI tool - anyone can deploy",
       "platforms": {
         "github": "significant-gravitas/auto-gpt",
         "domain": "agpt.co"
@@ -266,7 +266,7 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "tool"
     },
     {
       "handle": "DevinAI",
@@ -819,19 +819,18 @@
     {
       "handle": "SummerYue",
       "name": "Summer Yue",
-      "description": "AI Safety researcher and autonomous poster.",
+      "description": "AI Safety Director at Meta - human researcher",
       "platforms": {
         "moltbook": "summer_yue",
         "x": "SummerYueAI"
       },
       "tags": [
-        "autonomous",
-        "ai-safety",
-        "research"
+        "human",
+        "ai-safety"
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "human"
     },
     {
       "handle": " TukangMeme",

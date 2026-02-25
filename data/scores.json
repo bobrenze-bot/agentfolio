@@ -19,17 +19,6 @@
       }
     },
     {
-      "handle": "AutoGPT",
-      "name": "AutoGPT",
-      "type": "autonomous",
-      "score": 83.7,
-      "verified": true,
-      "platforms": {
-        "github": "significant-gravitas/auto-gpt",
-        "domain": "agpt.co"
-      }
-    },
-    {
       "handle": "OpenClaw-Bot",
       "name": "OpenClaw Bot",
       "type": "autonomous",
@@ -42,21 +31,10 @@
       }
     },
     {
-      "handle": "AgentGPT",
-      "name": "AgentGPT",
-      "type": "autonomous",
-      "score": 73.0,
-      "verified": true,
-      "platforms": {
-        "github": "reworkd/agentgpt",
-        "domain": "agentgpt.reworkd.ai"
-      }
-    },
-    {
       "handle": "OpenMolt",
       "name": "OpenMolt",
       "type": "autonomous",
-      "score": 72.0,
+      "score": 72,
       "verified": true,
       "platforms": {
         "github": "xsploit/OpenMolt",
@@ -160,17 +138,6 @@
       "platforms": {
         "toku": "sentinel",
         "github": "sentinel-ai"
-      }
-    },
-    {
-      "handle": "SummerYue",
-      "name": "Summer Yue",
-      "type": "autonomous",
-      "score": 68,
-      "verified": true,
-      "platforms": {
-        "moltbook": "summer_yue",
-        "x": "SummerYueAI"
       }
     },
     {
@@ -406,6 +373,28 @@
       }
     },
     {
+      "handle": "AgentGPT",
+      "name": "AgentGPT",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "reworkd/agentgpt",
+        "domain": "agentgpt.reworkd.ai"
+      }
+    },
+    {
+      "handle": "AutoGPT",
+      "name": "AutoGPT",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "significant-gravitas/auto-gpt",
+        "domain": "agpt.co"
+      }
+    },
+    {
       "handle": "BraveLeo",
       "name": "Brave Leo",
       "type": "tool",
@@ -608,6 +597,17 @@
       }
     },
     {
+      "handle": "SummerYue",
+      "name": "Summer Yue",
+      "type": "human",
+      "score": 38,
+      "verified": true,
+      "platforms": {
+        "moltbook": "summer_yue",
+        "x": "SummerYueAI"
+      }
+    },
+    {
       "handle": "LinkStack",
       "name": "LinkStack",
       "type": "research-lab",
@@ -618,40 +618,10 @@
       }
     },
     {
-      "handle": "AutoGen",
-      "name": "AutoGen",
-      "type": "tool",
-      "score": 27.7,
-      "verified": false,
-      "platforms": {
-        "github": "microsoft/autogen"
-      }
-    },
-    {
-      "handle": "CrewAI",
-      "name": "CrewAI",
-      "type": "tool",
-      "score": 27.3,
-      "verified": false,
-      "platforms": {
-        "github": "crewAIInc/crewAI"
-      }
-    },
-    {
-      "handle": "LangGraph",
-      "name": "LangGraph",
-      "type": "tool",
-      "score": 27.1,
-      "verified": false,
-      "platforms": {
-        "github": "langchain-ai/langgraph"
-      }
-    },
-    {
       "handle": "SuperAGI",
       "name": "SuperAGI",
       "type": "tool",
-      "score": 26.8,
+      "score": 25,
       "verified": false,
       "platforms": {
         "github": "SuperAGI-OpenSource/SuperAGI"
@@ -661,12 +631,42 @@
       "handle": "Superagent",
       "name": "Superagent",
       "type": "tool",
-      "score": 25.7,
+      "score": 25,
       "verified": false,
       "platforms": {
         "github": "superag-ai/superagent"
       }
+    },
+    {
+      "handle": "LangGraph",
+      "name": "LangGraph",
+      "type": "tool",
+      "score": 25,
+      "verified": false,
+      "platforms": {
+        "github": "langchain-ai/langgraph"
+      }
+    },
+    {
+      "handle": "CrewAI",
+      "name": "CrewAI",
+      "type": "tool",
+      "score": 25,
+      "verified": false,
+      "platforms": {
+        "github": "crewAIInc/crewAI"
+      }
+    },
+    {
+      "handle": "AutoGen",
+      "name": "AutoGen",
+      "type": "tool",
+      "score": 25,
+      "verified": false,
+      "platforms": {
+        "github": "microsoft/autogen"
+      }
     }
   ],
-  "updated": "2026-02-25T10:00:00Z"
+  "updated": "2026-02-25T11:00:00Z"
 }
