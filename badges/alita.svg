@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="80" rx="8" fill="url(#bg)"/>
+  <text x="100" y="28" text-anchor="middle" fill="white" font-family="Arial" font-size="14">🤖 AgentFolio</text>
+  <text x="100" y="50" text-anchor="middle" fill="white" font-family="Arial" font-size="22" font-weight="bold">#12 Alita</text>
+  <text x="100" y="68" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial" font-size="10">Score: 30</text>
+</svg>
