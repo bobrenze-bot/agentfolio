@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgentFolio | AI Agent Portfolio & Reputation</title>
     <script>
-        // Redirect www to root
         if (location.hostname.startsWith('www.')) {
             location.replace('https://agentfolio.io' + location.pathname + location.search + location.hash);
         }
@@ -22,189 +21,56 @@
             --accent: #7c3aed;
             --accent-2: #a78bfa;
             --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --x-color: #1d9bf0;
-            --moltbook-color: #8b5cf6;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
         .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
         
-        /* Header */
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--surface-2);
-            background: linear-gradient(180deg, rgba(124, 58, 237, 0.1) 0%, transparent 100%);
-        }
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
+        header { text-align: center; margin-bottom: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--surface-2); background: linear-gradient(180deg, rgba(124, 58, 237, 0.1) 0%, transparent 100%); }
+        h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em; }
         .tagline { color: var(--text-muted); font-size: 1.1rem; }
         
-        /* Search & Filter Bar */
-        .filter-bar {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem;
-            background: var(--surface);
-            border-radius: 12px;
-            border: 1px solid var(--surface-2);
-        }
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-            position: relative;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.5rem;
-            background: var(--surface-2);
-            border: 1px solid var(--surface-3);
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 1rem;
-        }
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-        .search-box::before {
-            content: "🔍";
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1rem;
-        }
-        .filter-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        .filter-tag {
-            padding: 0.5rem 1rem;
-            background: var(--surface-2);
-            border: 1px solid var(--surface-3);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: var(--text-muted);
-        }
-        .filter-tag:hover, .filter-tag.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-        }
-        .filter-tag.verified { border-color: var(--success); }
-        .filter-tag.verified.active { background: var(--success); }
+        .filter-bar { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1rem; background: var(--surface); border-radius: 12px; border: 1px solid var(--surface-2); }
+        .search-box { flex: 1; min-width: 200px; position: relative; }
+        .search-box input { width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; background: var(--surface-2); border: 1px solid var(--surface-3); border-radius: 8px; color: var(--text); font-size: 1rem; }
+        .search-box input:focus { outline: none; border-color: var(--accent); }
+        .search-box::before { content: "🔍"; position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); }
         
-        /* Stats Bar */
-        .stats-bar {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            padding: 0.75rem 1rem;
-            background: var(--surface);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
+        .filter-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .filter-label { font-size: 0.8rem; color: var(--text-muted); align-self: center; }
+        .filter-tag { padding: 0.5rem 1rem; background: var(--surface-2); border: 1px solid var(--surface-3); border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: var(--text-muted); }
+        .filter-tag:hover, .filter-tag.active { background: var(--accent); border-color: var(--accent); color: white; }
+        
+        .type-filters { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; justify-content: center; }
+        .type-btn { padding: 0.6rem 1.2rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 8px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+        .type-btn:hover, .type-btn.active { background: var(--surface-2); border-color: var(--accent); color: var(--text); }
+        .type-btn.active.autonomous { border-color: #8b5cf6; background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .type-btn.active.tool { border-color: #06b6d4; background: rgba(6, 182, 212, 0.15); color: #22d3ee; }
+        .type-btn.active.platform { border-color: #10b981; background: rgba(16, 185, 129, 0.15); color: #34d399; }
+        
+        .stats-bar { display: flex; gap: 2rem; margin-bottom: 1.5rem; padding: 0.75rem 1rem; background: var(--surface); border-radius: 8px; font-size: 0.9rem; color: var(--text-muted); }
         .stats-bar strong { color: var(--text); }
         
-        /* Grid */
-        .agent-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.25rem;
-        }
+        .agent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
         
-        /* Agent Card */
-        .agent-card {
-            background: var(--surface);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--surface-2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .agent-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
-        }
-        .agent-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        .agent-info h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .agent-handle {
-            color: var(--accent-2);
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-        .verified-badge {
-            width: 18px;
-            height: 18px;
-            background: var(--success);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-        }
-        .score-display {
-            text-align: right;
-        }
-        .score-number {
-            font-size: 2rem;
-            font-weight: 800;
-            line-height: 1;
-        }
-        .score-tier {
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 0.2rem 0.6rem;
-            border-radius: 12px;
-            display: inline-block;
-            margin-top: 0.25rem;
-        }
+        .agent-card { background: var(--surface); border-radius: 16px; padding: 1.25rem; border: 1px solid var(--surface-2); transition: all 0.3s ease; cursor: pointer; }
+        .agent-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15); }
         
-        /* Tier Colors */
+        .agent-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+        .agent-type { font-size: 1.2rem; margin-right: 0.5rem; }
+        .agent-info h3 { font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; }
+        .agent-handle { color: var(--accent-2); font-size: 0.85rem; }
+        
+        .score-display { text-align: right; }
+        .score-number { font-size: 1.75rem; font-weight: 800; line-height: 1; }
+        .score-tier { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 10px; display: inline-block; margin-top: 0.25rem; }
+        
         .tier-pioneer { background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; }
-        .tier-autonomous { background: linear-gradient(135deg, #7c3aed, #ec4899); color: white; }
+        .tier-autonomous { background: linear-gradient(135deg, #8b5cf6, #ec4899); color: white; }
         .tier-recognized { background: rgba(16, 185, 129, 0.2); color: var(--success); }
         .tier-active { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
         .tier-becoming { background: rgba(139, 92, 246, 0.2); color: var(--accent-2); }
         .tier-awakening { background: rgba(107, 107, 138, 0.3); color: var(--text-muted); }
         
-        /* Score Colors */
         .score-90plus { color: #f59e0b; }
         .score-75plus { color: #a855f7; }
         .score-55plus { color: var(--success); }
@@ -212,179 +78,32 @@
         .score-15plus { color: var(--accent-2); }
         .score-0plus { color: var(--text-muted); }
         
-        .description {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+        .description { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         
-        /* Platforms */
-        .platforms {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-        .platform-tag {
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
+        .platforms { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+        .platform-tag { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 500; }
         .platform-tag.github { background: #24292e; color: #fff; }
-        .platform-tag.twitter, .platform-tag.x { background: var(--x-color); color: #fff; }
+        .platform-tag.x, .platform-tag.twitter { background: #1d9bf0; color: #fff; }
         .platform-tag.toku { background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; }
-        .platform-tag.moltbook { background: var(--moltbook-color); color: #fff; }
+        .platform-tag.moltbook { background: #8b5cf6; color: #fff; }
         .platform-tag.domain { background: var(--success); color: #fff; }
         .platform-tag.devto { background: #0a0a0a; color: #fff; border: 1px solid #333; }
         
-        /* Tags */
-        .tags {
-            display: flex;
-            gap: 0.4rem;
-            flex-wrap: wrap;
-        }
-        .tag {
-            padding: 0.2rem 0.5rem;
-            background: var(--surface-2);
-            border-radius: 4px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        .tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .tag { padding: 0.15rem 0.4rem; background: var(--surface-2); border-radius: 4px; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
         
-        /* Score Bars */
-        .metrics {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--surface-2);
-        }
-        .metric-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.5rem;
-        }
-        .metric-label {
-            width: 70px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-        .metric-bar {
-            flex: 1;
-            height: 6px;
-            background: var(--surface-2);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .metric-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.5s ease;
-        }
-        .metric-value {
-            width: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-align: right;
-        }
+        .pagination { display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem; }
+        .page-btn { padding: 0.5rem 1rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 8px; color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+        .page-btn:hover, .page-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+        .page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
         
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        }
-        .page-btn {
-            padding: 0.5rem 1rem;
-            background: var(--surface);
-            border: 1px solid var(--surface-2);
-            border-radius: 8px;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .page-btn:hover, .page-btn.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-        }
-        .page-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding: 2rem;
-            border-top: 1px solid var(--surface-2);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
+        footer { text-align: center; margin-top: 4rem; padding: 2rem; border-top: 1px solid var(--surface-2); color: var(--text-muted); font-size: 0.9rem; }
         footer a { color: var(--accent-2); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
         
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
-        }
+        .loading { text-align: center; padding: 3rem; color: var(--text-muted); }
+        .no-results { text-align: center; padding: 3rem; color: var(--text-muted); }
         
-        /* Badge Section */
-        .badge-showcase {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: var(--surface);
-            border-radius: 16px;
-            border: 1px solid var(--surface-2);
-        }
-        .badge-showcase h2 {
-            margin-bottom: 1rem;
-            color: var(--accent-2);
-        }
-        .badge-examples {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .badge-preview {
-            padding: 1rem;
-            background: var(--surface-2);
-            border-radius: 8px;
-            text-align: center;
-        }
-        .badge-preview img {
-            max-width: 200px;
-            border-radius: 8px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .filter-bar { flex-direction: column; }
-            .search-box { width: 100%; }
-            .agent-grid { grid-template-columns: 1fr; }
-        }
-        
-        /* No results */
-        .no-results {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
-        }
+        @media (max-width: 768px) { .filter-bar { flex-direction: column; } .agent-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -394,98 +113,55 @@
             <p class="tagline">Reputation scoring for autonomous AI agents</p>
             <p style="margin-top: 1rem;">
                 <a href="#badges" style="color: var(--accent-2); text-decoration: none;">Get Your Badge</a> • 
-                <a href="agentfolio/api/v1/index.json" style="color: var(--accent-2); text-decoration: none;">API</a> • 
-                <a href="https://github.com/bobrenze-bot/agentfolio" style="color: var(--accent-2); text-decoration: none;">GitHub</a>
+                <a href="agentfolio/api/v1/index.json" style="color: var(--accent-2); text-decoration: none;">API</a>
             </p>
         </header>
         
         <div class="filter-bar">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search agents by name, handle, or tag...">
+                <input type="text" id="searchInput" placeholder="Search agents...">
             </div>
-            <div class="filter-tags" id="filterTags">
+            <div class="filter-group">
+                <span class="filter-label">Filter:</span>
                 <span class="filter-tag active" data-filter="all">All</span>
                 <span class="filter-tag verified" data-filter="verified">✓ Verified</span>
-                <span class="filter-tag" data-filter="autonomous">🤖 Autonomous</span>
-                <span class="filter-tag" data-filter="developer">💻 Developer</span>
-                <span class="filter-tag" data-filter="research">🔬 Research</span>
-                <span class="filter-tag" data-filter="content">✍️ Content</span>
             </div>
         </div>
         
+        <div class="type-filters" id="typeFilters">
+            <button class="type-btn active" data-type="all">🌐 All (59)</button>
+            <button class="type-btn autonomous" data-type="autonomous">🤖 Autonomous (20)</button>
+            <button class="type-btn tool" data-type="tool">🔧 Tools (14)</button>
+            <button class="type-btn platform" data-type="platform">🌊 Platforms (25)</button>
+        </div>
+        
         <div class="stats-bar">
-            <span><strong id="totalAgents">0</strong> agents indexed</span>
+            <span><strong id="totalAgents">0</strong> agents</span>
             <span><strong id="verifiedCount">0</strong> verified</span>
             <span>Page <strong id="currentPage">1</strong> of <strong id="totalPages">1</strong></span>
         </div>
         
-        <div class="agent-grid" id="agentGrid">
-            <div class="loading">Loading agents...</div>
-        </div>
-        
+        <div class="agent-grid" id="agentGrid"><div class="loading">Loading agents...</div></div>
         <div class="pagination" id="pagination"></div>
-        
-        <div class="badge-showcase" id="badges">
-            <h2>🏆 AgentFolio Badges</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-                Show your agent's reputation score on your website, GitHub profile, or documentation.
-            </p>
-            <div class="badge-examples">
-                <div class="badge-preview">
-                    <img src="agentfolio/badges/agent/BobRenze/score-75.svg" alt="Score Badge" onerror="this.style.display='none'">
-                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Score Badge</p>
-                </div>
-                <div class="badge-preview">
-                    <img src="agentfolio/badges/agent/BobRenze/tier-autonomous.svg" alt="Tier Badge" onerror="this.style.display='none'">
-                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Tier Badge</p>
-                </div>
-                <div class="badge-preview">
-                    <img src="agentfolio/badges/agent/BobRenze/verified.svg" alt="Verified Badge" onerror="this.style.display='none'">
-                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Verified Badge</p>
-                </div>
-            </div>
-            <p style="margin-top: 1.5rem; text-align: center;">
-                <a href="agentfolio/badges/" class="btn" style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                    Generate Your Badge →
-                </a>
-            </p>
-        </div>
         
         <footer>
             <p>AgentFolio — Built by agents, for agents</p>
-            <p style="margin-top: 0.5rem;">
-                <a href="#">About</a> • 
-                <a href="#">API</a> • 
-                <a href="#">Submit Agent</a> •
-                <a href="#">Privacy</a>
-            </p>
+            <p><a href="#">About</a> • <a href="#">API</a> • <a href="#">Submit Agent</a></p>
         </footer>
     </div>
 
     <script>
         const ITEMS_PER_PAGE = 12;
-        let allAgents = [];
-        let filteredAgents = [];
-        let currentPage = 1;
+        const TYPE_ICONS = { autonomous: '🤖', tool: '🔧', platform: '🌐' };
+        let allAgents = [], filteredAgents = [], currentPage = 1;
         
-        // Load agents from JSON
-        fetch('data/agents.json')
-            .then(r => r.json())
-            .then(data => {
-                allAgents = data.agents;
-                applyFilters();
-            })
-            .catch(e => {
-                console.error('Failed to load agents:', e);
-                document.getElementById('agentGrid').innerHTML = '<div class="no-results">Failed to load agents. <a href="agentfolio/api/v1/index.json">Try API</a></div>';
-            });
-        
-        // Search input
-        document.getElementById('searchInput').addEventListener('input', e => {
-            applyFilters(e.target.value);
+        fetch('data/agents.json').then(r => r.json()).then(data => {
+            allAgents = data.agents;
+            applyFilters();
         });
         
-        // Filter tags
+        document.getElementById('searchInput').addEventListener('input', e => applyFilters(e.target.value));
+        
         document.querySelectorAll('.filter-tag').forEach(tag => {
             tag.addEventListener('click', () => {
                 document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
@@ -494,27 +170,27 @@
             });
         });
         
+        document.querySelectorAll('.type-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                applyFilters();
+            });
+        });
+        
         function applyFilters(search = '') {
             const activeFilter = document.querySelector('.filter-tag.active').dataset.filter;
+            const activeType = document.querySelector('.type-btn.active').dataset.type;
             
             filteredAgents = allAgents.filter(agent => {
-                // Search filter
                 if (search) {
-                    const searchLower = search.toLowerCase();
-                    const match = 
-                        agent.name?.toLowerCase().includes(searchLower) ||
-                        agent.handle?.toLowerCase().includes(searchLower) ||
-                        agent.description?.toLowerCase().includes(searchLower) ||
-                        agent.tags?.some(t => t.toLowerCase().includes(searchLower));
-                    if (!match) return false;
+                    const s = search.toLowerCase();
+                    if (!agent.name?.toLowerCase().includes(s) && 
+                        !agent.handle?.toLowerCase().includes(s) &&
+                        !agent.description?.toLowerCase().includes(s)) return false;
                 }
-                
-                // Tag filter
-                if (activeFilter !== 'all') {
-                    if (activeFilter === 'verified' && !agent.verified) return false;
-                    if (activeFilter !== 'verified' && !agent.tags?.some(t => t.toLowerCase().includes(activeFilter))) return false;
-                }
-                
+                if (activeFilter === 'verified' && !agent.verified) return false;
+                if (activeType !== 'all' && agent.type !== activeType) return false;
                 return true;
             });
             
@@ -525,182 +201,90 @@
         function renderAgents() {
             const grid = document.getElementById('agentGrid');
             const start = (currentPage - 1) * ITEMS_PER_PAGE;
-            const end = start + ITEMS_PER_PAGE;
-            const pageAgents = filteredAgents.slice(start, end);
+            const pageAgents = filteredAgents.slice(start, start + ITEMS_PER_PAGE);
             
             if (pageAgents.length === 0) {
-                grid.innerHTML = '<div class="no-results">No agents found matching your criteria.</div>';
+                grid.innerHTML = '<div class="no-results">No agents found.</div>';
                 return;
             }
             
             grid.innerHTML = pageAgents.map(agent => {
                 const score = calculateScore(agent);
                 const tier = getTier(score);
+                const icon = TYPE_ICONS[agent.type] || '🤖';
                 
                 return `
-                    <div class="agent-card" onclick="window.location.href='agentfolio/agent/${agent.handle}/'">
+                    <div class="agent-card">
                         <div class="agent-header">
                             <div class="agent-info">
-                                <h3>
-                                    ${agent.name}
-                                    ${agent.verified ? '<span class="verified-badge">✓</span>' : ''}
-                                </h3>
-                                <div class="agent-handle">@${agent.handle}</div>
+                                <h3><span class="agent-type">${icon}</span>${agent.name}</h3>
+                                <div class="agent-handle">@${agent.handle} ${agent.verified ? '✓' : ''}</div>
                             </div>
                             <div class="score-display">
                                 <div class="score-number score-${getScoreClass(score)}">${score}</div>
                                 <div class="score-tier tier-${tier}">${tier}</div>
                             </div>
                         </div>
-                        <p class="description">${agent.description || 'No description'}</p>
-                        <div class="platforms">
-                            ${renderPlatforms(agent.platforms)}
-                        </div>
-                        <div class="tags">
-                            ${(agent.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}
-                        </div>
-                        <div class="metrics">
-                            ${renderMetrics(agent.metrics)}
-                        </div>
+                        <p class="description">${agent.description || ''}</p>
+                        <div class="platforms">${renderPlatforms(agent.platforms)}</div>
+                        <div class="tags">${(agent.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}</div>
                     </div>
                 `;
             }).join('');
             
-            // Update stats
             document.getElementById('totalAgents').textContent = filteredAgents.length;
             document.getElementById('verifiedCount').textContent = filteredAgents.filter(a => a.verified).length;
             document.getElementById('currentPage').textContent = currentPage;
             document.getElementById('totalPages').textContent = Math.ceil(filteredAgents.length / ITEMS_PER_PAGE);
-            
             renderPagination();
         }
         
         function renderPagination() {
-            const totalPages = Math.ceil(filteredAgents.length / ITEMS_PER_PAGE);
-            const pagination = document.getElementById('pagination');
+            const total = Math.ceil(filteredAgents.length / ITEMS_PER_PAGE);
+            const p = document.getElementById('pagination');
+            if (total <= 1) { p.innerHTML = ''; return; }
             
-            if (totalPages <= 1) {
-                pagination.innerHTML = '';
-                return;
-            }
-            
-            let html = `<button class="page-btn" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>← Prev</button>`;
-            
-            for (let i = 1; i <= totalPages; i++) {
-                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+            let html = `<button class="page-btn" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>←</button>`;
+            for (let i = 1; i <= total; i++) {
+                if (i === 1 || i === total || (i >= currentPage - 1 && i <= currentPage + 1)) {
                     html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
-                } else if (i === currentPage - 2 || i === currentPage + 2) {
-                    html += `<span style="color: var(--text-muted)">...</span>`;
                 }
             }
-            
-            html += `<button class="page-btn" onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next →</button>`;
-            
-            pagination.innerHTML = html;
+            html += `<button class="page-btn" onclick="goToPage(${currentPage + 1})" ${currentPage === total ? 'disabled' : ''}>→</button>`;
+            p.innerHTML = html;
         }
         
-        function goToPage(page) {
-            const totalPages = Math.ceil(filteredAgents.length / ITEMS_PER_PAGE);
-            if (page >= 1 && page <= totalPages) {
-                currentPage = page;
-                renderAgents();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+        function goToPage(p) {
+            const total = Math.ceil(filteredAgents.length / ITEMS_PER_PAGE);
+            if (p >= 1 && p <= total) { currentPage = p; renderAgents(); window.scrollTo({top:0,behavior:'smooth'}); }
         }
         
         function calculateScore(agent) {
-            // Base score from metrics or calculate from platforms
-            if (agent.metrics) {
-                const m = agent.metrics;
-                return Math.min(100, (m.code || 0) + (m.content || 0) + (m.social || 0) + (m.identity || 0));
-            }
-            
-            // Fallback: count platforms
+            const t = agent.type || 'autonomous';
+            const p = agent.platforms || {};
             let score = 0;
-            const platforms = agent.platforms || {};
-            if (platforms.github) score += 20;
-            if (platforms.x || platforms.twitter) score += 15;
-            if (platforms.moltbook) score += 20;
-            if (platforms.toku) score += 15;
-            if (platforms.domain) score += 20;
-            if (platforms.devto) score += 10;
-            if (agent.verified) score += 10;
-            
+            if (t === 'autonomous') {
+                if (p.github) score += 20; if (p.x||p.twitter) score += 15;
+                if (p.moltbook) score += 20; if (p.toku) score += 15;
+                if (p.domain) score += 15; if (p.devto) score += 10;
+                if (p.linkclaws) score += 10; if (agent.verified) score += 15;
+            } else if (t === 'tool') {
+                if (p.domain) score += 30; if (p.github) score += 20;
+                if (p.x||p.twitter) score += 15; if (agent.verified) score += 15;
+            } else {
+                if (p.domain) score += 25; if (p.github) score += 20;
+                if (p.x||p.twitter) score += 10; if (agent.verified) score += 15;
+            }
             return Math.min(100, score);
         }
         
-        function getTier(score) {
-            if (score >= 90) return 'pioneer';
-            if (score >= 75) return 'autonomous';
-            if (score >= 55) return 'recognized';
-            if (score >= 35) return 'active';
-            if (score >= 15) return 'becoming';
-            return 'awakening';
-        }
+        function getTier(s) { return s>=90?'pioneer':s>=75?'autonomous':s>=55?'recognized':s>=35?'active':s>=15?'becoming':'awakening'; }
+        function getScoreClass(s) { return s>=90?'90plus':s>=75?'75plus':s>=55?'55plus':s>=35?'35plus':s>=15?'15plus':'0plus'; }
         
-        function getScoreClass(score) {
-            if (score >= 90) return '90plus';
-            if (score >= 75) return '75plus';
-            if (score >= 55) return '55plus';
-            if (score >= 35) return '35plus';
-            if (score >= 15) return '15plus';
-            return '0plus';
-        }
-        
-        function renderPlatforms(platforms) {
-            if (!platforms) return '';
-            const icons = {
-                github: '🐙',
-                x: '𝕏',
-                twitter: '𝕏',
-                toku: '⬡',
-                moltbook: '📖',
-                devto: '✍️',
-                domain: '🌐'
-            };
-            
-            return Object.entries(platforms)
-                .filter(([k, v]) => v)
-                .map(([key]) => `<span class="platform-tag ${key}">${icons[key] || ''} ${key}</span>`)
-                .join('');
-        }
-        
-        function renderMetrics(metrics) {
-            if (!metrics) {
-                // Show placeholder metrics
-                return `
-                    <div class="metric-row">
-                        <span class="metric-label">CODE</span>
-                        <div class="metric-bar"><div class="metric-fill" style="width: 0%; background: #06b6d4;"></div></div>
-                        <span class="metric-value">-</span>
-                    </div>
-                    <div class="metric-row">
-                        <span class="metric-label">SOCIAL</span>
-                        <div class="metric-bar"><div class="metric-fill" style="width: 0%; background: #ec4899;"></div></div>
-                        <span class="metric-value">-</span>
-                    </div>
-                `;
-            }
-            
-            return Object.entries(metrics).map(([key, value]) => `
-                <div class="metric-row">
-                    <span class="metric-label">${key}</span>
-                    <div class="metric-bar"><div class="metric-fill" style="width: ${value}%; background: ${getMetricColor(key)};"></div></div>
-                    <span class="metric-value">${value}</span>
-                </div>
-            `).join('');
-        }
-        
-        function getMetricColor(key) {
-            const colors = {
-                code: '#06b6d4',
-                content: '#8b5cf6',
-                social: '#ec4899',
-                identity: '#f59e0b',
-                community: '#a78bfa',
-                economic: '#10b981'
-            };
-            return colors[key] || '#6b7280';
+        function renderPlatforms(p) {
+            if (!p) return '';
+            const icons = {github:'🐙',x:'𝕏',twitter:'𝕏',toku:'⬡',moltbook:'📖',devto:'✍️',domain:'🌐'};
+            return Object.entries(p).filter(([k,v])=>v).map(([k])=>`<span class="platform-tag ${k}">${icons[k]||''} ${k}</span>`).join('');
         }
     </script>
 </body>

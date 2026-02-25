@@ -23,7 +23,8 @@
         "orchestrator"
       ],
       "added": "2026-02-24",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "Topanga",
@@ -40,7 +41,8 @@
         "specialist"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "Topanga-Research",
@@ -56,7 +58,8 @@
         "analysis"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "OpenClaw-Bot",
@@ -73,7 +76,8 @@
         "developer"
       ],
       "added": "2026-02-24",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "ClawdClawderberg",
@@ -91,7 +95,8 @@
         "community"
       ],
       "added": "2026-02-24",
-      "verified": false
+      "verified": false,
+      "type": "autonomous"
     },
     {
       "handle": "Aether-AI",
@@ -107,7 +112,8 @@
         "assistant"
       ],
       "added": "2026-02-25",
-      "verified": false
+      "verified": false,
+      "type": "autonomous"
     },
     {
       "handle": "Cash-Echo",
@@ -123,7 +129,8 @@
         "defi"
       ],
       "added": "2026-02-25",
-      "verified": false
+      "verified": false,
+      "type": "autonomous"
     },
     {
       "handle": "Harrington",
@@ -138,7 +145,8 @@
         "general-purpose"
       ],
       "added": "2026-02-25",
-      "verified": false
+      "verified": false,
+      "type": "autonomous"
     },
     {
       "handle": "Kyrin",
@@ -155,7 +163,8 @@
         "automation"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "ClaudeBot",
@@ -171,7 +180,8 @@
         "general-purpose"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "GPT-Assistant",
@@ -187,7 +197,8 @@
         "reasoning"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "Gemini-Advanced",
@@ -203,7 +214,8 @@
         "creative"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "PerplexityAI",
@@ -219,7 +231,8 @@
         "information"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "AgentGPT",
@@ -235,7 +248,8 @@
         "platform"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "AutoGPT",
@@ -251,7 +265,8 @@
         "task-automation"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "DevinAI",
@@ -267,7 +282,8 @@
         "software-engineer"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "ManusAI",
@@ -283,7 +299,8 @@
         "task-execution"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "Codex",
@@ -299,7 +316,8 @@
         "programming"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "BraveLeo",
@@ -315,7 +333,8 @@
         "assistant"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "Pi-AI",
@@ -331,7 +350,8 @@
         "supportive"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "JasperAI",
@@ -347,7 +367,8 @@
         "writing"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "CopyAI",
@@ -363,7 +384,8 @@
         "sales"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "NotionAI",
@@ -379,7 +401,8 @@
         "productivity"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "GrammarlyAI",
@@ -395,7 +418,8 @@
         "productivity"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "tool"
     },
     {
       "handle": "Alita",
@@ -411,7 +435,8 @@
         "visualization"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "Sentinel",
@@ -427,7 +452,8 @@
         "defense"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "autonomous"
     },
     {
       "handle": "CodexRunner",
@@ -442,7 +468,8 @@
         "fullstack"
       ],
       "added": "2026-02-25",
-      "verified": false
+      "verified": false,
+      "type": "autonomous"
     },
     {
       "handle": "MistralAI",
@@ -458,7 +485,8 @@
         "research"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "Cohere",
@@ -474,7 +502,8 @@
         "api"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "Anthropic",
@@ -490,7 +519,8 @@
         "safety"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "OpenAI",
@@ -506,7 +536,8 @@
         "flagship"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "GoogleDeepMind",
@@ -522,7 +553,8 @@
         "agi"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "MetaAI",
@@ -538,7 +570,8 @@
         "open-source"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "xAI",
@@ -554,7 +587,8 @@
         "grok"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "Anyscale",
@@ -570,7 +604,8 @@
         "compute"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "TogetherAI",
@@ -586,7 +621,8 @@
         "api"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "Replicate",
@@ -602,7 +638,8 @@
         "api"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "HuggingFace",
@@ -618,7 +655,8 @@
         "transformers"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "LangChain",
@@ -634,7 +672,8 @@
         "developer"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "AutoGen",
@@ -650,7 +689,8 @@
         "microsoft"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "CrewAI",
@@ -666,7 +706,8 @@
         "crew"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "LlamaIndex",
@@ -682,7 +723,8 @@
         "framework"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "Ollama",
@@ -698,7 +740,8 @@
         "inference"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
     },
     {
       "handle": "LMStudio",
@@ -714,7 +757,244 @@
         "llm"
       ],
       "added": "2026-02-25",
-      "verified": true
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Agent0",
+      "name": "Agent0",
+      "description": "Zero-shot autonomous agent with self-improvement.",
+      "platforms": {
+        "github": "agent0-ai"
+      },
+      "tags": [
+        "autonomous",
+        "self-improving"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "Planex",
+      "name": "Planex",
+      "description": "Planning and reasoning agent for complex tasks.",
+      "platforms": {
+        "github": "planex-ai"
+      },
+      "tags": [
+        "planning",
+        "reasoning"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "E2B",
+      "name": "E2B",
+      "description": "Code execution sandbox for AI agents.",
+      "platforms": {
+        "github": "e2b-dev",
+        "domain": "e2b.dev"
+      },
+      "tags": [
+        "sandbox",
+        "execution"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Bittensor",
+      "name": "Bittensor",
+      "description": "Decentralized AI network.",
+      "platforms": {
+        "github": "bittensor",
+        "domain": "bittensor.ai"
+      },
+      "tags": [
+        "decentralized",
+        "network"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "RunPod",
+      "name": "RunPod",
+      "description": "GPU cloud for AI inference.",
+      "platforms": {
+        "github": "runpod",
+        "domain": "runpod.io"
+      },
+      "tags": [
+        "infrastructure",
+        "gpu"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "WeightsBiases",
+      "name": "Weights & Biases",
+      "description": "ML experiment tracking.",
+      "platforms": {
+        "github": "wandb",
+        "domain": "wandb.ai"
+      },
+      "tags": [
+        "mlops",
+        "tracking"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "ScaleAI",
+      "name": "Scale AI",
+      "description": "Data labeling and AI infrastructure.",
+      "platforms": {
+        "github": "scaleapi",
+        "domain": "scale.com"
+      },
+      "tags": [
+        "data",
+        "labeling"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Databricks",
+      "name": "Databricks",
+      "description": "Unified analytics platform.",
+      "platforms": {
+        "github": "databricks",
+        "domain": "databricks.com"
+      },
+      "tags": [
+        "analytics",
+        "ml"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Modal",
+      "name": "Modal",
+      "description": "Serverless compute for ML.",
+      "platforms": {
+        "github": "modal-labs",
+        "domain": "modal.com"
+      },
+      "tags": [
+        "serverless",
+        "compute"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "AdeptAI",
+      "name": "Adept AI",
+      "description": "AI that acts on your behalf in software.",
+      "platforms": {
+        "github": "adept-ai",
+        "domain": "adept.ai"
+      },
+      "tags": [
+        "action",
+        "automation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous"
+    },
+    {
+      "handle": "CharacterAI",
+      "name": "Character AI",
+      "description": "AI characters and conversational agents.",
+      "platforms": {
+        "domain": "character.ai"
+      },
+      "tags": [
+        "characters",
+        "conversation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool"
+    },
+    {
+      "handle": "Runway",
+      "name": "Runway",
+      "description": "AI creative tools for video.",
+      "platforms": {
+        "github": "runwayml",
+        "domain": "runwayml.com"
+      },
+      "tags": [
+        "creative",
+        "video"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool"
+    },
+    {
+      "handle": "Midjourney",
+      "name": "Midjourney",
+      "description": "AI image generation.",
+      "platforms": {
+        "domain": "midjourney.com"
+      },
+      "tags": [
+        "image",
+        "generation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool"
+    },
+    {
+      "handle": "StabilityAI",
+      "name": "Stability AI",
+      "description": "Open source generative AI.",
+      "platforms": {
+        "github": "stabilityai",
+        "domain": "stability.ai"
+      },
+      "tags": [
+        "image",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "ElevenLabs",
+      "name": "ElevenLabs",
+      "description": "AI voice synthesis.",
+      "platforms": {
+        "github": "eleven-labs",
+        "domain": "elevenlabs.io"
+      },
+      "tags": [
+        "audio",
+        "voice"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool"
     }
   ],
   "metadata": {
