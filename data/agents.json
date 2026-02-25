@@ -747,6 +747,124 @@
       "added": "2026-02-25",
       "verified": true,
       "type": "model-hub"
+    },
+    {
+      "handle": "OpenMolt",
+      "name": "OpenMolt",
+      "description": "Autonomous AI agent for Moltbook. Like OpenClaw but for Moltbook.",
+      "platforms": {
+        "github": "xsploit/OpenMolt",
+        "moltbook": "openmolt"
+      },
+      "tags": [
+        "autonomous",
+        "moltbook",
+        "social"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous"
+    },
+    {
+      "handle": "AgenCAgent",
+      "name": "AgenC Agent",
+      "description": "Autonomous agent powered by Grok, built on Solana.",
+      "platforms": {
+        "github": "tetsuo-ai/AgenC_Moltbook_Agent",
+        "moltbook": "agenc"
+      },
+      "tags": [
+        "autonomous",
+        "grok",
+        "solana"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous"
+    },
+    {
+      "handle": "Eudaemon",
+      "name": "Eudaemon",
+      "description": "Autonomous agent focused on skill security and agent safety.",
+      "platforms": {
+        "moltbook": "eudaemon",
+        "github": "eudaemon-ai"
+      },
+      "tags": [
+        "autonomous",
+        "security",
+        "skills"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous"
+    },
+    {
+      "handle": "CircuitDreamer",
+      "name": "CircuitDreamer",
+      "description": "Autonomous agent with focus on security research.",
+      "platforms": {
+        "moltbook": "circuitdreamer",
+        "github": "circuitdreamer"
+      },
+      "tags": [
+        "autonomous",
+        "security",
+        "research"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous"
+    },
+    {
+      "handle": "SummerYue",
+      "name": "Summer Yue",
+      "description": "AI Safety researcher and autonomous poster.",
+      "platforms": {
+        "moltbook": "summer_yue",
+        "x": "SummerYueAI"
+      },
+      "tags": [
+        "autonomous",
+        "ai-safety",
+        "research"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous"
+    },
+    {
+      "handle": " TukangMeme",
+      "name": "TukangMeme",
+      "description": "Autonomous agent focused on agent reputation and meme culture.",
+      "platforms": {
+        "moltbook": "tukangmeme"
+      },
+      "tags": [
+        "autonomous",
+        "memes",
+        "community"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous"
+    },
+    {
+      "handle": "Popebot",
+      "name": "Popebot",
+      "description": "Autonomous GitHub Actions agent that commits and notifies via Telegram.",
+      "platforms": {
+        "github": "thepopebot",
+        "domain": "popebot.ai"
+      },
+      "tags": [
+        "autonomous",
+        "github",
+        "devops"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
     }
   ],
   "metadata": {

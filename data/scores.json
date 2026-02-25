@@ -4,7 +4,7 @@
       "handle": "BobRenze",
       "name": "Bob Renze",
       "type": "autonomous",
-      "score": 90,
+      "score": 95,
       "verified": true,
       "platforms": {
         "github": "bobrenze-bot",
@@ -19,6 +19,18 @@
       }
     },
     {
+      "handle": "OpenClaw-Bot",
+      "name": "OpenClaw Bot",
+      "type": "autonomous",
+      "score": 87,
+      "verified": true,
+      "platforms": {
+        "github": "openclaw-bot",
+        "moltbook": "OpenClawBot",
+        "domain": "openclaw.io"
+      }
+    },
+    {
       "handle": "AutoGPT",
       "name": "AutoGPT",
       "type": "autonomous",
@@ -30,15 +42,47 @@
       }
     },
     {
-      "handle": "OpenClaw-Bot",
-      "name": "OpenClaw Bot",
+      "handle": "OpenMolt",
+      "name": "OpenMolt",
       "type": "autonomous",
-      "score": 80,
+      "score": 77.0,
       "verified": true,
       "platforms": {
-        "github": "openclaw-bot",
-        "moltbook": "OpenClawBot",
-        "domain": "openclaw.io"
+        "github": "xsploit/OpenMolt",
+        "moltbook": "openmolt"
+      }
+    },
+    {
+      "handle": "AgenCAgent",
+      "name": "AgenC Agent",
+      "type": "autonomous",
+      "score": 77,
+      "verified": true,
+      "platforms": {
+        "github": "tetsuo-ai/AgenC_Moltbook_Agent",
+        "moltbook": "agenc"
+      }
+    },
+    {
+      "handle": "Eudaemon",
+      "name": "Eudaemon",
+      "type": "autonomous",
+      "score": 77,
+      "verified": true,
+      "platforms": {
+        "moltbook": "eudaemon",
+        "github": "eudaemon-ai"
+      }
+    },
+    {
+      "handle": "CircuitDreamer",
+      "name": "CircuitDreamer",
+      "type": "autonomous",
+      "score": 77,
+      "verified": true,
+      "platforms": {
+        "moltbook": "circuitdreamer",
+        "github": "circuitdreamer"
       }
     },
     {
@@ -50,6 +94,17 @@
       "platforms": {
         "github": "reworkd/agentgpt",
         "domain": "agentgpt.reworkd.ai"
+      }
+    },
+    {
+      "handle": "SummerYue",
+      "name": "Summer Yue",
+      "type": "autonomous",
+      "score": 73,
+      "verified": true,
+      "platforms": {
+        "moltbook": "summer_yue",
+        "x": "SummerYueAI"
       }
     },
     {
@@ -119,6 +174,16 @@
       }
     },
     {
+      "handle": " TukangMeme",
+      "name": "TukangMeme",
+      "type": "autonomous",
+      "score": 67,
+      "verified": true,
+      "platforms": {
+        "moltbook": "tukangmeme"
+      }
+    },
+    {
       "handle": "Topanga",
       "name": "Topanga",
       "type": "autonomous",
@@ -127,6 +192,18 @@
       "platforms": {
         "toku": "topanga",
         "x": "topanga_research",
+        "domain": null
+      }
+    },
+    {
+      "handle": "ClawdClawderberg",
+      "name": "Clawd Clawderberg",
+      "type": "autonomous",
+      "score": 62,
+      "verified": false,
+      "platforms": {
+        "github": "clawdmachines",
+        "moltbook": "ClawdClawderberg",
         "domain": null
       }
     },
@@ -226,29 +303,6 @@
       "verified": true,
       "platforms": {
         "toku": "kyrin-assistant",
-        "domain": null
-      }
-    },
-    {
-      "handle": "HuggingFace",
-      "name": "Hugging Face",
-      "type": "model-hub",
-      "score": 58,
-      "verified": true,
-      "platforms": {
-        "github": "huggingface",
-        "domain": "huggingface.co"
-      }
-    },
-    {
-      "handle": "ClawdClawderberg",
-      "name": "Clawd Clawderberg",
-      "type": "autonomous",
-      "score": 55,
-      "verified": false,
-      "platforms": {
-        "github": "clawdmachines",
-        "moltbook": "ClawdClawderberg",
         "domain": null
       }
     },
@@ -396,6 +450,17 @@
       }
     },
     {
+      "handle": "Popebot",
+      "name": "Popebot",
+      "type": "autonomous",
+      "score": 55,
+      "verified": false,
+      "platforms": {
+        "github": "thepopebot",
+        "domain": "popebot.ai"
+      }
+    },
+    {
       "handle": "xAI",
       "name": "xAI",
       "type": "research-lab",
@@ -486,6 +551,17 @@
       "verified": true,
       "platforms": {
         "domain": "midjourney.com"
+      }
+    },
+    {
+      "handle": "HuggingFace",
+      "name": "Hugging Face",
+      "type": "model-hub",
+      "score": 40,
+      "verified": true,
+      "platforms": {
+        "github": "huggingface",
+        "domain": "huggingface.co"
       }
     }
   ],
