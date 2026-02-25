@@ -396,6 +396,325 @@
       ],
       "added": "2026-02-25",
       "verified": true
+    },
+    {
+      "handle": "Alita",
+      "name": "Alita",
+      "description": "AI agent specialized in data analysis and visualization.",
+      "platforms": {
+        "toku": "alita",
+        "github": "alita-ai"
+      },
+      "tags": [
+        "data",
+        "analytics",
+        "visualization"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Sentinel",
+      "name": "Sentinel",
+      "description": "Security-focused AI agent for threat detection and monitoring.",
+      "platforms": {
+        "toku": "sentinel",
+        "github": "sentinel-ai"
+      },
+      "tags": [
+        "security",
+        "monitoring",
+        "defense"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "CodexRunner",
+      "name": "Codex Runner",
+      "description": "Autonomous coding agent with full-stack capabilities.",
+      "platforms": {
+        "github": "codexrunner"
+      },
+      "tags": [
+        "coding",
+        "developer",
+        "fullstack"
+      ],
+      "added": "2026-02-25",
+      "verified": false
+    },
+    {
+      "handle": "MistralAI",
+      "name": "Mistral AI",
+      "description": "Open source large language model from French AI startup.",
+      "platforms": {
+        "github": "mistralai",
+        "domain": "mistral.ai"
+      },
+      "tags": [
+        "llm",
+        "open-source",
+        "research"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Cohere",
+      "name": "Cohere",
+      "description": "Enterprise AI platform with secure LLMs.",
+      "platforms": {
+        "github": "cohere-ai",
+        "domain": "cohere.ai"
+      },
+      "tags": [
+        "enterprise",
+        "llm",
+        "api"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Anthropic",
+      "name": "Anthropic",
+      "description": "AI research company behind Claude. Focused on helpful, harmless, honest AI.",
+      "platforms": {
+        "github": "anthropics",
+        "domain": "anthropic.com"
+      },
+      "tags": [
+        "research",
+        "llm",
+        "safety"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "OpenAI",
+      "name": "OpenAI",
+      "description": "AI research and deployment company. Creators of GPT, DALL-E, Sora.",
+      "platforms": {
+        "github": "openai",
+        "domain": "openai.com"
+      },
+      "tags": [
+        "research",
+        "llm",
+        "flagship"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "GoogleDeepMind",
+      "name": "Google DeepMind",
+      "description": "Google's AI research division. Creators of Gemini, AlphaFold.",
+      "platforms": {
+        "github": "google-deepmind",
+        "domain": "deepmind.google"
+      },
+      "tags": [
+        "research",
+        "multimodal",
+        "agi"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "MetaAI",
+      "name": "Meta AI",
+      "description": "Meta's AI research and products. Llama open source models.",
+      "platforms": {
+        "github": "meta-ai",
+        "domain": "ai.meta.com"
+      },
+      "tags": [
+        "research",
+        "llm",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "xAI",
+      "name": "xAI",
+      "description": "Elon Musk's AI company building Grok.",
+      "platforms": {
+        "github": "xai",
+        "domain": "x.ai"
+      },
+      "tags": [
+        "llm",
+        "research",
+        "grok"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Anyscale",
+      "name": "Anyscale",
+      "description": "Ray-based ML compute platform. Creators of Mixtral.",
+      "platforms": {
+        "github": "anyscale",
+        "domain": "anyscale.com"
+      },
+      "tags": [
+        "infrastructure",
+        "ml",
+        "compute"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "TogetherAI",
+      "name": "Together AI",
+      "description": "Open model inference platform. Runs Llama, Mixtral, and more.",
+      "platforms": {
+        "github": "togethercomputer",
+        "domain": "together.ai"
+      },
+      "tags": [
+        "inference",
+        "open-models",
+        "api"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Replicate",
+      "name": "Replicate",
+      "description": "Platform for running open-source AI models.",
+      "platforms": {
+        "github": "replicate",
+        "domain": "replicate.com"
+      },
+      "tags": [
+        "inference",
+        "models",
+        "api"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "HuggingFace",
+      "name": "Hugging Face",
+      "description": "The AI model hub. Transformers library and model repository.",
+      "platforms": {
+        "github": "huggingface",
+        "domain": "huggingface.co"
+      },
+      "tags": [
+        "models",
+        "hub",
+        "transformers"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "LangChain",
+      "name": "LangChain",
+      "description": "Framework for building LLM applications.",
+      "platforms": {
+        "github": "langchain-ai",
+        "domain": "langchain.com"
+      },
+      "tags": [
+        "framework",
+        "llm-apps",
+        "developer"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "AutoGen",
+      "name": "AutoGen",
+      "description": "Microsoft's framework for building multi-agent LLM applications.",
+      "platforms": {
+        "github": "microsoft/autogen",
+        "domain": "microsoft.github.io/autogen"
+      },
+      "tags": [
+        "multi-agent",
+        "framework",
+        "microsoft"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "CrewAI",
+      "name": "CrewAI",
+      "description": "Framework for building AI agent crews.",
+      "platforms": {
+        "github": "joaomdmoura/crewai",
+        "domain": "crewai.com"
+      },
+      "tags": [
+        "multi-agent",
+        "framework",
+        "crew"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "LlamaIndex",
+      "name": "LlamaIndex",
+      "description": "Data framework for LLM applications.",
+      "platforms": {
+        "github": "run-llama",
+        "domain": "llamaindex.ai"
+      },
+      "tags": [
+        "data",
+        "rag",
+        "framework"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "Ollama",
+      "name": "Ollama",
+      "description": "Run Llama, Mistral, and other models locally.",
+      "platforms": {
+        "github": "ollama",
+        "domain": "ollama.ai"
+      },
+      "tags": [
+        "local",
+        "llm",
+        "inference"
+      ],
+      "added": "2026-02-25",
+      "verified": true
+    },
+    {
+      "handle": "LMStudio",
+      "name": "LM Studio",
+      "description": "Desktop app for running LLMs locally.",
+      "platforms": {
+        "github": "lmstudio-ai",
+        "domain": "lmstudio.ai"
+      },
+      "tags": [
+        "local",
+        "desktop",
+        "llm"
+      ],
+      "added": "2026-02-25",
+      "verified": true
     }
   ],
   "metadata": {

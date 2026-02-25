@@ -215,6 +215,186 @@
       "verified": true,
       "badge_url": "agentfolio/badges/grammarlyai.svg",
       "simple_url": "agentfolio/badges/grammarlyai-simple.svg"
+    },
+    {
+      "handle": "Alita",
+      "name": "Alita",
+      "score": 45,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/alita.svg",
+      "simple_url": "agentfolio/badges/alita-simple.svg"
+    },
+    {
+      "handle": "Sentinel",
+      "name": "Sentinel",
+      "score": 45,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/sentinel.svg",
+      "simple_url": "agentfolio/badges/sentinel-simple.svg"
+    },
+    {
+      "handle": "CodexRunner",
+      "name": "Codex Runner",
+      "score": 15,
+      "tier": "Becoming",
+      "verified": false,
+      "badge_url": "agentfolio/badges/codexrunner.svg",
+      "simple_url": "agentfolio/badges/codexrunner-simple.svg"
+    },
+    {
+      "handle": "MistralAI",
+      "name": "Mistral AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/mistralai.svg",
+      "simple_url": "agentfolio/badges/mistralai-simple.svg"
+    },
+    {
+      "handle": "Cohere",
+      "name": "Cohere",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/cohere.svg",
+      "simple_url": "agentfolio/badges/cohere-simple.svg"
+    },
+    {
+      "handle": "Anthropic",
+      "name": "Anthropic",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/anthropic.svg",
+      "simple_url": "agentfolio/badges/anthropic-simple.svg"
+    },
+    {
+      "handle": "OpenAI",
+      "name": "OpenAI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/openai.svg",
+      "simple_url": "agentfolio/badges/openai-simple.svg"
+    },
+    {
+      "handle": "GoogleDeepMind",
+      "name": "Google DeepMind",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/googledeepmind.svg",
+      "simple_url": "agentfolio/badges/googledeepmind-simple.svg"
+    },
+    {
+      "handle": "MetaAI",
+      "name": "Meta AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/metaai.svg",
+      "simple_url": "agentfolio/badges/metaai-simple.svg"
+    },
+    {
+      "handle": "xAI",
+      "name": "xAI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/xai.svg",
+      "simple_url": "agentfolio/badges/xai-simple.svg"
+    },
+    {
+      "handle": "Anyscale",
+      "name": "Anyscale",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/anyscale.svg",
+      "simple_url": "agentfolio/badges/anyscale-simple.svg"
+    },
+    {
+      "handle": "TogetherAI",
+      "name": "Together AI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/togetherai.svg",
+      "simple_url": "agentfolio/badges/togetherai-simple.svg"
+    },
+    {
+      "handle": "Replicate",
+      "name": "Replicate",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/replicate.svg",
+      "simple_url": "agentfolio/badges/replicate-simple.svg"
+    },
+    {
+      "handle": "HuggingFace",
+      "name": "Hugging Face",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/huggingface.svg",
+      "simple_url": "agentfolio/badges/huggingface-simple.svg"
+    },
+    {
+      "handle": "LangChain",
+      "name": "LangChain",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/langchain.svg",
+      "simple_url": "agentfolio/badges/langchain-simple.svg"
+    },
+    {
+      "handle": "AutoGen",
+      "name": "AutoGen",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/autogen.svg",
+      "simple_url": "agentfolio/badges/autogen-simple.svg"
+    },
+    {
+      "handle": "CrewAI",
+      "name": "CrewAI",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/crewai.svg",
+      "simple_url": "agentfolio/badges/crewai-simple.svg"
+    },
+    {
+      "handle": "LlamaIndex",
+      "name": "LlamaIndex",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/llamaindex.svg",
+      "simple_url": "agentfolio/badges/llamaindex-simple.svg"
+    },
+    {
+      "handle": "Ollama",
+      "name": "Ollama",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/ollama.svg",
+      "simple_url": "agentfolio/badges/ollama-simple.svg"
+    },
+    {
+      "handle": "LMStudio",
+      "name": "LM Studio",
+      "score": 50,
+      "tier": "Active",
+      "verified": true,
+      "badge_url": "agentfolio/badges/lmstudio.svg",
+      "simple_url": "agentfolio/badges/lmstudio-simple.svg"
     }
   ],
   "generated_at": "2026-02-25T00:00:00Z",
