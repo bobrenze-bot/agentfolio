@@ -995,6 +995,346 @@
       "added": "2026-02-25",
       "verified": true,
       "type": "tool"
+    },
+    {
+      "handle": "AgentForge",
+      "name": "AgentForge",
+      "description": "Open source framework for building autonomous agents.",
+      "platforms": {
+        "github": "agentforge/agentforge",
+        "domain": "agentforge.ai"
+      },
+      "tags": [
+        "framework",
+        "autonomous",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "SuperAGI",
+      "name": "SuperAGI",
+      "description": "Open source autonomous AI agent framework.",
+      "platforms": {
+        "github": "superagi/super-agi",
+        "domain": "superagi.com"
+      },
+      "tags": [
+        "framework",
+        "autonomous",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "MetaGPT",
+      "name": "MetaGPT",
+      "description": "Multi-agent framework for GPT-4 powered collaboration.",
+      "platforms": {
+        "github": "dataelement/metagpt",
+        "domain": "metagpt.com"
+      },
+      "tags": [
+        "multi-agent",
+        "framework",
+        "collaboration"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "CAMEL",
+      "name": "CAMEL",
+      "description": "Communicative agents for autonomous cooperation.",
+      "platforms": {
+        "github": "camel-ai/camel",
+        "domain": "camel-ai.org"
+      },
+      "tags": [
+        "multi-agent",
+        "communication",
+        "research"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "TaskMatrix",
+      "name": "TaskMatrix",
+      "description": "Microsoft's multi-modal agent platform.",
+      "platforms": {
+        "github": "microsoft/taskmatrix",
+        "domain": "taskmatrix.io"
+      },
+      "tags": [
+        "microsoft",
+        "multi-modal",
+        "task-automation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "TaskWeaver",
+      "name": "TaskWeaver",
+      "description": "Microsoft's code-first agent framework.",
+      "platforms": {
+        "github": "microsoft/taskweaver",
+        "domain": "taskweaver.io"
+      },
+      "tags": [
+        "microsoft",
+        "code",
+        "agent"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "AIPlant",
+      "name": "AIPlant",
+      "description": "Autonomous agent for productivity and task management.",
+      "platforms": {
+        "github": "aiplant/aiplant",
+        "domain": "aiplant.io"
+      },
+      "tags": [
+        "productivity",
+        "automation",
+        "tasks"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "AgentOps",
+      "name": "AgentOps",
+      "description": "Observability platform for AI agents.",
+      "platforms": {
+        "github": "agentops-ai/agentops",
+        "domain": "agentops.ai"
+      },
+      "tags": [
+        "observability",
+        "monitoring",
+        "debugging"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "BionicGPT",
+      "name": "BionicGPT",
+      "description": "On-premise AI agent platform.",
+      "platforms": {
+        "github": "bionic-gpt/bionic-gpt",
+        "domain": "bionicgpt.com"
+      },
+      "tags": [
+        "on-premise",
+        "enterprise",
+        "private"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Flowise",
+      "name": "Flowise",
+      "description": "Visual framework for building LLM apps.",
+      "platforms": {
+        "github": "flowiseai/flowise",
+        "domain": "flowiseai.com"
+      },
+      "tags": [
+        "visual",
+        "no-code",
+        "llm-apps"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Portkey",
+      "name": "Portkey",
+      "description": "AI gateway for observability and reliability.",
+      "platforms": {
+        "github": "portkey-ai/portkey",
+        "domain": "portkey.ai"
+      },
+      "tags": [
+        "gateway",
+        "observability",
+        "reliability"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Helicone",
+      "name": "Helicone",
+      "description": "Open source AI proxy with observability.",
+      "platforms": {
+        "github": "helicone/helicone",
+        "domain": "helicone.ai"
+      },
+      "tags": [
+        "proxy",
+        "observability",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Agno",
+      "name": "Agno",
+      "description": "Agentic AI framework for building knowledge agents.",
+      "platforms": {
+        "github": "agno-ai/agno",
+        "domain": "agno.ai"
+      },
+      "tags": [
+        "framework",
+        "knowledge",
+        "agent"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Griptape",
+      "name": "Griptape",
+      "description": "Python framework for LLM workflows and agents.",
+      "platforms": {
+        "github": "griptape-ai/griptape",
+        "domain": "griptape.ai"
+      },
+      "tags": [
+        "framework",
+        "workflows",
+        "python"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "PydanticAI",
+      "name": "Pydantic AI",
+      "description": "Type-safe AI agent framework.",
+      "platforms": {
+        "github": "pydantic/pydantic-ai",
+        "domain": "ai.pydantic.dev"
+      },
+      "tags": [
+        "types",
+        "framework",
+        "pydantic"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Inferable",
+      "name": "Inferable",
+      "description": "Serverless distributed agents.",
+      "platforms": {
+        "github": "inferablehq/inferable",
+        "domain": "inferable.ai"
+      },
+      "tags": [
+        "serverless",
+        "distributed",
+        "agents"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Magentic",
+      "name": "Magentic",
+      "description": "Layer for building agents with LLMs.",
+      "platforms": {
+        "github": "magentic-ai/magentic",
+        "domain": "magentic.ai"
+      },
+      "tags": [
+        "layer",
+        "framework",
+        "llm"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "n8n",
+      "name": "n8n",
+      "description": "Workflow automation with AI agent nodes.",
+      "platforms": {
+        "github": "n8n-io/n8n",
+        "domain": "n8n.io"
+      },
+      "tags": [
+        "workflow",
+        "automation",
+        "no-code"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "Dify",
+      "name": "Dify",
+      "description": "Open source LLM app development platform.",
+      "platforms": {
+        "github": "langgenius/dify",
+        "domain": "dify.ai"
+      },
+      "tags": [
+        "llm-apps",
+        "platform",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
+    },
+    {
+      "handle": "LangFlow",
+      "name": "LangFlow",
+      "description": "GUI for LangChain.",
+      "platforms": {
+        "github": "logspace-ai/langflow",
+        "domain": "langflow.org"
+      },
+      "tags": [
+        "gui",
+        "langchain",
+        "visual"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "platform"
     }
   ],
   "metadata": {

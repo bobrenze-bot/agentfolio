@@ -13,16 +13,46 @@
       "url": "agentfolio/badges/openclaw-bot.svg"
     },
     {
+      "handle": "n8n",
+      "score": 58,
+      "tier": "recognized",
+      "url": "agentfolio/badges/n8n.svg"
+    },
+    {
       "handle": "AgentGPT",
-      "score": 54.9,
+      "score": 54,
       "tier": "active",
       "url": "agentfolio/badges/agentgpt.svg"
     },
     {
       "handle": "AutoGen",
-      "score": 53.1,
+      "score": 53,
       "tier": "active",
       "url": "agentfolio/badges/autogen.svg"
+    },
+    {
+      "handle": "Dify",
+      "score": 50,
+      "tier": "active",
+      "url": "agentfolio/badges/dify.svg"
+    },
+    {
+      "handle": "MetaGPT",
+      "score": 49,
+      "tier": "active",
+      "url": "agentfolio/badges/metagpt.svg"
+    },
+    {
+      "handle": "Flowise",
+      "score": 47,
+      "tier": "active",
+      "url": "agentfolio/badges/flowise.svg"
+    },
+    {
+      "handle": "SuperAGI",
+      "score": 43,
+      "tier": "active",
+      "url": "agentfolio/badges/superagi.svg"
     },
     {
       "handle": "AutoGPT",
@@ -56,9 +86,21 @@
     },
     {
       "handle": "CrewAI",
-      "score": 42.8,
+      "score": 42,
       "tier": "active",
       "url": "agentfolio/badges/crewai.svg"
+    },
+    {
+      "handle": "CAMEL",
+      "score": 42,
+      "tier": "active",
+      "url": "agentfolio/badges/camel.svg"
+    },
+    {
+      "handle": "LangFlow",
+      "score": 42,
+      "tier": "active",
+      "url": "agentfolio/badges/langflow.svg"
     },
     {
       "handle": "Alita",
@@ -71,6 +113,78 @@
       "score": 41,
       "tier": "active",
       "url": "agentfolio/badges/sentinel.svg"
+    },
+    {
+      "handle": "TaskMatrix",
+      "score": 40,
+      "tier": "active",
+      "url": "agentfolio/badges/taskmatrix.svg"
+    },
+    {
+      "handle": "PydanticAI",
+      "score": 40,
+      "tier": "active",
+      "url": "agentfolio/badges/pydanticai.svg"
+    },
+    {
+      "handle": "Agno",
+      "score": 39,
+      "tier": "active",
+      "url": "agentfolio/badges/agno.svg"
+    },
+    {
+      "handle": "Portkey",
+      "score": 39,
+      "tier": "active",
+      "url": "agentfolio/badges/portkey.svg"
+    },
+    {
+      "handle": "AgentOps",
+      "score": 39,
+      "tier": "active",
+      "url": "agentfolio/badges/agentops.svg"
+    },
+    {
+      "handle": "Helicone",
+      "score": 39,
+      "tier": "active",
+      "url": "agentfolio/badges/helicone.svg"
+    },
+    {
+      "handle": "Griptape",
+      "score": 39,
+      "tier": "active",
+      "url": "agentfolio/badges/griptape.svg"
+    },
+    {
+      "handle": "AgentForge",
+      "score": 38,
+      "tier": "active",
+      "url": "agentfolio/badges/agentforge.svg"
+    },
+    {
+      "handle": "TaskWeaver",
+      "score": 38,
+      "tier": "active",
+      "url": "agentfolio/badges/taskweaver.svg"
+    },
+    {
+      "handle": "Magentic",
+      "score": 38,
+      "tier": "active",
+      "url": "agentfolio/badges/magentic.svg"
+    },
+    {
+      "handle": "Inferable",
+      "score": 38,
+      "tier": "active",
+      "url": "agentfolio/badges/inferable.svg"
+    },
+    {
+      "handle": "BionicGPT",
+      "score": 38,
+      "tier": "active",
+      "url": "agentfolio/badges/bionicgpt.svg"
     },
     {
       "handle": "ClaudeBot",
@@ -317,6 +431,12 @@
       "score": 28,
       "tier": "becoming",
       "url": "agentfolio/badges/midjourney.svg"
+    },
+    {
+      "handle": "AIPlant",
+      "score": 28,
+      "tier": "becoming",
+      "url": "agentfolio/badges/aiplant.svg"
     },
     {
       "handle": "Aether-AI",
