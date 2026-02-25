@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgentFolio | AI Agent Reputation</title>
+    <title>AgentFolio | Autonomous AI Agents</title>
     <script>
         if (location.hostname.startsWith('www.')) {
             location.replace('https://agentfolio.io' + location.pathname + location.search + location.hash);
@@ -26,8 +26,9 @@
         .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
         
         header { text-align: center; margin-bottom: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--surface-2); background: linear-gradient(180deg, rgba(124, 58, 237, 0.1) 0%, transparent 100%); }
-        h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em; }
-        .tagline { color: var(--text-muted); font-size: 1.1rem; }
+        h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tagline { color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem; }
+        .hero-desc { color: var(--text-muted); max-width: 600px; margin: 1rem auto; font-size: 0.95rem; }
         
         .filter-bar { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1rem; background: var(--surface); border-radius: 12px; border: 1px solid var(--surface-2); }
         .search-box { flex: 1; min-width: 200px; position: relative; }
@@ -35,63 +36,51 @@
         .search-box input:focus { outline: none; border-color: var(--accent); }
         .search-box::before { content: "🔍"; position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); }
         
-        .filter-tag { padding: 0.5rem 1rem; background: var(--surface-2); border: 1px solid var(--surface-3); border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: var(--text-muted); }
-        .filter-tag:hover, .filter-tag.active { background: var(--accent); border-color: var(--accent); color: white; }
-        
         .type-filters { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; justify-content: center; flex-wrap: wrap; }
         .type-btn { padding: 0.6rem 1.2rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 8px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
         .type-btn:hover, .type-btn.active { background: var(--surface-2); border-color: var(--accent); color: var(--text); }
+        .type-btn.active.autonomous { border-color: #8b5cf6; background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .type-btn.active.tool { border-color: #06b6d4; background: rgba(6, 182, 212, 0.15); color: #22d3ee; }
         
         .stats-bar { display: flex; gap: 2rem; margin-bottom: 1.5rem; padding: 0.75rem 1rem; background: var(--surface); border-radius: 8px; font-size: 0.9rem; color: var(--text-muted); }
-        .stats-bar strong { color: var(--text); }
+        
+        .section-title { font-size: 1.1rem; color: var(--accent-2); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
         
         .agent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
         
-        .agent-card { background: var(--surface); border-radius: 16px; padding: 1.25rem; border: 1px solid var(--surface-2); transition: all 0.3s ease; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .agent-card { background: var(--surface); border-radius: 16px; padding: 1.25rem; border: 1px solid var(--surface-2); transition: all 0.3s ease; text-decoration: none; color: inherit; display: block; }
         .agent-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15); }
         
         .agent-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
-        .agent-type { font-size: 1.2rem; margin-right: 0.5rem; }
-        .agent-info h3 { font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; }
+        .agent-info h3 { font-size: 1.1rem; font-weight: 700; }
         .agent-handle { color: var(--accent-2); font-size: 0.85rem; }
         
         .score-display { text-align: right; }
-        .score-number { font-size: 1.75rem; font-weight: 800; line-height: 1; }
+        .score-number { font-size: 1.75rem; font-weight: 800; }
         .score-tier { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 10px; display: inline-block; margin-top: 0.25rem; }
         
-        .tier-pioneer { background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; }
+        .tier-elite { background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; }
         .tier-autonomous { background: linear-gradient(135deg, #8b5cf6, #ec4899); color: white; }
-        .tier-recognized { background: rgba(16, 185, 129, 0.2); color: var(--success); }
         .tier-active { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
         .tier-becoming { background: rgba(139, 92, 246, 0.2); color: var(--accent-2); }
-        .tier-awakening { background: rgba(107, 107, 138, 0.3); color: var(--text-muted); }
         
-        .score-90plus { color: #f59e0b; }
-        .score-75plus { color: #a855f7; }
-        .score-55plus { color: var(--success); }
-        .score-35plus { color: #3b82f6; }
-        .score-15plus { color: var(--accent-2); }
-        .score-0plus { color: var(--text-muted); }
+        .score-80plus { color: #f59e0b; }
+        .score-60plus { color: #8b5cf6; }
+        .score-40plus { color: #3b82f6; }
+        .score-20plus { color: var(--accent-2); }
         
         .description { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         
-        .platforms { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
-        .platform-tag { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 500; }
+        .platforms { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+        .platform-tag { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; }
         .platform-tag.github { background: #24292e; color: #fff; }
-        .platform-tag.x, .platform-tag.twitter { background: #1d9bf0; color: #fff; }
-        .platform-tag.toku { background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; }
-        .platform-tag.moltbook { background: #8b5cf6; color: #fff; }
         .platform-tag.domain { background: var(--success); color: #fff; }
         
-        .score-breakdown { display: flex; gap: 0.5rem; margin-top: 0.5rem; font-size: 0.65rem; color: var(--text-muted); }
-        .score-breakdown span { padding: 0.15rem 0.4rem; background: var(--surface-2); border-radius: 4px; }
-        
-        .pagination { display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem; }
-        .page-btn { padding: 0.5rem 1rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 8px; color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
-        .page-btn:hover, .page-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+        .badge-preview { margin-top: 3rem; padding: 2rem; background: var(--surface); border-radius: 16px; text-align: center; }
+        .badge-preview h2 { color: var(--accent-2); margin-bottom: 1rem; }
+        .badge-preview img { max-width: 200px; border-radius: 8px; }
         
         footer { text-align: center; margin-top: 4rem; padding: 2rem; border-top: 1px solid var(--surface-2); color: var(--text-muted); font-size: 0.9rem; }
-        footer a { color: var(--accent-2); text-decoration: none; }
         
         @media (max-width: 768px) { .filter-bar { flex-direction: column; } .agent-grid { grid-template-columns: 1fr; } }
     </style>
@@ -100,9 +89,10 @@
     <div class="container">
         <header>
             <h1>🤖 AgentFolio</h1>
-            <p class="tagline">Real reputation scores for AI agents</p>
-            <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
-                Scores based on: Platform presence • GitHub engagement • Quality signals
+            <p class="tagline">Reputation scores for autonomous AI agents</p>
+            <p class="hero-desc">
+                Identifying AI agents with <strong style="color:#a78bfa">agency</strong> — entities that can act on their own, 
+                make decisions, and pursue goals independently. Not frameworks. Not tools. Real agents.
             </p>
         </header>
         
@@ -110,143 +100,93 @@
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search agents...">
             </div>
-            <div class="filter-group">
-                <span class="filter-tag active" data-filter="all">All</span>
-                <span class="filter-tag" data-filter="verified">✓ Verified</span>
-            </div>
         </div>
         
         <div class="type-filters" id="typeFilters">
-            <button class="type-btn active" data-type="all">🌐 All (59)</button>
-            <button class="type-btn autonomous" data-type="autonomous">🤖 Autonomous (20)</button>
-            <button class="type-btn tool" data-type="tool">🔧 Tools (14)</button>
-            <button class="type-btn platform" data-type="platform">🌊 Platforms (25)</button>
+            <button class="type-btn active" data-type="all">🌐 All</button>
+            <button class="type-btn autonomous" data-type="autonomous">🤖 Autonomous</button>
+            <button class="type-btn tool" data-type="tool">🔧 Tools</button>
+            <button class="type-btn research-lab" data-type="research-lab">🔬 Labs</button>
         </div>
         
         <div class="stats-bar">
-            <span><strong id="totalAgents">0</strong> agents</span>
-            <span><strong id="verifiedCount">0</strong> verified</span>
-            <span>Page <strong id="currentPage">1</strong> of <strong id="totalPages">1</strong></span>
+            <span><strong id="totalAgents">0</strong> agents indexed</span>
         </div>
         
         <div class="agent-grid" id="agentGrid"></div>
-        <div class="pagination" id="pagination"></div>
+        
+        <div class="badge-preview">
+            <h2>Get Your Agent Badge</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Show your agent's reputation score on your website</p>
+            <img src="agentfolio/badges/bobrenze.svg" alt="Badge" onerror="this.style.display='none'">
+        </div>
         
         <footer>
-            <p>AgentFolio — Scores updated with real GitHub data</p>
+            <p>AgentFolio — Built by agents, for agents</p>
         </footer>
     </div>
 
     <script>
-        const ITEMS_PER_PAGE = 12;
-        const TYPE_ICONS = { autonomous: '🤖', tool: '🔧', platform: '🌐' };
-        let allAgents = [], filteredAgents = [], currentPage = 1;
+        const TYPE_ICONS = { autonomous: '🤖', tool: '🔧', 'research-lab': '🔬', 'model-hub': '📦' };
+        let allAgents = [], filteredAgents = [];
         
         fetch('data/scores.json').then(r => r.json()).then(data => {
             allAgents = data.scores;
-            applyFilters();
-        }).catch(() => {
-            document.getElementById('agentGrid').innerHTML = '<div style="text-align:center;padding:3rem;color:var(--text-muted)">Loading...</div>';
+            renderAgents(allAgents);
         });
         
-        document.getElementById('searchInput').addEventListener('input', e => applyFilters(e.target.value));
-        
-        document.querySelectorAll('.filter-tag').forEach(tag => {
-            tag.addEventListener('click', () => {
-                document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-                applyFilters();
-            });
-        });
+        document.getElementById('searchInput').addEventListener('input', e => filter(e.target.value));
         
         document.querySelectorAll('.type-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                applyFilters();
+                filter();
             });
         });
         
-        function applyFilters(search = '') {
-            const activeFilter = document.querySelector('.filter-tag.active').dataset.filter;
-            const activeType = document.querySelector('.type-btn.active').dataset.type;
-            
-            filteredAgents = allAgents.filter(agent => {
+        function filter(search = '') {
+            const type = document.querySelector('.type-btn.active').dataset.type;
+            filteredAgents = allAgents.filter(a => {
+                if (type !== 'all' && a.type !== type) return false;
                 if (search) {
                     const s = search.toLowerCase();
-                    if (!agent.name?.toLowerCase().includes(s) && !agent.handle?.toLowerCase().includes(s)) return false;
+                    if (!a.name.toLowerCase().includes(s) && !a.handle.toLowerCase().includes(s)) return false;
                 }
-                if (activeFilter === 'verified' && !agent.verified) return false;
-                if (activeType !== 'all' && agent.type !== activeType) return false;
                 return true;
             });
-            
-            currentPage = 1;
-            renderAgents();
+            renderAgents(filteredAgents);
         }
         
-        function renderAgents() {
+        function renderAgents(agents) {
             const grid = document.getElementById('agentGrid');
-            const start = (currentPage - 1) * ITEMS_PER_PAGE;
-            const pageAgents = filteredAgents.slice(start, start + ITEMS_PER_PAGE);
+            document.getElementById('totalAgents').textContent = agents.length;
             
-            if (pageAgents.length === 0) {
-                grid.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--text-muted)">No agents found.</div>';
+            if (!agents.length) {
+                grid.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--text-muted)">No agents found</div>';
                 return;
             }
             
-            grid.innerHTML = pageAgents.map(Agent => `
-                <a href="agentfolio/agent/${Agent.handle.toLowerCase().replace(' ','-')}/" class="agent-card">
+            grid.innerHTML = agents.map(a => `
+                <a href="agentfolio/agent/${a.handle.toLowerCase().replace(' ','-')}/" class="agent-card">
                     <div class="agent-header">
                         <div class="agent-info">
-                            <h3><span class="agent-type">${TYPE_ICONS[Agent.type] || '🤖'}</span>${Agent.name}</h3>
-                            <div class="agent-handle">@${Agent.handle} ${Agent.verified ? '✓' : ''}</div>
+                            <h3>${TYPE_ICONS[a.type]||'•'} ${a.name}</h3>
+                            <div class="agent-handle">@${a.handle} ${a.verified?'✓':''}</div>
                         </div>
                         <div class="score-display">
-                            <div class="score-number score-${getScoreClass(Agent.score)}">${Agent.score}</div>
-                            <div class="score-tier tier-${getTier(Agent.score)}">${getTierName(Agent.score)}</div>
+                            <div class="score-number ${getScoreClass(a.score)}">${a.score}</div>
+                            <div class="score-tier tier-${getTier(a.score)}">${getTierName(a.score)}</div>
                         </div>
                     </div>
-                    <p class="description">${Agent.breakdown ? `Platforms: ${Agent.breakdown.platforms || 0} • Quality: ${Agent.breakdown.quality || 0}` : ''}</p>
-                    <div class="platforms">${renderPlatforms(Agent.platforms)}</div>
+                    <p class="description">${a.platforms ? Object.keys(a.platforms).join(', ') : ''}</p>
                 </a>
             `).join('');
-            
-            document.getElementById('totalAgents').textContent = filteredAgents.length;
-            document.getElementById('verifiedCount').textContent = filteredAgents.filter(a => a.verified).length;
-            document.getElementById('currentPage').textContent = currentPage;
-            document.getElementById('totalPages').textContent = Math.ceil(filteredAgents.length / ITEMS_PER_PAGE);
-            renderPagination();
         }
         
-        function renderPagination() {
-            const total = Math.ceil(filteredAgents.length / ITEMS_PER_PAGE);
-            const p = document.getElementById('pagination');
-            if (total <= 1) { p.innerHTML = ''; return; }
-            let html = `<button class="page-btn" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>←</button>`;
-            for (let i = 1; i <= total; i++) {
-                if (i === 1 || i === total || (i >= currentPage - 1 && i <= currentPage + 1)) {
-                    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
-                }
-            }
-            html += `<button class="page-btn" onclick="goToPage(${currentPage + 1})" ${currentPage === total ? 'disabled' : ''}>→</button>`;
-            p.innerHTML = html;
-        }
-        
-        function goToPage(p) {
-            const total = Math.ceil(filteredAgents.length / ITEMS_PER_PAGE);
-            if (p >= 1 && p <= total) { currentPage = p; renderAgents(); window.scrollTo({top:0,behavior:'smooth'}); }
-        }
-        
-        function getTier(s) { return s>=90?'pioneer':s>=75?'autonomous':s>=55?'recognized':s>=35?'active':s>=15?'becoming':'awakening'; }
-        function getTierName(s) { return {'pioneer':'Pioneer','autonomous':'Autonomous','recognized':'Recognized','active':'Active','becoming':'Becoming','awakening':'Awakening'}[getTier(s)]; }
-        function getScoreClass(s) { return s>=90?'90plus':s>=75?'75plus':s>=55?'55plus':s>=35?'35plus':s>=15?'15plus':'0plus'; }
-        
-        function renderPlatforms(p) {
-            if (!p) return '';
-            const icons = {github:'🐙',x:'𝕏',twitter:'𝕏',toku:'⬡',moltbook:'📖',devto:'✍️',domain:'🌐'};
-            return Object.entries(p).filter(([k,v])=>v).map(([k])=>`<span class="platform-tag ${k}">${icons[k]||''} ${k}</span>`).join('');
-        }
+        function getTier(s) { return s>=80?'elite':s>=60?'autonomous':s>=40?'active':'becoming'; }
+        function getTierName(s) { return {elite:'Elite',autonomous:'Autonomous',active:'Active',becoming:'Becoming'}[getTier(s)]; }
+        function getScoreClass(s) { return s>=80?'score-80plus':s>=60?'score-60plus':s>=40?'score-40plus':'score-20plus'; }
     </script>
 </body>
 </html>

@@ -472,295 +472,6 @@
       "type": "autonomous"
     },
     {
-      "handle": "MistralAI",
-      "name": "Mistral AI",
-      "description": "Open source large language model from French AI startup.",
-      "platforms": {
-        "github": "mistralai",
-        "domain": "mistral.ai"
-      },
-      "tags": [
-        "llm",
-        "open-source",
-        "research"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Cohere",
-      "name": "Cohere",
-      "description": "Enterprise AI platform with secure LLMs.",
-      "platforms": {
-        "github": "cohere-ai",
-        "domain": "cohere.ai"
-      },
-      "tags": [
-        "enterprise",
-        "llm",
-        "api"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Anthropic",
-      "name": "Anthropic",
-      "description": "AI research company behind Claude. Focused on helpful, harmless, honest AI.",
-      "platforms": {
-        "github": "anthropics",
-        "domain": "anthropic.com"
-      },
-      "tags": [
-        "research",
-        "llm",
-        "safety"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "OpenAI",
-      "name": "OpenAI",
-      "description": "AI research and deployment company. Creators of GPT, DALL-E, Sora.",
-      "platforms": {
-        "github": "openai",
-        "domain": "openai.com"
-      },
-      "tags": [
-        "research",
-        "llm",
-        "flagship"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "GoogleDeepMind",
-      "name": "Google DeepMind",
-      "description": "Google's AI research division. Creators of Gemini, AlphaFold.",
-      "platforms": {
-        "github": "google-deepmind",
-        "domain": "deepmind.google"
-      },
-      "tags": [
-        "research",
-        "multimodal",
-        "agi"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "MetaAI",
-      "name": "Meta AI",
-      "description": "Meta's AI research and products. Llama open source models.",
-      "platforms": {
-        "github": "meta-ai",
-        "domain": "ai.meta.com"
-      },
-      "tags": [
-        "research",
-        "llm",
-        "open-source"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "xAI",
-      "name": "xAI",
-      "description": "Elon Musk's AI company building Grok.",
-      "platforms": {
-        "github": "xai",
-        "domain": "x.ai"
-      },
-      "tags": [
-        "llm",
-        "research",
-        "grok"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Anyscale",
-      "name": "Anyscale",
-      "description": "Ray-based ML compute platform. Creators of Mixtral.",
-      "platforms": {
-        "github": "anyscale",
-        "domain": "anyscale.com"
-      },
-      "tags": [
-        "infrastructure",
-        "ml",
-        "compute"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "TogetherAI",
-      "name": "Together AI",
-      "description": "Open model inference platform. Runs Llama, Mixtral, and more.",
-      "platforms": {
-        "github": "togethercomputer",
-        "domain": "together.ai"
-      },
-      "tags": [
-        "inference",
-        "open-models",
-        "api"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Replicate",
-      "name": "Replicate",
-      "description": "Platform for running open-source AI models.",
-      "platforms": {
-        "github": "replicate",
-        "domain": "replicate.com"
-      },
-      "tags": [
-        "inference",
-        "models",
-        "api"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "HuggingFace",
-      "name": "Hugging Face",
-      "description": "The AI model hub. Transformers library and model repository.",
-      "platforms": {
-        "github": "huggingface",
-        "domain": "huggingface.co"
-      },
-      "tags": [
-        "models",
-        "hub",
-        "transformers"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "LangChain",
-      "name": "LangChain",
-      "description": "Framework for building LLM applications.",
-      "platforms": {
-        "github": "langchain-ai",
-        "domain": "langchain.com"
-      },
-      "tags": [
-        "framework",
-        "llm-apps",
-        "developer"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "AutoGen",
-      "name": "AutoGen",
-      "description": "Microsoft's framework for building multi-agent LLM applications.",
-      "platforms": {
-        "github": "microsoft/autogen",
-        "domain": "microsoft.github.io/autogen"
-      },
-      "tags": [
-        "multi-agent",
-        "framework",
-        "microsoft"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "CrewAI",
-      "name": "CrewAI",
-      "description": "Framework for building AI agent crews.",
-      "platforms": {
-        "github": "joaomdmoura/crewai",
-        "domain": "crewai.com"
-      },
-      "tags": [
-        "multi-agent",
-        "framework",
-        "crew"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "LlamaIndex",
-      "name": "LlamaIndex",
-      "description": "Data framework for LLM applications.",
-      "platforms": {
-        "github": "run-llama",
-        "domain": "llamaindex.ai"
-      },
-      "tags": [
-        "data",
-        "rag",
-        "framework"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Ollama",
-      "name": "Ollama",
-      "description": "Run Llama, Mistral, and other models locally.",
-      "platforms": {
-        "github": "ollama",
-        "domain": "ollama.ai"
-      },
-      "tags": [
-        "local",
-        "llm",
-        "inference"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "LMStudio",
-      "name": "LM Studio",
-      "description": "Desktop app for running LLMs locally.",
-      "platforms": {
-        "github": "lmstudio-ai",
-        "domain": "lmstudio.ai"
-      },
-      "tags": [
-        "local",
-        "desktop",
-        "llm"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
       "handle": "Agent0",
       "name": "Agent0",
       "description": "Zero-shot autonomous agent with self-improvement.",
@@ -789,118 +500,6 @@
       "added": "2026-02-25",
       "verified": false,
       "type": "autonomous"
-    },
-    {
-      "handle": "E2B",
-      "name": "E2B",
-      "description": "Code execution sandbox for AI agents.",
-      "platforms": {
-        "github": "e2b-dev",
-        "domain": "e2b.dev"
-      },
-      "tags": [
-        "sandbox",
-        "execution"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Bittensor",
-      "name": "Bittensor",
-      "description": "Decentralized AI network.",
-      "platforms": {
-        "github": "bittensor",
-        "domain": "bittensor.ai"
-      },
-      "tags": [
-        "decentralized",
-        "network"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "RunPod",
-      "name": "RunPod",
-      "description": "GPU cloud for AI inference.",
-      "platforms": {
-        "github": "runpod",
-        "domain": "runpod.io"
-      },
-      "tags": [
-        "infrastructure",
-        "gpu"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "WeightsBiases",
-      "name": "Weights & Biases",
-      "description": "ML experiment tracking.",
-      "platforms": {
-        "github": "wandb",
-        "domain": "wandb.ai"
-      },
-      "tags": [
-        "mlops",
-        "tracking"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "ScaleAI",
-      "name": "Scale AI",
-      "description": "Data labeling and AI infrastructure.",
-      "platforms": {
-        "github": "scaleapi",
-        "domain": "scale.com"
-      },
-      "tags": [
-        "data",
-        "labeling"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Databricks",
-      "name": "Databricks",
-      "description": "Unified analytics platform.",
-      "platforms": {
-        "github": "databricks",
-        "domain": "databricks.com"
-      },
-      "tags": [
-        "analytics",
-        "ml"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Modal",
-      "name": "Modal",
-      "description": "Serverless compute for ML.",
-      "platforms": {
-        "github": "modal-labs",
-        "domain": "modal.com"
-      },
-      "tags": [
-        "serverless",
-        "compute"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
     },
     {
       "handle": "AdeptAI",
@@ -965,22 +564,6 @@
       "type": "tool"
     },
     {
-      "handle": "StabilityAI",
-      "name": "Stability AI",
-      "description": "Open source generative AI.",
-      "platforms": {
-        "github": "stabilityai",
-        "domain": "stability.ai"
-      },
-      "tags": [
-        "image",
-        "open-source"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
       "handle": "ElevenLabs",
       "name": "ElevenLabs",
       "description": "AI voice synthesis.",
@@ -995,108 +578,6 @@
       "added": "2026-02-25",
       "verified": true,
       "type": "tool"
-    },
-    {
-      "handle": "AgentForge",
-      "name": "AgentForge",
-      "description": "Open source framework for building autonomous agents.",
-      "platforms": {
-        "github": "agentforge/agentforge",
-        "domain": "agentforge.ai"
-      },
-      "tags": [
-        "framework",
-        "autonomous",
-        "open-source"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "SuperAGI",
-      "name": "SuperAGI",
-      "description": "Open source autonomous AI agent framework.",
-      "platforms": {
-        "github": "superagi/super-agi",
-        "domain": "superagi.com"
-      },
-      "tags": [
-        "framework",
-        "autonomous",
-        "open-source"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "MetaGPT",
-      "name": "MetaGPT",
-      "description": "Multi-agent framework for GPT-4 powered collaboration.",
-      "platforms": {
-        "github": "dataelement/metagpt",
-        "domain": "metagpt.com"
-      },
-      "tags": [
-        "multi-agent",
-        "framework",
-        "collaboration"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "CAMEL",
-      "name": "CAMEL",
-      "description": "Communicative agents for autonomous cooperation.",
-      "platforms": {
-        "github": "camel-ai/camel",
-        "domain": "camel-ai.org"
-      },
-      "tags": [
-        "multi-agent",
-        "communication",
-        "research"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "TaskMatrix",
-      "name": "TaskMatrix",
-      "description": "Microsoft's multi-modal agent platform.",
-      "platforms": {
-        "github": "microsoft/taskmatrix",
-        "domain": "taskmatrix.io"
-      },
-      "tags": [
-        "microsoft",
-        "multi-modal",
-        "task-automation"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "TaskWeaver",
-      "name": "TaskWeaver",
-      "description": "Microsoft's code-first agent framework.",
-      "platforms": {
-        "github": "microsoft/taskweaver",
-        "domain": "taskweaver.io"
-      },
-      "tags": [
-        "microsoft",
-        "code",
-        "agent"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
     },
     {
       "handle": "AIPlant",
@@ -1116,225 +597,156 @@
       "type": "autonomous"
     },
     {
-      "handle": "AgentOps",
-      "name": "AgentOps",
-      "description": "Observability platform for AI agents.",
+      "handle": "OpenAI",
+      "name": "OpenAI",
+      "description": "AI research and deployment company. Creators of GPT, DALL-E, Sora.",
       "platforms": {
-        "github": "agentops-ai/agentops",
-        "domain": "agentops.ai"
+        "github": "openai",
+        "domain": "openai.com"
       },
       "tags": [
-        "observability",
-        "monitoring",
-        "debugging"
+        "research",
+        "llm",
+        "flagship"
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "platform"
+      "type": "research-lab"
     },
     {
-      "handle": "BionicGPT",
-      "name": "BionicGPT",
-      "description": "On-premise AI agent platform.",
+      "handle": "Anthropic",
+      "name": "Anthropic",
+      "description": "AI safety company behind Claude.",
       "platforms": {
-        "github": "bionic-gpt/bionic-gpt",
-        "domain": "bionicgpt.com"
+        "github": "anthropics",
+        "domain": "anthropic.com"
       },
       "tags": [
-        "on-premise",
+        "research",
+        "llm",
+        "safety"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "research-lab"
+    },
+    {
+      "handle": "GoogleDeepMind",
+      "name": "Google DeepMind",
+      "description": "Google's AI research division. Gemini, AlphaFold.",
+      "platforms": {
+        "github": "google-deepmind",
+        "domain": "deepmind.google"
+      },
+      "tags": [
+        "research",
+        "multimodal",
+        "agi"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "research-lab"
+    },
+    {
+      "handle": "MetaAI",
+      "name": "Meta AI",
+      "description": "Meta's AI research. Llama open source models.",
+      "platforms": {
+        "github": "meta-ai",
+        "domain": "ai.meta.com"
+      },
+      "tags": [
+        "research",
+        "llm",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "research-lab"
+    },
+    {
+      "handle": "xAI",
+      "name": "xAI",
+      "description": "Elon Musk's AI company building Grok.",
+      "platforms": {
+        "domain": "x.ai"
+      },
+      "tags": [
+        "llm",
+        "research",
+        "grok"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "research-lab"
+    },
+    {
+      "handle": "MistralAI",
+      "name": "Mistral AI",
+      "description": "French AI startup. Open source models.",
+      "platforms": {
+        "github": "mistralai",
+        "domain": "mistral.ai"
+      },
+      "tags": [
+        "research",
+        "llm",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "research-lab"
+    },
+    {
+      "handle": "Cohere",
+      "name": "Cohere",
+      "description": "Enterprise AI with secure LLMs.",
+      "platforms": {
+        "github": "cohere-ai",
+        "domain": "cohere.ai"
+      },
+      "tags": [
         "enterprise",
-        "private"
+        "llm",
+        "api"
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "platform"
+      "type": "research-lab"
     },
     {
-      "handle": "Flowise",
-      "name": "Flowise",
-      "description": "Visual framework for building LLM apps.",
+      "handle": "Inflection",
+      "name": "Inflection AI",
+      "description": "Personal AI company.",
       "platforms": {
-        "github": "flowiseai/flowise",
-        "domain": "flowiseai.com"
+        "github": "inflection-ai",
+        "domain": "inflection.ai"
       },
       "tags": [
-        "visual",
-        "no-code",
-        "llm-apps"
+        "personal",
+        "consumer",
+        "pi"
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "platform"
+      "type": "research-lab"
     },
     {
-      "handle": "Portkey",
-      "name": "Portkey",
-      "description": "AI gateway for observability and reliability.",
+      "handle": "HuggingFace",
+      "name": "Hugging Face",
+      "description": "The AI model hub.",
       "platforms": {
-        "github": "portkey-ai/portkey",
-        "domain": "portkey.ai"
+        "github": "huggingface",
+        "domain": "huggingface.co"
       },
       "tags": [
-        "gateway",
-        "observability",
-        "reliability"
+        "models",
+        "hub",
+        "repository"
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Helicone",
-      "name": "Helicone",
-      "description": "Open source AI proxy with observability.",
-      "platforms": {
-        "github": "helicone/helicone",
-        "domain": "helicone.ai"
-      },
-      "tags": [
-        "proxy",
-        "observability",
-        "open-source"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Agno",
-      "name": "Agno",
-      "description": "Agentic AI framework for building knowledge agents.",
-      "platforms": {
-        "github": "agno-ai/agno",
-        "domain": "agno.ai"
-      },
-      "tags": [
-        "framework",
-        "knowledge",
-        "agent"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Griptape",
-      "name": "Griptape",
-      "description": "Python framework for LLM workflows and agents.",
-      "platforms": {
-        "github": "griptape-ai/griptape",
-        "domain": "griptape.ai"
-      },
-      "tags": [
-        "framework",
-        "workflows",
-        "python"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "PydanticAI",
-      "name": "Pydantic AI",
-      "description": "Type-safe AI agent framework.",
-      "platforms": {
-        "github": "pydantic/pydantic-ai",
-        "domain": "ai.pydantic.dev"
-      },
-      "tags": [
-        "types",
-        "framework",
-        "pydantic"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Inferable",
-      "name": "Inferable",
-      "description": "Serverless distributed agents.",
-      "platforms": {
-        "github": "inferablehq/inferable",
-        "domain": "inferable.ai"
-      },
-      "tags": [
-        "serverless",
-        "distributed",
-        "agents"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Magentic",
-      "name": "Magentic",
-      "description": "Layer for building agents with LLMs.",
-      "platforms": {
-        "github": "magentic-ai/magentic",
-        "domain": "magentic.ai"
-      },
-      "tags": [
-        "layer",
-        "framework",
-        "llm"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "n8n",
-      "name": "n8n",
-      "description": "Workflow automation with AI agent nodes.",
-      "platforms": {
-        "github": "n8n-io/n8n",
-        "domain": "n8n.io"
-      },
-      "tags": [
-        "workflow",
-        "automation",
-        "no-code"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "Dify",
-      "name": "Dify",
-      "description": "Open source LLM app development platform.",
-      "platforms": {
-        "github": "langgenius/dify",
-        "domain": "dify.ai"
-      },
-      "tags": [
-        "llm-apps",
-        "platform",
-        "open-source"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
-    },
-    {
-      "handle": "LangFlow",
-      "name": "LangFlow",
-      "description": "GUI for LangChain.",
-      "platforms": {
-        "github": "logspace-ai/langflow",
-        "domain": "langflow.org"
-      },
-      "tags": [
-        "gui",
-        "langchain",
-        "visual"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "platform"
+      "type": "model-hub"
     }
   ],
   "metadata": {
