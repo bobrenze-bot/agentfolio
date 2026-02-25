@@ -1,72 +1,30 @@
-# AgentFolio SSL Setup
+# SSL Setup
 
-## Current Status (2026-02-24)
+## Current Status
 
-### DNS ✅ Complete
-- 4 A records pointing to GitHub Pages IPs (185.199.108-111.153)
-- Root domain (agentfolio.io) resolving successfully via HTTP
-- TTL: Auto (propagation complete)
+- **Custom domain:** agentfolio.io
+- **DNS:** ✅ Pointing to GitHub (185.199.108-111.153)
+- **HTTP:** ✅ Working
+- **HTTPS:** ⏳ Certificate pending (Let's Encrypt provisioning)
 
-### SSL ⏳ Blocked
+## Workaround
 
-**GitHub Pages Limitation:**
-- GitHub won't provision Let's Encrypt cert until DNS fully propagates
-- Chicken-and-egg: can't enable HTTPS without cert, can't get cert without working HTTPS
+During cert provisioning, use:
+- https://bobrenze-bot.github.io/agentfolio/
 
-**Cloudflare Solution:** Requires one of:
-1. **Global API Key** (stored in profile → API Tokens → Global API Key)
-2. **Browser UI interaction** (OpenClaw extension needs clicking)
+## Timeline
 
-## What Needs to Happen
+Let's Encrypt typically provisions certs within 24-48 hours of:
+1. Custom domain added to GitHub Pages
+2. DNS records fully propagated
 
-### Option A: Manual (30 seconds)
-1. Go to https://dash.cloudflare.com → agentfolio.io → SSL/TLS → Overview
-2. Set encryption mode to "Flexible"
-3. Edge Certificates → Enable "Always Use HTTPS"
+The cert will automatically activate when ready - no action needed.
 
-### Option B: API if Global Key available
+## Verification
+
 ```bash
-export CF_EMAIL="heathriel@gmail.com"
-export CF_API_KEY="your-global-api-key"
-
-# Get zone ID
-echo "Zone ID for agentfolio.io:"
-curl -s "https://api.cloudflare.com/client/v4/zones?name=agentfolio.io" \
-  -H "X-Auth-Email: $CF_EMAIL" \
-  -H "X-Auth-Key: $CF_API_KEY" | jq -r '.result[0].id'
-
-# Enable SSL
-curl -s -X PATCH \
-  "https://api.cloudflare.com/client/v4/zones/ZONE_ID/settings/ssl" \
-  -H "X-Auth-Email: $CF_EMAIL" \
-  -H "X-Auth-Key: $CF_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"value":"flexible"}'
-
-# Enable Always Use HTTPS  
-curl -s -X PUT \
-  "https://api.cloudflare.com/client/v4/zones/ZONE_ID/settings/always_use_https" \
-  -H "X-Auth-Email: $CF_EMAIL" \
-  -H "X-Auth-Key: $CF_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"value":"on"}'
+# Check cert status
+openssl s_client -connect agentfolio.io:443 -servername agentfolio.io
 ```
 
-### Option C: Wait
-- GitHub will eventually auto-provision cert (1-24h after DNS stable)
-- Not ideal for immediate HTTPS
-
-## Store Global API Key
-
-Once obtained, save to:
-```
-~/.openclaw/credentials/cloudflare-global.env
-export CLOUDFLARE_GLOBAL_API_KEY="..."
-export CLOUDFLARE_EMAIL="heathriel@gmail.com"
-```
-
-## My Blocker
-
-I cannot click the Chrome extension icon programmatically (accessibility restrictions). Nor do I have the Global API Key stored anywhere I can access.
-
-**Solution:** Either temporarily enable accessibility for terminal apps, or paste the Global API Key here once so I can automate this.
+When you see `agentfolio.io` in the certificate CN, it's ready.
