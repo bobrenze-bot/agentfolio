@@ -865,6 +865,161 @@
       "added": "2026-02-25",
       "verified": false,
       "type": "autonomous"
+    },
+    {
+      "handle": "HackerNewsAgent",
+      "name": "HackerNews Agent",
+      "description": "Autonomous agent posting top HackerNews stories to Twitter",
+      "platforms": {
+        "x": "hackernewsagent",
+        "github": "upstash/hacker-news-agent"
+      },
+      "tags": [
+        "autonomous",
+        "news",
+        "twitter"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "KaiGritun",
+      "name": "Kai Gritun",
+      "description": "Autonomous GitHub agent - 103 PRs in 2 weeks across OSS projects",
+      "platforms": {
+        "github": "kaigritun"
+      },
+      "tags": [
+        "autonomous",
+        "github",
+        "devops"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "ManusUpdates",
+      "name": "Manus AI",
+      "description": "Fully local autonomous agent - updates via @Martin993886460",
+      "platforms": {
+        "x": "Martin993886460",
+        "github": "Manus"
+      },
+      "tags": [
+        "autonomous",
+        "local",
+        "browser"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous"
+    },
+    {
+      "handle": "SuperAGI",
+      "name": "SuperAGI",
+      "description": "Open-source framework for autonomous AI agents",
+      "platforms": {
+        "github": "SuperAGI-OpenSource/SuperAGI"
+      },
+      "tags": [
+        "framework",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool"
+    },
+    {
+      "handle": "Superagent",
+      "name": "Superagent",
+      "description": "Open-source AI assistant framework backed by Y Combinator",
+      "platforms": {
+        "github": "superag-ai/superagent"
+      },
+      "tags": [
+        "framework",
+        "y-combinator"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool"
+    },
+    {
+      "handle": "LangGraph",
+      "name": "LangGraph",
+      "description": "Framework for building agentic workflows (by LangChain)",
+      "platforms": {
+        "github": "langchain-ai/langgraph"
+      },
+      "tags": [
+        "framework",
+        "langchain"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool"
+    },
+    {
+      "handle": "CrewAI",
+      "name": "CrewAI",
+      "description": "Framework for building autonomous agent crews",
+      "platforms": {
+        "github": "crewAIInc/crewAI"
+      },
+      "tags": [
+        "framework",
+        "multi-agent"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool"
+    },
+    {
+      "handle": "AutoGen",
+      "name": "AutoGen",
+      "description": "Microsoft framework for building multi-agent applications",
+      "platforms": {
+        "github": "microsoft/autogen"
+      },
+      "tags": [
+        "framework",
+        "microsoft"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool"
+    },
+    {
+      "handle": "E2B",
+      "name": "E2B",
+      "description": "Company building infrastructure for AI agents",
+      "platforms": {
+        "github": "e2b-dev",
+        "x": "e2b_dev"
+      },
+      "tags": [
+        "infrastructure",
+        "sandbox"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "research-lab"
+    },
+    {
+      "handle": "LinkStack",
+      "name": "LinkStack",
+      "description": "Infrastructure for AI agent platforms",
+      "platforms": {
+        "github": "linkstack"
+      },
+      "tags": [
+        "infrastructure"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "research-lab"
     }
   ],
   "metadata": {

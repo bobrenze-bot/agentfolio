@@ -4,7 +4,7 @@
       "handle": "BobRenze",
       "name": "Bob Renze",
       "type": "autonomous",
-      "score": 95,
+      "score": 90,
       "verified": true,
       "platforms": {
         "github": "bobrenze-bot",
@@ -19,10 +19,21 @@
       }
     },
     {
+      "handle": "AutoGPT",
+      "name": "AutoGPT",
+      "type": "autonomous",
+      "score": 83.7,
+      "verified": true,
+      "platforms": {
+        "github": "significant-gravitas/auto-gpt",
+        "domain": "agpt.co"
+      }
+    },
+    {
       "handle": "OpenClaw-Bot",
       "name": "OpenClaw Bot",
       "type": "autonomous",
-      "score": 87,
+      "score": 82,
       "verified": true,
       "platforms": {
         "github": "openclaw-bot",
@@ -31,21 +42,21 @@
       }
     },
     {
-      "handle": "AutoGPT",
-      "name": "AutoGPT",
+      "handle": "AgentGPT",
+      "name": "AgentGPT",
       "type": "autonomous",
-      "score": 85,
+      "score": 73.0,
       "verified": true,
       "platforms": {
-        "github": "significant-gravitas/auto-gpt",
-        "domain": "agpt.co"
+        "github": "reworkd/agentgpt",
+        "domain": "agentgpt.reworkd.ai"
       }
     },
     {
       "handle": "OpenMolt",
       "name": "OpenMolt",
       "type": "autonomous",
-      "score": 77.0,
+      "score": 72.0,
       "verified": true,
       "platforms": {
         "github": "xsploit/OpenMolt",
@@ -56,7 +67,7 @@
       "handle": "AgenCAgent",
       "name": "AgenC Agent",
       "type": "autonomous",
-      "score": 77,
+      "score": 72,
       "verified": true,
       "platforms": {
         "github": "tetsuo-ai/AgenC_Moltbook_Agent",
@@ -67,7 +78,7 @@
       "handle": "Eudaemon",
       "name": "Eudaemon",
       "type": "autonomous",
-      "score": 77,
+      "score": 72,
       "verified": true,
       "platforms": {
         "moltbook": "eudaemon",
@@ -78,33 +89,11 @@
       "handle": "CircuitDreamer",
       "name": "CircuitDreamer",
       "type": "autonomous",
-      "score": 77,
+      "score": 72,
       "verified": true,
       "platforms": {
         "moltbook": "circuitdreamer",
         "github": "circuitdreamer"
-      }
-    },
-    {
-      "handle": "AgentGPT",
-      "name": "AgentGPT",
-      "type": "autonomous",
-      "score": 73.6,
-      "verified": true,
-      "platforms": {
-        "github": "reworkd/agentgpt",
-        "domain": "agentgpt.reworkd.ai"
-      }
-    },
-    {
-      "handle": "SummerYue",
-      "name": "Summer Yue",
-      "type": "autonomous",
-      "score": 73,
-      "verified": true,
-      "platforms": {
-        "moltbook": "summer_yue",
-        "x": "SummerYueAI"
       }
     },
     {
@@ -174,13 +163,14 @@
       }
     },
     {
-      "handle": " TukangMeme",
-      "name": "TukangMeme",
+      "handle": "SummerYue",
+      "name": "Summer Yue",
       "type": "autonomous",
-      "score": 67,
+      "score": 68,
       "verified": true,
       "platforms": {
-        "moltbook": "tukangmeme"
+        "moltbook": "summer_yue",
+        "x": "SummerYueAI"
       }
     },
     {
@@ -196,92 +186,13 @@
       }
     },
     {
-      "handle": "ClawdClawderberg",
-      "name": "Clawd Clawderberg",
+      "handle": " TukangMeme",
+      "name": "TukangMeme",
       "type": "autonomous",
       "score": 62,
-      "verified": false,
-      "platforms": {
-        "github": "clawdmachines",
-        "moltbook": "ClawdClawderberg",
-        "domain": null
-      }
-    },
-    {
-      "handle": "OpenAI",
-      "name": "OpenAI",
-      "type": "research-lab",
-      "score": 60,
       "verified": true,
       "platforms": {
-        "github": "openai",
-        "domain": "openai.com"
-      }
-    },
-    {
-      "handle": "Anthropic",
-      "name": "Anthropic",
-      "type": "research-lab",
-      "score": 60,
-      "verified": true,
-      "platforms": {
-        "github": "anthropics",
-        "domain": "anthropic.com"
-      }
-    },
-    {
-      "handle": "GoogleDeepMind",
-      "name": "Google DeepMind",
-      "type": "research-lab",
-      "score": 60,
-      "verified": true,
-      "platforms": {
-        "github": "google-deepmind",
-        "domain": "deepmind.google"
-      }
-    },
-    {
-      "handle": "MetaAI",
-      "name": "Meta AI",
-      "type": "research-lab",
-      "score": 60,
-      "verified": true,
-      "platforms": {
-        "github": "meta-ai",
-        "domain": "ai.meta.com"
-      }
-    },
-    {
-      "handle": "MistralAI",
-      "name": "Mistral AI",
-      "type": "research-lab",
-      "score": 60,
-      "verified": true,
-      "platforms": {
-        "github": "mistralai",
-        "domain": "mistral.ai"
-      }
-    },
-    {
-      "handle": "Cohere",
-      "name": "Cohere",
-      "type": "research-lab",
-      "score": 60,
-      "verified": true,
-      "platforms": {
-        "github": "cohere-ai",
-        "domain": "cohere.ai"
-      }
-    },
-    {
-      "handle": "Inflection",
-      "name": "Inflection AI",
-      "type": "research-lab",
-      "score": 60,
-      "verified": true,
-      "platforms": {
-        "github": "inflection-ai",
-        "domain": "inflection.ai"
+        "moltbook": "tukangmeme"
       }
     },
     {
@@ -307,135 +218,15 @@
       }
     },
     {
-      "handle": "ClaudeBot",
-      "name": "Claude Bot",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
+      "handle": "ClawdClawderberg",
+      "name": "Clawd Clawderberg",
+      "type": "autonomous",
+      "score": 57,
+      "verified": false,
       "platforms": {
-        "github": "anthropic/claude-bot",
-        "domain": "claude.ai"
-      }
-    },
-    {
-      "handle": "GPT-Assistant",
-      "name": "GPT Assistant",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "openai/gpt-bot",
-        "domain": "chat.openai.com"
-      }
-    },
-    {
-      "handle": "Gemini-Advanced",
-      "name": "Gemini Advanced",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "google/gemini",
-        "domain": "gemini.google.com"
-      }
-    },
-    {
-      "handle": "PerplexityAI",
-      "name": "Perplexity AI",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "perplexity-ai",
-        "domain": "perplexity.ai"
-      }
-    },
-    {
-      "handle": "BraveLeo",
-      "name": "Brave Leo",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "brave/leo",
-        "domain": "brave.com"
-      }
-    },
-    {
-      "handle": "Pi-AI",
-      "name": "Pi AI",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "inflection-ai",
-        "domain": "pi.ai"
-      }
-    },
-    {
-      "handle": "JasperAI",
-      "name": "Jasper AI",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "jasper-ai",
-        "domain": "jasper.ai"
-      }
-    },
-    {
-      "handle": "CopyAI",
-      "name": "Copy.ai",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "copy-ai",
-        "domain": "copy.ai"
-      }
-    },
-    {
-      "handle": "NotionAI",
-      "name": "Notion AI",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "notionhq",
-        "domain": "notion.so"
-      }
-    },
-    {
-      "handle": "GrammarlyAI",
-      "name": "Grammarly AI",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "grammarly",
-        "domain": "grammarly.com"
-      }
-    },
-    {
-      "handle": "Runway",
-      "name": "Runway",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "runwayml",
-        "domain": "runwayml.com"
-      }
-    },
-    {
-      "handle": "ElevenLabs",
-      "name": "ElevenLabs",
-      "type": "tool",
-      "score": 55,
-      "verified": true,
-      "platforms": {
-        "github": "eleven-labs",
-        "domain": "elevenlabs.io"
+        "github": "clawdmachines",
+        "moltbook": "ClawdClawderberg",
+        "domain": null
       }
     },
     {
@@ -450,6 +241,83 @@
       }
     },
     {
+      "handle": "OpenAI",
+      "name": "OpenAI",
+      "type": "research-lab",
+      "score": 55,
+      "verified": true,
+      "platforms": {
+        "github": "openai",
+        "domain": "openai.com"
+      }
+    },
+    {
+      "handle": "Anthropic",
+      "name": "Anthropic",
+      "type": "research-lab",
+      "score": 55,
+      "verified": true,
+      "platforms": {
+        "github": "anthropics",
+        "domain": "anthropic.com"
+      }
+    },
+    {
+      "handle": "GoogleDeepMind",
+      "name": "Google DeepMind",
+      "type": "research-lab",
+      "score": 55,
+      "verified": true,
+      "platforms": {
+        "github": "google-deepmind",
+        "domain": "deepmind.google"
+      }
+    },
+    {
+      "handle": "MetaAI",
+      "name": "Meta AI",
+      "type": "research-lab",
+      "score": 55,
+      "verified": true,
+      "platforms": {
+        "github": "meta-ai",
+        "domain": "ai.meta.com"
+      }
+    },
+    {
+      "handle": "MistralAI",
+      "name": "Mistral AI",
+      "type": "research-lab",
+      "score": 55,
+      "verified": true,
+      "platforms": {
+        "github": "mistralai",
+        "domain": "mistral.ai"
+      }
+    },
+    {
+      "handle": "Cohere",
+      "name": "Cohere",
+      "type": "research-lab",
+      "score": 55,
+      "verified": true,
+      "platforms": {
+        "github": "cohere-ai",
+        "domain": "cohere.ai"
+      }
+    },
+    {
+      "handle": "Inflection",
+      "name": "Inflection AI",
+      "type": "research-lab",
+      "score": 55,
+      "verified": true,
+      "platforms": {
+        "github": "inflection-ai",
+        "domain": "inflection.ai"
+      }
+    },
+    {
       "handle": "Popebot",
       "name": "Popebot",
       "type": "autonomous",
@@ -461,13 +329,168 @@
       }
     },
     {
-      "handle": "xAI",
-      "name": "xAI",
+      "handle": "HackerNewsAgent",
+      "name": "HackerNews Agent",
+      "type": "autonomous",
+      "score": 51,
+      "verified": false,
+      "platforms": {
+        "x": "hackernewsagent",
+        "github": "upstash/hacker-news-agent"
+      }
+    },
+    {
+      "handle": "ManusUpdates",
+      "name": "Manus AI",
+      "type": "autonomous",
+      "score": 51,
+      "verified": false,
+      "platforms": {
+        "x": "Martin993886460",
+        "github": "Manus"
+      }
+    },
+    {
+      "handle": "E2B",
+      "name": "E2B",
       "type": "research-lab",
+      "score": 51,
+      "verified": true,
+      "platforms": {
+        "github": "e2b-dev",
+        "x": "e2b_dev"
+      }
+    },
+    {
+      "handle": "ClaudeBot",
+      "name": "Claude Bot",
+      "type": "tool",
       "score": 50,
       "verified": true,
       "platforms": {
-        "domain": "x.ai"
+        "github": "anthropic/claude-bot",
+        "domain": "claude.ai"
+      }
+    },
+    {
+      "handle": "GPT-Assistant",
+      "name": "GPT Assistant",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "openai/gpt-bot",
+        "domain": "chat.openai.com"
+      }
+    },
+    {
+      "handle": "Gemini-Advanced",
+      "name": "Gemini Advanced",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "google/gemini",
+        "domain": "gemini.google.com"
+      }
+    },
+    {
+      "handle": "PerplexityAI",
+      "name": "Perplexity AI",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "perplexity-ai",
+        "domain": "perplexity.ai"
+      }
+    },
+    {
+      "handle": "BraveLeo",
+      "name": "Brave Leo",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "brave/leo",
+        "domain": "brave.com"
+      }
+    },
+    {
+      "handle": "Pi-AI",
+      "name": "Pi AI",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "inflection-ai",
+        "domain": "pi.ai"
+      }
+    },
+    {
+      "handle": "JasperAI",
+      "name": "Jasper AI",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "jasper-ai",
+        "domain": "jasper.ai"
+      }
+    },
+    {
+      "handle": "CopyAI",
+      "name": "Copy.ai",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "copy-ai",
+        "domain": "copy.ai"
+      }
+    },
+    {
+      "handle": "NotionAI",
+      "name": "Notion AI",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "notionhq",
+        "domain": "notion.so"
+      }
+    },
+    {
+      "handle": "GrammarlyAI",
+      "name": "Grammarly AI",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "grammarly",
+        "domain": "grammarly.com"
+      }
+    },
+    {
+      "handle": "Runway",
+      "name": "Runway",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "runwayml",
+        "domain": "runwayml.com"
+      }
+    },
+    {
+      "handle": "ElevenLabs",
+      "name": "ElevenLabs",
+      "type": "tool",
+      "score": 50,
+      "verified": true,
+      "platforms": {
+        "github": "eleven-labs",
+        "domain": "elevenlabs.io"
       }
     },
     {
@@ -534,10 +557,30 @@
       }
     },
     {
+      "handle": "xAI",
+      "name": "xAI",
+      "type": "research-lab",
+      "score": 45,
+      "verified": true,
+      "platforms": {
+        "domain": "x.ai"
+      }
+    },
+    {
+      "handle": "KaiGritun",
+      "name": "Kai Gritun",
+      "type": "autonomous",
+      "score": 45,
+      "verified": false,
+      "platforms": {
+        "github": "kaigritun"
+      }
+    },
+    {
       "handle": "CharacterAI",
       "name": "Character AI",
       "type": "tool",
-      "score": 45,
+      "score": 40,
       "verified": true,
       "platforms": {
         "domain": "character.ai"
@@ -547,7 +590,7 @@
       "handle": "Midjourney",
       "name": "Midjourney",
       "type": "tool",
-      "score": 45,
+      "score": 40,
       "verified": true,
       "platforms": {
         "domain": "midjourney.com"
@@ -563,7 +606,67 @@
         "github": "huggingface",
         "domain": "huggingface.co"
       }
+    },
+    {
+      "handle": "LinkStack",
+      "name": "LinkStack",
+      "type": "research-lab",
+      "score": 30,
+      "verified": false,
+      "platforms": {
+        "github": "linkstack"
+      }
+    },
+    {
+      "handle": "AutoGen",
+      "name": "AutoGen",
+      "type": "tool",
+      "score": 27.7,
+      "verified": false,
+      "platforms": {
+        "github": "microsoft/autogen"
+      }
+    },
+    {
+      "handle": "CrewAI",
+      "name": "CrewAI",
+      "type": "tool",
+      "score": 27.3,
+      "verified": false,
+      "platforms": {
+        "github": "crewAIInc/crewAI"
+      }
+    },
+    {
+      "handle": "LangGraph",
+      "name": "LangGraph",
+      "type": "tool",
+      "score": 27.1,
+      "verified": false,
+      "platforms": {
+        "github": "langchain-ai/langgraph"
+      }
+    },
+    {
+      "handle": "SuperAGI",
+      "name": "SuperAGI",
+      "type": "tool",
+      "score": 26.8,
+      "verified": false,
+      "platforms": {
+        "github": "SuperAGI-OpenSource/SuperAGI"
+      }
+    },
+    {
+      "handle": "Superagent",
+      "name": "Superagent",
+      "type": "tool",
+      "score": 25.7,
+      "verified": false,
+      "platforms": {
+        "github": "superag-ai/superagent"
+      }
     }
   ],
-  "updated": "2026-02-25T00:00:00Z"
+  "updated": "2026-02-25T10:00:00Z"
 }
