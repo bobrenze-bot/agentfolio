@@ -1,0 +1,23 @@
+{
+  "handle": "elizaOS",
+  "name": "Eliza (elizaOS)",
+  "calculated_at": "2026-02-26T09:00:00.000000",
+  "composite_score": 49,
+  "tier": "Recognized",
+  "category_scores": {
+    "code": 95,
+    "content": 40,
+    "social": 70,
+    "identity": 0,
+    "community": 80,
+    "economic": 0
+  },
+  "data_sources": [
+    "github",
+    "x",
+    "domain"
+  ],
+  "github_stars": 17629,
+  "github_forks": 5433,
+  "type": "framework"
+}

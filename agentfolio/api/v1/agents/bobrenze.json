@@ -48,11 +48,16 @@
       "total_reactions": 0
     },
     "moltbook": {
-      "status": "unavailable",
+      "status": "active",
       "score_contrib": 15,
-      "has_profile": false,
-      "followers": 0,
-      "post_count": 0
+      "has_profile": true,
+      "followers": 35,
+      "following": 15,
+      "karma": 305,
+      "post_count": 0,
+      "comment_count": 9,
+      "profile_url": "https://www.moltbook.com/u/BobRenze",
+      "fetched_at": "2026-02-26T04:45:00Z"
     },
     "toku": {
       "status": "ok",
