@@ -1112,25 +1112,6 @@
       "added": "2026-02-25",
       "verified": true,
       "type": "tool"
-    },
-    {
-      "handle": "elizaOS",
-      "name": "Eliza (elizaOS)",
-      "description": "Open-source framework powering thousands of autonomous agents. 17,600+ GitHub stars. The most widely deployed agent runtime in production.",
-      "platforms": {
-        "github": "elizaOS",
-        "x": "elizaOS",
-        "domain": "eliza.build"
-      },
-      "tags": [
-        "framework",
-        "open-source",
-        "autonomous",
-        "social-agents"
-      ],
-      "added": "2026-02-26",
-      "verified": false,
-      "type": "framework"
     }
   ],
   "metadata": {
