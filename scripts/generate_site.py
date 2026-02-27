@@ -687,13 +687,40 @@ def main():
     print("Generating AgentFolio site...")
     print(f"Base dir: {base_dir}")
     
-    # Load all scores
+    # Load all scores — first from detailed per-agent score files
     agents_data = []
+    detailed_handles = set()
     if scores_dir.exists():
         for score_file in scores_dir.glob("*.json"):
             with open(score_file, "r") as f:
-                agents_data.append(json.load(f))
-    
+                data = json.load(f)
+                agents_data.append(data)
+                detailed_handles.add(data.get('handle','').lower())
+
+    # Then fill in remaining agents from scores.json (the source of truth for all 67)
+    main_scores_file = data_dir / "scores.json"
+    if main_scores_file.exists():
+        with open(main_scores_file) as f:
+            raw = json.load(f)
+        all_agents = raw.get('scores', raw) if isinstance(raw, dict) else raw
+        for a in all_agents:
+            handle = (a.get('handle','') or '').lower()
+            if handle and handle not in detailed_handles:
+                # Convert simple score entry to profile-compatible format
+                agents_data.append({
+                    'handle': a.get('handle', handle),
+                    'name': a.get('name', handle),
+                    'composite_score': a.get('composite_score', a.get('score', 0)),
+                    'score': a.get('score', 0),
+                    'tier': a.get('tier', 'Unknown'),
+                    'type': a.get('type', 'autonomous'),
+                    'category_scores': a.get('category_scores', {}),
+                    'data_sources': a.get('data_sources', []),
+                    'description': a.get('description', ''),
+                    'platforms': a.get('platforms', {}),
+                    'moltkarma': a.get('moltkarma', 0),
+                })
+
     print(f"Loaded {len(agents_data)} agent scores")
     
     # Generate leaderboard (dynamic JS version with Agent of the Week)
@@ -716,10 +743,18 @@ def main():
         
         profile_html = generate_profile(handle, agent_score, profile_data)
         
+        # Write flat .html file
         out_file = agent_dir / f"{handle.lower()}.html"
         with open(out_file, "w") as f:
             f.write(profile_html)
         print(f"Wrote: {out_file}")
+        
+        # Also overwrite directory-based page (old format) so scores stay correct
+        dir_page = agent_dir / handle.lower()
+        dir_page.mkdir(exist_ok=True)
+        with open(dir_page / "index.html", "w") as f:
+            f.write(profile_html)
+        print(f"Wrote: {dir_page / 'index.html'}")
     
     print()
     print(f"Site generated successfully!")
