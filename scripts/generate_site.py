@@ -749,12 +749,8 @@ def main():
             f.write(profile_html)
         print(f"Wrote: {out_file}")
         
-        # Also overwrite directory-based page (old format) so scores stay correct
-        dir_page = agent_dir / handle.lower()
-        dir_page.mkdir(exist_ok=True)
-        with open(dir_page / "index.html", "w") as f:
-            f.write(profile_html)
-        print(f"Wrote: {dir_page / 'index.html'}")
+        # NOTE: do NOT overwrite agent/{handle}/index.html directory pages
+        # Those are hand-crafted with the correct design — only patch scores via patch_scores.py
     
     print()
     print(f"Site generated successfully!")
