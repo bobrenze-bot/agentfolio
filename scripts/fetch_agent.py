@@ -20,6 +20,33 @@ ssl._create_default_https_context = ssl._create_unverified_context
 DEVTO_API_KEY = "JBWauxarSoHFSWnL2NiYhW3j"
 
 
+def load_socia_vault_key():
+    """Load SociaVault API key from credentials."""
+    creds_paths = [
+        os.path.expanduser("~/.config/sociavault/credentials.json"),
+        os.path.expanduser("~/.openclaw/credentials/sociavault.env"),
+    ]
+    for path in creds_paths:
+        if os.path.exists(path):
+            try:
+                if path.endswith('.env'):
+                    # Parse env file
+                    with open(path, 'r') as f:
+                        for line in f:
+                            if '=' in line and 'API_KEY' in line:
+                                return line.split('=')[1].strip().strip('"\'')
+                else:
+                    with open(path, 'r') as f:
+                        creds = json.load(f)
+                        return creds.get('api_key')
+            except Exception:
+                pass
+    return None
+
+
+SOCIA_VAULT_API_KEY = load_socia_vault_key()
+
+
 def load_moltbook_key():
     """Load Moltbook API key from credentials."""
     creds_paths = [
@@ -245,7 +272,13 @@ def fetch_moltbook_data(handle):
 
 
 def fetch_agent_card(domain):
-    """Fetch A2A agent-card.json from domain."""
+    """
+    Fetch A2A agent-card.json from domain with v3.0 validation.
+    
+    Supports both legacy (pre-v3) and new A2A v1.0 format cards.
+    The new format includes schemaVersion, humanReadableId, provider,
+    authSchemes, and structured skill definitions.
+    """
     data = {
         "domain": domain,
         "fetched": datetime.now().isoformat(),
@@ -256,7 +289,9 @@ def fetch_agent_card(domain):
         "card_valid": False,
         "has_lobstercash": False,
         "lobstercash_address": None,
-        "score_contrib": 0
+        "score_contrib": 0,
+        "a2a_version": None,
+        "schema_version": None
     }
     
     if not domain:
@@ -271,24 +306,59 @@ def fetch_agent_card(domain):
         data["has_agent_card"] = True
         card = parse_json_safe(text)
         if card:
-            data["card_valid"] = True
             data["card"] = card
             data["card_name"] = card.get("name", "Unknown")
             data["card_description"] = card.get("description", "")[:200]
             
-            # Check for Lobster.cash (x402/payment info)
-            if "payment" in card or "x402" in card:
-                data["has_lobstercash"] = True
-                data["lobstercash_address"] = card.get("payment", {}).get("address") or card.get("x402", {}).get("address")
-            
-            # Check capabilities
+            # Detect A2A version
             caps = card.get("capabilities", {})
+            data["a2a_version"] = caps.get("a2aVersion") or caps.get("a2a_version")
+            data["schema_version"] = card.get("schemaVersion") or card.get("schema_version")
+            
+            # Validate card (if generator is available)
+            try:
+                from a2a_generator import AgentCardValidator
+                validator = AgentCardValidator()
+                is_valid = validator.validate(card)
+                data["card_valid"] = is_valid
+                data["validation_errors"] = validator.errors
+                data["validation_warnings"] = validator.warnings
+            except ImportError:
+                # Fallback: basic validation
+                data["card_valid"] = bool(card.get("name") and card.get("url"))
+            
+            # Check for Lobster.cash (x402/payment info) - v3.0 format
+            if "payment" in card:
+                data["has_lobstercash"] = True
+                data["lobstercash_address"] = card.get("payment", {}).get("address")
+            elif "x402" in card:  # Legacy format
+                data["has_lobstercash"] = True
+                data["lobstercash_address"] = card.get("x402", {}).get("address")
+            
+            # Check capabilities (supports both old and new field names)
             capabilities = []
-            if caps.get("tools"):
+            if caps.get("tools") or caps.get("supportsTools"):
                 capabilities.append("tools")
-            if caps.get("agents"):
+            if caps.get("streaming") or caps.get("supportsStreaming"):
+                capabilities.append("streaming")
+            if caps.get("agents") or caps.get("supportsMultiAgent"):
                 capabilities.append("multi-agent")
+            if caps.get("pushNotifications") or caps.get("supportsPushNotifications"):
+                capabilities.append("push")
             data["capabilities"] = capabilities
+            
+            # Extract auth schemes (new format)
+            auth_schemes = card.get("authSchemes") or card.get("auth_schemes") or []
+            if auth_schemes:
+                data["auth_schemes"] = [s.get("scheme", "unknown") for s in auth_schemes]
+            elif card.get("authentication"):  # Legacy format
+                data["auth_schemes"] = card.get("authentication", {}).get("schemes", [])
+            
+            # Count skills
+            skills = card.get("skills", [])
+            data["skill_count"] = len(skills)
+            if skills:
+                data["skill_ids"] = [s.get("id", "unknown") for s in skills]
     
     # Try agents.json
     agents_url = f"https://{domain}/.well-known/agents.json"
@@ -367,28 +437,248 @@ def fetch_toku_data(handle):
     return data
 
 
-def fetch_x_data(handle):
+def load_socia_vault_key():
+    """Load SociaVault API key from credentials."""
+    creds_paths = [
+        os.path.expanduser("~/.config/sociavault/credentials.json"),
+        os.path.expanduser("~/.openclaw/credentials/sociavault.env"),
+    ]
+    for path in creds_paths:
+        if os.path.exists(path):
+            try:
+                if path.endswith('.env'):
+                    with open(path, 'r') as f:
+                        for line in f:
+                            if '=' in line and 'API_KEY' in line:
+                                return line.split('=')[1].strip().strip('"\'')
+                else:
+                    with open(path, 'r') as f:
+                        creds = json.load(f)
+                        return creds.get('api_key')
+            except Exception:
+                pass
+    return None
+
+
+def fetch_x_data_via_sociavault(handle, api_key):
     """
-    Fetch X/Twitter data.
-    NOTE: X API requires paid tier. Score as 0/unknown.
+    Fetch X/Twitter data via SociaVault API.
+    SociaVault provides affordable Twitter scraping (50 free credits to start).
+    Docs: https://sociavault.com/
     """
     data = {
         "handle": handle,
         "fetched": datetime.now().isoformat(),
         "status": "unavailable",
-        "note": "X/Twitter API requires paid tier ($100+/month). No reliable free alternative.",
+        "profile_url": f"https://x.com/{handle}",
         "followers": None,
         "tweet_count": None,
         "engagement_rate": None,
-        "score_contrib": 0
+        "score_contrib": 0,
+        "source": "sociavault"
+    }
+    
+    if not api_key:
+        data["error"] = "No SociaVault API key configured"
+        return data
+    
+    try:
+        # SociaVault profile endpoint: /v1/scrape/twitter/profile
+        api_url = f"https://api.sociavault.com/v1/scrape/twitter/profile?username={handle}"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Accept": "application/json",
+            "User-Agent": "AgentFolio-Fetcher/1.0"
+        }
+        text, status = fetch_url(api_url, headers)
+        
+        if not text or status != 200:
+            data["error"] = f"SociaVault API returned HTTP {status}"
+            return data
+        
+        result = parse_json_safe(text)
+        if not result:
+            data["error"] = "Failed to parse SociaVault response"
+            return data
+        
+        profile_data = result.get("data", {})
+        
+        if profile_data:
+            data["status"] = "ok"
+            data["followers"] = profile_data.get("followers_count", 0)
+            data["following"] = profile_data.get("following_count", 0)
+            data["tweet_count"] = profile_data.get("tweet_count", 0)
+            data["name"] = profile_data.get("name", handle)
+            data["verified"] = profile_data.get("is_verified", False)
+            data["description"] = profile_data.get("description", "")
+            data["location"] = profile_data.get("location", "")
+            data["joined"] = profile_data.get("created_at", "")
+            data["note"] = f"Data via SociaVault API (50 free credits to start at sociavault.com)"
+            
+            # Score contribution based on follower count
+            # Scale: 0-1000 followers = 5pts, 1000-10k = 10pts, 10k+ = 15pts
+            followers = data.get("followers", 0) or 0
+            if followers >= 10000:
+                data["score_contrib"] = 15
+            elif followers >= 1000:
+                data["score_contrib"] = 10
+            elif followers >= 100:
+                data["score_contrib"] = 5
+            else:
+                data["score_contrib"] = 2
+        else:
+            data["error"] = "Profile not found or no data returned"
+            
+    except Exception as e:
+        data["error"] = f"SociaVault API error: {str(e)}"
+    
+    return data
+
+
+def fetch_x_data_via_nitter(handle, nitter_instance=None):
+    """
+    Fallback: Fetch X/Twitter data via Nitter instance.
+    Nitter is an alternative Twitter frontend - see: https://github.com/zedeus/nitter
+    Development resumed Feb 2025. Public instances available at twiiit.com
+    
+    NOTE: Nitter instances often have rate limits or require self-hosting.
+    This is a fallback option when SociaVault is not available.
+    """
+    data = {
+        "handle": handle,
+        "fetched": datetime.now().isoformat(),
+        "status": "unavailable",
+        "profile_url": f"https://x.com/{handle}",
+        "followers": None,
+        "following": None,
+        "tweet_count": None,
+        "score_contrib": 0,
+        "source": "nitter"
+    }
+    
+    # Use provided instance or try known public ones
+    # Note: Public nitter instances change frequently - check twiiit.com for current status
+    instances = nitter_instance.split(',') if nitter_instance else [
+        "https://nitter.net",
+        "https://nitter.cz",
+        "https://nitter.ktachibana.party",
+    ]
+    
+    for base_url in instances:
+        try:
+            profile_url = f"{base_url.rstrip('/')}/{handle}"
+            text, status = fetch_url(profile_url, headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            })
+            
+            if text and status == 200:
+                # Parse Nitter HTML for stats
+                # Nitter format: <div class="stat-entry"> followed by spans with "icon-user" etc
+                import re
+                
+                # Look for follower count pattern
+                # Format: <div class="profile-statlist"><div class="stat"><span class="statnum">1,234</span>
+                followers_match = re.search(r'<span class="statnum">([\d,]+)</span>\s*<span[^>]*>Followers', text, re.IGNORECASE)
+                following_match = re.search(r'<span class="statnum">([\d,]+)</span>\s*<span[^>]*>Following', text, re.IGNORECASE)
+                tweets_match = re.search(r'<span class="statnum">([\d,]+)</span>\s*<span[^>]*>Posts|Tweets', text, re.IGNORECASE)
+                
+                if followers_match:
+                    data["followers"] = int(followers_match.group(1).replace(',', ''))
+                if following_match:
+                    data["following"] = int(following_match.group(1).replace(',', ''))
+                if tweets_match:
+                    data["tweet_count"] = int(tweets_match.group(1).replace(',', ''))
+                
+                # Also try alternative parsing patterns
+                if not data.get("followers"):
+                    # Try: data="X followers" or title="X followers"
+                    alt_match = re.search(r'data="([\d,]+)"[^>]*>\s*Followers', text, re.IGNORECASE)
+                    if alt_match:
+                        data["followers"] = int(alt_match.group(1).replace(',', ''))
+                
+                if data["followers"] is not None:
+                    data["status"] = "ok"
+                    data["note"] = f"Data via Nitter ({base_url}). Note: Nitter instances may have rate limits."
+                    
+                    # Score contribution
+                    followers = data.get("followers", 0) or 0
+                    if followers >= 10000:
+                        data["score_contrib"] = 15
+                    elif followers >= 1000:
+                        data["score_contrib"] = 10
+                    elif followers >= 100:
+                        data["score_contrib"] = 5
+                    else:
+                        data["score_contrib"] = 2
+                    
+                    return data  # Success!
+                    
+        except Exception as e:
+            data["debug"] = f"Nitter error: {str(e)}"
+            continue
+    
+    data["error"] = "All Nitter instances failed or rate limited. Consider self-hosting Nitter or using SociaVault API."
+    return data
+
+
+def fetch_x_data(handle):
+    """
+    Fetch X/Twitter data using fallback providers.
+    
+    Priority order:
+    1. SociaVault API (50 free credits, affordable thereafter - sociavault.com)
+    2. Nitter instances (free but rate limited - see twiiit.com)
+    3. Graceful degradation (return "unavailable" with partial credit)
+    
+    To configure SociaVault:
+    - Create ~/.openclaw/credentials/sociavault.env with:
+      SOCIAVAULT_API_KEY=your_api_key
+    
+    To configure Nitter:
+    - Set SOCIA_VAULT_NITTER_INSTANCE environment variable to comma-separated list
+      Example: "https://nitter.cz,https://nitter.net"
+    """
+    data = {
+        "handle": handle,
+        "fetched": datetime.now().isoformat(),
+        "status": "unavailable",
+        "profile_url": f"https://x.com/{handle}",
+        "followers": None,
+        "tweet_count": None,
+        "engagement_rate": None,
+        "score_contrib": 0,
+        "source": None
     }
     
     if not handle:
         data["error"] = "No handle provided"
         return data
     
-    # Document that we can't fetch this
-    data["profile_url"] = f"https://x.com/{handle}"
+    # Strategy 1: Try SociaVault API (if configured)
+    api_key = load_socia_vault_key()
+    if api_key:
+        sv_data = fetch_x_data_via_sociavault(handle, api_key)
+        if sv_data["status"] == "ok":
+            return sv_data
+        else:
+            # Store error but continue to next fallback
+            data["sociavault_error"] = sv_data.get("error", "Unknown error")
+    
+    # Strategy 2: Try Nitter (if configured or defaults available)
+    nitter_instance = os.getenv("SOCIA_VAULT_NITTER_INSTANCE")
+    nitter_data = fetch_x_data_via_nitter(handle, nitter_instance)
+    if nitter_data["status"] == "ok":
+        return nitter_data
+    else:
+        data["nitter_error"] = nitter_data.get("error", "Nitter unavailable")
+    
+    # Strategy 3: Graceful degradation
+    # Still give partial credit for having a handle (agent has claimed X presence)
+    data["note"] = "X/Twitter API requires paid tier ($100+/month). Fallback options:\n" \
+                   "1. SociaVault API (50 free credits) - create ~/.openclaw/credentials/sociavault.env\n" \
+                   "2. Nitter (self-hosted or public instances) - set SOCIA_VAULT_NITTER_INSTANCE env\n" \
+                   "3. Accept degraded scoring (partial credit for X handle in scoring system)"
+    data["score_contrib"] = 5  # Partial credit for claiming X presence
     
     return data
 
