@@ -300,7 +300,7 @@ def generate_featured_agent():
                 
                 <div>
                     <h3 style="font-size: 1.8rem; margin-bottom: 0.25rem;">
-                        <a href="agent/{current["handle"].lower()}.html" style="color: var(--text); text-decoration: none;">
+                        <a href="agent/{current['handle'].lower()}/" style="color: var(--text); text-decoration: none;">
                             {current["name"]}
                         </a>
                     </h3>
@@ -322,7 +322,7 @@ def generate_featured_agent():
                     {current["reason"]}
                 </p>
                 
-                <a href="agent/{current["handle"].lower()}.html" class="btn" style="
+                <a href="agent/{current['handle'].lower()}/" class="btn" style="
                     background: linear-gradient(135deg, #f59e0b, #ec4899);
                     margin-top: 0.5rem;
                 ">
@@ -357,11 +357,11 @@ def generate_leaderboard(agents_data):
             <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
                 <div style="width:80px;height:80px;background:var(--surface-2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;">🤖</div>
                 <div>
-                    <h3 style="font-size:1.8rem;margin-bottom:0.25rem;"><a href="agent/{aow.get('handle','').lower()}.html" style="color:var(--text);text-decoration:none;">{aow.get('name','')}</a></h3>
+                    <h3 style="font-size:1.8rem;margin-bottom:0.25rem;"><a href="agent/{aow.get('handle','').lower()}/" style="color:var(--text);text-decoration:none;">{aow.get('name','')}</a></h3>
                     <p style="color:var(--accent-2);font-size:1.1rem;">@{aow.get('handle','')}</p>
                 </div>
                 <p style="color:var(--text-muted);max-width:500px;margin:0.5rem 0;font-size:0.95rem;">{aow.get('reason','')}</p>
-                <a href="agent/{aow.get('handle','').lower()}.html" style="background:linear-gradient(135deg,#f59e0b,#ec4899);padding:0.6rem 1.5rem;border-radius:8px;color:#fff;text-decoration:none;font-weight:600;margin-top:0.5rem;">View Full Profile →</a>
+                <a href="agent/{aow.get('handle','').lower()}/" style="background:linear-gradient(135deg,#f59e0b,#ec4899);padding:0.6rem 1.5rem;border-radius:8px;color:#fff;text-decoration:none;font-weight:600;margin-top:0.5rem;">View Full Profile →</a>
             </div>
         </div>"""
 
@@ -489,7 +489,7 @@ def generate_leaderboard(agents_data):
                 autonomous.forEach((a, i) => {{
                     const rankClass = i===0?'gold':i===1?'silver':i===2?'bronze':'';
                     const handle = (a.handle||'').toLowerCase().replace(/[^a-z0-9-]/g,'');
-                    html += `<a href="agent/${{handle}}.html" class="agent-row">`;
+                    html += `<a href="agent/${{handle}}/" class="agent-row">`;
                     html += `<div class="rank ${{rankClass}}">#${{i+1}}</div>`;
                     html += `<div class="agent-info">`;
                     html += `<div class="agent-name">${{a.name}}</div>`;
