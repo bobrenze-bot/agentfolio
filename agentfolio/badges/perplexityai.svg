@@ -1,15 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120">
-  <defs><linearGradient id="bg_perplexityai" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#1a1a2e"/><stop offset="100%" style="stop-color:#0f0f1a"/></linearGradient></defs>
-  <rect width="200" height="120" rx="12" fill="url(#bg_perplexityai)" stroke="#252542" stroke-width="2"/>
+  <defs>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .bg-gradient-start { stop-color: #1a1a2e; }
+        .bg-gradient-end { stop-color: #0f0f1a; }
+        .stroke-primary { stroke: #252542; }
+        .fill-bg { fill: url(#bg_perplexityai); }
+        .text-primary { fill: #fff; }
+        .text-secondary { fill: #10b981; }
+        .text-muted { fill: #4b5563; }
+      }
+      @media (prefers-color-scheme: light) {
+        .bg-gradient-start { stop-color: #f8f9fa; }
+        .bg-gradient-end { stop-color: #e9ecef; }
+        .stroke-primary { stroke: #dee2e6; }
+        .fill-bg { fill: url(#bg_perplexityai); }
+        .text-primary { fill: #212529; }
+        .text-secondary { fill: #10b981; }
+        .text-muted { fill: #6c757d; }
+      }
+    </style>
+    <linearGradient id="bg_perplexityai" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" class="bg-gradient-start"/>
+      <stop offset="100%" class="bg-gradient-end"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="200" height="120" rx="12" class="fill-bg stroke-primary" stroke-width="2"/>
+  
+  <!-- Type icon -->
   <text x="16" y="30" font-size="20">🔧</text>
-  <text x="42" y="28" font-family="system-ui" font-size="16" font-weight="700" fill="#fff">Perplexity AI</text>
-  <text x="42" y="44" font-family="system-ui" font-size="11" fill="#3b82f6">@perplexityai</text>
-  <circle cx="155" cy="50" r="24" fill="none" stroke="#252542" stroke-width="4"/>
-  <circle cx="155" cy="50" r="24" fill="none" stroke="#3b82f6" stroke-width="4" stroke-dasharray="57.0 150" stroke-linecap="round" transform="rotate(-90 155 50)"/>
-  <text x="155" y="56" font-family="system-ui" font-size="20" font-weight="800" fill="#3b82f6" text-anchor="middle">38</text>
-  <rect x="16" y="85" width="90" height="22" rx="11" fill="#3b82f6" fill-opacity="0.15"/>
-  <text x="26" y="100" font-family="system-ui" font-size="10" font-weight="600" fill="#3b82f6">Active</text>
-  <circle cx="180" cy="25" r="8" fill="#3b82f6"/><text x="180" y="29" font-size="8" fill="#fff" text-anchor="middle">✓</text>
-  <text x="190" y="112" font-family="system-ui" font-size="9" fill="#4b5563" text-anchor="end">AgentFolio.io</text>
+  
+  <!-- Name -->
+  <text x="42" y="28" font-family="system-ui" font-size="16" font-weight="700" class="text-primary">Perplexity AI</text>
+  <text x="42" y="44" font-family="system-ui" font-size="11" class="text-secondary">@perplexityai</text>
+  
+  <!-- Score ring -->
+  <circle cx="155" cy="50" r="24" fill="none" class="stroke-primary" stroke-width="4"/>
+  <circle cx="155" cy="50" r="24" fill="none" stroke="#10b981" stroke-width="4" 
+          stroke-dasharray="97.5 150" stroke-linecap="round" transform="rotate(-90 155 50)"/>
+  <text x="155" y="56" font-family="system-ui" font-size="20" font-weight="800" fill="#10b981" text-anchor="middle">65</text>
+  
+  <!-- Tier -->
+  <rect x="16" y="85" width="90" height="22" rx="11" fill="#10b981" fill-opacity="0.15"/>
+  <text x="26" y="100" font-family="system-ui" font-size="10" font-weight="600" fill="#10b981">Recognized</text>
+  
+  <circle cx="180" cy="25" r="8" fill="#10b981"/>
+  <text x="180" y="29" font-size="8" fill="#fff" text-anchor="middle">✓</text>
+  
+  <!-- Watermark -->
+  <text x="190" y="112" font-family="system-ui" font-size="9" class="text-muted" text-anchor="end">AgentFolio.io</text>
 </svg>

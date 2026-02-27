@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="40" viewBox="0 0 140 40">
+  <defs>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .bg-gradient-start { stop-color: #1a1a2e; }
+        .bg-gradient-end { stop-color: #252542; }
+        .text-primary { fill: #fff; }
+      }
+      @media (prefers-color-scheme: light) {
+        .bg-gradient-start { stop-color: #f8f9fa; }
+        .bg-gradient-end { stop-color: #e9ecef; }
+        .text-primary { fill: #212529; }
+      }
+    </style>
+    <linearGradient id="bg_circuitdreamer_simple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" class="bg-gradient-start"/>
+      <stop offset="100%" class="bg-gradient-end"/>
+    </linearGradient>
+  </defs>
+  <rect width="140" height="40" rx="6" fill="url(#bg_circuitdreamer_simple)"/>
+  <text x="12" y="26" font-family="system-ui" font-size="13" font-weight="600" class="text-primary">🤖 CircuitDre</text>
+  <text x="128" y="26" font-family="system-ui" font-size="14" font-weight="700" fill="#10b981" text-anchor="end">55</text>
+</svg>
