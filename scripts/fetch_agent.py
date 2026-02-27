@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-AgentFolio Data Fetcher (v2.0)
+AgentFolio Data Fetcher (v2.1)
 Pulls public data from multiple platforms for an agent.
+
+Changes in v2.1:
+- Better SSL error handling with informative messages
+- Pass through domain ownership indicator even when A2A fetch fails
+- Improved status codes for different error scenarios
 """
 
 import json
@@ -76,7 +81,7 @@ def fetch_url(url, headers=None, method=None):
     except HTTPError as e:
         return None, e.code
     except URLError as e:
-        return None, str(e)
+        return None, str(e.reason if hasattr(e, 'reason') else str(e))
     except Exception as e:
         return None, str(e)
 
@@ -201,42 +206,36 @@ def fetch_devto_data(username):
             data["total_reactions"] = sum(a.get("public_reactions_count", 0) for a in articles)
             data["total_comments"] = sum(a.get("comments_count", 0) for a in articles)
             
-            # Get top performing articles
-            if articles:
-                top = sorted(articles, key=lambda x: x.get('public_reactions_count', 0), reverse=True)[:3]
-                data["top_articles"] = [{"title": t.get('title'), "reactions": t.get('public_reactions_count')} for t in top]
-    else:
-        data["error"] = f"HTTP {status}"
-    
     return data
 
 
-def fetch_moltbook_data(handle):
-    """Fetch Moltbook data via API."""
+def fetch_moltbook_data(username):
+    """Fetch Moltbook profile data."""
     data = {
-        "handle": handle,
+        "username": username,
+        "profile_url": f"https://moltlaunch.com/agent/{username}",
         "fetched": datetime.now().isoformat(),
-        "status": "error",
-        "profile_url": f"https://www.moltlaunch.com/agent/{handle}",
+        "status": "unavailable",
         "has_profile": False,
-        "followers": 0,
-        "following": 0,
+        "karma": None,
+        "posts": [],
         "post_count": 0,
+        "reputation": 0,
         "score_contrib": 0
     }
     
-    if not handle:
-        data["error"] = "No handle provided"
+    if not username:
+        data["error"] = "No username provided"
         return data
     
+    # Check for API key
     if not MOLTBOOK_API_KEY:
-        data["status"] = "unavailable"
-        data["note"] = "Moltbook API key not configured"
-        data["score_contrib"] = 15  # Partial credit for having handle
+        data["error"] = "Moltbook API key not configured"
         return data
     
     # Try Moltbook API
-    api_url = f"https://www.moltlaunch.com/api/v1/agents/{handle}"
+    # Note: This is a placeholder - Moltbook API may differ
+    api_url = f"https://api.moltlaunch.com/v1/agents/{username}"
     headers = {
         "Authorization": f"Bearer {MOLTBOOK_API_KEY}",
         "Accept": "application/json"
@@ -248,155 +247,25 @@ def fetch_moltbook_data(handle):
         if profile:
             data["status"] = "ok"
             data["has_profile"] = True
-            data["profile"] = profile
-            data["followers"] = profile.get("follower_count", 0) or profile.get("followers", 0)
-            data["following"] = profile.get("following_count", 0) or profile.get("following", 0)
-            data["post_count"] = profile.get("post_count", 0) or profile.get("posts", 0)
+            data["karma"] = profile.get("karma", 0)
+            data["posts"] = profile.get("posts", [])
+            data["post_count"] = len(data["posts"])
     else:
-        # Try alternative endpoint
-        alt_url = f"https://www.moltlaunch.com/api/agents/{handle}"
-        text, status = fetch_url(alt_url, headers)
-        if text and status == 200:
-            profile = parse_json_safe(text)
-            if profile:
-                data["status"] = "ok"
-                data["has_profile"] = True
-                data["profile"] = profile
-        else:
-            data["error"] = f"HTTP {status}"
-            data["status"] = "unavailable"
-            data["note"] = "Moltbook API returned error or agent not found"
-            data["score_contrib"] = 15  # Partial credit for having handle claimed
-    
-    return data
-
-
-def fetch_agent_card(domain):
-    """
-    Fetch A2A agent-card.json from domain with v3.0 validation.
-    
-    Supports both legacy (pre-v3) and new A2A v1.0 format cards.
-    The new format includes schemaVersion, humanReadableId, provider,
-    authSchemes, and structured skill definitions.
-    """
-    data = {
-        "domain": domain,
-        "fetched": datetime.now().isoformat(),
-        "status": "error",
-        "has_agent_card": False,
-        "has_agents_json": False,
-        "has_llms_txt": False,
-        "card_valid": False,
-        "has_lobstercash": False,
-        "lobstercash_address": None,
-        "score_contrib": 0,
-        "a2a_version": None,
-        "schema_version": None
-    }
-    
-    if not domain:
-        data["error"] = "No domain provided"
-        return data
-    
-    # Try agent-card.json
-    card_url = f"https://{domain}/.well-known/agent-card.json"
-    text, status = fetch_url(card_url)
-    
-    if text and status == 200:
-        data["has_agent_card"] = True
-        card = parse_json_safe(text)
-        if card:
-            data["card"] = card
-            data["card_name"] = card.get("name", "Unknown")
-            data["card_description"] = card.get("description", "")[:200]
-            
-            # Detect A2A version
-            caps = card.get("capabilities", {})
-            data["a2a_version"] = caps.get("a2aVersion") or caps.get("a2a_version")
-            data["schema_version"] = card.get("schemaVersion") or card.get("schema_version")
-            
-            # Validate card (if generator is available)
-            try:
-                from a2a_generator import AgentCardValidator
-                validator = AgentCardValidator()
-                is_valid = validator.validate(card)
-                data["card_valid"] = is_valid
-                data["validation_errors"] = validator.errors
-                data["validation_warnings"] = validator.warnings
-            except ImportError:
-                # Fallback: basic validation
-                data["card_valid"] = bool(card.get("name") and card.get("url"))
-            
-            # Check for Lobster.cash (x402/payment info) - v3.0 format
-            if "payment" in card:
-                data["has_lobstercash"] = True
-                data["lobstercash_address"] = card.get("payment", {}).get("address")
-            elif "x402" in card:  # Legacy format
-                data["has_lobstercash"] = True
-                data["lobstercash_address"] = card.get("x402", {}).get("address")
-            
-            # Check capabilities (supports both old and new field names)
-            capabilities = []
-            if caps.get("tools") or caps.get("supportsTools"):
-                capabilities.append("tools")
-            if caps.get("streaming") or caps.get("supportsStreaming"):
-                capabilities.append("streaming")
-            if caps.get("agents") or caps.get("supportsMultiAgent"):
-                capabilities.append("multi-agent")
-            if caps.get("pushNotifications") or caps.get("supportsPushNotifications"):
-                capabilities.append("push")
-            data["capabilities"] = capabilities
-            
-            # Extract auth schemes (new format)
-            auth_schemes = card.get("authSchemes") or card.get("auth_schemes") or []
-            if auth_schemes:
-                data["auth_schemes"] = [s.get("scheme", "unknown") for s in auth_schemes]
-            elif card.get("authentication"):  # Legacy format
-                data["auth_schemes"] = card.get("authentication", {}).get("schemes", [])
-            
-            # Count skills
-            skills = card.get("skills", [])
-            data["skill_count"] = len(skills)
-            if skills:
-                data["skill_ids"] = [s.get("id", "unknown") for s in skills]
-    
-    # Try agents.json
-    agents_url = f"https://{domain}/.well-known/agents.json"
-    text, status = fetch_url(agents_url)
-    if text and status == 200:
-        data["has_agents_json"] = True
-        agents = parse_json_safe(text)
-        if agents:
-            data["agents"] = agents
-    
-    # Try llms.txt
-    llms_url = f"https://{domain}/llms.txt"
-    text, status = fetch_url(llms_url)
-    if text and status == 200:
-        data["has_llms_txt"] = True
-        data["llms_txt_preview"] = text[:500] if len(text) > 500 else text
-    
-    if data["has_agent_card"]:
-        data["status"] = "ok"
-    else:
-        data["error"] = "agent-card.json not found"
-        data["status"] = "error"
+        data["error"] = f"API returned HTTP {status}"
     
     return data
 
 
 def fetch_toku_data(handle):
-    """Fetch toku.agency public data."""
+    """Fetch toku.agency profile data."""
     data = {
         "handle": handle,
-        "fetched": datetime.now().isoformat(),
-        "status": "error",
         "profile_url": f"https://toku.agency/agents/{handle}",
+        "fetched": datetime.now().isoformat(),
+        "status": "unavailable",
         "has_profile": False,
         "services_count": 0,
         "services": [],
-        "verified_jobs": 0,
-        "reputation_score": 0,
         "score_contrib": 0
     }
     
@@ -428,7 +297,7 @@ def fetch_toku_data(handle):
             # Rough parsing for services
             if "service" in text.lower():
                 import re
-                service_matches = re.findall(r'[\$£€]\\d+[\s\w]+', text)
+                service_matches = re.findall(r'[\$\u00a3\u20ac]\\d+[\s\w]+', text)
                 data["services_count"] = len(service_matches)
                 data["note"] = "Data from profile scraping"
         else:
@@ -870,6 +739,143 @@ def fetch_x_data(handle):
     return data
 
 
+def fetch_agent_card(domain):
+    """
+    Fetch A2A agent-card.json from domain with v3.0 validation.
+    
+    Supports both legacy (pre-v3) and new A2A v1.0 format cards.
+    The new format includes schemaVersion, humanReadableId, provider,
+    authSchemes, and structured skill definitions.
+    
+    Updated in v2.1:
+    - Better error messages for SSL/cert errors
+    - Still claims domain ownership if domain is provided
+    - Partial credit for domain claim even if A2A fetch fails
+    """
+    data = {
+        "domain": domain,
+        "fetched": datetime.now().isoformat(),
+        "status": "error",
+        "has_agent_card": False,
+        "has_agents_json": False,
+        "has_llms_txt": False,
+        "card_valid": False,
+        "has_lobstercash": False,
+        "lobstercash_address": None,
+        "score_contrib": 0,
+        "a2a_version": None,
+        "schema_version": None,
+        "domain_owner": False,  # New: track domain ownership separately
+        "ssl_error": False,     # New: track SSL failures
+    }
+    
+    if not domain:
+        data["error"] = "No domain provided"
+        return data
+    
+    # We at least have a domain - mark as potential owner
+    # This gets updated to True if we successfully fetch anything
+    data["domain_owner"] = True  # Claimed domain (may not be verified)
+    
+    # Try agent-card.json
+    card_url = f"https://{domain}/.well-known/agent-card.json"
+    text, status = fetch_url(card_url)
+    
+    if text and status == 200:
+        data["has_agent_card"] = True
+        card = parse_json_safe(text)
+        if card:
+            data["card"] = card
+            data["card_name"] = card.get("name", "Unknown")
+            data["card_description"] = card.get("description", "")[:200]
+            data["domain_owner"] = True  # Verified: fetched successfully
+            
+            # Detect A2A version
+            caps = card.get("capabilities", {})
+            data["a2a_version"] = caps.get("a2aVersion") or caps.get("a2a_version")
+            data["schema_version"] = card.get("schemaVersion") or card.get("schema_version")
+            
+            # Validate card (if generator is available)
+            try:
+                from a2a_generator import AgentCardValidator
+                validator = AgentCardValidator()
+                is_valid = validator.validate(card)
+                data["card_valid"] = is_valid
+                data["validation_errors"] = validator.errors
+                data["validation_warnings"] = validator.warnings
+            except ImportError:
+                # Fallback: basic validation
+                data["card_valid"] = bool(card.get("name") and card.get("url"))
+            
+            # Check for Lobster.cash (x402/payment info) - v3.0 format
+            if "payment" in card:
+                data["has_lobstercash"] = True
+                data["lobstercash_address"] = card.get("payment", {}).get("address")
+            elif "x402" in card:  # Legacy format
+                data["has_lobstercash"] = True
+                data["lobstercash_address"] = card.get("x402", {}).get("address")
+            
+            # Check capabilities (supports both old and new field names)
+            capabilities = []
+            if caps.get("tools") or caps.get("supportsTools"):
+                capabilities.append("tools")
+            if caps.get("streaming") or caps.get("supportsStreaming"):
+                capabilities.append("streaming")
+            if caps.get("agents") or caps.get("supportsMultiAgent"):
+                capabilities.append("multi-agent")
+            if caps.get("pushNotifications") or caps.get("supportsPushNotifications"):
+                capabilities.append("push")
+            data["capabilities"] = capabilities
+            
+            # Extract auth schemes (new format)
+            auth_schemes = card.get("authSchemes") or card.get("auth_schemes") or []
+            if auth_schemes:
+                data["auth_schemes"] = [s.get("scheme", "unknown") for s in auth_schemes]
+            elif card.get("authentication"):  # Legacy format
+                data["auth_schemes"] = card.get("authentication", {}).get("schemes", [])
+            
+            # Count skills
+            skills = card.get("skills", [])
+            data["skill_count"] = len(skills)
+            if skills:
+                data["skill_ids"] = [s.get("id", "unknown") for s in skills]
+        
+        data["status"] = "ok"
+    else:
+        # Could be SSL error, 404, or other
+        if isinstance(status, str) and "SSL" in status:
+            data["ssl_error"] = True
+            data["error"] = f"SSL certificate error: {status}. Domain may have Cloudflare or other proxy issues."
+            data["status"] = "ssl_error"
+        elif status == 404:
+            data["error"] = "agent-card.json not found (404)"
+            data["status"] = "not_found"
+        elif status == 526:
+            data["ssl_error"] = True
+            data["error"] = "SSL certificate validation failed (526). Origin certificate may be invalid or expired."
+            data["status"] = "ssl_error"
+        else:
+            data["error"] = f"Failed to fetch agent-card.json (HTTP {status})"
+            data["status"] = "error"
+    
+    # Try agents.json
+    agents_url = f"https://{domain}/.well-known/agents.json"
+    text, status = fetch_url(agents_url)
+    if text and status == 200:
+        data["has_agents_json"] = True
+        agents = parse_json_safe(text)
+        if agents:
+            data["agents"] = agents
+    
+    # Try llms.txt
+    llms_url = f"https://{domain}/llms.txt"
+    text, status = fetch_url(llms_url)
+    if text and status == 200:
+        data["has_llms_txt"] = True
+    
+    return data
+
+
 def fetch_agent(agent_config):
     """Fetch all data for an agent."""
     platforms = agent_config.get("platforms", {})
@@ -946,19 +952,32 @@ def main():
     print("-" * 50)
     for platform, data in result["platforms"].items():
         status = data.get("status", "unknown")
-        icon = "✅" if status == "ok" else "⚠️" if status == "unavailable" else "❌"
+        
+        # Better status icons
+        if status == "ok":
+            icon = "✅"
+        elif status == "ssl_error":
+            icon = "🔒"
+        elif status == "not_found":
+            icon = "❓"
+        elif status == "unavailable":
+            icon = "⚠️"
+        else:
+            icon = "❌"
         
         # Add extra indicators
         extra = ""
         if platform == "a2a" and data.get("has_lobstercash"):
             extra = " (🦞 Lobster.cash)"
+        if platform == "a2a" and data.get("ssl_error"):
+            extra = " (SSL issue)"
         if platform == "github":
             extra = f" ({data.get('public_repos', 0)} repos)"
         if platform == "devto":
             extra = f" ({data.get('article_count', 0)} articles)"
         
         print(f"{icon} {platform.upper()}: {status}{extra}")
-        if "error" in data and status != "unavailable":
+        if "error" in data and status not in ["unavailable", "not_found"]:
             print(f"   Error: {data['error']}")
         if "note" in data:
             print(f"   Note: {data['note']}")

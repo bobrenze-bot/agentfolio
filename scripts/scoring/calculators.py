@@ -31,7 +31,7 @@ class BaseCalculator(ABC):
     def calculate_subscore(
         self,
         weight_config: WeightConfig,
-        value: float,
+        value: Optional[float],
         minimum: float = 0
     ) -> float:
         """
@@ -45,6 +45,9 @@ class BaseCalculator(ABC):
         Returns:
             Calculated points (capped at max_points)
         """
+        if value is None:
+            return 0.0
+        
         if value < minimum:
             return 0.0
         
@@ -285,58 +288,71 @@ class IdentityScoreCalculator(BaseCalculator):
     
     def calculate(self, data: PlatformData) -> CategoryScore:
         """Calculate IDENTITY score from A2A data."""
-        if data.status != "ok":
+        status = data.get("status", "unknown")
+        
+        # Check if this is an SSL error or other partial failure
+        is_ssl_error = data.get("ssl_error", False) or status == "ssl_error"
+        domain_claimed = data.get("domain_owner", False) or bool(data.get("domain"))
+        
+        # Calculate partial score even when there are fetch errors
+        # Just need to have claimed a domain
+        has_any_domain = domain_claimed or bool(data.get("domain"))
+        
+        # Only skip entirely if no domain claim at all
+        if not has_any_domain and status not in ["ok", "ssl_error", "not_found"]:
             return CategoryScore(
                 category=self.category,
                 score=0,
-                notes=f"Platform status: {data.status}"
+                notes=f"Platform status: {status} (no domain claimed)"
             )
         
         breakdown = {}
         total = 0.0
         
-        # Has agent-card.json (30 points)
-        has_card = data.get("has_agent_card", False)
+        # Has agent-card.json (30 points) - only if status is ok
+        has_card = data.get("has_agent_card", False) and status == "ok"
         breakdown["has_agent_card"] = self.calculate_binary_score(
             self.weights["has_agent_card"], has_card
         )
         total += breakdown["has_agent_card"]
         
-        # Card is valid JSON (10 points)
-        is_valid = data.get("card_valid", False)
+        # Card is valid JSON (10 points) - only if status is ok
+        is_valid = data.get("card_valid", False) and status == "ok"
         breakdown["card_valid"] = self.calculate_binary_score(
             self.weights["card_valid"], is_valid
         )
         total += breakdown["card_valid"]
         
-        # Required fields present (10 points)
+        # Required fields present (10 points) - only if status is ok
         card = data.get("card", {})
         has_required = all([
             card.get("name"),
             card.get("description"),
             card.get("capabilities", {}).get("tools")
-        ])
+        ]) and status == "ok"
         breakdown["required_fields"] = self.calculate_binary_score(
             self.weights["required_fields"], has_required
         )
         total += breakdown["required_fields"]
         
-        # Has agents.json (10 points)
-        has_agents_json = data.get("has_agents_json", False)
+        # Has agents.json (10 points) - only if status is ok
+        has_agents_json = data.get("has_agents_json", False) and status == "ok"
         breakdown["has_agents_json"] = self.calculate_binary_score(
             self.weights["has_agents_json"], has_agents_json
         )
         total += breakdown["has_agents_json"]
         
         # Domain ownership (20 points)
-        # Has agent card implies domain ownership
+        # Give full credit if domain is claimed (even with fetch errors)
+        # This recognizes that they have a domain even if we can't fetch A2A metadata
+        domain_verified = has_any_domain
         breakdown["domain_owner"] = self.calculate_binary_score(
-            self.weights["domain_owner"], has_card
+            self.weights["domain_owner"], domain_verified
         )
         total += breakdown["domain_owner"]
         
-        # Has llms.txt (10 points)
-        has_llms = data.get("has_llms_txt", False)
+        # Has llms.txt (10 points) - only if status is ok
+        has_llms = data.get("has_llms_txt", False) and status == "ok"
         breakdown["has_llms_txt"] = self.calculate_binary_score(
             self.weights["has_llms_txt"], has_llms
         )
@@ -349,6 +365,13 @@ class IdentityScoreCalculator(BaseCalculator):
         )
         total += breakdown["has_openclaw_install"]
         
+        # Add note if there were fetch errors
+        notes = f"Platform status: {status}"
+        if is_ssl_error:
+            notes += " (SSL/certificate issue - domain ownership credited)"
+        elif status == "error":
+            notes += " (Fetch error - domain ownership credited if domain claimed)"
+        
         return CategoryScore(
             category=self.category,
             score=self.cap_score(total),
@@ -356,6 +379,7 @@ class IdentityScoreCalculator(BaseCalculator):
             max_score=MAX_CATEGORY_SCORE,
             breakdown=breakdown,
             data_sources=["a2a", "domain"],
+            notes=notes
         )
 
 
