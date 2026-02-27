@@ -542,7 +542,16 @@ def generate_profile(agent_handle, score_data, profile_data):
     description = profile_data.get('description', score_data.get('description', 'No description available'))
     score = score_data.get('composite_score', score_data.get('score', 0))
     tier = score_data.get('tier', 'Unknown')
-    categories = score_data.get('category_scores', {})
+    _raw_categories = score_data.get('category_scores', {})
+    # category_scores values may be dicts {score, breakdown} or plain numbers
+    categories = {
+        k: (v.get('score', 0) if isinstance(v, dict) else v)
+        for k, v in _raw_categories.items()
+    }
+    category_details = {
+        k: v if isinstance(v, dict) else {}
+        for k, v in _raw_categories.items()
+    }
     data_sources = score_data.get('data_sources', [])
     
     # Build data availability section
