@@ -2,8 +2,10 @@
 Main score calculation orchestrator.
 
 Aggregates category scores into composite score with proper weighting.
+Includes optional time-based decay to encourage continuous activity.
 """
 
+from datetime import datetime
 from typing import Dict, Any, List, Optional
 
 from .constants import Category, Tier, COMPOSITE_WEIGHTS
@@ -16,6 +18,7 @@ from .calculators import (
     EconomicScoreCalculator,
     CommunityScoreCalculator,
 )
+from .decay import DecayCalculator
 
 
 class ScoreCalculator:
@@ -40,14 +43,23 @@ class ScoreCalculator:
         )
     """
     
-    def __init__(self, custom_weights: Optional[Dict[Category, float]] = None):
+    def __init__(
+        self, 
+        custom_weights: Optional[Dict[Category, float]] = None,
+        apply_decay: bool = True,
+        decay_configs: Optional[Dict[Category, Any]] = None
+    ):
         """
-        Initialize calculator with optional custom weights.
+        Initialize calculator with optional custom weights and decay settings.
         
         Args:
             custom_weights: Override default COMPOSITE_WEIGHTS
+            apply_decay: Whether to apply time-based score decay
+            decay_configs: Optional custom decay configurations per category
         """
         self.weights = custom_weights or COMPOSITE_WEIGHTS
+        self.apply_decay = apply_decay
+        self.decay_calculator = DecayCalculator(decay_configs) if apply_decay else None
         
         # Initialize category calculators
         self.calculators = {
@@ -171,6 +183,7 @@ class ScoreCalculator:
         # Calculate individual category scores
         category_scores: Dict[Category, CategoryScore] = {}
         all_data_sources: List[str] = []
+        decay_info: Dict[str, Any] = {}
         
         for category in Category:
             data = category_data.get(category, PlatformData(
@@ -179,6 +192,32 @@ class ScoreCalculator:
             ))
             
             score = self.calculate_category(category, data)
+            
+            # Apply decay if enabled
+            if self.apply_decay and self.decay_calculator:
+                activity_time = self.decay_calculator.get_activity_timestamp(
+                    {"data": data.data, "fetched": data.fetched_at.isoformat() if data.fetched_at else None},
+                    category
+                )
+                
+                decay_result = self.decay_calculator.apply_decay(
+                    score.score,
+                    category,
+                    activity_time
+                )
+                
+                # Update score with decayed value
+                score.score = decay_result['adjusted_score']
+                score.notes = (score.notes or "") + f" | Decay: {decay_result['decay_percent']}% over {decay_result['days_since_activity']} days"
+                
+                # Store decay info for metadata
+                decay_info[category.value] = {
+                    "raw_score": decay_result['raw_score'],
+                    "decayed_score": decay_result['adjusted_score'],
+                    "decay_percent": decay_result['decay_percent'],
+                    "days_since_activity": decay_result['days_since_activity'],
+                }
+            
             category_scores[category] = score
             all_data_sources.extend(score.data_sources)
         
@@ -194,6 +233,11 @@ class ScoreCalculator:
         # Add composite breakdown to metadata
         meta = metadata or {}
         meta["composite_breakdown"] = composite_breakdown
+        
+        # Add decay info if decay was applied
+        if decay_info:
+            meta["decay_applied"] = True
+            meta["decay_details"] = decay_info
         
         return ScoreResult(
             handle=handle,

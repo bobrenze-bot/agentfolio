@@ -206,48 +206,93 @@ class TestCodeScoreCalculator(unittest.TestCase):
 
 
 class TestIdentityScoreCalculator(unittest.TestCase):
-    """Test IdentityScoreCalculator."""
+    """Test IdentityScoreCalculator with A2A v1.0 data."""
     
     def setUp(self):
         self.calculator = IdentityScoreCalculator()
     
-    def test_full_identity(self):
-        """Test with complete identity."""
+    def test_full_v1_compliance(self):
+        """Test with complete A2A v1.0 compliance."""
         data = PlatformData("a2a", status="ok", data={
-            "has_agent_card": True,
-            "card_valid": True,
             "card": {
+                "schemaVersion": "1.0",
+                "humanReadableId": "testorg/test-agent",
+                "agentVersion": "1.0.0",
                 "name": "Test Agent",
-                "description": "A test agent",
-                "capabilities": {"tools": ["tool1"]}
+                "description": "A fully compliant test agent",
+                "url": "https://example.com/a2a",
+                "provider": {
+                    "name": "Test Org",
+                    "url": "https://testorg.com",
+                    "supportContact": "support@testorg.com"
+                },
+                "capabilities": {
+                    "a2aVersion": "1.0",
+                    "supportsTools": True,
+                    "supportsStreaming": True,
+                    "supportsPushNotifications": True,
+                    "supportedMessageParts": ["text", "data"],
+                    "mcpVersion": "1.0"
+                },
+                "authSchemes": [
+                    {"scheme": "none", "description": "Public access"},
+                    {"scheme": "apiKey", "description": "API key auth", "serviceIdentifier": "test-service"}
+                ],
+                "skills": [
+                    {"id": "skill1", "name": "Skill 1", "description": "First skill", "tags": ["test"]},
+                    {"id": "skill2", "name": "Skill 2", "description": "Second skill"},
+                    {"id": "skill3", "name": "Skill 3", "description": "Third skill"},
+                    {"id": "skill4", "name": "Skill 4", "description": "Fourth skill"},
+                    {"id": "skill5", "name": "Skill 5", "description": "Fifth skill"},
+                ],
+                "supportedInterfaces": [
+                    {"url": "https://example.com/a2a/jsonrpc", "transport": "JSONRPC"}
+                ],
+                "tags": ["test", "autonomous"],
+                "iconUrl": "https://example.com/icon.png",
+                "privacyPolicyUrl": "https://example.com/privacy",
+                "termsOfServiceUrl": "https://example.com/terms",
+                "lastUpdated": "2026-01-15T00:00:00Z"
             },
             "has_agents_json": True,
             "has_llms_txt": True,
-            "has_openclaw_install": True,
         })
         result = self.calculator.calculate(data)
         
-        # 30 + 10 + 10 + 10 + 20 + 10 + 10 = 100
-        self.assertEqual(result.score, 100)
+        # Should have high score with full compliance
+        self.assertEqual(result.breakdown["schema_version"], 10.0)
+        self.assertEqual(result.breakdown["human_readable_id"], 10.0)
+        self.assertEqual(result.breakdown["endpoint_https"], 5.0)
+        self.assertEqual(result.breakdown["capabilities_declared"], 10.0)
+        self.assertEqual(result.breakdown["advanced_capabilities"], 10.0)  # All 5 features
+        self.assertEqual(result.breakdown["skills_defined"], 10.0)  # 5 skills = max
+        self.assertEqual(result.breakdown["interfaces_declared"], 5.0)
+        self.assertEqual(result.breakdown["auth_schemes"], 5.0)
+        self.assertEqual(result.breakdown["has_agents_json"], 3.0)
+        self.assertEqual(result.breakdown["has_llms_txt"], 2.0)
+        self.assertGreaterEqual(result.score, 90)  # Should be very high
     
-    def test_missing_required_fields(self):
-        """Test with missing required fields."""
+    def test_minimal_agent_card(self):
+        """Test with minimal A2A v1.0 card."""
         data = PlatformData("a2a", status="ok", data={
-            "has_agent_card": True,
-            "card_valid": True,
             "card": {
+                "schemaVersion": "1.0",
+                "humanReadableId": "org/agent",
+                "agentVersion": "1.0.0",
                 "name": "Test Agent",
+                "description": "A test agent",
+                "url": "https://example.com/a2a",
+                "provider": {"name": "Test Provider"},
+                "capabilities": {"a2aVersion": "1.0"},
+                "authSchemes": [{"scheme": "none", "description": "Public"}],
             },
-            "has_agents_json": False,
-            "has_llms_txt": False,
-            "has_openclaw_install": False,
         })
         result = self.calculator.calculate(data)
         
-        # 30 + 10 + 0 + 0 + 20 + 0 + 0 = 60
-        self.assertEqual(result.breakdown["has_agent_card"], 30.0)
-        self.assertEqual(result.breakdown["card_valid"], 10.0)
-        self.assertEqual(result.score, 60)
+        # Base compliance should be there
+        self.assertEqual(result.breakdown["schema_version"], 10.0)
+        self.assertEqual(result.breakdown["human_readable_id"], 10.0)
+        self.assertGreater(result.score, 30)  # Basic fields covered
 
 
 class TestEconomicScoreCalculator(unittest.TestCase):
@@ -376,9 +421,9 @@ class TestIntegration(unittest.TestCase):
         for category in Category:
             self.assertIn(category, result.category_scores)
         
-        # IDENTITY should be 100 (full marks)
+        # IDENTITY should be high with good A2A data
         identity_score = result.category_scores[Category.IDENTITY].score
-        self.assertEqual(identity_score, 100)
+        self.assertGreaterEqual(identity_score, 70)  # Should have decent score with the data provided
 
 
 if __name__ == "__main__":

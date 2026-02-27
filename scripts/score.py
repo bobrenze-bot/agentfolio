@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
 """
-AgentFolio Scoring Engine v2.0
-Refactored for clarity and testability.
+AgentFolio Scoring Engine v2.1
+Refactored for clarity and testability with time-based decay.
 
 This is a backward-compatible wrapper around the new scoring module.
 The scoring logic has been extracted into a clean, testable package at scoring/.
 
-Usage (same as before):
-    python score.py <profile.json> [--save]
+Usage:
+    python score.py <profile.json> [--save] [--no-decay]
     
 New capabilities:
     from scoring import ScoreCalculator
-    calculator = ScoreCalculator()
+    calculator = ScoreCalculator(apply_decay=True)  # Enable decay
     result = calculator.calculate_from_profile(profile_data)
+    
+Decay ensures scores reflect recent activity, not just historical achievements.
 """
 
 import json
 import os
 import sys
+import argparse
 from datetime import datetime
 
 # Import the new scoring module
@@ -85,31 +88,48 @@ def get_tier(score):
     return Tier.from_score(score).label
 
 
-def score_agent(profile_data):
+def score_agent(profile_data, apply_decay=True):
     """
     Calculate full score for an agent profile.
     
     This is the main entry point - uses the new refactored scoring system
     while maintaining backward compatibility with the old API.
+    
+    Args:
+        profile_data: Agent profile data
+        apply_decay: Whether to apply time-based score decay (default: True)
     """
-    calculator = ScoreCalculator()
+    calculator = ScoreCalculator(apply_decay=apply_decay)
     return calculator.calculate_from_profile(profile_data)
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("AgentFolio Scoring Engine v2.0")
-        print()
-        print("Usage: python score.py <profile.json> [--save]")
-        print("Example: python score.py ../data/profiles/bobrenze.json")
-        print()
-        print("New: Import scoring module for programmatic use:")
-        print("     from scoring import ScoreCalculator")
-        print()
-        sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description="AgentFolio Scoring Engine v2.1",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python score.py ../data/profiles/bobrenze.json
+  python score.py ../data/profiles/bobrenze.json --save
+  python score.py ../data/profiles/bobrenze.json --no-decay
+
+Score Decay:
+  By default, scores decay based on the age of the underlying data.
+  This encourages continuous activity and prevents stale rankings.
+  Use --no-decay to see raw scores without time-based adjustments.
+        """
+    )
+    parser.add_argument("profile", help="Path to agent profile JSON file")
+    parser.add_argument("--save", action="store_true", 
+                       help="Save results to data/scores/")
+    parser.add_argument("--no-decay", dest="no_decay", action="store_true",
+                       help="Disable time-based score decay")
     
-    profile_path = sys.argv[1]
-    save = "--save" in sys.argv
+    args = parser.parse_args()
+    
+    profile_path = args.profile
+    save = args.save
+    apply_decay = not args.no_decay
     
     # Load profile
     try:
@@ -123,12 +143,15 @@ def main():
         sys.exit(1)
     
     # Calculate score using new system
-    calculator = ScoreCalculator()
+    calculator = ScoreCalculator(apply_decay=apply_decay)
     result = calculator.calculate_from_profile(profile)
     
     # Print summary (same format as before)
     print(f"AgentFolio Score for {result.name}")
-    print(f"Composite Score: {result.composite_score}/100")
+    if apply_decay:
+        print(f"Composite Score: {result.composite_score}/100 (with decay)")
+    else:
+        print(f"Composite Score: {result.composite_score}/100 (no decay)")
     print(f"Tier: {result.tier_label}")
     print()
     print("Category Breakdown:")
@@ -136,6 +159,19 @@ def main():
         score = result.get_category_score(cat)
         bar = "█" * (score // 5) + "░" * (20 - score // 5)
         print(f"  {cat.value.upper():12} {bar} {score}/100")
+        
+        # Show decay info if available
+        if apply_decay and result.metadata.get("decay_applied"):
+            decay_info = result.metadata.get("decay_details", {}).get(cat.value, {})
+            if decay_info and decay_info.get("decay_percent", 0) > 0:
+                raw = decay_info["raw_score"]
+                decay_pct = decay_info["decay_percent"]
+                days = decay_info["days_since_activity"]
+                print(f"              ↳ {raw} → {score} (-{decay_pct:.1f}% over {days}d)")
+    
+    if apply_decay and result.metadata.get("decay_applied"):
+        print()
+        print("  Scores decay based on data age. Use --no-decay for raw scores.")
     
     print()
     print(f"Data sources: {', '.join(result.data_sources)}")

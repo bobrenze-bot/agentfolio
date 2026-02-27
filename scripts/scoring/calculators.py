@@ -252,125 +252,381 @@ class ContentScoreCalculator(BaseCalculator):
 
 
 class IdentityScoreCalculator(BaseCalculator):
-    """Calculator for IDENTITY category (A2A protocol)."""
+    """
+    Calculator for IDENTITY category using A2A v1.0 protocol data.
+    
+    This implementation properly parses and scores based on the A2A v1.0
+    Agent Card specification, rewarding rich capability declarations and
+    compliance with the protocol standard.
+    
+    Refactored 2026-02-26: Now uses structured A2A v1.0 data with
+    detailed scoring for capabilities, skills, provider info, auth schemes,
+    and transport interfaces.
+    """
     
     category = Category.IDENTITY
+    
+    # A2A v1.0 specific weights
     weights = {
-        "has_agent_card": WeightConfig(
-            max_points=30, points_per_unit=30.0,
-            unit_name="agent-card.json", description="Has agent card"
-        ),
-        "card_valid": WeightConfig(
+        # Core A2A compliance (35 points)
+        "schema_version": WeightConfig(
             max_points=10, points_per_unit=10.0,
-            unit_name="valid JSON", description="Valid JSON"
+            unit_name="v1.0 compliance", description="A2A schemaVersion is 1.0"
         ),
         "required_fields": WeightConfig(
-            max_points=10, points_per_unit=10.0,
-            unit_name="complete fields", description="Required fields"
+            max_points=15, points_per_unit=15.0,
+            unit_name="required fields", description="All required A2A fields present"
         ),
+        "human_readable_id": WeightConfig(
+            max_points=10, points_per_unit=10.0,
+            unit_name="valid ID", description="humanReadableId follows org/agent format"
+        ),
+        
+        # Provider information (15 points)
+        "provider_info": WeightConfig(
+            max_points=10, points_per_unit=10.0,
+            unit_name="provider", description="Provider name and optional URL/contact"
+        ),
+        "endpoint_https": WeightConfig(
+            max_points=5, points_per_unit=5.0,
+            unit_name="HTTPS endpoint", description="Secure A2A endpoint URL"
+        ),
+        
+        # Capabilities (20 points)
+        "capabilities_declared": WeightConfig(
+            max_points=10, points_per_unit=10.0,
+            unit_name="capabilities", description="Capabilities object present with a2aVersion"
+        ),
+        "advanced_capabilities": WeightConfig(
+            max_points=10, points_per_unit=10.0,
+            unit_name="advanced features", description="Tools, streaming, push notifications"
+        ),
+        
+        # Skills and interfaces (15 points)
+        "skills_defined": WeightConfig(
+            max_points=10, points_per_unit=2.0,
+            unit_name="skill", description="Skills defined (max 5 skills = 10 pts)"
+        ),
+        "interfaces_declared": WeightConfig(
+            max_points=5, points_per_unit=5.0,
+            unit_name="interface", description="Supported transport interfaces"
+        ),
+        
+        # Authentication and metadata (10 points)
+        "auth_schemes": WeightConfig(
+            max_points=5, points_per_unit=5.0,
+            unit_name="auth scheme", description="Authentication schemes defined"
+        ),
+        "optional_metadata": WeightConfig(
+            max_points=5, points_per_unit=5.0,
+            unit_name="metadata", description="Tags, icon, privacy/TOS URLs"
+        ),
+        
+        # Additional standards (5 points)
         "has_agents_json": WeightConfig(
-            max_points=10, points_per_unit=10.0,
-            unit_name="agents.json", description="Has agents index"
-        ),
-        "domain_owner": WeightConfig(
-            max_points=20, points_per_unit=20.0,
-            unit_name="domain verification", description="Domain ownership"
+            max_points=3, points_per_unit=3.0,
+            unit_name="agents.json", description="Has agents index file"
         ),
         "has_llms_txt": WeightConfig(
-            max_points=10, points_per_unit=10.0,
-            unit_name="llms.txt", description="Has llms.txt"
-        ),
-        "has_openclaw_install": WeightConfig(
-            max_points=10, points_per_unit=10.0,
-            unit_name="OpenClaw", description="OpenClaw detected"
+            max_points=2, points_per_unit=2.0,
+            unit_name="llms.txt", description="Has llms.txt for LLM discoverability"
         ),
     }
     
+    # Required A2A v1.0 fields
+    A2A_REQUIRED_FIELDS = [
+        "schemaVersion", "humanReadableId", "agentVersion",
+        "name", "description", "url", "provider", "capabilities", "authSchemes"
+    ]
+    
+    def _extract_card(self, data: PlatformData) -> Optional[Dict[str, Any]]:
+        """Extract and return the agent card from platform data."""
+        card = data.get("card", {})
+        if not card:
+            card = data.get("agent_card", {})
+        return card if card else None
+    
+    def _check_schema_version(self, card: Dict[str, Any]) -> bool:
+        """Check if card has A2A schemaVersion 1.0."""
+        version = card.get("schemaVersion", card.get("schema_version", ""))
+        return version == "1.0"
+    
+    def _check_required_fields(self, card: Dict[str, Any]) -> float:
+        """
+        Check if all required A2A v1.0 fields are present.
+        Returns score 0-15 based on completeness.
+        """
+        if not card:
+            return 0.0
+        
+        present = 0
+        for field in self.A2A_REQUIRED_FIELDS:
+            if field in card and card[field] is not None:
+                present += 1
+        
+        # Score proportionally: 15 points max for all fields
+        return (present / len(self.A2A_REQUIRED_FIELDS)) * 15
+    
+    def _check_human_readable_id(self, card: Dict[str, Any]) -> tuple[bool, str]:
+        """
+        Check if humanReadableId follows proper format (org/agent-name).
+        Returns (valid, org_part).
+        """
+        hr_id = card.get("humanReadableId", card.get("human_readable_id", ""))
+        if not hr_id:
+            return False, ""
+        
+        # Should contain exactly one slash
+        parts = hr_id.split("/")
+        if len(parts) != 2:
+            return False, ""
+        
+        org, agent_name = parts
+        return bool(org and agent_name), org
+    
+    def _check_provider(self, card: Dict[str, Any]) -> tuple[float, Dict[str, Any]]:
+        """
+        Check provider information completeness.
+        Returns (score, provider_info).
+        """
+        provider = card.get("provider", {})
+        if not provider:
+            return 0.0, {}
+        
+        score = 0.0
+        # Must have name
+        if provider.get("name"):
+            score += 6.0
+        
+        # Optional fields add bonus
+        if provider.get("url"):
+            score += 2.0
+        if provider.get("supportContact") or provider.get("support_contact"):
+            score += 2.0
+        
+        return min(score, 10.0), provider
+    
+    def _check_capabilities(self, card: Dict[str, Any]) -> tuple[float, float]:
+        """
+        Check capabilities declaration.
+        Returns (base_score, advanced_score).
+        """
+        caps = card.get("capabilities", {})
+        if not caps:
+            return 0.0, 0.0
+        
+        base_score = 0.0
+        advanced_score = 0.0
+        
+        # Must have a2aVersion
+        if caps.get("a2aVersion") == "1.0" or caps.get("a2a_version") == "1.0":
+            base_score = 10.0
+        elif caps.get("a2aVersion") or caps.get("a2a_version"):
+            base_score = 5.0  # Partial for having version but not 1.0
+        
+        # Advanced capabilities (max 10 points for having meaningful features)
+        features = 0
+        if caps.get("supportsTools") or caps.get("supports_tools"):
+            features += 1
+        if caps.get("supportsStreaming") or caps.get("supports_streaming"):
+            features += 1
+        if caps.get("supportsPushNotifications") or caps.get("supports_push_notifications"):
+            features += 1
+        if caps.get("supportedMessageParts") or caps.get("supported_message_parts"):
+            features += 1
+        if caps.get("mcpVersion") or caps.get("mcp_version"):
+            features += 1
+        
+        # Score: 2 points per feature, max 10
+        advanced_score = min(features * 2, 10)
+        
+        return base_score, advanced_score
+    
+    def _check_skills(self, card: Dict[str, Any]) -> tuple[int, list]:
+        """
+        Check skills defined.
+        Returns (count, skills_list).
+        """
+        skills = card.get("skills", [])
+        if not isinstance(skills, list):
+            skills = []
+        
+        # Valid skills have at least id and name
+        valid_skills = [
+            s for s in skills 
+            if isinstance(s, dict) and s.get("id") and s.get("name")
+        ]
+        
+        return len(valid_skills), valid_skills
+    
+    def _check_interfaces(self, card: Dict[str, Any]) -> tuple[int, list]:
+        """
+        Check supported interfaces.
+        Returns (count, interfaces_list).
+        """
+        interfaces = card.get("supportedInterfaces", card.get("supported_interfaces", []))
+        if not isinstance(interfaces, list):
+            interfaces = []
+        
+        # Valid interfaces have url and transport
+        valid_interfaces = [
+            i for i in interfaces
+            if isinstance(i, dict) and i.get("url") and i.get("transport")
+        ]
+        
+        return len(valid_interfaces), valid_interfaces
+    
+    def _check_auth_schemes(self, card: Dict[str, Any]) -> tuple[int, list]:
+        """
+        Check authentication schemes.
+        Returns (count, schemes_list).
+        """
+        schemes = card.get("authSchemes", card.get("auth_schemes", []))
+        if not isinstance(schemes, list):
+            schemes = []
+        
+        # Valid schemes have scheme and description
+        valid_schemes = [
+            s for s in schemes
+            if isinstance(s, dict) and s.get("scheme") and s.get("description")
+        ]
+        
+        return len(valid_schemes), valid_schemes
+    
+    def _check_optional_metadata(self, card: Dict[str, Any]) -> float:
+        """
+        Check optional metadata presence.
+        Returns score 0-5.
+        """
+        if not card:
+            return 0.0
+        
+        score = 0.0
+        checks = [
+            ("tags", 1.0),  # Should be non-empty list
+            ("iconUrl", 1.0),  # or icon_url
+            ("privacyPolicyUrl", 1.0),  # or privacy_policy_url
+            ("termsOfServiceUrl", 1.0),  # or terms_of_service_url
+            ("lastUpdated", 1.0),  # or last_updated
+        ]
+        
+        for field, points in checks:
+            snake_field = field.replace("Policy", "_policy").replace("Service", "_service").replace("Updated", "_updated")
+            snake_field = snake_field.replace("iconUrl", "icon_url").replace("Url", "_url")
+            
+            if card.get(field) or card.get(snake_field):
+                score += points
+        
+        return min(score, 5.0)
+    
     def calculate(self, data: PlatformData) -> CategoryScore:
-        """Calculate IDENTITY score from A2A data."""
-        status = data.get("status", "unknown")
+        """
+        Calculate IDENTITY score from A2A v1.0 data.
         
-        # Check if this is an SSL error or other partial failure
-        is_ssl_error = data.get("ssl_error", False) or status == "ssl_error"
-        domain_claimed = data.get("domain_owner", False) or bool(data.get("domain"))
-        
-        # Calculate partial score even when there are fetch errors
-        # Just need to have claimed a domain
-        has_any_domain = domain_claimed or bool(data.get("domain"))
-        
-        # Only skip entirely if no domain claim at all
-        if not has_any_domain and status not in ["ok", "ssl_error", "not_found"]:
-            return CategoryScore(
-                category=self.category,
-                score=0,
-                notes=f"Platform status: {status} (no domain claimed)"
-            )
-        
+        This implementation provides detailed scoring based on actual
+        A2A v1.0 specification compliance and richness of agent metadata.
+        """
         breakdown = {}
         total = 0.0
         
-        # Has agent-card.json (30 points) - only if status is ok
-        has_card = data.get("has_agent_card", False) and status == "ok"
-        breakdown["has_agent_card"] = self.calculate_binary_score(
-            self.weights["has_agent_card"], has_card
-        )
-        total += breakdown["has_agent_card"]
+        # Check status
+        status = data.get("status", "unknown")
+        is_ssl_error = data.get("ssl_error", False) or status == "ssl_error"
         
-        # Card is valid JSON (10 points) - only if status is ok
-        is_valid = data.get("card_valid", False) and status == "ok"
-        breakdown["card_valid"] = self.calculate_binary_score(
-            self.weights["card_valid"], is_valid
-        )
-        total += breakdown["card_valid"]
+        # Extract card - try multiple possible keys
+        card = self._extract_card(data)
         
-        # Required fields present (10 points) - only if status is ok
-        card = data.get("card", {})
-        has_required = all([
-            card.get("name"),
-            card.get("description"),
-            card.get("capabilities", {}).get("tools")
-        ]) and status == "ok"
-        breakdown["required_fields"] = self.calculate_binary_score(
-            self.weights["required_fields"], has_required
-        )
-        total += breakdown["required_fields"]
+        # Check domain ownership (used for notes, not scoring)
+        domain_claimed = data.get("domain_owner", False) or bool(data.get("domain"))
         
-        # Has agents.json (10 points) - only if status is ok
-        has_agents_json = data.get("has_agents_json", False) and status == "ok"
-        breakdown["has_agents_json"] = self.calculate_binary_score(
-            self.weights["has_agents_json"], has_agents_json
-        )
+        # If no card and not a partial error, return minimal score
+        if not card and status not in ["ok", "ssl_error"]:
+            return CategoryScore(
+                category=self.category,
+                score=0,
+                notes=f"Platform status: {status} (no agent card)"
+            )
+        
+        # A2A v1.0 Schema Compliance
+        # Schema Version (10 points)
+        has_v1_schema = self._check_schema_version(card) if card else False
+        breakdown["schema_version"] = 10.0 if has_v1_schema else 0.0
+        total += breakdown["schema_version"]
+        
+        # Required Fields (0-15 points)
+        required_score = self._check_required_fields(card) if card else 0.0
+        breakdown["required_fields"] = required_score
+        total += required_score
+        
+        # Human Readable ID (10 points)
+        hr_valid, _ = self._check_human_readable_id(card) if card else (False, "")
+        breakdown["human_readable_id"] = 10.0 if hr_valid else 0.0
+        total += breakdown["human_readable_id"]
+        
+        # Provider Information
+        provider_score, _ = self._check_provider(card) if card else (0.0, {})
+        breakdown["provider_info"] = provider_score
+        total += provider_score
+        
+        # Endpoint HTTPS
+        url = card.get("url", "") if card else ""
+        has_https = url.startswith("https://")
+        breakdown["endpoint_https"] = 5.0 if has_https else 0.0
+        total += breakdown["endpoint_https"]
+        
+        # Capabilities
+        base_caps, adv_caps = self._check_capabilities(card) if card else (0.0, 0.0)
+        breakdown["capabilities_declared"] = base_caps
+        breakdown["advanced_capabilities"] = adv_caps
+        total += base_caps + adv_caps
+        
+        # Skills
+        skill_count, _ = self._check_skills(card) if card else (0, [])
+        # 2 points per skill, max 10 points
+        skills_score = min(skill_count * 2, 10)
+        breakdown["skills_defined"] = skills_score
+        total += skills_score
+        
+        # Interfaces
+        interface_count, _ = self._check_interfaces(card) if card else (0, [])
+        # 5 points for having at least one valid interface
+        breakdown["interfaces_declared"] = 5.0 if interface_count > 0 else 0.0
+        total += breakdown["interfaces_declared"]
+        
+        # Authentication Schemes
+        auth_count, _ = self._check_auth_schemes(card) if card else (0, [])
+        # 5 points for having at least one valid scheme
+        breakdown["auth_schemes"] = 5.0 if auth_count > 0 else 0.0
+        total += breakdown["auth_schemes"]
+        
+        # Optional Metadata
+        metadata_score = self._check_optional_metadata(card) if card else 0.0
+        breakdown["optional_metadata"] = metadata_score
+        total += metadata_score
+        
+        # Additional Standards
+        has_agents_json = data.get("has_agents_json", False)
+        breakdown["has_agents_json"] = 3.0 if has_agents_json else 0.0
         total += breakdown["has_agents_json"]
         
-        # Domain ownership (20 points)
-        # Give full credit if domain is claimed (even with fetch errors)
-        # This recognizes that they have a domain even if we can't fetch A2A metadata
-        domain_verified = has_any_domain
-        breakdown["domain_owner"] = self.calculate_binary_score(
-            self.weights["domain_owner"], domain_verified
-        )
-        total += breakdown["domain_owner"]
-        
-        # Has llms.txt (10 points) - only if status is ok
-        has_llms = data.get("has_llms_txt", False) and status == "ok"
-        breakdown["has_llms_txt"] = self.calculate_binary_score(
-            self.weights["has_llms_txt"], has_llms
-        )
+        has_llms_txt = data.get("has_llms_txt", False)
+        breakdown["has_llms_txt"] = 2.0 if has_llms_txt else 0.0
         total += breakdown["has_llms_txt"]
         
-        # Has OpenClaw install (10 points)
-        has_openclaw = data.get("has_openclaw_install", False)
-        breakdown["has_openclaw_install"] = self.calculate_binary_score(
-            self.weights["has_openclaw_install"], has_openclaw
-        )
-        total += breakdown["has_openclaw_install"]
+        # Build notes
+        notes_parts = []
+        notes_parts.append(f"Status: {status}")
         
-        # Add note if there were fetch errors
-        notes = f"Platform status: {status}"
+        if card:
+            notes_parts.append(f"A2A schema: {'1.0' if has_v1_schema else 'other/missing'}")
+            notes_parts.append(f"Skills: {skill_count}")
+            notes_parts.append(f"Auth schemes: {auth_count}")
+            notes_parts.append(f"Interfaces: {interface_count}")
+        
         if is_ssl_error:
-            notes += " (SSL/certificate issue - domain ownership credited)"
-        elif status == "error":
-            notes += " (Fetch error - domain ownership credited if domain claimed)"
+            notes_parts.append("SSL error - partial score")
+        
+        notes = " | ".join(notes_parts)
         
         return CategoryScore(
             category=self.category,
@@ -378,7 +634,7 @@ class IdentityScoreCalculator(BaseCalculator):
             raw_score=total,
             max_score=MAX_CATEGORY_SCORE,
             breakdown=breakdown,
-            data_sources=["a2a", "domain"],
+            data_sources=["a2a"],
             notes=notes
         )
 

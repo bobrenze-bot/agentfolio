@@ -31,8 +31,15 @@ from .calculators import (
 )
 from .score_calculator import ScoreCalculator
 from .models import CategoryScore, ScoreResult
+from .decay import (
+    DecayCalculator,
+    DecayConfig,
+    DecayRate,
+    apply_decay,
+    DEFAULT_DECAY_CONFIGS,
+)
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 __all__ = [
     "Category",
     "Tier",
@@ -45,4 +52,9 @@ __all__ = [
     "SocialScoreCalculator",
     "EconomicScoreCalculator",
     "CommunityScoreCalculator",
+    "DecayCalculator",
+    "DecayConfig",
+    "DecayRate",
+    "apply_decay",
+    "DEFAULT_DECAY_CONFIGS",
 ]

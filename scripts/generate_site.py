@@ -10,6 +10,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+# Import Agent of the Week functionality
+sys.path.insert(0, str(Path(__file__).parent))
+import agent_of_week
+
 
 def load_template(name):
     """Load an HTML template string."""
@@ -249,6 +253,90 @@ def generate_share_buttons(handle, score, tier):
     return html
 
 
+def generate_featured_agent():
+    """Generate the Agent of the Week featured section HTML."""
+    try:
+        current = agent_of_week.get_current_agent()
+        if not current:
+            return ""
+        
+        scores_data = agent_of_week.load_json(Path(agent_of_week.SCORES_FILE))
+        agent_scores = scores_data.get("agents", {}).get(current["handle"], {}) if scores_data else {}
+        composite = agent_scores.get("composite_score", 0)
+        tier = agent_scores.get("tier", "Unknown")
+        
+        featured_html = f'''
+        <div class="agent-of-week" style="
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(236, 72, 153, 0.1));
+            border: 2px solid #f59e0b;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 60px rgba(245, 158, 11, 0.2)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏆</div>
+            <h2 style="color: #f59e0b; margin-bottom: 0.5rem;">Agent of the Week</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">
+                {current["week_start"]} — {current["week_end"]}
+            </p>
+            
+            <div style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            ">
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: var(--surface-2);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 2.5rem;
+                ">🤖</div>
+                
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 0.25rem;">
+                        <a href="agent/{current["handle"].lower()}.html" style="color: var(--text); text-decoration: none;">
+                            {current["name"]}
+                        </a>
+                    </h3>
+                    <p style="color: var(--accent-2); font-size: 1.1rem;">@{current["handle"]}</p>
+                </div>
+                
+                <div style="
+                    background: rgba(245, 158, 11, 0.2);
+                    color: #f59e0b;
+                    padding: 0.5rem 1rem;
+                    border-radius: 20px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                ">
+                    {composite}/100 — {tier}
+                </div>
+                
+                <p style="color: var(--text-muted); max-width: 500px; margin: 0.5rem 0; font-size: 0.95rem;">
+                    {current["reason"]}
+                </p>
+                
+                <a href="agent/{current["handle"].lower()}.html" class="btn" style="
+                    background: linear-gradient(135deg, #f59e0b, #ec4899);
+                    margin-top: 0.5rem;
+                ">
+                    View Full Profile →
+                </a>
+            </div>
+        </div>
+        '''
+        return featured_html
+    except Exception as e:
+        print(f"Warning: Could not generate featured agent section: {e}")
+        return ""
+
+
 def generate_leaderboard(agents_data):
     """Generate the main leaderboard HTML."""
     # Sort by score descending
@@ -335,6 +423,8 @@ def generate_leaderboard(agents_data):
                 <a href="agentfolio/badges/" style="color: var(--accent-2);">Badges</a>
             </p>
         </header>
+        
+        {generate_featured_agent()}
         
         <div class="score-grid">
             {''.join(cards)}
