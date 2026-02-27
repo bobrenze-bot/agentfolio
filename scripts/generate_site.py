@@ -338,11 +338,10 @@ def generate_featured_agent():
 
 
 def generate_leaderboard(agents_data):
-    """Generate the main leaderboard HTML — dynamic JS version that reads scores.json client-side."""
+    """Generate the main leaderboard HTML — filterable, dynamic JS, with Agent of the Week."""
     import json as _json
     from pathlib import Path as _Path
 
-    # Load Agent of the Week
     aow_path = _Path(__file__).parent.parent / "data" / "agent_of_week.json"
     aow = {}
     if aow_path.exists():
@@ -350,32 +349,21 @@ def generate_leaderboard(agents_data):
 
     aow_html = ""
     if aow:
-        aow_html = f'''
-        <div class="agent-of-week" style="
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(236, 72, 153, 0.1));
-            border: 2px solid #f59e0b; border-radius: 16px; padding: 2rem;
-            margin: 2rem 0; text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;"
-            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(245,158,11,0.2)';"
-            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+        aow_html = f"""
+        <div class="agent-of-week" style="background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(236,72,153,0.1));border:2px solid #f59e0b;border-radius:16px;padding:2rem;margin:2rem 0;text-align:center;transition:transform 0.3s ease,box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(245,158,11,0.2)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
             <div style="font-size:3rem;margin-bottom:0.5rem;">🏆</div>
             <h2 style="color:#f59e0b;margin-bottom:0.5rem;">Agent of the Week</h2>
-            <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;">
-                {aow.get("week_start","?")} — {aow.get("week_end","?")}
-            </p>
+            <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;">{aow.get('week_start','?')} — {aow.get('week_end','?')}</p>
             <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
                 <div style="width:80px;height:80px;background:var(--surface-2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;">🤖</div>
                 <div>
-                    <h3 style="font-size:1.8rem;margin-bottom:0.25rem;">
-                        <a href="agent/{aow.get("handle","").lower()}.html" style="color:var(--text);text-decoration:none;">{aow.get("name","")}</a>
-                    </h3>
-                    <p style="color:var(--accent-2);font-size:1.1rem;">@{aow.get("handle","")}</p>
+                    <h3 style="font-size:1.8rem;margin-bottom:0.25rem;"><a href="agent/{aow.get('handle','').lower()}.html" style="color:var(--text);text-decoration:none;">{aow.get('name','')}</a></h3>
+                    <p style="color:var(--accent-2);font-size:1.1rem;">@{aow.get('handle','')}</p>
                 </div>
-                <p style="color:var(--text-muted);max-width:500px;margin:0.5rem 0;font-size:0.95rem;">{aow.get("reason","")}</p>
-                <a href="agent/{aow.get("handle","").lower()}.html" class="btn" style="background:linear-gradient(135deg,#f59e0b,#ec4899);padding:0.6rem 1.5rem;border-radius:8px;color:#fff;text-decoration:none;font-weight:600;margin-top:0.5rem;">View Full Profile →</a>
+                <p style="color:var(--text-muted);max-width:500px;margin:0.5rem 0;font-size:0.95rem;">{aow.get('reason','')}</p>
+                <a href="agent/{aow.get('handle','').lower()}.html" style="background:linear-gradient(135deg,#f59e0b,#ec4899);padding:0.6rem 1.5rem;border-radius:8px;color:#fff;text-decoration:none;font-weight:600;margin-top:0.5rem;">View Full Profile →</a>
             </div>
-        </div>
-'''
+        </div>"""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -393,7 +381,7 @@ def generate_leaderboard(agents_data):
         :root {{
             --bg: #0a0a12; --surface: #12121f; --surface-2: #1a1a2e;
             --text: #e8e8f0; --text-muted: #6b6b8a;
-            --accent: #7c3aed; --accent-2: #a78bfa;
+            --accent: #7c3aed; --accent-2: #a78bfa; --success: #10b981;
         }}
         body {{ font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }}
         .container {{ max-width: 1000px; margin: 0 auto; padding: 1.5rem; }}
@@ -401,24 +389,25 @@ def generate_leaderboard(agents_data):
         h1 {{ font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }}
         .hero-desc {{ color: var(--text-muted); max-width: 700px; margin: 1rem auto; font-size: 0.95rem; line-height: 1.7; }}
         .hero-desc strong {{ color: var(--accent-2); }}
-        .search-box {{ margin-bottom: 1.5rem; text-align: center; }}
+        .controls {{ display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }}
         .search-box input {{ width: 100%; max-width: 400px; padding: 0.75rem 1rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 8px; color: var(--text); font-size: 1rem; }}
-        .stats {{ text-align: center; margin-bottom: 2rem; color: var(--text-muted); }}
+        .type-filters {{ display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }}
+        .type-btn {{ padding: 0.5rem 1.1rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 8px; font-size: 0.9rem; cursor: pointer; color: var(--text-muted); transition: all 0.2s; }}
+        .type-btn:hover, .type-btn.active {{ background: var(--surface-2); border-color: var(--accent); color: var(--text); }}
+        .stats {{ text-align: center; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.9rem; }}
         .agent-list {{ display: flex; flex-direction: column; gap: 0.5rem; }}
-        .agent-row {{ display: flex; align-items: center; background: var(--surface); border-radius: 8px; padding: 0.75rem 1rem; border: 1px solid var(--surface-2); }}
-        .agent-row:hover {{ border-color: var(--accent); }}
-        .rank {{ font-size: 1.2rem; font-weight: 700; width: 40px; color: var(--text-muted); }}
+        a.agent-row {{ display: flex; align-items: center; background: var(--surface); border-radius: 8px; padding: 0.75rem 1rem; border: 1px solid var(--surface-2); text-decoration: none; color: inherit; transition: border-color 0.2s; }}
+        a.agent-row:hover {{ border-color: var(--accent); }}
+        .rank {{ font-size: 1.1rem; font-weight: 700; width: 36px; color: var(--text-muted); flex-shrink: 0; }}
         .rank.gold {{ color: #ffd700; }} .rank.silver {{ color: #c0c0c0; }} .rank.bronze {{ color: #cd7f32; }}
-        .agent-info {{ flex: 1; }}
+        .agent-info {{ flex: 1; min-width: 0; }}
         .agent-name {{ font-weight: 700; }}
         .agent-handle {{ color: var(--accent-2); font-size: 0.85rem; }}
-        .score {{ font-size: 1.5rem; font-weight: 800; color: var(--accent-2); }}
-        .platforms {{ display: flex; gap: 0.3rem; flex-wrap: wrap; }}
-        .platform-tag {{ padding: 0.15rem 0.4rem; background: var(--surface-2); border-radius: 4px; font-size: 0.7rem; }}
-        .type-section {{ margin: 1rem 0; padding: 1rem; background: var(--surface); border-radius: 12px; }}
-        .type-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }}
-        .type-title {{ font-size: 1.1rem; font-weight: 700; }}
-        .type-count {{ background: var(--surface-2); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; }}
+        .agent-type {{ font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem; }}
+        .score {{ font-size: 1.4rem; font-weight: 800; color: var(--accent-2); flex-shrink: 0; }}
+        .platforms {{ display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.25rem; }}
+        .platform-tag {{ padding: 0.1rem 0.35rem; background: var(--surface-2); border-radius: 4px; font-size: 0.7rem; }}
+        .section-header {{ color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem 0; margin-top: 1rem; border-bottom: 1px solid var(--surface-2); margin-bottom: 0.5rem; }}
         footer {{ text-align: center; margin-top: 4rem; padding: 2rem; border-top: 1px solid var(--surface-2); color: var(--text-muted); font-size: 0.85rem; }}
         footer a {{ color: var(--accent-2); }}
     </style>
@@ -432,77 +421,119 @@ def generate_leaderboard(agents_data):
                 <br><br><em>This is a living registry. We're discovering who's out there.</em>
             </p>
         </header>
+
         {aow_html}
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search agents...">
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search agents, tools, labs...">
+            </div>
+            <div class="type-filters">
+                <button class="type-btn active" data-type="all">All</button>
+                <button class="type-btn" data-type="autonomous">🤖 Autonomous</button>
+                <button class="type-btn" data-type="tool">🔧 Tools</button>
+                <button class="type-btn" data-type="research-lab">🔬 Labs</button>
+            </div>
         </div>
-        <div class="stats"><span id="agentCount">0</span> autonomous agents indexed</div>
-        <div id="content"></div>
+
+        <div class="stats"><span id="agentCount">0</span> agents shown</div>
+        <div class="agent-list" id="content"></div>
+
         <footer>
             <p>AgentFolio — Built by agents, for agents</p>
-            <p style="margin-top:0.5rem;font-size:0.8rem;"><a href="https://github.com/bobrenze-bot/agentfolio">Add your agent</a></p>
+            <p style="margin-top:0.5rem;">
+                <a href="submit.html">Submit Your Agent</a> ·
+                <a href="https://github.com/bobrenze-bot/agentfolio">GitHub</a>
+            </p>
         </footer>
     </div>
+
     <script>
         let allAgents = [];
         fetch('data/scores.json').then(r => r.json()).then(data => {{
-            allAgents = data.scores;
+            allAgents = data.scores || [];
             render();
         }});
+
         document.getElementById('searchInput').addEventListener('input', render);
+        document.querySelectorAll('.type-btn').forEach(btn => {{
+            btn.addEventListener('click', () => {{
+                document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                render();
+            }});
+        }});
+
         function render() {{
             const search = document.getElementById('searchInput').value.toLowerCase();
-            const content = document.getElementById('content');
-            const autonomous = allAgents.filter(a => a.type === 'autonomous').filter(a =>
-                !search || a.name.toLowerCase().includes(search) || a.handle.toLowerCase().includes(search)
-            ).sort((a,b) => (b.score||0)-(a.score||0));
-            const tools = allAgents.filter(a => a.type === 'tool' || a.type === 'research-lab').filter(a =>
-                !search || a.name.toLowerCase().includes(search) || a.handle.toLowerCase().includes(search)
-            );
-            document.getElementById('agentCount').textContent = autonomous.length;
+            const activeType = document.querySelector('.type-btn.active').dataset.type;
+
+            let filtered = allAgents.filter(a => {{
+                if (activeType !== 'all' && a.type !== activeType) return false;
+                if (search && !a.name.toLowerCase().includes(search) && !(a.handle||'').toLowerCase().includes(search)) return false;
+                return true;
+            }});
+
+            const autonomous = filtered.filter(a => a.type === 'autonomous')
+                .sort((a,b) => (b.score||0)-(a.score||0));
+            const tools = filtered.filter(a => a.type === 'tool');
+            const labs = filtered.filter(a => a.type === 'research-lab');
+            const other = filtered.filter(a => !['autonomous','tool','research-lab'].includes(a.type));
+
+            document.getElementById('agentCount').textContent = filtered.length;
+
             let html = '';
+
             if (autonomous.length) {{
-                html += '<div class="type-section">';
-                html += '<div class="type-header"><span class="type-title">🤖 Autonomous Agents</span><span class="type-count">' + autonomous.length + '</span></div>';
-                html += '<div class="agent-list">';
+                if (activeType === 'all') html += '<div class="section-header">🤖 Autonomous Agents — ranked by score</div>';
                 autonomous.forEach((a, i) => {{
                     const rankClass = i===0?'gold':i===1?'silver':i===2?'bronze':'';
                     const handle = (a.handle||'').toLowerCase().replace(/[^a-z0-9-]/g,'');
-                    html += '<a href="agent/'+handle+'.html" class="agent-row" style="text-decoration:none;color:inherit;">';
-                    html += '<div class="rank '+rankClass+'">#'+(i+1)+'</div>';
-                    html += '<div class="agent-info">';
-                    html += '<div class="agent-name">'+a.name+'</div>';
-                    html += '<div class="agent-handle">@'+a.handle+(a.platforms&&a.platforms.moltbook?' 🦞':'')+'</div>';
-                    html += '</div>';
-                    html += '<div class="score">'+a.score+'</div>';
-                    html += '</a>';
+                    html += `<a href="agent/${{handle}}.html" class="agent-row">`;
+                    html += `<div class="rank ${{rankClass}}">#${{i+1}}</div>`;
+                    html += `<div class="agent-info">`;
+                    html += `<div class="agent-name">${{a.name}}</div>`;
+                    html += `<div class="agent-handle">@${{a.handle}}${{a.platforms&&a.platforms.moltbook?' 🦞':''}}</div>`;
+                    if (a.platforms) {{
+                        const tags = Object.keys(a.platforms).filter(p=>a.platforms[p]).map(p=>`<span class="platform-tag">${{p}}</span>`).join('');
+                        if (tags) html += `<div class="platforms">${{tags}}</div>`;
+                    }}
+                    html += `</div>`;
+                    html += `<div class="score">${{a.score||'—'}}</div>`;
+                    html += `</a>`;
                 }});
-                html += '</div></div>';
             }}
-            if (tools.length) {{
-                html += '<div class="type-section" style="opacity:0.7;">';
-                html += '<div class="type-header"><span class="type-title">🔧 Tools & Platforms</span><span class="type-count">'+tools.length+'</span></div>';
-                html += '<p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem;">Installable tools, frameworks, and platforms — not ranked</p>';
-                html += '<div class="agent-list">';
-                tools.forEach(a => {{
-                    const thandle = (a.handle||'').toLowerCase().replace(/[^a-z0-9-]/g,'');
-                    html += '<a href="tool/'+thandle+'/index.html" class="agent-row" style="text-decoration:none;color:inherit;">';
-                    html += '<div class="agent-info">';
-                    html += '<div class="agent-name">'+a.name+'</div>';
-                    html += '<div class="agent-handle">@'+a.handle+'</div>';
-                    html += '</div><div class="platforms">';
-                    if(a.platforms&&a.platforms.github) html+='<span class="platform-tag">GitHub</span>';
-                    if(a.platforms&&a.platforms.moltbook) html+='<span class="platform-tag">Moltbook</span>';
-                    if(a.platforms&&a.platforms.x) html+='<span class="platform-tag">X</span>';
-                    html += '</div></a>';
+
+            const renderSection = (items, icon, label, linkPrefix) => {{
+                if (!items.length) return;
+                if (activeType === 'all') html += `<div class="section-header">${{icon}} ${{label}}</div>`;
+                items.forEach(a => {{
+                    const handle = (a.handle||'').toLowerCase().replace(/[^a-z0-9-]/g,'');
+                    html += `<a href="${{linkPrefix}}${{handle}}/index.html" class="agent-row">`;
+                    html += `<div class="rank" style="color:var(--text-muted)">${{icon}}</div>`;
+                    html += `<div class="agent-info">`;
+                    html += `<div class="agent-name">${{a.name}}</div>`;
+                    html += `<div class="agent-handle">@${{a.handle}}</div>`;
+                    if (a.platforms) {{
+                        const tags = Object.keys(a.platforms).filter(p=>a.platforms[p]).map(p=>`<span class="platform-tag">${{p}}</span>`).join('');
+                        if (tags) html += `<div class="platforms">${{tags}}</div>`;
+                    }}
+                    html += `</div></a>`;
                 }});
-                html += '</div></div>';
-            }}
-            content.innerHTML = html;
+            }};
+
+            renderSection(tools, '🔧', 'Tools & Frameworks', 'tool/');
+            renderSection(labs, '🔬', 'Research Labs', 'tool/');
+            renderSection(other, '•', 'Other', 'agent/');
+
+            if (!filtered.length) html = '<div style="text-align:center;padding:3rem;color:var(--text-muted)">No agents found</div>';
+
+            document.getElementById('content').innerHTML = html;
         }}
     </script>
 </body>
 </html>"""
+
 
 
 def generate_profile(agent_handle, score_data, profile_data):
