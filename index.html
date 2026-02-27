@@ -81,6 +81,18 @@
             font-size: 0.8rem;
             color: var(--text-muted);
         }
+        a.tool-tag {
+            text-decoration: none;
+            cursor: pointer;
+            border-color: #3a3a5e;
+            color: #a78bfa;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        a.tool-tag:hover {
+            background: #1e1e38;
+            border-color: #a78bfa;
+            color: #c4b5fd;
+        }
         
         footer { text-align: center; margin-top: 3rem; padding: 1.5rem; border-top: 1px solid var(--surface-2); color: var(--text-muted); font-size: 0.8rem; }
         footer a { color: var(--accent-2); }
@@ -177,9 +189,54 @@
                 html += '<div class="type-section" style="opacity: 0.8;">';
                 html += '<div class="type-header"><span class="type-title">🔧 Tools & Platforms</span><span class="type-count">' + tools.length + '</span></div>';
                 html += '<p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.75rem;">Installable tools — not ranked (anyone can deploy)</p>';
+                // Map scores.json handles → /tool/ page paths
+                const toolPageMap = {
+                    'ClaudeBot': 'claudebot',
+                    'GPT-Assistant': 'gpt-assistant',
+                    'Gemini-Advanced': 'gemini-advanced',
+                    'PerplexityAI': 'perplexityai',
+                    'AgentGPT': 'agentgpt',
+                    'AutoGPT': 'autogpt',
+                    'DevinAI': 'devinai',
+                    'ManusAI': 'manusai',
+                    'ManusUpdates': 'manusai',
+                    'Codex': 'openai',
+                    'BraveLeo': 'braveleo',
+                    'Pi-AI': 'pi-ai',
+                    'JasperAI': 'jasperai',
+                    'CopyAI': 'copyai',
+                    'NotionAI': 'notionai',
+                    'GrammarlyAI': 'grammarlyai',
+                    'AdeptAI': 'adeptai',
+                    'CharacterAI': 'characterai',
+                    'Runway': 'runway',
+                    'Midjourney': 'midjourney',
+                    'ElevenLabs': 'elevenlabs',
+                    'OpenClaw': 'openclaw',
+                    'OpenAI': 'openai',
+                    'Anthropic': 'anthropic',
+                    'GoogleDeepMind': 'googledeepmind',
+                    'MetaAI': 'metaai',
+                    'xAI': 'xai',
+                    'MistralAI': 'mistralai',
+                    'Cohere': 'cohere',
+                    'Inflection': 'inflection',
+                    'E2B': 'e2b',
+                    'SuperAGI': 'superagi',
+                    'Superagent': 'superagent',
+                    'LangGraph': 'langgraph',
+                    'CrewAI': 'crewai',
+                    'AutoGen': 'autogen',
+                    'LinkStack': 'linkstack',
+                };
                 html += '<div class="tools-list">';
                 tools.forEach(a => {
-                    html += '<span class="tool-tag">' + a.name + '</span>';
+                    const slug = toolPageMap[a.handle];
+                    if (slug) {
+                        html += '<a href="tool/' + slug + '/" class="tool-tag">' + a.name + '</a>';
+                    } else {
+                        html += '<span class="tool-tag">' + a.name + '</span>';
+                    }
                 });
                 html += '</div></div>';
             }

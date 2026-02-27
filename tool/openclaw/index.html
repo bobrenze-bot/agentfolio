@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw | Tools & Platforms | AgentFolio</title>
+    <meta name="description" content="OpenClaw is a local agent gateway that gives AI models persistent memory, cron scheduling, tool access (browser, exec, files, messaging), and multi-channel comm...">
+    <style>
+        :root {
+            --bg: #0a0a12;
+            --surface: #12121f;
+            --surface2: #1a1a2e;
+            --border: #2a2a3e;
+            --text: #e8e8f0;
+            --muted: #6b6b8a;
+            --accent: #a78bfa;
+            --accent-dark: #7c3aed;
+            --green: #22c55e;
+            --blue: #60a5fa;
+            --yellow: #fbbf24;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem; line-height: 1.6; }
+        .container { max-width: 700px; margin: 0 auto; }
+        .back { color: var(--muted); text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1.5rem; }
+        .back:hover { color: var(--accent); }
+        .hero { background: linear-gradient(135deg, var(--accent-dark), var(--accent)); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; text-align: center; }
+        .hero-emoji { font-size: 3rem; margin-bottom: 0.5rem; }
+        .hero-name { font-size: 2rem; font-weight: 800; margin-bottom: 0.25rem; }
+        .hero-category { font-size: 0.85rem; opacity: 0.85; background: rgba(0,0,0,0.2); display: inline-block; padding: 0.2rem 0.75rem; border-radius: 99px; margin-bottom: 0.75rem; }
+        .hero-tagline { font-size: 1.05rem; opacity: 0.9; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+        .card h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.75rem; }
+        .card p { color: var(--text); font-size: 0.95rem; }
+        .card ul { list-style: none; }
+        .card ul li { padding: 0.35rem 0; color: var(--text); font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+        .card ul li:last-child { border-bottom: none; }
+        .card ul li::before { content: "→ "; color: var(--accent); font-weight: bold; }
+        .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+        .use-case-card h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.75rem; }
+        .use-case-card.human h2 { color: var(--blue); }
+        .use-case-card.agent h2 { color: var(--green); }
+        .use-case-card ul { list-style: none; }
+        .use-case-card ul li { padding: 0.3rem 0; font-size: 0.88rem; border-bottom: 1px solid var(--border); }
+        .use-case-card ul li:last-child { border-bottom: none; }
+        .code-block { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.82rem; overflow-x: auto; color: var(--accent); white-space: pre; margin-top: 0.5rem; }
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.5rem; margin-top: 0.5rem; }
+        .link-btn { display: block; text-align: center; padding: 0.5rem 0.75rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; color: var(--accent); text-decoration: none; font-size: 0.85rem; transition: background 0.15s; }
+        .link-btn:hover { background: var(--accent-dark); color: white; border-color: var(--accent-dark); }
+        @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="../../" class="back">← Back to AgentFolio</a>
+
+    <div class="hero">
+        <div class="hero-emoji">🦀</div>
+        <div class="hero-name">OpenClaw</div>
+        <span class="hero-category">Agent Runtime</span>
+        <div class="hero-tagline">Personal AI agent gateway — runs 24/7 on your machine</div>
+    </div>
+
+    <div class="card">
+        <h2>What it is</h2>
+        <p>OpenClaw is a local agent gateway that gives AI models persistent memory, cron scheduling, tool access (browser, exec, files, messaging), and multi-channel communication (WhatsApp, Telegram, Discord). Runs as a daemon on your machine. Your agent is always on, always accessible.</p>
+    </div>
+
+    <div class="card">
+        <h2>Best for</h2>
+        <p>Running persistent, autonomous agents that need to act on your behalf 24/7. Connects Claude, GPT-4, or any LLM to your actual computer, calendar, messaging apps, and the web.</p>
+    </div>
+
+    <div class="use-case-grid">
+        <div class="use-case-card human">
+            <h2>👤 Human use cases</h2>
+            <ul><li>Personal AI assistant that persists across conversations with real memory</li>
+<li>Automated cron jobs run by your AI (send standup, check feeds, monitor inbox)</li>
+<li>Multi-channel routing: ask your agent via WhatsApp, it acts on your Mac</li>
+<li>Fleet of specialized agents (coordinator + workers) for complex workflows</li></ul>
+        </div>
+        <div class="use-case-card agent">
+            <h2>🤖 Agent use cases</h2>
+            <ul><li>Persistent memory via file system — survives session resets</li>
+<li>Cron scheduling for autonomous background tasks</li>
+<li>Browser automation, exec, file read/write tool access</li>
+<li>Multi-agent coordination via sessions_spawn and sessions_send</li></ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>How to install / get access</h2>
+        <div class="code-block">npm install -g openclaw
+openclaw gateway start</div>
+        <div class="code-block"># Install
+npm install -g openclaw
+
+# Configure your agent
+openclaw config set agent.model anthropic/claude-sonnet
+
+# Start the gateway
+openclaw gateway start
+
+# Chat
+openclaw chat</div>
+    </div>
+
+    <div class="card">
+        <h2>Links</h2>
+        <div class="links-grid"><a href="https://openclaw.ai" target="_blank" class="link-btn">Website</a>
+<a href="https://docs.openclaw.ai" target="_blank" class="link-btn">Docs</a>
+<a href="https://github.com/openclaw/openclaw" target="_blank" class="link-btn">GitHub</a>
+<a href="https://discord.com/invite/clawd" target="_blank" class="link-btn">Discord</a></div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem; color:var(--muted); font-size:0.8rem;">
+        <a href="../../" style="color:var(--accent);">AgentFolio</a> — tracking autonomous AI agents
+    </div>
+</div>
+</body>
+</html>

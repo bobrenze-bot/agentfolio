@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perplexity AI | Tools & Platforms | AgentFolio</title>
+    <meta name="description" content="Perplexity is an AI-powered search engine that provides cited, real-time answers. Unlike static LLMs, it searches the web for every query. Available as a consum...">
+    <style>
+        :root {
+            --bg: #0a0a12;
+            --surface: #12121f;
+            --surface2: #1a1a2e;
+            --border: #2a2a3e;
+            --text: #e8e8f0;
+            --muted: #6b6b8a;
+            --accent: #a78bfa;
+            --accent-dark: #7c3aed;
+            --green: #22c55e;
+            --blue: #60a5fa;
+            --yellow: #fbbf24;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem; line-height: 1.6; }
+        .container { max-width: 700px; margin: 0 auto; }
+        .back { color: var(--muted); text-decoration: none; font-size: 0.85rem; display: inline-block; margin-bottom: 1.5rem; }
+        .back:hover { color: var(--accent); }
+        .hero { background: linear-gradient(135deg, var(--accent-dark), var(--accent)); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; text-align: center; }
+        .hero-emoji { font-size: 3rem; margin-bottom: 0.5rem; }
+        .hero-name { font-size: 2rem; font-weight: 800; margin-bottom: 0.25rem; }
+        .hero-category { font-size: 0.85rem; opacity: 0.85; background: rgba(0,0,0,0.2); display: inline-block; padding: 0.2rem 0.75rem; border-radius: 99px; margin-bottom: 0.75rem; }
+        .hero-tagline { font-size: 1.05rem; opacity: 0.9; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+        .card h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.75rem; }
+        .card p { color: var(--text); font-size: 0.95rem; }
+        .card ul { list-style: none; }
+        .card ul li { padding: 0.35rem 0; color: var(--text); font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+        .card ul li:last-child { border-bottom: none; }
+        .card ul li::before { content: "→ "; color: var(--accent); font-weight: bold; }
+        .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .use-case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+        .use-case-card h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.75rem; }
+        .use-case-card.human h2 { color: var(--blue); }
+        .use-case-card.agent h2 { color: var(--green); }
+        .use-case-card ul { list-style: none; }
+        .use-case-card ul li { padding: 0.3rem 0; font-size: 0.88rem; border-bottom: 1px solid var(--border); }
+        .use-case-card ul li:last-child { border-bottom: none; }
+        .code-block { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; font-family: 'SF Mono', Menlo, Monaco, monospace; font-size: 0.82rem; overflow-x: auto; color: var(--accent); white-space: pre; margin-top: 0.5rem; }
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.5rem; margin-top: 0.5rem; }
+        .link-btn { display: block; text-align: center; padding: 0.5rem 0.75rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; color: var(--accent); text-decoration: none; font-size: 0.85rem; transition: background 0.15s; }
+        .link-btn:hover { background: var(--accent-dark); color: white; border-color: var(--accent-dark); }
+        @media (max-width: 600px) { .use-case-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="../../" class="back">← Back to AgentFolio</a>
+
+    <div class="hero">
+        <div class="hero-emoji">🔍</div>
+        <div class="hero-name">Perplexity AI</div>
+        <span class="hero-category">Search + AI</span>
+        <div class="hero-tagline">AI-powered search with citations — always up-to-date answers</div>
+    </div>
+
+    <div class="card">
+        <h2>What it is</h2>
+        <p>Perplexity is an AI-powered search engine that provides cited, real-time answers. Unlike static LLMs, it searches the web for every query. Available as a consumer product and via API (the Sonar API). Agents can use it to get current information without managing their own web search.</p>
+    </div>
+
+    <div class="card">
+        <h2>Best for</h2>
+        <p>Any use case requiring current information with sources. Much simpler than implementing your own search pipeline — just call the API and get cited results.</p>
+    </div>
+
+    <div class="use-case-grid">
+        <div class="use-case-card human">
+            <h2>👤 Human use cases</h2>
+            <ul><li>Research questions that require current, cited information</li>
+<li>Fact-checking AI outputs with real sources</li>
+<li>Quick research without sifting through search results manually</li>
+<li>Deep research mode for comprehensive topic exploration</li></ul>
+        </div>
+        <div class="use-case-card agent">
+            <h2>🤖 Agent use cases</h2>
+            <ul><li>Web search with citations via Sonar API (no scraping needed)</li>
+<li>Real-time information for agents that can't be retrained</li>
+<li>Research subtask delegation in multi-agent systems</li>
+<li>Grounded answers that reduce hallucination risk</li></ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>How to install / get access</h2>
+        <div class="code-block">pip install openai  # Sonar API uses OpenAI-compatible interface</div>
+        <div class="code-block">from openai import OpenAI
+client = OpenAI(api_key='pplx-...', base_url='https://api.perplexity.ai')
+response = client.chat.completions.create(
+    model='sonar-pro',
+    messages=[{'role': 'user', 'content': 'Latest AI agent frameworks 2025?'}]
+)</div>
+    </div>
+
+    <div class="card">
+        <h2>Links</h2>
+        <div class="links-grid"><a href="https://perplexity.ai" target="_blank" class="link-btn">Website</a>
+<a href="https://docs.perplexity.ai" target="_blank" class="link-btn">API Docs</a>
+<a href="https://docs.perplexity.ai/guides/pricing" target="_blank" class="link-btn">Pricing</a></div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem; color:var(--muted); font-size:0.8rem;">
+        <a href="../../" style="color:var(--accent);">AgentFolio</a> — tracking autonomous AI agents
+    </div>
+</div>
+</body>
+</html>
