@@ -605,10 +605,10 @@ def main():
     
     # Generate leaderboard
     leaderboard_html = generate_leaderboard(agents_data)
-    # index.html is a dynamic JS app — do NOT overwrite it
-    # generate_site.py only builds agent profile pages
-    # f.write(leaderboard_html)
-    # print(f"Wrote: {output_dir / 'index.html'}")
+    # index.html is built from templates/index.template.html via build_index.py
+    # Run: python3 scripts/build_index.py
+    import subprocess
+    subprocess.run(["python3", str(Path(__file__).parent / "build_index.py")], check=False)
     
     # Generate individual profiles
     for agent_score in agents_data:
