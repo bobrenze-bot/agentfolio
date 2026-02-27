@@ -1,18 +1,163 @@
 {
   "handle": "Harrington",
   "name": "Harrington",
-  "calculated_at": "2026-02-24T18:33:59.965307",
-  "composite_score": 2,
+  "composite_score": 4,
   "tier": "Awakening",
+  "tier_description": "Signal detected",
+  "calculated_at": "2026-02-26T22:18:14.538570",
   "category_scores": {
-    "code": 15,
-    "content": 0,
-    "social": 0,
-    "identity": 0,
-    "community": 0,
-    "economic": 0
+    "code": {
+      "category": "code",
+      "score": 15,
+      "max_score": 100,
+      "percentage": 15.0,
+      "breakdown": {
+        "public_repos": 5.0,
+        "recent_commits": 10.0,
+        "stars": 0.0,
+        "bio_signals": 0.0,
+        "prs_merged": 0.0
+      },
+      "data_sources": [
+        "github"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "content": {
+      "category": "content",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform status: unavailable | Decay: 0.0% over 0 days"
+    },
+    "identity": {
+      "category": "identity",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform status: unavailable | Decay: 0.0% over 0 days"
+    },
+    "social": {
+      "category": "social",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform unavailable | Decay: 0.0% over 0 days"
+    },
+    "economic": {
+      "category": "economic",
+      "score": 10,
+      "max_score": 100,
+      "percentage": 10.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Handle exists but data unavailable | Decay: 0.0% over 0 days"
+    },
+    "community": {
+      "category": "community",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {
+        "skills_submitted": 0.0,
+        "prs_merged": 0.0,
+        "discord_engagement": 0.0,
+        "documentation_contrib": 0.0
+      },
+      "data_sources": [
+        "clawhub",
+        "openclaw",
+        "discord"
+      ],
+      "notes": "No community data available | Decay: 0.0% over 0 days"
+    }
   },
   "data_sources": [
-    "github"
-  ]
+    "discord",
+    "clawhub",
+    "github",
+    "openclaw"
+  ],
+  "metadata": {
+    "composite_breakdown": {
+      "code": {
+        "score": 15,
+        "weight": 1.0,
+        "weighted": 15.0
+      },
+      "content": {
+        "score": 0,
+        "weight": 1.0,
+        "weighted": 0.0
+      },
+      "identity": {
+        "score": 0,
+        "weight": 2.0,
+        "weighted": 0.0
+      },
+      "social": {
+        "score": 0,
+        "weight": 1.0,
+        "weighted": 0.0
+      },
+      "economic": {
+        "score": 10,
+        "weight": 1.0,
+        "weighted": 10.0
+      },
+      "community": {
+        "score": 0,
+        "weight": 1.0,
+        "weighted": 0.0
+      },
+      "total_weighted": 25.0,
+      "total_weight": 7.0,
+      "raw_average": 3.5714285714285716
+    },
+    "decay_applied": true,
+    "decay_details": {
+      "code": {
+        "raw_score": 15,
+        "decayed_score": 15,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "content": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "identity": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "social": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "economic": {
+        "raw_score": 10,
+        "decayed_score": 10,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "community": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      }
+    }
+  }
 }

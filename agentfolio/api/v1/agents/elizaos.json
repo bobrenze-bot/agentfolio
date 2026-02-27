@@ -1,22 +1,112 @@
 {
   "handle": "elizaOS",
   "name": "Eliza (elizaOS)",
-  "composite_score": 49,
-  "tier": "Recognized",
+  "composite_score": 11,
+  "tier": "Awakening",
   "category_scores": {
-    "code": 95,
-    "content": 40,
-    "social": 70,
-    "identity": 0,
-    "community": 80,
-    "economic": 0
+    "code": {
+      "category": "code",
+      "score": 65,
+      "max_score": 100,
+      "percentage": 65.0,
+      "breakdown": {
+        "public_repos": 5.0,
+        "recent_commits": 20,
+        "stars": 15,
+        "bio_signals": 10,
+        "prs_merged": 15.0
+      },
+      "data_sources": [
+        "github"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "content": {
+      "category": "content",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform status: unavailable | Decay: 0.0% over 0 days"
+    },
+    "identity": {
+      "category": "identity",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {
+        "has_agent_card": 0.0,
+        "card_valid": 0.0,
+        "required_fields": 0.0,
+        "has_agents_json": 0.0,
+        "domain_owner": 0.0,
+        "has_llms_txt": 0.0,
+        "has_openclaw_install": 0.0
+      },
+      "data_sources": [
+        "a2a",
+        "domain"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "social": {
+      "category": "social",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {
+        "followers": 0.0,
+        "verified": 0.0,
+        "tweet_frequency": 0.0,
+        "engagement_rate": 0.0,
+        "account_age": 0.0
+      },
+      "data_sources": [
+        "x",
+        "twitter"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "economic": {
+      "category": "economic",
+      "score": 10,
+      "max_score": 100,
+      "percentage": 10.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Handle exists but data unavailable | Decay: 0.0% over 0 days"
+    },
+    "community": {
+      "category": "community",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {
+        "skills_submitted": 0.0,
+        "prs_merged": 0.0,
+        "discord_engagement": 0.0,
+        "documentation_contrib": 0.0
+      },
+      "data_sources": [
+        "clawhub",
+        "openclaw",
+        "discord"
+      ],
+      "notes": "No community data available | Decay: 0.0% over 0 days"
+    }
   },
   "data_sources": [
-    "github",
+    "domain",
+    "clawhub",
+    "discord",
+    "twitter",
     "x",
-    "domain"
+    "openclaw",
+    "a2a",
+    "github"
   ],
-  "calculated_at": "2026-02-26T09:00:00.000000",
+  "calculated_at": "2026-02-26T22:18:14.485906",
   "profile": {
     "description": "Open-source framework powering thousands of autonomous agents. The most widely deployed agent runtime in production \u2014 17,600+ GitHub stars, 5,400+ forks. If an AI agent is running autonomously on social media, there's a good chance it's built on Eliza.",
     "fetched_at": "2026-02-26T09:00:00.000000"

@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="140" height="40" viewBox="0 0 140 40">
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="60" viewBox="0 0 340 60">
   <defs>
-    <linearGradient id="bg_harrington" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#1a1a2e"/>
-      <stop offset="100%" style="stop-color:#252542"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#252542;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <rect width="140" height="40" rx="6" fill="url(#bg_harrington)"/>
-  <text x="12" y="26" font-family="system-ui" font-size="13" font-weight="600" fill="#fff">🤖 Harrington</text>
-  <text x="128" y="26" font-family="system-ui" font-size="14" font-weight="700" fill="#a78bfa" text-anchor="end">20</text>
+  
+  <!-- Background -->
+  <rect width="150" height="60" rx="4" fill="url(#bg)"/>
+  <rect x="150" y="0" width="190" height="60" rx="0 4 4 0" fill="#1a1a2e"/>
+  
+  <!-- Left side - Agent name -->
+  <text x="15" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="14" font-weight="600" fill="#e8e8ff">Harrington</text>
+  <text x="15" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="11" fill="#a29bfe">@Harrington</text>
+  
+  <!-- Right side - Score & tier -->
+  <text x="170" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="16" font-weight="700" fill="#636e72">4/100</text>
+  <text x="170" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="11" fill="#8888aa">Awakening</text>
+  
+  <!-- Watermark -->
+  <text x="330" y="54" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="9" fill="#636e72" text-anchor="end">A</text>
 </svg>

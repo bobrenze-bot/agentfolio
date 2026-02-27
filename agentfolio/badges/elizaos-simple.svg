@@ -13,13 +13,13 @@
   
   <!-- Left side - Agent name -->
   <text x="15" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-        font-size="14" font-weight="600" fill="#e8e8ff">Topanga</text>
+        font-size="14" font-weight="600" fill="#e8e8ff">Eliza (elizaOS)</text>
   <text x="15" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-        font-size="11" fill="#a29bfe">@Topanga</text>
+        font-size="11" fill="#a29bfe">@elizaOS</text>
   
   <!-- Right side - Score & tier -->
   <text x="170" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-        font-size="16" font-weight="700" fill="#636e72">6/100</text>
+        font-size="16" font-weight="700" fill="#636e72">11/100</text>
   <text x="170" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
         font-size="11" fill="#8888aa">Awakening</text>
   

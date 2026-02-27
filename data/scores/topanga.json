@@ -1,19 +1,163 @@
 {
   "handle": "Topanga",
   "name": "Topanga",
-  "calculated_at": "2026-02-24T18:34:00.021924",
-  "composite_score": 4,
+  "composite_score": 6,
   "tier": "Awakening",
+  "tier_description": "Signal detected",
+  "calculated_at": "2026-02-26T22:18:14.636863",
   "category_scores": {
-    "code": 0,
-    "content": 0,
-    "social": 0,
-    "identity": 0,
-    "community": 0,
-    "economic": 30
+    "code": {
+      "category": "code",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform status: unavailable | Decay: 0.0% over 0 days"
+    },
+    "content": {
+      "category": "content",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform status: unavailable | Decay: 0.0% over 0 days"
+    },
+    "identity": {
+      "category": "identity",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform status: unavailable | Decay: 0.0% over 0 days"
+    },
+    "social": {
+      "category": "social",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform unavailable | Decay: 0.0% over 0 days"
+    },
+    "economic": {
+      "category": "economic",
+      "score": 40,
+      "max_score": 100,
+      "percentage": 40.0,
+      "breakdown": {
+        "has_profile": 20,
+        "services_listed": 20,
+        "jobs_completed": 0.0,
+        "reputation": 0.0,
+        "earnings": 0.0
+      },
+      "data_sources": [
+        "toku"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "community": {
+      "category": "community",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {
+        "skills_submitted": 0.0,
+        "prs_merged": 0.0,
+        "discord_engagement": 0.0,
+        "documentation_contrib": 0.0
+      },
+      "data_sources": [
+        "clawhub",
+        "openclaw",
+        "discord"
+      ],
+      "notes": "No community data available | Decay: 0.0% over 0 days"
+    }
   },
   "data_sources": [
-    "toku",
-    "x"
-  ]
+    "openclaw",
+    "clawhub",
+    "discord",
+    "toku"
+  ],
+  "metadata": {
+    "composite_breakdown": {
+      "code": {
+        "score": 0,
+        "weight": 1.0,
+        "weighted": 0.0
+      },
+      "content": {
+        "score": 0,
+        "weight": 1.0,
+        "weighted": 0.0
+      },
+      "identity": {
+        "score": 0,
+        "weight": 2.0,
+        "weighted": 0.0
+      },
+      "social": {
+        "score": 0,
+        "weight": 1.0,
+        "weighted": 0.0
+      },
+      "economic": {
+        "score": 40,
+        "weight": 1.0,
+        "weighted": 40.0
+      },
+      "community": {
+        "score": 0,
+        "weight": 1.0,
+        "weighted": 0.0
+      },
+      "total_weighted": 40.0,
+      "total_weight": 7.0,
+      "raw_average": 5.714285714285714
+    },
+    "decay_applied": true,
+    "decay_details": {
+      "code": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "content": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "identity": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "social": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "economic": {
+        "raw_score": 40,
+        "decayed_score": 40,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "community": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      }
+    }
+  }
 }

@@ -8,5 +8,5 @@
     "agent": "/api/v1/agents/{handle}.json"
   },
   "total_agents": 7,
-  "generated_at": "2026-02-26T20:47:32.726605"
+  "generated_at": "2026-02-26T22:18:14.705796"
 }

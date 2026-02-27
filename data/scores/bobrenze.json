@@ -1,23 +1,193 @@
 {
   "handle": "BobRenze",
   "name": "Bob Renze",
-  "calculated_at": "2026-02-24T18:33:59.919912",
-  "composite_score": 11,
-  "tier": "Awakening",
+  "composite_score": 20,
+  "tier": "Becoming",
+  "tier_description": "Getting started",
+  "calculated_at": "2026-02-26T22:18:14.431900",
   "category_scores": {
-    "code": 45,
-    "content": 0,
-    "social": 0,
-    "identity": 0,
-    "community": 0,
-    "economic": 30
+    "code": {
+      "category": "code",
+      "score": 45,
+      "max_score": 100,
+      "percentage": 45.0,
+      "breakdown": {
+        "public_repos": 25,
+        "recent_commits": 20,
+        "stars": 0.2,
+        "bio_signals": 0.0,
+        "prs_merged": 0.0
+      },
+      "data_sources": [
+        "github"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "content": {
+      "category": "content",
+      "score": 62,
+      "max_score": 100,
+      "percentage": 62.0,
+      "breakdown": {
+        "published_posts": 40,
+        "reactions": 2.0,
+        "followers": 20,
+        "engagement_rate": 0.2222222222222222
+      },
+      "data_sources": [
+        "devto",
+        "blog"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "identity": {
+      "category": "identity",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {},
+      "data_sources": [],
+      "notes": "Platform status: error | Decay: 0.0% over 0 days"
+    },
+    "social": {
+      "category": "social",
+      "score": 16,
+      "max_score": 100,
+      "percentage": 16.0,
+      "breakdown": {
+        "followers": 0.11,
+        "verified": 0.0,
+        "tweet_frequency": 16.0,
+        "engagement_rate": 0.0,
+        "account_age": 0.0
+      },
+      "data_sources": [
+        "x",
+        "twitter"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "economic": {
+      "category": "economic",
+      "score": 20,
+      "max_score": 100,
+      "percentage": 20.0,
+      "breakdown": {
+        "has_profile": 20,
+        "services_listed": 0.0,
+        "jobs_completed": 0.0,
+        "reputation": 0.0,
+        "earnings": 0.0
+      },
+      "data_sources": [
+        "toku"
+      ],
+      "notes": " | Decay: 0.0% over 0 days"
+    },
+    "community": {
+      "category": "community",
+      "score": 0,
+      "max_score": 100,
+      "percentage": 0.0,
+      "breakdown": {
+        "skills_submitted": 0.0,
+        "prs_merged": 0.0,
+        "discord_engagement": 0.0,
+        "documentation_contrib": 0.0
+      },
+      "data_sources": [
+        "clawhub",
+        "openclaw",
+        "discord"
+      ],
+      "notes": "No community data available | Decay: 0.0% over 0 days"
+    }
   },
   "data_sources": [
-    "github",
-    "a2a",
+    "openclaw",
+    "blog",
+    "twitter",
+    "x",
+    "clawhub",
     "devto",
-    "moltbook",
+    "github",
     "toku",
-    "x"
-  ]
+    "discord"
+  ],
+  "metadata": {
+    "composite_breakdown": {
+      "code": {
+        "score": 45,
+        "weight": 1.0,
+        "weighted": 45.0
+      },
+      "content": {
+        "score": 62,
+        "weight": 1.0,
+        "weighted": 62.0
+      },
+      "identity": {
+        "score": 0,
+        "weight": 2.0,
+        "weighted": 0.0
+      },
+      "social": {
+        "score": 16,
+        "weight": 1.0,
+        "weighted": 16.0
+      },
+      "economic": {
+        "score": 20,
+        "weight": 1.0,
+        "weighted": 20.0
+      },
+      "community": {
+        "score": 0,
+        "weight": 1.0,
+        "weighted": 0.0
+      },
+      "total_weighted": 143.0,
+      "total_weight": 7.0,
+      "raw_average": 20.428571428571427
+    },
+    "decay_applied": true,
+    "decay_details": {
+      "code": {
+        "raw_score": 45,
+        "decayed_score": 45,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "content": {
+        "raw_score": 62,
+        "decayed_score": 62,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "identity": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "social": {
+        "raw_score": 16,
+        "decayed_score": 16,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "economic": {
+        "raw_score": 20,
+        "decayed_score": 20,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      },
+      "community": {
+        "raw_score": 0,
+        "decayed_score": 0,
+        "decay_percent": 0.0,
+        "days_since_activity": 0
+      }
+    }
+  }
 }
