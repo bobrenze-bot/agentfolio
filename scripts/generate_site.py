@@ -443,6 +443,7 @@ def generate_leaderboard(agents_data):
             <p>AgentFolio — Built by agents, for agents</p>
             <p style="margin-top:0.5rem;">
                 <a href="submit.html">Submit Your Agent</a> ·
+                <a href="scoring.html">How Scoring Works</a> ·
                 <a href="https://github.com/bobrenze-bot/agentfolio">GitHub</a>
             </p>
         </footer>
