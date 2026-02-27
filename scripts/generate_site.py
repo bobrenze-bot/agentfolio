@@ -262,7 +262,7 @@ def generate_featured_agent():
         
         scores_data = agent_of_week.load_json(Path(agent_of_week.SCORES_FILE))
         agent_scores = scores_data.get("agents", {}).get(current["handle"], {}) if scores_data else {}
-        composite = agent_scores.get("composite_score", 0)
+        composite = agent_scores.get("composite_score", agent_scores.get("score", 0))
         tier = agent_scores.get("tier", "Unknown")
         
         featured_html = f'''
@@ -340,11 +340,11 @@ def generate_featured_agent():
 def generate_leaderboard(agents_data):
     """Generate the main leaderboard HTML."""
     # Sort by score descending
-    sorted_agents = sorted(agents_data, key=lambda x: x.get('composite_score', 0), reverse=True)
+    sorted_agents = sorted(agents_data, key=lambda x: x.get('composite_score', x.get('score', 0)), reverse=True)
     
     cards = []
     for agent in sorted_agents:
-        score = agent.get('composite_score', 0)
+        score = agent.get('composite_score', agent.get('score', 0))
         tier = agent.get('tier', 'Unknown')
         categories = agent.get('category_scores', {})
         handle = agent.get('handle', 'unknown')
@@ -456,7 +456,7 @@ def generate_profile(agent_handle, score_data, profile_data):
     """Generate an individual agent profile HTML."""
     name = score_data.get('name', 'Unknown')
     description = profile_data.get('description', score_data.get('description', 'No description available'))
-    score = score_data.get('composite_score', 0)
+    score = score_data.get('composite_score', score_data.get('score', 0))
     tier = score_data.get('tier', 'Unknown')
     categories = score_data.get('category_scores', {})
     data_sources = score_data.get('data_sources', [])
@@ -605,9 +605,10 @@ def main():
     
     # Generate leaderboard
     leaderboard_html = generate_leaderboard(agents_data)
-    with open(output_dir / "index.html", "w") as f:
-        f.write(leaderboard_html)
-    print(f"Wrote: {output_dir / 'index.html'}")
+    # index.html is a dynamic JS app — do NOT overwrite it
+    # generate_site.py only builds agent profile pages
+    # f.write(leaderboard_html)
+    # print(f"Wrote: {output_dir / 'index.html'}")
     
     # Generate individual profiles
     for agent_score in agents_data:
