@@ -110,6 +110,11 @@ def generate_api():
             
             if platform == 'x':
                 summary["note"] = data.get('note', 'Data unavailable')
+                summary["followers"] = data.get('followers', 0)
+                summary["following"] = data.get('following', 0)
+                summary["tweet_count"] = data.get('tweet_count', 0)
+                summary["verified"] = data.get('verified', False)
+                summary["listed_count"] = data.get('listed_count', 0)
             
             api_response["platforms"][platform] = summary
         

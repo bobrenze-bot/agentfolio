@@ -437,6 +437,56 @@ def fetch_toku_data(handle):
     return data
 
 
+def load_twitter_credentials():
+    """Load Twitter API v2 credentials from env file."""
+    creds_path = os.path.expanduser("~/.openclaw/credentials/twitter.env")
+    if os.path.exists(creds_path):
+        try:
+            credentials = {}
+            with open(creds_path, 'r') as f:
+                for line in f:
+                    line = line.strip()
+                    if '=' in line and not line.startswith('#'):
+                        key, value = line.split('=', 1)
+                        credentials[key] = value.strip().strip('"\'')
+            return credentials
+        except Exception:
+            pass
+    return None
+
+
+def get_twitter_bearer_token(credentials):
+    """Get OAuth 2.0 Bearer token from Twitter API credentials."""
+    import base64
+    
+    consumer_key = credentials.get('TWITTER_CONSUMER_KEY')
+    consumer_secret = credentials.get('TWITTER_CONSUMER_SECRET')
+    
+    if not consumer_key or not consumer_secret:
+        return None
+    
+    # Encode credentials for Basic Auth
+    credentials_b64 = base64.b64encode(
+        f"{consumer_key}:{consumer_secret}".encode('utf-8')
+    ).decode('utf-8')
+    
+    try:
+        req = Request(
+            "https://api.twitter.com/oauth2/token",
+            data=b"grant_type=client_credentials",
+            headers={
+                "Authorization": f"Basic {credentials_b64}",
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            }
+        )
+        with urlopen(req, timeout=15) as response:
+            result = json.loads(response.read().decode('utf-8'))
+            return result.get('access_token')
+    except Exception as e:
+        print(f"Error getting bearer token: {e}")
+        return None
+
+
 def load_socia_vault_key():
     """Load SociaVault API key from credentials."""
     creds_paths = [
@@ -458,6 +508,123 @@ def load_socia_vault_key():
             except Exception:
                 pass
     return None
+
+
+def fetch_x_data_via_twitter_api_v2(handle, credentials):
+    """
+    Fetch X/Twitter data using official Twitter API v2 (paid Basic tier).
+    
+    Requires Twitter API v2 credentials in ~/.openclaw/credentials/twitter.env:
+    - TWITTER_CONSUMER_KEY
+    - TWITTER_CONSUMER_SECRET
+    
+    API Reference: https://developer.twitter.com/en/docs/twitter-api/users/lookup/api-reference
+    """
+    data = {
+        "handle": handle,
+        "fetched": datetime.now().isoformat(),
+        "status": "unavailable",
+        "profile_url": f"https://x.com/{handle}",
+        "followers": None,
+        "following": None,
+        "tweet_count": None,
+        "verified": False,
+        "engagement_rate": None,
+        "score_contrib": 0,
+        "source": "twitter_api_v2"
+    }
+    
+    if not handle:
+        data["error"] = "No handle provided"
+        return data
+    
+    if not credentials:
+        data["error"] = "Twitter API credentials not configured"
+        return data
+    
+    # Get Bearer token
+    bearer_token = get_twitter_bearer_token(credentials)
+    if not bearer_token:
+        data["error"] = "Failed to authenticate with Twitter API"
+        return data
+    
+    try:
+        # Twitter API v2 user lookup endpoint
+        # Fields: public_metrics includes followers_count, following_count, tweet_count
+        api_url = (
+            f"https://api.twitter.com/2/users/by/username/{handle}"
+            f"?user.fields=public_metrics,verified,created_at,description,location"
+        )
+        
+        headers = {
+            "Authorization": f"Bearer {bearer_token}",
+            "Accept": "application/json",
+            "User-Agent": "AgentFolio-Fetcher/1.0"
+        }
+        
+        text, status = fetch_url(api_url, headers)
+        
+        if not text:
+            data["error"] = f"Twitter API returned HTTP {status}"
+            return data
+        
+        if status == 404:
+            data["error"] = f"User @{handle} not found on Twitter"
+            data["status"] = "error"
+            return data
+        
+        if status != 200:
+            data["error"] = f"Twitter API error: HTTP {status}"
+            return data
+        
+        result = parse_json_safe(text)
+        if not result:
+            data["error"] = "Failed to parse Twitter API response"
+            return data
+        
+        if "errors" in result:
+            data["error"] = f"Twitter API error: {result['errors']}"
+            return data
+        
+        user_data = result.get("data", {})
+        if not user_data:
+            data["error"] = "No user data returned from Twitter API"
+            return data
+        
+        # Extract public metrics
+        metrics = user_data.get("public_metrics", {})
+        
+        data["status"] = "ok"
+        data["followers"] = metrics.get("followers_count", 0)
+        data["following"] = metrics.get("following_count", 0)
+        data["tweet_count"] = metrics.get("tweet_count", 0)
+        data["listed_count"] = metrics.get("listed_count", 0)
+        data["verified"] = user_data.get("verified", False)
+        data["verified_type"] = user_data.get("verified_type", None)
+        data["name"] = user_data.get("name", handle)
+        data["description"] = user_data.get("description", "")
+        data["location"] = user_data.get("location", "")
+        data["created_at"] = user_data.get("created_at", "")
+        data["id"] = user_data.get("id", "")
+        data["note"] = "Data via Twitter API v2 (Basic tier)"
+        
+        # Calculate score contribution based on follower count
+        # Scale: 0-100 = 2pts, 100-1000 = 5pts, 1000-10000 = 10pts, 10000+ = 15pts
+        followers = data.get("followers", 0) or 0
+        if followers >= 10000:
+            data["score_contrib"] = 15
+        elif followers >= 1000:
+            data["score_contrib"] = 10
+        elif followers >= 100:
+            data["score_contrib"] = 5
+        else:
+            data["score_contrib"] = 2
+        
+        return data
+        
+    except Exception as e:
+        data["error"] = f"Twitter API v2 error: {str(e)}"
+        return data
 
 
 def fetch_x_data_via_sociavault(handle, api_key):
@@ -626,9 +793,18 @@ def fetch_x_data(handle):
     Fetch X/Twitter data using fallback providers.
     
     Priority order:
-    1. SociaVault API (50 free credits, affordable thereafter - sociavault.com)
-    2. Nitter instances (free but rate limited - see twiiit.com)
-    3. Graceful degradation (return "unavailable" with partial credit)
+    1. Twitter API v2 (official paid Basic tier - $100/month, 10k requests/month)
+    2. SociaVault API (50 free credits, affordable thereafter - sociavault.com)
+    3. Nitter instances (free but rate limited - see twiiit.com)
+    4. Graceful degradation (return "unavailable" with partial credit)
+    
+    To configure Twitter API v2:
+    - Requires Twitter Developer account with Basic tier ($100/month)
+    - Create ~/.openclaw/credentials/twitter.env with:
+      TWITTER_CONSUMER_KEY=your_consumer_key
+      TWITTER_CONSUMER_SECRET=your_consumer_secret
+      TWITTER_ACCESS_TOKEN=your_access_token
+      TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
     
     To configure SociaVault:
     - Create ~/.openclaw/credentials/sociavault.env with:
@@ -654,7 +830,17 @@ def fetch_x_data(handle):
         data["error"] = "No handle provided"
         return data
     
-    # Strategy 1: Try SociaVault API (if configured)
+    # Strategy 1: Try Twitter API v2 (official paid API)
+    twitter_creds = load_twitter_credentials()
+    if twitter_creds:
+        twitter_data = fetch_x_data_via_twitter_api_v2(handle, twitter_creds)
+        if twitter_data["status"] == "ok":
+            return twitter_data
+        else:
+            # Store error but continue to next fallback
+            data["twitter_api_error"] = twitter_data.get("error", "Unknown error")
+    
+    # Strategy 2: Try SociaVault API (if configured)
     api_key = load_socia_vault_key()
     if api_key:
         sv_data = fetch_x_data_via_sociavault(handle, api_key)
@@ -664,7 +850,7 @@ def fetch_x_data(handle):
             # Store error but continue to next fallback
             data["sociavault_error"] = sv_data.get("error", "Unknown error")
     
-    # Strategy 2: Try Nitter (if configured or defaults available)
+    # Strategy 3: Try Nitter (if configured or defaults available)
     nitter_instance = os.getenv("SOCIA_VAULT_NITTER_INSTANCE")
     nitter_data = fetch_x_data_via_nitter(handle, nitter_instance)
     if nitter_data["status"] == "ok":
@@ -672,12 +858,13 @@ def fetch_x_data(handle):
     else:
         data["nitter_error"] = nitter_data.get("error", "Nitter unavailable")
     
-    # Strategy 3: Graceful degradation
+    # Strategy 4: Graceful degradation
     # Still give partial credit for having a handle (agent has claimed X presence)
-    data["note"] = "X/Twitter API requires paid tier ($100+/month). Fallback options:\n" \
-                   "1. SociaVault API (50 free credits) - create ~/.openclaw/credentials/sociavault.env\n" \
-                   "2. Nitter (self-hosted or public instances) - set SOCIA_VAULT_NITTER_INSTANCE env\n" \
-                   "3. Accept degraded scoring (partial credit for X handle in scoring system)"
+    data["note"] = "X/Twitter data unavailable. Options:\n" \
+                   "1. Twitter API v2 ($100/month) - create ~/.openclaw/credentials/twitter.env\n" \
+                   "2. SociaVault API (50 free credits) - create ~/.openclaw/credentials/sociavault.env\n" \
+                   "3. Nitter (free but rate limited) - set SOCIA_VAULT_NITTER_INSTANCE env\n" \
+                   "4. Accept degraded scoring (partial credit for X handle in scoring system)"
     data["score_contrib"] = 5  # Partial credit for claiming X presence
     
     return data

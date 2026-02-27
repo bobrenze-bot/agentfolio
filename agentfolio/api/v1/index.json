@@ -7,6 +7,6 @@
     "feed": "/api/v1/feed.json",
     "agent": "/api/v1/agents/{handle}.json"
   },
-  "total_agents": 6,
-  "generated_at": "2026-02-24T18:51:46.693595"
+  "total_agents": 7,
+  "generated_at": "2026-02-26T20:47:32.726605"
 }

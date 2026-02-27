@@ -1,0 +1,237 @@
+"""
+Main score calculation orchestrator.
+
+Aggregates category scores into composite score with proper weighting.
+"""
+
+from typing import Dict, Any, List, Optional
+
+from .constants import Category, Tier, COMPOSITE_WEIGHTS
+from .models import ScoreResult, CategoryScore, PlatformData
+from .calculators import (
+    CodeScoreCalculator,
+    ContentScoreCalculator,
+    IdentityScoreCalculator,
+    SocialScoreCalculator,
+    EconomicScoreCalculator,
+    CommunityScoreCalculator,
+)
+
+
+class ScoreCalculator:
+    """
+    Orchestrates the full scoring pipeline.
+    
+    Takes raw platform data and produces a complete ScoreResult
+    with composite score and tier.
+    
+    Example:
+        calculator = ScoreCalculator()
+        
+        platform_data = {
+            "github": PlatformData("github", status="ok", data={...}),
+            "devto": PlatformData("devto", status="ok", data={...}),
+        }
+        
+        result = calculator.calculate(
+            handle="bobrenze",
+            name="Bob",
+            platform_data=platform_data
+        )
+    """
+    
+    def __init__(self, custom_weights: Optional[Dict[Category, float]] = None):
+        """
+        Initialize calculator with optional custom weights.
+        
+        Args:
+            custom_weights: Override default COMPOSITE_WEIGHTS
+        """
+        self.weights = custom_weights or COMPOSITE_WEIGHTS
+        
+        # Initialize category calculators
+        self.calculators = {
+            Category.CODE: CodeScoreCalculator(),
+            Category.CONTENT: ContentScoreCalculator(),
+            Category.IDENTITY: IdentityScoreCalculator(),
+            Category.SOCIAL: SocialScoreCalculator(),
+            Category.ECONOMIC: EconomicScoreCalculator(),
+            Category.COMMUNITY: CommunityScoreCalculator(),
+        }
+    
+    def calculate_category(
+        self,
+        category: Category,
+        data: PlatformData
+    ) -> CategoryScore:
+        """
+        Calculate score for a single category.
+        
+        Args:
+            category: Which category to calculate
+            data: Platform data for this category
+            
+        Returns:
+            Calculated CategoryScore
+        """
+        calculator = self.calculators.get(category)
+        if not calculator:
+            return CategoryScore(
+                category=category,
+                score=0,
+                notes=f"No calculator for {category.value}"
+            )
+        
+        return calculator.calculate(data)
+    
+    def calculate_composite(
+        self,
+        category_scores: Dict[Category, CategoryScore]
+    ) -> tuple[int, Dict[str, Any]]:
+        """
+        Calculate weighted composite score from category scores.
+        
+        Args:
+            category_scores: Map of category to score
+            
+        Returns:
+            Tuple of (composite_score, breakdown_dict)
+        """
+        total_weighted = 0.0
+        total_weight = 0.0
+        breakdown = {}
+        
+        for category, cat_score in category_scores.items():
+            weight = self.weights.get(category, 1.0)
+            weighted = cat_score.score * weight
+            
+            total_weighted += weighted
+            total_weight += weight
+            
+            breakdown[category.value] = {
+                "score": cat_score.score,
+                "weight": weight,
+                "weighted": weighted,
+            }
+        
+        if total_weight == 0:
+            composite = 0
+        else:
+            composite = round(total_weighted / total_weight)
+        
+        breakdown["total_weighted"] = total_weighted
+        breakdown["total_weight"] = total_weight
+        breakdown["raw_average"] = total_weighted / total_weight if total_weight else 0
+        
+        return composite, breakdown
+    
+    def calculate(
+        self,
+        handle: str,
+        name: str,
+        platform_data: Dict[str, PlatformData],
+        metadata: Optional[Dict[str, Any]] = None
+    ) -> ScoreResult:
+        """
+        Calculate complete score for an agent.
+        
+        Args:
+            handle: Agent handle/username
+            name: Display name
+            platform_data: Dict mapping platform names to PlatformData
+            metadata: Optional additional data
+            
+        Returns:
+            Complete ScoreResult with composite score and tier
+        """
+        # Map platform names to categories
+        platform_to_category = {
+            "github": Category.CODE,
+            "devto": Category.CONTENT,
+            "blog": Category.CONTENT,
+            "a2a": Category.IDENTITY,
+            "domain": Category.IDENTITY,
+            "x": Category.SOCIAL,
+            "twitter": Category.SOCIAL,
+            "toku": Category.ECONOMIC,
+            "clawhub": Category.COMMUNITY,
+            "openclaw": Category.COMMUNITY,
+        }
+        
+        # Aggregate platform data by category
+        # For now, each category gets its primary platform data
+        category_data: Dict[Category, PlatformData] = {}
+        
+        for platform_name, data in platform_data.items():
+            category = platform_to_category.get(platform_name)
+            if category:
+                category_data[category] = data
+                category_data[category].data["platform_name"] = platform_name
+        
+        # Calculate individual category scores
+        category_scores: Dict[Category, CategoryScore] = {}
+        all_data_sources: List[str] = []
+        
+        for category in Category:
+            data = category_data.get(category, PlatformData(
+                platform=category.value,
+                status="unavailable"
+            ))
+            
+            score = self.calculate_category(category, data)
+            category_scores[category] = score
+            all_data_sources.extend(score.data_sources)
+        
+        # Calculate composite score
+        composite, composite_breakdown = self.calculate_composite(category_scores)
+        
+        # Determine tier
+        tier = Tier.from_score(composite)
+        
+        # Remove duplicates from data sources
+        data_sources = list(set(all_data_sources))
+        
+        # Add composite breakdown to metadata
+        meta = metadata or {}
+        meta["composite_breakdown"] = composite_breakdown
+        
+        return ScoreResult(
+            handle=handle,
+            name=name,
+            composite_score=composite,
+            tier=tier,
+            category_scores=category_scores,
+            data_sources=data_sources,
+            metadata=meta,
+        )
+    
+    def calculate_from_profile(
+        self,
+        profile_data: Dict[str, Any]
+    ) -> ScoreResult:
+        """
+        Calculate score from a profile data dict (legacy format).
+        
+        Args:
+            profile_data: Profile data in old format from JSON files
+            
+        Returns:
+            Complete ScoreResult
+        """
+        handle = profile_data.get("handle", "unknown")
+        name = profile_data.get("name", handle)
+        platforms = profile_data.get("platforms", {})
+        
+        # Convert old format to PlatformData objects
+        platform_data: Dict[str, PlatformData] = {}
+        
+        for platform_name, data in platforms.items():
+            if isinstance(data, dict):
+                status = data.get("status", "ok")
+                platform_data[platform_name] = PlatformData(
+                    platform=platform_name,
+                    status=status,
+                    data=data
+                )
+        
+        return self.calculate(handle, name, platform_data)

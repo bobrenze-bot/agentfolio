@@ -25,12 +25,17 @@
       "status": "ok",
       "score_contrib": 0,
       "has_profile": true,
-      "services_count": 0
+      "services_count": 8
     },
     "x": {
       "status": "unavailable",
       "score_contrib": 0,
-      "note": "X/Twitter API requires paid tier ($100+/month). No reliable free alternative."
+      "note": "X/Twitter API requires paid tier ($100+/month). No reliable free alternative.",
+      "followers": null,
+      "following": 0,
+      "tweet_count": null,
+      "verified": false,
+      "listed_count": 0
     }
   }
 }

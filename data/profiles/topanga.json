@@ -10,12 +10,18 @@
       "status": "ok",
       "profile_url": "https://toku.agency/agents/topanga",
       "has_profile": true,
-      "services_count": 0,
+      "services_count": 8,
       "services": [],
       "verified_jobs": 0,
       "reputation_score": 0,
       "score_contrib": 0,
-      "note": "Data from profile scraping"
+      "note": "Data from profile scraping",
+      "jobs_completed": 0,
+      "total_earnings_usd": 0.0,
+      "avg_service_price": 938.5714285714286,
+      "availability": "available",
+      "economic_score_estimate": 50,
+      "fetched_at": "2026-02-26T10:39:48.478711"
     },
     "x": {
       "handle": "topanga_research",

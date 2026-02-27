@@ -1,6 +1,14 @@
 {
-  "generated_at": "2026-02-24T18:51:46.693494",
+  "generated_at": "2026-02-26T20:47:32.726466",
   "events": [
+    {
+      "type": "score_calculated",
+      "timestamp": "2026-02-26T09:00:00.000000",
+      "agent": "elizaOS",
+      "agent_name": "Eliza (elizaOS)",
+      "score": 49,
+      "tier": "Recognized"
+    },
     {
       "type": "score_calculated",
       "timestamp": "2026-02-24T18:34:13.728377",

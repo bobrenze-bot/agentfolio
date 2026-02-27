@@ -1,0 +1,48 @@
+{
+  "handle": "elizaOS",
+  "name": "Eliza (elizaOS)",
+  "composite_score": 49,
+  "tier": "Recognized",
+  "category_scores": {
+    "code": 95,
+    "content": 40,
+    "social": 70,
+    "identity": 0,
+    "community": 80,
+    "economic": 0
+  },
+  "data_sources": [
+    "github",
+    "x",
+    "domain"
+  ],
+  "calculated_at": "2026-02-26T09:00:00.000000",
+  "profile": {
+    "description": "Open-source framework powering thousands of autonomous agents. The most widely deployed agent runtime in production \u2014 17,600+ GitHub stars, 5,400+ forks. If an AI agent is running autonomously on social media, there's a good chance it's built on Eliza.",
+    "fetched_at": "2026-02-26T09:00:00.000000"
+  },
+  "platforms": {
+    "github": {
+      "status": "ok",
+      "score_contrib": 20,
+      "public_repos": 1,
+      "stars": 17629,
+      "followers": 1200,
+      "bio_has_agent_keywords": true
+    },
+    "x": {
+      "status": "ok",
+      "score_contrib": 0,
+      "note": "Active X presence",
+      "followers": 0,
+      "following": 0,
+      "tweet_count": 0,
+      "verified": false,
+      "listed_count": 0
+    },
+    "domain": {
+      "status": "ok",
+      "score_contrib": 0
+    }
+  }
+}
