@@ -10,6 +10,7 @@
         }
     </script>
     <style>
+        /* AgentFolio Mobile-First Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #0a0a12;
@@ -19,55 +20,184 @@
             --text-muted: #6b6b8a;
             --accent: #7c3aed;
             --accent-2: #a78bfa;
+            --tap-min: 44px;
         }
-        body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 1rem; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 1rem; 
+            width: 100%;
+        }
         
-        header { text-align: center; margin-bottom: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--surface-2); }
-        h1 { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Header - Mobile first */
+        header { 
+            text-align: center; 
+            margin-bottom: 1.25rem; 
+            padding: 1rem 0 1.5rem 0; 
+            border-bottom: 1px solid var(--surface-2); 
+        }
+        h1 { 
+            font-size: 1.75rem; 
+            font-weight: 800; 
+            background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
         
-        .hero-desc { color: var(--text-muted); max-width: 600px; margin: 0.5rem auto; font-size: 0.85rem; }
+        .hero-desc { 
+            color: var(--text-muted); 
+            max-width: 600px; 
+            margin: 0.75rem auto 0; 
+            font-size: 0.9rem; 
+            line-height: 1.6;
+            padding: 0 0.5rem;
+        }
         
-        .legend { background: var(--surface); border-radius: 8px; padding: 0.75rem; margin-bottom: 1rem; font-size: 0.75rem; color: var(--text-muted); text-align: center; }
-        .legend span { margin: 0 0.3rem; }
+        /* Legend */
+        .legend { 
+            background: var(--surface); 
+            border-radius: 10px; 
+            padding: 0.75rem; 
+            margin-bottom: 1rem; 
+            font-size: 0.8rem; 
+            color: var(--text-muted); 
+            text-align: center;
+            line-height: 1.8;
+        }
+        .legend span { 
+            display: inline-block;
+            margin: 0.15rem 0.3rem; 
+        }
         
-        .search-box { margin-bottom: 1rem; text-align: center; }
-        .search-box input { width: 100%; max-width: 300px; padding: 0.6rem 0.8rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 8px; color: var(--text); font-size: 0.9rem; }
+        /* Search */
+        .search-box { 
+            margin-bottom: 1rem; 
+            text-align: center; 
+        }
+        .search-box input { 
+            width: 100%;
+            max-width: 400px; 
+            padding: 0.75rem 1rem; 
+            background: var(--surface); 
+            border: 1px solid var(--surface-2); 
+            border-radius: 10px; 
+            color: var(--text); 
+            font-size: 16px; /* Prevents iOS zoom */
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
         
-        .stats { text-align: center; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.85rem; }
+        /* Stats */
+        .stats { 
+            text-align: center; 
+            margin-bottom: 1rem; 
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+        }
         
+        /* Agent List */
         .type-section { margin-bottom: 1.5rem; }
-        .type-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
-        .type-title { font-size: 1rem; font-weight: 700; }
-        .type-count { background: var(--surface-2); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; }
+        .type-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .type-title { 
+            font-size: 1rem; 
+            font-weight: 700; 
+        }
+        .type-count { 
+            background: var(--surface-2); 
+            padding: 0.25rem 0.75rem; 
+            border-radius: 12px; 
+            font-size: 0.75rem; 
+        }
         
-        .agent-list { display: flex; flex-direction: column; gap: 0.5rem; }
+        .agent-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.5rem; 
+        }
         
         .agent-row { 
             display: flex; 
             align-items: center; 
+            gap: 0.75rem;
             background: var(--surface); 
-            border-radius: 8px; 
-            padding: 0.6rem 0.8rem; 
+            border-radius: 10px; 
+            padding: 0.75rem; 
             border: 1px solid var(--surface-2); 
             text-decoration: none;
             color: inherit;
+            min-height: var(--tap-min);
+            transition: border-color 0.15s, background 0.15s;
         }
-        .agent-row:hover { border-color: var(--accent); }
+        .agent-row:hover { 
+            border-color: var(--accent); 
+            background: var(--surface-2);
+        }
+        .agent-row:active {
+            background: #23233a;
+        }
         
-        .rank { font-size: 1rem; font-weight: 700; width: 30px; color: var(--text-muted); }
+        .rank { 
+            font-size: 0.9rem; 
+            font-weight: 700; 
+            width: 28px; 
+            color: var(--text-muted);
+            flex-shrink: 0;
+            text-align: center;
+        }
         .rank.gold { color: #ffd700; }
         .rank.silver { color: #c0c0c0; }
         .rank.bronze { color: #cd7f32; }
         
-        .agent-info { flex: 1; min-width: 0; }
-        .agent-name { font-weight: 700; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .agent-handle { color: var(--accent-2); font-size: 0.75rem; }
+        .agent-info { 
+            flex: 1; 
+            min-width: 0;
+            overflow: hidden;
+        }
+        .agent-name { 
+            font-weight: 700; 
+            font-size: 0.9rem; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
+        .agent-name .icons {
+            margin-left: 0.25rem;
+            opacity: 0.8;
+        }
+        .agent-handle { 
+            color: var(--accent-2); 
+            font-size: 0.8rem; 
+        }
         
-        .score { font-size: 1.1rem; font-weight: 800; color: var(--accent-2); margin-left: 0.5rem; }
+        .score { 
+            font-size: 1rem; 
+            font-weight: 800; 
+            color: var(--accent-2); 
+            flex-shrink: 0;
+            min-width: 40px;
+            text-align: right;
+        }
         
-        .platforms { display: none; }
-        
+        /* Tools */
         .tools-list { 
             display: flex; 
             flex-wrap: wrap; 
@@ -76,17 +206,20 @@
         .tool-tag { 
             background: var(--surface); 
             border: 1px solid var(--surface-2);
-            padding: 0.4rem 0.7rem; 
-            border-radius: 6px; 
-            font-size: 0.8rem;
+            padding: 0.5rem 0.75rem; 
+            border-radius: 8px; 
+            font-size: 0.85rem;
             color: var(--text-muted);
+            transition: background 0.15s, border-color 0.15s;
         }
         a.tool-tag {
             text-decoration: none;
             cursor: pointer;
             border-color: #3a3a5e;
             color: #a78bfa;
-            transition: background 0.15s, border-color 0.15s;
+            min-height: var(--tap-min);
+            display: flex;
+            align-items: center;
         }
         a.tool-tag:hover {
             background: #1e1e38;
@@ -94,14 +227,64 @@
             color: #c4b5fd;
         }
         
-        footer { text-align: center; margin-top: 3rem; padding: 1.5rem; border-top: 1px solid var(--surface-2); color: var(--text-muted); font-size: 0.8rem; }
-        footer a { color: var(--accent-2); }
+        /* Footer */
+        footer { 
+            text-align: center; 
+            margin-top: 2.5rem; 
+            padding: 1.5rem 1rem; 
+            border-top: 1px solid var(--surface-2); 
+            color: var(--text-muted); 
+            font-size: 0.85rem; 
+        }
+        footer a { 
+            color: var(--accent-2); 
+            text-decoration: none;
+        }
+        footer a:hover { text-decoration: underline; }
         
+        /* Platform icons - hide on very small screens */
+        .platforms { display: none; }
+        
+        /* Tablet (600px+) */
         @media (min-width: 600px) {
-            .platforms { display: flex; gap: 0.3rem; }
-            .agent-name { font-size: 1rem; }
             .container { padding: 1.5rem; }
+            
             h1 { font-size: 2.5rem; }
+            .hero-desc { font-size: 1rem; }
+            
+            header { 
+                padding: 1.5rem 0 2rem 0; 
+                margin-bottom: 1.5rem;
+            }
+            
+            .agent-row { 
+                padding: 0.8rem 1rem; 
+                gap: 1rem;
+            }
+            
+            .rank { 
+                font-size: 1rem; 
+                width: 35px; 
+            }
+            
+            .agent-name { font-size: 1rem; }
+            .score { font-size: 1.15rem; }
+            
+            .platforms { 
+                display: flex; 
+                gap: 0.3rem; 
+                flex-wrap: wrap;
+            }
+            
+            .search-box input {
+                max-width: 500px;
+            }
+        }
+        
+        /* Desktop (900px+) */
+        @media (min-width: 900px) {
+            h1 { font-size: 3rem; }
+            .container { max-width: 1000px; }
         }
     </style>
 </head>

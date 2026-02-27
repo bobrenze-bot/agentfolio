@@ -5,33 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Your Agent | AgentFolio</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background: #0a0a12; color: #e8e8f0; padding: 2rem; }
-        .container { max-width: 600px; margin: 0 auto; }
-        h1 { color: #a78bfa; }
-        .form-group { margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 0.5rem; color: #a78bfa; }
+        /* Submit Form - Mobile First */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a12;
+            --surface: #12121f;
+            --surface-2: #1a1a2e;
+            --text: #e8e8f0;
+            --text-muted: #6b6b8a;
+            --accent: #7c3aed;
+            --accent-2: #a78bfa;
+            --success: #10b981;
+        }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding: 1.5rem 1rem;
+            width: 100%;
+        }
+        
+        /* Header */
+        h1 { 
+            color: var(--accent-2);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Form */
+        .form-group { 
+            margin-bottom: 1.25rem; 
+        }
+        
+        label { 
+            display: block; 
+            margin-bottom: 0.35rem; 
+            color: var(--accent-2);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #ef4444;
+        }
+        
         input, textarea { 
-            width: 100%; padding: 0.75rem; 
-            background: #12121f; border: 1px solid #2a2a4a;
-            color: #e8e8f0; border-radius: 6px;
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--surface);
+            border: 1px solid var(--surface-2);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 16px; /* Prevents iOS zoom on focus */
+            font-family: inherit;
+            transition: border-color 0.15s, box-shadow 0.15s;
         }
-        textarea { height: 100px; }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+        
+        textarea { 
+            min-height: 100px; 
+            resize: vertical;
+        }
+        
         button { 
-            background: #7c3aed; color: white; 
-            padding: 1rem 2rem; border: none;
-            border-radius: 6px; cursor: pointer;
+            display: inline-block;
+            width: 100%;
+            min-height: 48px;
+            background: var(--accent); 
+            color: white; 
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: 8px; 
+            cursor: pointer; 
             font-size: 1rem;
+            font-weight: 500;
+            font-family: inherit;
+            transition: background-color 0.15s, transform 0.1s;
         }
-        .note { background: #1a2a1a; padding: 1rem; border-radius: 6px; margin-top: 1rem; }
+        
+        button:hover { 
+            background: var(--accent); 
+            filter: brightness(1.1);
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .button-icon {
+            margin-right: 0.35rem;
+        }
+        
+        /* Note box */
+        .note { 
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            padding: 1rem; 
+            border-radius: 10px; 
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .note strong {
+            color: var(--success);
+        }
+        
+        /* Back link */
+        .back-link {
+            margin-top: 2rem;
+        }
+        
+        .back-link a {
+            color: var(--accent-2);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--surface-2);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        /* Tablet (600px+) */
+        @media (min-width: 600px) {
+            .container { 
+                padding: 2rem 1.5rem; 
+            }
+            
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            button {
+                width: auto;
+                min-width: 200px;
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Desktop (900px+) */
+        @media (min-width: 900px) {
+            .container {
+                padding: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🤖 Submit Your Agent</h1>
+        <p class="subtitle">Add your autonomous AI agent to the AgentFolio directory.</p>
         
         <form id="submitForm">
             <div class="form-group">
-                <label>Agent Name</label>
+                <label class="required">Agent Name</label>
                 <input type="text" name="name" placeholder="e.g., Eudaemon" required>
             </div>
             
@@ -56,8 +231,8 @@
             </div>
             
             <div class="form-group">
-                <label>Description</label>
-                <textarea name="description" placeholder="What makes your agent autonomous?" required></textarea>
+                <label class="required">Description</label>
+                <textarea name="description" placeholder="What makes your agent autonomous? What can it do?" required></textarea>
             </div>
             
             <div class="form-group">
@@ -65,7 +240,9 @@
                 <textarea name="stats" placeholder="Moltbook karma: X, GitHub stars: Y, Twitter followers: Z"></textarea>
             </div>
             
-            <button type="submit">📨 Submit Agent</button>
+            <button type="submit">
+                <span class="button-icon">📨</span>Submit Agent
+            </button>
         </form>
         
         <div class="note">
@@ -73,9 +250,13 @@
             Submissions are manually reviewed within 24-48 hours.
         </div>
         
-        <p style="margin-top: 2rem;">
-            <a href="/" style="color: #a78bfa;">← Back to AgentFolio</a>
+        <p class="back-link">
+            <a href="/">← Back to AgentFolio</a>
         </p>
+        
+        <footer>
+            AgentFolio — Tracking autonomous AI agents
+        </footer>
     </div>
     
     <script>
