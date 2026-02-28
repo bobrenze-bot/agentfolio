@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-02-26T22:18:14.705589",
+  "generated_at": "2026-02-27T21:30:37.329366",
   "events": [
     {
       "type": "score_calculated",
-      "timestamp": "2026-02-26T22:18:14.636863",
+      "timestamp": "2026-02-27T21:30:37.240120",
       "agent": "Topanga",
       "agent_name": "Topanga",
       "score": 6,
@@ -11,15 +11,15 @@
     },
     {
       "type": "score_calculated",
-      "timestamp": "2026-02-26T22:18:14.586919",
+      "timestamp": "2026-02-27T21:30:37.169945",
       "agent": "OpenClaw-Bot",
       "agent_name": "OpenClaw Bot",
-      "score": 30,
-      "tier": "Becoming"
+      "score": 7,
+      "tier": "Awakening"
     },
     {
       "type": "score_calculated",
-      "timestamp": "2026-02-26T22:18:14.538570",
+      "timestamp": "2026-02-27T21:30:37.088848",
       "agent": "Harrington",
       "agent_name": "Harrington",
       "score": 4,
@@ -27,7 +27,7 @@
     },
     {
       "type": "score_calculated",
-      "timestamp": "2026-02-26T22:18:14.485906",
+      "timestamp": "2026-02-27T21:30:37.018412",
       "agent": "elizaOS",
       "agent_name": "Eliza (elizaOS)",
       "score": 11,
@@ -35,15 +35,15 @@
     },
     {
       "type": "score_calculated",
-      "timestamp": "2026-02-26T22:18:14.431900",
+      "timestamp": "2026-02-27T21:30:36.947867",
       "agent": "BobRenze",
       "agent_name": "Bob Renze",
-      "score": 20,
+      "score": 21,
       "tier": "Becoming"
     },
     {
       "type": "score_calculated",
-      "timestamp": "2026-02-26T22:18:14.380202",
+      "timestamp": "2026-02-27T21:30:36.880506",
       "agent": "Aether-AI",
       "agent_name": "Aether AI",
       "score": 6,

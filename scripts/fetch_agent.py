@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-AgentFolio Data Fetcher (v2.1)
+AgentFolio Data Fetcher (v2.2)
 Pulls public data from multiple platforms for an agent.
 
 Changes in v2.1:
 - Better SSL error handling with informative messages
 - Pass through domain ownership indicator even when A2A fetch fails
 - Improved status codes for different error scenarios
+
+Changes in v2.2:
+- Added browser-like headers to fetch_url() to avoid Cloudflare 403 errors
+- Added automatic retry logic with exponential backoff for transient errors
+- Fixes A2A agent-card.json fetch failures caused by bot detection
 """
 
 import json
@@ -72,18 +77,53 @@ def load_moltbook_key():
 MOLTBOOK_API_KEY = load_moltbook_key()
 
 
-def fetch_url(url, headers=None, method=None):
-    """Fetch URL with error handling."""
-    try:
-        req = Request(url, headers=headers or {}, method=method)
-        with urlopen(req, timeout=15) as response:
-            return response.read().decode('utf-8'), response.status
-    except HTTPError as e:
-        return None, e.code
-    except URLError as e:
-        return None, str(e.reason if hasattr(e, 'reason') else str(e))
-    except Exception as e:
-        return None, str(e)
+def fetch_url(url, headers=None, method=None, max_retries=2):
+    """Fetch URL with error handling and retry logic.
+    
+    Includes browser-like headers to avoid Cloudflare bot detection.
+    """
+    import time
+    
+    # Default browser-like headers
+    default_headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'identity',  # No compression to avoid SSL issues
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1'
+    }
+    
+    # Merge provided headers with defaults (provided take precedence)
+    final_headers = default_headers.copy()
+    if headers:
+        final_headers.update(headers)
+    
+    last_error = None
+    for attempt in range(max_retries + 1):
+        try:
+            req = Request(url, headers=final_headers, method=method)
+            with urlopen(req, timeout=15) as response:
+                return response.read().decode('utf-8'), response.status
+        except HTTPError as e:
+            last_error = e.code
+            # Don't retry on 404 or 403 (likely permanent)
+            if e.code in (404, 403):
+                return None, e.code
+        except URLError as e:
+            last_error = str(e.reason if hasattr(e, 'reason') else str(e))
+            # Retry on SSL errors
+            if 'SSL' in str(last_error) or 'handshake' in str(last_error):
+                if attempt < max_retries:
+                    time.sleep(0.5 * (attempt + 1))
+                    continue
+        except Exception as e:
+            last_error = str(e)
+        
+        if attempt < max_retries:
+            time.sleep(0.5 * (attempt + 1))  # Exponential backoff
+    
+    return None, last_error
 
 
 def parse_json_safe(text):

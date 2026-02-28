@@ -4,7 +4,7 @@
   "composite_score": 6,
   "tier": "Awakening",
   "tier_description": "Signal detected",
-  "calculated_at": "2026-02-26T22:18:14.636863",
+  "calculated_at": "2026-02-27T21:30:37.240120",
   "category_scores": {
     "code": {
       "category": "code",
@@ -31,7 +31,7 @@
       "percentage": 0.0,
       "breakdown": {},
       "data_sources": [],
-      "notes": "Platform status: unavailable | Decay: 0.0% over 0 days"
+      "notes": "Platform status: unknown (no agent card) | Decay: 0.0% over 0 days"
     },
     "social": {
       "category": "social",
@@ -79,9 +79,9 @@
     }
   },
   "data_sources": [
-    "openclaw",
     "clawhub",
     "discord",
+    "openclaw",
     "toku"
   ],
   "metadata": {
@@ -158,6 +158,22 @@
         "decay_percent": 0.0,
         "days_since_activity": 0
       }
+    },
+    "skills_boost": {
+      "raw_score": 6,
+      "skill_count": 0,
+      "combined_points": 0.0,
+      "a2a_points": 0,
+      "a2a_skill_count": 0,
+      "moltbook_points": 0,
+      "moltbook_username": null,
+      "moltbook_breakdown": {},
+      "moltbook_raw": null,
+      "has_moltbook_data": false,
+      "multiplier": 1.0,
+      "boost_percent": 0,
+      "boosted_score": 6,
+      "points_gained": 0
     }
   }
 }

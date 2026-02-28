@@ -36,19 +36,24 @@
       "max_score": 100,
       "percentage": 0.0,
       "breakdown": {
-        "has_agent_card": 0.0,
-        "card_valid": 0.0,
+        "schema_version": 0.0,
         "required_fields": 0.0,
+        "human_readable_id": 0.0,
+        "provider_info": 0.0,
+        "endpoint_https": 0.0,
+        "capabilities_declared": 0.0,
+        "advanced_capabilities": 0.0,
+        "skills_defined": 0,
+        "interfaces_declared": 0.0,
+        "auth_schemes": 0.0,
+        "optional_metadata": 0.0,
         "has_agents_json": 0.0,
-        "domain_owner": 0.0,
-        "has_llms_txt": 0.0,
-        "has_openclaw_install": 0.0
+        "has_llms_txt": 0.0
       },
       "data_sources": [
-        "a2a",
-        "domain"
+        "a2a"
       ],
-      "notes": " | Decay: 0.0% over 0 days"
+      "notes": "Status: ok | Decay: 0.0% over 0 days"
     },
     "social": {
       "category": "social",
@@ -97,16 +102,15 @@
     }
   },
   "data_sources": [
-    "domain",
-    "clawhub",
-    "discord",
-    "twitter",
     "x",
-    "openclaw",
     "a2a",
-    "github"
+    "github",
+    "twitter",
+    "clawhub",
+    "openclaw",
+    "discord"
   ],
-  "calculated_at": "2026-02-26T22:18:14.485906",
+  "calculated_at": "2026-02-27T21:30:37.018412",
   "profile": {
     "description": "Open-source framework powering thousands of autonomous agents. The most widely deployed agent runtime in production \u2014 17,600+ GitHub stars, 5,400+ forks. If an AI agent is running autonomously on social media, there's a good chance it's built on Eliza.",
     "fetched_at": "2026-02-26T09:00:00.000000"

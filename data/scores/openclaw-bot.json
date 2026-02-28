@@ -1,10 +1,10 @@
 {
   "handle": "OpenClaw-Bot",
   "name": "OpenClaw Bot",
-  "composite_score": 30,
-  "tier": "Becoming",
-  "tier_description": "Getting started",
-  "calculated_at": "2026-02-26T22:18:14.586919",
+  "composite_score": 7,
+  "tier": "Awakening",
+  "tier_description": "Signal detected",
+  "calculated_at": "2026-02-27T21:30:37.169945",
   "category_scores": {
     "code": {
       "category": "code",
@@ -34,23 +34,28 @@
     },
     "identity": {
       "category": "identity",
-      "score": 90,
+      "score": 10,
       "max_score": 100,
-      "percentage": 90.0,
+      "percentage": 10.0,
       "breakdown": {
-        "has_agent_card": 30,
-        "card_valid": 10,
-        "required_fields": 10,
-        "has_agents_json": 10,
-        "domain_owner": 20,
-        "has_llms_txt": 10,
-        "has_openclaw_install": 0.0
+        "schema_version": 0.0,
+        "required_fields": 5.0,
+        "human_readable_id": 0.0,
+        "provider_info": 0.0,
+        "endpoint_https": 0.0,
+        "capabilities_declared": 0.0,
+        "advanced_capabilities": 0,
+        "skills_defined": 0,
+        "interfaces_declared": 0.0,
+        "auth_schemes": 0.0,
+        "optional_metadata": 0.0,
+        "has_agents_json": 3.0,
+        "has_llms_txt": 2.0
       },
       "data_sources": [
-        "a2a",
-        "domain"
+        "a2a"
       ],
-      "notes": " | Decay: 0.0% over 0 days"
+      "notes": "Status: ok | A2A schema: other/missing | Skills: 0 | Auth schemes: 0 | Interfaces: 0 | Decay: 0.0% over 0 days"
     },
     "social": {
       "category": "social",
@@ -90,12 +95,11 @@
     }
   },
   "data_sources": [
-    "openclaw",
-    "clawhub",
     "discord",
-    "a2a",
+    "clawhub",
+    "openclaw",
     "github",
-    "domain"
+    "a2a"
   ],
   "metadata": {
     "composite_breakdown": {
@@ -110,9 +114,9 @@
         "weighted": 0.0
       },
       "identity": {
-        "score": 90,
+        "score": 10,
         "weight": 2.0,
-        "weighted": 180.0
+        "weighted": 20.0
       },
       "social": {
         "score": 0,
@@ -129,9 +133,9 @@
         "weight": 1.0,
         "weighted": 0.0
       },
-      "total_weighted": 210.0,
+      "total_weighted": 50.0,
       "total_weight": 7.0,
-      "raw_average": 30.0
+      "raw_average": 7.142857142857143
     },
     "decay_applied": true,
     "decay_details": {
@@ -148,8 +152,8 @@
         "days_since_activity": 0
       },
       "identity": {
-        "raw_score": 90,
-        "decayed_score": 90,
+        "raw_score": 10,
+        "decayed_score": 10,
         "decay_percent": 0.0,
         "days_since_activity": 0
       },
@@ -171,6 +175,22 @@
         "decay_percent": 0.0,
         "days_since_activity": 0
       }
+    },
+    "skills_boost": {
+      "raw_score": 7,
+      "skill_count": 0,
+      "combined_points": 0.0,
+      "a2a_points": 0,
+      "a2a_skill_count": 0,
+      "moltbook_points": 0,
+      "moltbook_username": null,
+      "moltbook_breakdown": {},
+      "moltbook_raw": null,
+      "has_moltbook_data": false,
+      "multiplier": 1.0,
+      "boost_percent": 0,
+      "boosted_score": 7,
+      "points_gained": 0
     }
   }
 }

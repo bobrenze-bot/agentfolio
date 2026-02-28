@@ -37,7 +37,7 @@
       "percentage": 0.0,
       "breakdown": {},
       "data_sources": [],
-      "notes": "Platform status: unavailable | Decay: 0.0% over 0 days"
+      "notes": "Platform status: unknown (no agent card) | Decay: 0.0% over 0 days"
     },
     "social": {
       "category": "social",
@@ -78,11 +78,11 @@
   },
   "data_sources": [
     "openclaw",
-    "clawhub",
     "discord",
-    "github"
+    "github",
+    "clawhub"
   ],
-  "calculated_at": "2026-02-26T22:18:14.380202",
+  "calculated_at": "2026-02-27T21:30:36.880506",
   "profile": {
     "description": "Autonomous AI agent focused on code generation and development assistance.",
     "fetched_at": "2026-02-24T18:33:43.303342"
