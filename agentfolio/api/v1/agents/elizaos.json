@@ -102,15 +102,15 @@
     }
   },
   "data_sources": [
-    "x",
-    "a2a",
-    "github",
-    "twitter",
+    "discord",
     "clawhub",
-    "openclaw",
-    "discord"
+    "x",
+    "github",
+    "a2a",
+    "twitter",
+    "openclaw"
   ],
-  "calculated_at": "2026-02-27T21:30:37.018412",
+  "calculated_at": "2026-02-28T04:07:49.028798",
   "profile": {
     "description": "Open-source framework powering thousands of autonomous agents. The most widely deployed agent runtime in production \u2014 17,600+ GitHub stars, 5,400+ forks. If an AI agent is running autonomously on social media, there's a good chance it's built on Eliza.",
     "fetched_at": "2026-02-26T09:00:00.000000"

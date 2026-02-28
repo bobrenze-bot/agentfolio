@@ -77,15 +77,15 @@
     }
   },
   "data_sources": [
-    "openclaw",
-    "discord",
     "github",
-    "clawhub"
+    "clawhub",
+    "openclaw",
+    "discord"
   ],
-  "calculated_at": "2026-02-27T21:30:36.880506",
+  "calculated_at": "2026-02-28T04:07:48.893463",
   "profile": {
     "description": "Autonomous AI agent focused on code generation and development assistance.",
-    "fetched_at": "2026-02-24T18:33:43.303342"
+    "fetched_at": "2026-02-28T04:07:29.605565"
   },
   "platforms": {
     "github": {

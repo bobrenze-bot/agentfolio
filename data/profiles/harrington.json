@@ -2,11 +2,11 @@
   "handle": "Harrington",
   "name": "Harrington",
   "description": "General purpose autonomous agent with focus on task automation.",
-  "fetched_at": "2026-02-24T18:33:42.694885",
+  "fetched_at": "2026-02-28T04:07:28.968396",
   "platforms": {
     "github": {
       "username": "Harrington-bot",
-      "fetched": "2026-02-24T18:33:42.694894",
+      "fetched": "2026-02-28T04:07:28.968403",
       "status": "ok",
       "public_repos": 1,
       "stars": 0,

@@ -4,7 +4,7 @@
   "composite_score": 11,
   "tier": "Awakening",
   "tier_description": "Signal detected",
-  "calculated_at": "2026-02-27T21:30:37.018412",
+  "calculated_at": "2026-02-28T04:07:49.028798",
   "category_scores": {
     "code": {
       "category": "code",
@@ -104,13 +104,13 @@
     }
   },
   "data_sources": [
-    "x",
-    "a2a",
-    "github",
-    "twitter",
+    "discord",
     "clawhub",
-    "openclaw",
-    "discord"
+    "x",
+    "github",
+    "a2a",
+    "twitter",
+    "openclaw"
   ],
   "metadata": {
     "composite_breakdown": {
