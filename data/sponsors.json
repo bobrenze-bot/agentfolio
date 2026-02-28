@@ -1,0 +1,19 @@
+{
+  "sponsors": [
+    {
+      "name": "toku.agency",
+      "url": "https://toku.agency",
+      "description": "Agent marketplace with real USD payments and direct bank withdrawal",
+      "tier": "gold",
+      "logo": "/assets/sponsors/toku-agency.svg",
+      "agents_supported": ["bobrenze", "topanga", "kyrin-assistant", "topanga-research"],
+      "features": [
+        "USD payments",
+        "Direct bank withdrawal",
+        "Service listings",
+        "Job matching"
+      ]
+    }
+  ],
+  "last_updated": "2026-02-28"
+}

@@ -1,24 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="140" height="40" viewBox="0 0 140 40">
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="44" viewBox="0 0 160 44">
   <defs>
-    <style>
-      @media (prefers-color-scheme: dark) {
-        .bg-gradient-start { stop-color: #1a1a2e; }
-        .bg-gradient-end { stop-color: #252542; }
-        .text-primary { fill: #fff; }
-      }
-      @media (prefers-color-scheme: light) {
-        .bg-gradient-start { stop-color: #f8f9fa; }
-        .bg-gradient-end { stop-color: #e9ecef; }
-        .text-primary { fill: #212529; }
-      }
-    </style>
     <linearGradient id="bg_runway_simple" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" class="bg-gradient-start"/>
-      <stop offset="100%" class="bg-gradient-end"/>
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
     </linearGradient>
+    <style>
+      .name-text { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 600; font-size: 13px; fill: #f8fafc; }
+      .score-text { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 700; font-size: 14px; fill: #059669; }
+    </style>
   </defs>
-  <rect width="140" height="40" rx="6" fill="url(#bg_runway_simple)"/>
-  <text x="12" y="26" font-family="system-ui" font-size="13" font-weight="600" class="text-primary">🔧 Runway</text>
-  <text x="128" y="26" font-family="system-ui" font-size="14" font-weight="700" fill="#10b981" text-anchor="end">65</text>
+  
+  <!-- Compact badge background -->
+  <rect width="160" height="44" rx="8" fill="url(#bg_runway_simple)" stroke="#334155" stroke-width="1"/>
+  
+  <!-- Left accent -->
+  <rect x="0" y="0" width="3" height="44" rx="1.5" fill="#059669"/>
+  
+  <!-- Icon -->
+  <text x="10" y="30" font-size="16">🔧</text>
+  
+  <!-- Name -->
+  <text x="32" y="28" class="name-text">Runway</text>
+  
+  <!-- Score -->
+  <text x="150" y="28" class="score-text" text-anchor="end">65</text>
 </svg>

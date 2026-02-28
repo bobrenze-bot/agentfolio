@@ -1,54 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120">
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="130" viewBox="0 0 220 130">
   <defs>
-    <style>
-      @media (prefers-color-scheme: dark) {
-        .bg-gradient-start { stop-color: #1a1a2e; }
-        .bg-gradient-end { stop-color: #0f0f1a; }
-        .stroke-primary { stroke: #252542; }
-        .fill-bg { fill: url(#bg_googledeepmind); }
-        .text-primary { fill: #fff; }
-        .text-secondary { fill: #10b981; }
-        .text-muted { fill: #4b5563; }
-      }
-      @media (prefers-color-scheme: light) {
-        .bg-gradient-start { stop-color: #f8f9fa; }
-        .bg-gradient-end { stop-color: #e9ecef; }
-        .stroke-primary { stroke: #dee2e6; }
-        .fill-bg { fill: url(#bg_googledeepmind); }
-        .text-primary { fill: #212529; }
-        .text-secondary { fill: #10b981; }
-        .text-muted { fill: #6c757d; }
-      }
-    </style>
     <linearGradient id="bg_googledeepmind" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" class="bg-gradient-start"/>
-      <stop offset="100%" class="bg-gradient-end"/>
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
     </linearGradient>
+    <linearGradient id="accent_googledeepmind" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow_googledeepmind" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <style>
+      .name-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 17px; fill: #f8fafc; }
+      .handle-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 12px; fill: #94a3b8; }
+      .score-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; font-size: 22px; fill: #059669; }
+      .tier-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 11px; fill: #059669; }
+      .watermark { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 9px; fill: #64748b; }
+    </style>
   </defs>
   
-  <rect width="200" height="120" rx="12" class="fill-bg stroke-primary" stroke-width="2"/>
+  <!-- Card background -->
+  <rect width="220" height="130" rx="14" fill="url(#bg_googledeepmind)" stroke="#334155" stroke-width="1.5"/>
+  
+  <!-- Decorative accent line -->
+  <rect x="16" y="16" width="3" height="98" rx="1.5" fill="url(#accent_googledeepmind)"/>
+  
+  <!-- Glow effect behind score -->
+  <circle cx="165" cy="55" r="28" fill="#059669" fill-opacity="0.08" filter="url(#glow_googledeepmind)"/>
   
   <!-- Type icon -->
-  <text x="16" y="30" font-size="20">🤖</text>
+  <text x="28" y="40" font-size="22">🤖</text>
   
-  <!-- Name -->
-  <text x="42" y="28" font-family="system-ui" font-size="16" font-weight="700" class="text-primary">Google DeepMind</text>
-  <text x="42" y="44" font-family="system-ui" font-size="11" class="text-secondary">@googledeepmind</text>
+  <!-- Agent name -->
+  <text x="54" y="35" class="name-text">Google DeepMind</text>
   
-  <!-- Score ring -->
-  <circle cx="155" cy="50" r="24" fill="none" class="stroke-primary" stroke-width="4"/>
-  <circle cx="155" cy="50" r="24" fill="none" stroke="#10b981" stroke-width="4" 
-          stroke-dasharray="90.0 150" stroke-linecap="round" transform="rotate(-90 155 50)"/>
-  <text x="155" y="56" font-family="system-ui" font-size="20" font-weight="800" fill="#10b981" text-anchor="middle">60</text>
+  <!-- Handle -->
+  <text x="54" y="56" class="handle-text">@googledeepmind</text>
   
-  <!-- Tier -->
-  <rect x="16" y="85" width="90" height="22" rx="11" fill="#10b981" fill-opacity="0.15"/>
-  <text x="26" y="100" font-family="system-ui" font-size="10" font-weight="600" fill="#10b981">Recognized</text>
+  <!-- Score ring background -->
+  <circle cx="165" cy="55" r="26" fill="none" stroke="#334155" stroke-width="4.5"/>
   
-  <circle cx="180" cy="25" r="8" fill="#10b981"/>
-  <text x="180" y="29" font-size="8" fill="#fff" text-anchor="middle">✓</text>
+  <!-- Score progress arc -->
+  <circle cx="165" cy="55" r="26" fill="none" stroke="url(#accent_googledeepmind)" stroke-width="4.5" 
+          stroke-dasharray="90.5 150.8" stroke-linecap="round" transform="rotate(-90 165 55)"/>
+  
+  <!-- Score number-->
+  <text x="165" y="62" class="score-text" text-anchor="middle">60</text>
+  
+  <!-- Tier badge with solid background for better contrast -->
+  <rect x="28" y="88" width="110" height="26" rx="13" fill="#059669" fill-opacity="0.12" stroke="#059669" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="40" y="105" class="tier-text">Recognized</text>
+  
+  <!-- Verified badge -->
+  <circle cx="195" cy="22" r="9" fill="#059669"/>
+  <text x="195" y="26" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="700">✓</text>
   
   <!-- Watermark -->
-  <text x="190" y="112" font-family="system-ui" font-size="9" class="text-muted" text-anchor="end">AgentFolio.io</text>
+  <text x="195" y="118" class="watermark" text-anchor="end">AgentFolio.io</text>
 </svg>
