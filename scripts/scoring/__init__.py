@@ -30,7 +30,7 @@ from .calculators import (
     CommunityScoreCalculator,
 )
 from .score_calculator import ScoreCalculator
-from .models import CategoryScore, ScoreResult
+from .models import CategoryScore, ScoreResult, PlatformData
 from .decay import (
     DecayCalculator,
     DecayConfig,
@@ -38,14 +38,16 @@ from .decay import (
     apply_decay,
     DEFAULT_DECAY_CONFIGS,
 )
+from .skills_boost import SkillsBoostCalculator
 
-__version__ = "2.1.0"
+__version__ = "2.2.0"
 __all__ = [
     "Category",
     "Tier",
     "ScoreCalculator",
     "CategoryScore",
     "ScoreResult",
+    "PlatformData",
     "CodeScoreCalculator",
     "ContentScoreCalculator",
     "IdentityScoreCalculator",
@@ -57,4 +59,5 @@ __all__ = [
     "DecayRate",
     "apply_decay",
     "DEFAULT_DECAY_CONFIGS",
+    "SkillsBoostCalculator",
 ]

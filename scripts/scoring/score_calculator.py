@@ -19,6 +19,7 @@ from .calculators import (
     CommunityScoreCalculator,
 )
 from .decay import DecayCalculator
+from .skills_boost import SkillsBoostCalculator
 
 
 class ScoreCalculator:
@@ -47,7 +48,8 @@ class ScoreCalculator:
         self, 
         custom_weights: Optional[Dict[Category, float]] = None,
         apply_decay: bool = True,
-        decay_configs: Optional[Dict[Category, Any]] = None
+        decay_configs: Optional[Dict[Category, Any]] = None,
+        apply_skills_boost: bool = True
     ):
         """
         Initialize calculator with optional custom weights and decay settings.
@@ -56,10 +58,13 @@ class ScoreCalculator:
             custom_weights: Override default COMPOSITE_WEIGHTS
             apply_decay: Whether to apply time-based score decay
             decay_configs: Optional custom decay configurations per category
+            apply_skills_boost: Whether to apply skills-based boost to composite score
         """
         self.weights = custom_weights or COMPOSITE_WEIGHTS
         self.apply_decay = apply_decay
         self.decay_calculator = DecayCalculator(decay_configs) if apply_decay else None
+        self.apply_skills_boost = apply_skills_boost
+        self.skills_boost_calculator = SkillsBoostCalculator() if apply_skills_boost else None
         
         # Initialize category calculators
         self.calculators = {
@@ -224,12 +229,6 @@ class ScoreCalculator:
         # Calculate composite score
         composite, composite_breakdown = self.calculate_composite(category_scores)
         
-        # Determine tier
-        tier = Tier.from_score(composite)
-        
-        # Remove duplicates from data sources
-        data_sources = list(set(all_data_sources))
-        
         # Add composite breakdown to metadata
         meta = metadata or {}
         meta["composite_breakdown"] = composite_breakdown
@@ -239,10 +238,25 @@ class ScoreCalculator:
             meta["decay_applied"] = True
             meta["decay_details"] = decay_info
         
+        # Apply skills boost if enabled
+        final_score = composite
+        if self.apply_skills_boost and self.skills_boost_calculator:
+            final_score, meta = self.skills_boost_calculator.apply_boost(
+                composite,
+                category_scores,
+                meta
+            )
+        
+        # Determine tier from final score
+        tier = Tier.from_score(final_score)
+        
+        # Remove duplicates from data sources
+        data_sources = list(set(all_data_sources))
+        
         return ScoreResult(
             handle=handle,
             name=name,
-            composite_score=composite,
+            composite_score=final_score,
             tier=tier,
             category_scores=category_scores,
             data_sources=data_sources,

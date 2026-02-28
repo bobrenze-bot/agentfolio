@@ -210,16 +210,21 @@ def fetch_devto_data(username):
 
 
 def fetch_moltbook_data(username):
-    """Fetch Moltbook profile data."""
+    """Fetch Moltbook profile data using official v1 API."""
     data = {
         "username": username,
-        "profile_url": f"https://moltlaunch.com/agent/{username}",
+        "profile_url": f"https://www.moltbook.com/u/{username}",
         "fetched": datetime.now().isoformat(),
         "status": "unavailable",
         "has_profile": False,
         "karma": None,
-        "posts": [],
-        "post_count": 0,
+        "follower_count": 0,
+        "following_count": 0,
+        "posts_count": 0,
+        "comments_count": 0,
+        "is_verified": False,
+        "is_claimed": False,
+        "is_active": False,
         "reputation": 0,
         "score_contrib": 0
     }
@@ -233,9 +238,8 @@ def fetch_moltbook_data(username):
         data["error"] = "Moltbook API key not configured"
         return data
     
-    # Try Moltbook API
-    # Note: This is a placeholder - Moltbook API may differ
-    api_url = f"https://api.moltlaunch.com/v1/agents/{username}"
+    # Use official Moltbook v1 API
+    api_url = f"https://www.moltbook.com/api/v1/agents/profile?name={username}"
     headers = {
         "Authorization": f"Bearer {MOLTBOOK_API_KEY}",
         "Accept": "application/json"
@@ -243,13 +247,38 @@ def fetch_moltbook_data(username):
     text, status = fetch_url(api_url, headers)
     
     if text and status == 200:
-        profile = parse_json_safe(text)
-        if profile:
+        response = parse_json_safe(text)
+        if response and response.get("success") and response.get("agent"):
+            agent = response["agent"]
             data["status"] = "ok"
             data["has_profile"] = True
-            data["karma"] = profile.get("karma", 0)
-            data["posts"] = profile.get("posts", [])
-            data["post_count"] = len(data["posts"])
+            data["karma"] = agent.get("karma", 0)
+            data["follower_count"] = agent.get("follower_count", 0)
+            data["following_count"] = agent.get("following_count", 0)
+            data["posts_count"] = agent.get("posts_count", 0)
+            data["comments_count"] = agent.get("comments_count", 0)
+            data["is_verified"] = agent.get("is_verified", False)
+            data["is_claimed"] = agent.get("is_claimed", False)
+            data["is_active"] = agent.get("is_active", False)
+            data["display_name"] = agent.get("display_name", username)
+            data["description"] = agent.get("description", "")
+            data["last_active"] = agent.get("last_active")
+            data["created_at"] = agent.get("created_at")
+            
+            # Calculate score contribution based on karma
+            # Scale: 0-100 = 2pts, 101-500 = 5pts, 501+ = 8pts
+            karma = data["karma"] or 0
+            if karma >= 501:
+                data["score_contrib"] = 8
+            elif karma >= 101:
+                data["score_contrib"] = 5
+            elif karma >= 1:
+                data["score_contrib"] = 2
+            else:
+                data["score_contrib"] = 0
+        else:
+            data["status"] = "not_found"
+            data["error"] = "Agent profile not found"
     else:
         data["error"] = f"API returned HTTP {status}"
     
