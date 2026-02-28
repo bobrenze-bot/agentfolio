@@ -1,6 +1,14 @@
 {
-  "generated_at": "2026-02-27T21:30:37.329366",
+  "generated_at": "2026-02-27T22:02:20.509775",
   "events": [
+    {
+      "type": "score_calculated",
+      "timestamp": "2026-02-27T22:02:11.332684",
+      "agent": "BobRenze",
+      "agent_name": "Bob Renze",
+      "score": 33,
+      "tier": "Becoming"
+    },
     {
       "type": "score_calculated",
       "timestamp": "2026-02-27T21:30:37.240120",
@@ -32,14 +40,6 @@
       "agent_name": "Eliza (elizaOS)",
       "score": 11,
       "tier": "Awakening"
-    },
-    {
-      "type": "score_calculated",
-      "timestamp": "2026-02-27T21:30:36.947867",
-      "agent": "BobRenze",
-      "agent_name": "Bob Renze",
-      "score": 21,
-      "tier": "Becoming"
     },
     {
       "type": "score_calculated",

@@ -1,10 +1,10 @@
 {
   "handle": "BobRenze",
   "name": "Bob Renze",
-  "composite_score": 21,
+  "composite_score": 33,
   "tier": "Becoming",
   "tier_description": "Getting started",
-  "calculated_at": "2026-02-27T21:30:36.947867",
+  "calculated_at": "2026-02-27T22:02:11.332684",
   "category_scores": {
     "code": {
       "category": "code",
@@ -42,12 +42,28 @@
     },
     "identity": {
       "category": "identity",
-      "score": 0,
+      "score": 28,
       "max_score": 100,
-      "percentage": 0.0,
-      "breakdown": {},
-      "data_sources": [],
-      "notes": "Platform status: error (no agent card) | Decay: 0.0% over 0 days"
+      "percentage": 28.0,
+      "breakdown": {
+        "schema_version": 0.0,
+        "required_fields": 8.333333333333334,
+        "human_readable_id": 0.0,
+        "provider_info": 2.0,
+        "endpoint_https": 5.0,
+        "capabilities_declared": 0.0,
+        "advanced_capabilities": 0,
+        "skills_defined": 8,
+        "interfaces_declared": 0.0,
+        "auth_schemes": 0.0,
+        "optional_metadata": 0.0,
+        "has_agents_json": 3.0,
+        "has_llms_txt": 2.0
+      },
+      "data_sources": [
+        "a2a"
+      ],
+      "notes": "Status: ok | A2A schema: other/missing | Skills: 4 | Auth schemes: 0 | Interfaces: 0 | Decay: 0.0% over 0 days"
     },
     "social": {
       "category": "social",
@@ -69,12 +85,12 @@
     },
     "economic": {
       "category": "economic",
-      "score": 20,
+      "score": 40,
       "max_score": 100,
-      "percentage": 20.0,
+      "percentage": 40.0,
       "breakdown": {
         "has_profile": 20,
-        "services_listed": 0.0,
+        "services_listed": 20.0,
         "jobs_completed": 0.0,
         "reputation": 0.0,
         "earnings": 0.0
@@ -104,15 +120,16 @@
     }
   },
   "data_sources": [
-    "twitter",
-    "openclaw",
-    "discord",
+    "a2a",
+    "blog",
+    "x",
     "toku",
+    "devto",
     "clawhub",
     "github",
-    "x",
-    "blog",
-    "devto"
+    "twitter",
+    "openclaw",
+    "discord"
   ],
   "metadata": {
     "composite_breakdown": {
@@ -127,9 +144,9 @@
         "weighted": 62.0
       },
       "identity": {
-        "score": 0,
+        "score": 28,
         "weight": 2.0,
-        "weighted": 0.0
+        "weighted": 56.0
       },
       "social": {
         "score": 20,
@@ -137,18 +154,18 @@
         "weighted": 20.0
       },
       "economic": {
-        "score": 20,
+        "score": 40,
         "weight": 1.0,
-        "weighted": 20.0
+        "weighted": 40.0
       },
       "community": {
         "score": 0,
         "weight": 1.0,
         "weighted": 0.0
       },
-      "total_weighted": 147.0,
+      "total_weighted": 223.0,
       "total_weight": 7.0,
-      "raw_average": 21.0
+      "raw_average": 31.857142857142858
     },
     "decay_applied": true,
     "decay_details": {
@@ -165,8 +182,8 @@
         "days_since_activity": 0
       },
       "identity": {
-        "raw_score": 0,
-        "decayed_score": 0,
+        "raw_score": 28,
+        "decayed_score": 28,
         "decay_percent": 0.0,
         "days_since_activity": 0
       },
@@ -177,8 +194,8 @@
         "days_since_activity": 0
       },
       "economic": {
-        "raw_score": 20,
-        "decayed_score": 20,
+        "raw_score": 40,
+        "decayed_score": 40,
         "decay_percent": 0.0,
         "days_since_activity": 0
       },
@@ -190,20 +207,20 @@
       }
     },
     "skills_boost": {
-      "raw_score": 21,
-      "skill_count": 0,
-      "combined_points": 0.0,
-      "a2a_points": 0,
-      "a2a_skill_count": 0,
+      "raw_score": 32,
+      "skill_count": 4,
+      "combined_points": 4.0,
+      "a2a_points": 8,
+      "a2a_skill_count": 4,
       "moltbook_points": 0,
       "moltbook_username": null,
       "moltbook_breakdown": {},
       "moltbook_raw": null,
       "has_moltbook_data": false,
-      "multiplier": 1.0,
-      "boost_percent": 0,
-      "boosted_score": 21,
-      "points_gained": 0
+      "multiplier": 1.05,
+      "boost_percent": 5,
+      "boosted_score": 33,
+      "points_gained": 1
     }
   }
 }

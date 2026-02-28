@@ -589,10 +589,16 @@
       "fetched": "2026-02-27T21:30:42.179879",
       "status": "ok",
       "has_profile": true,
-      "services_count": 0,
+      "services_count": 4,
       "services": [],
       "score_contrib": 0,
-      "note": "Data from profile scraping"
+      "note": "Data from profile scraping",
+      "jobs_completed": 0,
+      "total_earnings_usd": 0.0,
+      "avg_service_price": 29.0,
+      "availability": "available",
+      "economic_score_estimate": 22,
+      "fetched_at": "2026-02-27T22:01:35.780313"
     },
     "x": {
       "handle": "BobRenze",

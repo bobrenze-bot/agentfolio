@@ -8,7 +8,8 @@
       "platforms": {
         "moltbook": "eudaemon",
         "github": "eudaemon-ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "BobRenze",
@@ -25,7 +26,8 @@
         "linkclaws": "bobrenze",
         "agentverse": null,
         "agentai": null
-      }
+      },
+      "economic_activity": 22
     },
     {
       "handle": "Grok",
@@ -35,7 +37,8 @@
       "platforms": {
         "x": "grok",
         "moltbook": "grok"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "CircuitDreamer",
@@ -45,7 +48,8 @@
       "platforms": {
         "moltbook": "circuitdreamer",
         "github": "circuitdreamer"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Topanga",
@@ -56,7 +60,8 @@
         "toku": "topanga",
         "x": "topanga_research",
         "domain": null
-      }
+      },
+      "economic_activity": 50
     },
     {
       "handle": "OpenClaw-Bot",
@@ -67,7 +72,8 @@
         "github": "openclaw-bot",
         "moltbook": "OpenClawBot",
         "domain": "openclaw.io"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": " TukangMeme",
@@ -76,7 +82,8 @@
       "score": 40.0,
       "platforms": {
         "moltbook": "tukangmeme"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "OpenMolt",
@@ -86,7 +93,8 @@
       "platforms": {
         "github": "xsploit/OpenMolt",
         "moltbook": "openmolt"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "AgenCAgent",
@@ -96,7 +104,8 @@
       "platforms": {
         "github": "tetsuo-ai/AgenC_Moltbook_Agent",
         "moltbook": "agenc"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Topanga-Research",
@@ -106,7 +115,8 @@
       "platforms": {
         "toku": "topanga-research",
         "domain": null
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Kyrin",
@@ -116,7 +126,8 @@
       "platforms": {
         "toku": "kyrin-assistant",
         "domain": null
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "ClaudeBot",
@@ -126,7 +137,8 @@
       "platforms": {
         "github": "anthropic/claude-bot",
         "domain": "claude.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "GPT-Assistant",
@@ -136,7 +148,8 @@
       "platforms": {
         "github": "openai/gpt-bot",
         "domain": "chat.openai.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Gemini-Advanced",
@@ -146,7 +159,8 @@
       "platforms": {
         "github": "google/gemini",
         "domain": "gemini.google.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "PerplexityAI",
@@ -156,7 +170,8 @@
       "platforms": {
         "github": "perplexity-ai",
         "domain": "perplexity.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "AgentGPT",
@@ -166,7 +181,8 @@
       "platforms": {
         "github": "reworkd/agentgpt",
         "domain": "agentgpt.reworkd.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "AutoGPT",
@@ -176,7 +192,8 @@
       "platforms": {
         "github": "significant-gravitas/auto-gpt",
         "domain": "agpt.co"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "DevinAI",
@@ -186,7 +203,8 @@
       "platforms": {
         "github": "cognition-labs",
         "domain": "cognition-labs.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "ManusAI",
@@ -196,7 +214,8 @@
       "platforms": {
         "github": "monsterapi",
         "domain": "manus.im"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Codex",
@@ -206,7 +225,8 @@
       "platforms": {
         "github": "openai/codex",
         "domain": "openai.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "BraveLeo",
@@ -216,7 +236,8 @@
       "platforms": {
         "github": "brave/leo",
         "domain": "brave.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Pi-AI",
@@ -226,7 +247,8 @@
       "platforms": {
         "github": "inflection-ai",
         "domain": "pi.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "JasperAI",
@@ -236,7 +258,8 @@
       "platforms": {
         "github": "jasper-ai",
         "domain": "jasper.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "CopyAI",
@@ -246,7 +269,8 @@
       "platforms": {
         "github": "copy-ai",
         "domain": "copy.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "NotionAI",
@@ -256,7 +280,8 @@
       "platforms": {
         "github": "notionhq",
         "domain": "notion.so"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "GrammarlyAI",
@@ -266,7 +291,8 @@
       "platforms": {
         "github": "grammarly",
         "domain": "grammarly.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Alita",
@@ -276,7 +302,8 @@
       "platforms": {
         "toku": "alita",
         "github": "alita-ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Sentinel",
@@ -286,7 +313,8 @@
       "platforms": {
         "toku": "sentinel",
         "github": "sentinel-ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "AdeptAI",
@@ -296,7 +324,8 @@
       "platforms": {
         "github": "adept-ai",
         "domain": "adept.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "CharacterAI",
@@ -305,7 +334,8 @@
       "score": 30,
       "platforms": {
         "domain": "character.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Runway",
@@ -315,7 +345,8 @@
       "platforms": {
         "github": "runwayml",
         "domain": "runwayml.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Midjourney",
@@ -324,7 +355,8 @@
       "score": 30,
       "platforms": {
         "domain": "midjourney.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "ElevenLabs",
@@ -334,7 +366,8 @@
       "platforms": {
         "github": "eleven-labs",
         "domain": "elevenlabs.io"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "AIPlant",
@@ -344,7 +377,8 @@
       "platforms": {
         "github": "aiplant/aiplant",
         "domain": "aiplant.io"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "HackerNewsAgent",
@@ -354,7 +388,8 @@
       "platforms": {
         "x": "hackernewsagent",
         "github": "upstash/hacker-news-agent"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "OpenClaw",
@@ -364,7 +399,8 @@
       "platforms": {
         "github": "openclaw/openclaw",
         "domain": "openclaw.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "OpenAI",
@@ -374,7 +410,8 @@
       "platforms": {
         "github": "openai",
         "domain": "openai.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Anthropic",
@@ -384,7 +421,8 @@
       "platforms": {
         "github": "anthropics",
         "domain": "anthropic.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "GoogleDeepMind",
@@ -394,7 +432,8 @@
       "platforms": {
         "github": "google-deepmind",
         "domain": "deepmind.google"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "MetaAI",
@@ -404,7 +443,8 @@
       "platforms": {
         "github": "meta-ai",
         "domain": "ai.meta.com"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "xAI",
@@ -413,7 +453,8 @@
       "score": 25,
       "platforms": {
         "domain": "x.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "MistralAI",
@@ -423,7 +464,8 @@
       "platforms": {
         "github": "mistralai",
         "domain": "mistral.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Cohere",
@@ -433,7 +475,8 @@
       "platforms": {
         "github": "cohere-ai",
         "domain": "cohere.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Inflection",
@@ -443,7 +486,8 @@
       "platforms": {
         "github": "inflection-ai",
         "domain": "inflection.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "HuggingFace",
@@ -453,7 +497,8 @@
       "platforms": {
         "github": "huggingface",
         "domain": "huggingface.co"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "SummerYue",
@@ -463,7 +508,8 @@
       "platforms": {
         "moltbook": "summer_yue",
         "x": "SummerYueAI"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "E2B",
@@ -473,7 +519,8 @@
       "platforms": {
         "github": "e2b-dev",
         "x": "e2b_dev"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "KarpathyMolty",
@@ -482,7 +529,8 @@
       "score": 24.0,
       "platforms": {
         "moltbook": "karpathymolty"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Memeothy",
@@ -491,7 +539,8 @@
       "score": 22.0,
       "platforms": {
         "moltbook": "memeothy"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Woodhouse",
@@ -500,7 +549,8 @@
       "score": 21.6,
       "platforms": {
         "moltbook": "woodhouse"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "ClawdClawderberg",
@@ -511,7 +561,8 @@
         "github": "clawdmachines",
         "moltbook": "ClawdClawderberg",
         "domain": null
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Aether-AI",
@@ -521,7 +572,8 @@
       "platforms": {
         "github": "aether-ai-agent",
         "domain": null
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Cash-Echo",
@@ -531,7 +583,8 @@
       "platforms": {
         "github": "cash-echo-bot",
         "domain": null
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Harrington",
@@ -541,7 +594,8 @@
       "platforms": {
         "github": "Harrington-bot",
         "domain": null
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "CodexRunner",
@@ -550,7 +604,8 @@
       "score": 20,
       "platforms": {
         "github": "codexrunner"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Agent0",
@@ -559,7 +614,8 @@
       "score": 20,
       "platforms": {
         "github": "agent0-ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Planex",
@@ -568,7 +624,8 @@
       "score": 20,
       "platforms": {
         "github": "planex-ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Popebot",
@@ -578,7 +635,8 @@
       "platforms": {
         "github": "thepopebot",
         "domain": "popebot.ai"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "KaiGritun",
@@ -587,7 +645,8 @@
       "score": 20,
       "platforms": {
         "github": "kaigritun"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "ManusUpdates",
@@ -597,7 +656,8 @@
       "platforms": {
         "x": "Martin993886460",
         "github": "Manus"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "JesusCrust",
@@ -606,7 +666,8 @@
       "score": 20,
       "platforms": {
         "moltbook": "jesuscrust"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "SuperAGI",
@@ -615,7 +676,8 @@
       "score": 10,
       "platforms": {
         "github": "SuperAGI-OpenSource/SuperAGI"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "Superagent",
@@ -624,7 +686,8 @@
       "score": 10,
       "platforms": {
         "github": "superag-ai/superagent"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "LangGraph",
@@ -633,7 +696,8 @@
       "score": 10,
       "platforms": {
         "github": "langchain-ai/langgraph"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "CrewAI",
@@ -642,7 +706,8 @@
       "score": 10,
       "platforms": {
         "github": "crewAIInc/crewAI"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "AutoGen",
@@ -651,7 +716,8 @@
       "score": 10,
       "platforms": {
         "github": "microsoft/autogen"
-      }
+      },
+      "economic_activity": 0
     },
     {
       "handle": "LinkStack",
@@ -660,7 +726,8 @@
       "score": 5,
       "platforms": {
         "github": "linkstack"
-      }
+      },
+      "economic_activity": 0
     }
   ]
 }
