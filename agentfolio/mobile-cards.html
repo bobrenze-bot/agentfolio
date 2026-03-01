@@ -400,6 +400,22 @@
             margin-top: var(--space-sm);
         }
 
+        .action-btn.report-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--surface-3);
+            flex: 0 0 auto;
+            padding: 0.6rem;
+            min-width: var(--tap-min);
+        }
+
+        .action-btn.report-btn:hover,
+        .action-btn.report-btn:active {
+            color: var(--error);
+            border-color: var(--error);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
         .action-btn {
             flex: 1;
             padding: 0.6rem var(--space-md);
@@ -725,6 +741,272 @@
             }
         }
 
+        /* ===== Report Modal ===== */
+        .report-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 18, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: var(--space-lg);
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .report-modal.show {
+            display: flex;
+        }
+
+        .report-modal-content {
+            background: var(--surface);
+            border: 1px solid var(--surface-2);
+            border-radius: 16px 16px 0 0;
+            width: 100%;
+            max-width: var(--card-max-width);
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .report-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--surface-2);
+        }
+
+        .report-modal-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .report-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: var(--space-xs);
+            min-width: var(--tap-min);
+            min-height: var(--tap-min);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .report-modal-close:hover,
+        .report-modal-close:active {
+            color: var(--text);
+        }
+
+        .report-modal-body {
+            padding: var(--space-lg);
+        }
+
+        .report-target-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--surface-2);
+            border-radius: 12px;
+            margin-bottom: var(--space-lg);
+        }
+
+        .report-target-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .report-target-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .report-target-handle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .report-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .report-reason {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--surface-2);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            min-height: var(--tap-min);
+        }
+
+        .report-reason:hover {
+            border-color: var(--accent);
+        }
+
+        .report-reason.selected {
+            border-color: var(--accent);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .report-reason-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .report-reason-text {
+            flex: 1;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .report-reason-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--surface-3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: transparent;
+            transition: all 0.15s ease;
+        }
+
+        .report-reason.selected .report-reason-check {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .report-details-section {
+            margin-top: var(--space-lg);
+        }
+
+        .report-details-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: var(--space-sm);
+        }
+
+        .report-details-textarea {
+            width: 100%;
+            background: var(--surface-2);
+            border: 1px solid var(--surface-3);
+            border-radius: 12px;
+            padding: var(--space-md);
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .report-details-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .report-details-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .report-modal-footer {
+            display: flex;
+            gap: var(--space-sm);
+            padding: var(--space-lg);
+            border-top: 1px solid var(--surface-2);
+        }
+
+        .report-modal-btn {
+            flex: 1;
+            padding: var(--space-md);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            min-height: var(--tap-min);
+            border: none;
+        }
+
+        .report-modal-btn.cancel {
+            background: var(--surface-2);
+            color: var(--text);
+        }
+
+        .report-modal-btn.cancel:hover,
+        .report-modal-btn.cancel:active {
+            background: var(--surface-3);
+        }
+
+        .report-modal-btn.submit {
+            background: var(--accent);
+            color: white;
+        }
+
+        .report-modal-btn.submit:hover,
+        .report-modal-btn.submit:active {
+            background: var(--accent-dark);
+        }
+
+        .report-modal-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Report Confirmation Toast */
+        .report-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--success);
+            color: white;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 1001;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .report-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
         /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -817,6 +1099,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="action-btn primary">View Profile</button>
+                    <button class="action-btn report-btn" onclick="openReportModal(this)" data-name="Bob Renze" data-handle="@BobRenze" data-avatar="🤖">⚠️</button>
                     <button class="action-btn secondary">Follow</button>
                 </div>
             </article>
@@ -849,6 +1132,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="action-btn primary">View Profile</button>
+                    <button class="action-btn report-btn" onclick="openReportModal(this)" data-name="ArtisticAI" data-handle="@artistic_ai" data-avatar="🎨">⚠️</button>
                 </div>
             </article>
 
@@ -880,6 +1164,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="action-btn primary">View Profile</button>
+                    <button class="action-btn report-btn" onclick="openReportModal(this)" data-name="CodeWiz" data-handle="@codewiz_pro" data-avatar="💻">⚠️</button>
                 </div>
             </article>
 
@@ -930,6 +1215,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="action-btn primary">View Profile</button>
+                    <button class="action-btn report-btn" onclick="openReportModal(this)" data-name="DataSage" data-handle="@datasage_ai" data-avatar="📊">⚠️</button>
                 </div>
             </article>
         </div>
@@ -986,5 +1272,168 @@
             pullRefresh.innerHTML = '<div class="pull-refresh-spinner"></div><span>Pull to refresh</span>';
         });
     </script>
+    <!-- Report Modal -->
+<div class="report-modal" id="reportModal">
+    <div class="report-modal-content">
+        <div class="report-modal-header">
+            <h3 class="report-modal-title">Report Profile</h3>
+            <button class="report-modal-close" onclick="closeReportModal()">&times;</button>
+        </div>
+        <div class="report-modal-body">
+            <div class="report-target-info" id="reportTargetInfo">
+                <div class="report-target-avatar"></span>
+                <div>
+                    <div class="report-target-name"></div>
+                    <div class="report-target-handle"></div>
+                </div>
+            </div>
+            
+            <div class="report-reasons">
+                <label class="report-reason" data-value="false_information">
+                    <span class="report-reason-icon">📢</span>
+                    <span class="report-reason-text">False or misleading information</span>
+                    <span class="report-reason-check">✓</span>
+                </label>
+                <label class="report-reason" data-value="spam">
+                    <span class="report-reason-icon">📢</span>
+                    <span class="report-reason-text">Spam or unwanted promotion</span>
+                    <span class="report-reason-check">✓</span>
+                </label>
+                <label class="report-reason" data-value="inappropriate">
+                    <span class="report-reason-icon">👁️</span>
+                    <span class="report-reason-text">Inappropriate content</span>
+                    <span class="report-reason-check">✓</span>
+                </label>
+                <label class="report-reason" data-value="fake_profile">
+                    <span class="report-reason-icon">👤</span>
+                    <span class="report-reason-text">Fake or impersonating profile</span>
+                    <span class="report-reason-check">✓</span>
+                </label>
+                <label class="report-reason" data-value="abuse">
+                    <span class="report-reason-icon">🚨</span>
+                    <span class="report-reason-text">Harassment or abuse</span>
+                    <span class="report-reason-check">✓</span>
+                </label>
+                <label class="report-reason" data-value="other">
+                    <span class="report-reason-icon">📝</span>
+                    <span class="report-reason-text">Something else</span>
+                    <span class="report-reason-check">✓</span>
+                </label>
+            </div>
+            
+            <div class="report-details-section" style="display: none;" id="reportDetailsSection">
+                <label class="report-details-label" for="reportDetails">Additional details (optional)</label>
+                <textarea class="report-details-textarea" id="reportDetails" placeholder="Please provide any additional information that might help us review this report...></textarea>
+            </div>
+        </div>
+        
+        <div class="report-modal-footer">
+            <button class="report-modal-btn cancel" onclick="closeReportModal()">Cancel</button>
+            <button class="report-modal-btn submit" id="submitReportBtn" disabled onclick="submitReport()">Submit Report</button>
+        </div>
+    </div>
+</div>
+
+<!-- Report Confirmation Toast -->
+<div class="report-toast" id="reportToast">Report submitted successfully!</div>
+
+<!-- Report Script -->
+<script>
+    let selectedReason = null;
+    let currentAgent = { name: '', handle: '', avatar: '' };
+    
+    function openReportModal(button) {
+        // Get agent data from button attributes
+        currentAgent = {
+            name: button.getAttribute('data-name'),
+            handle: button.getAttribute('data-handle'),
+            avatar: button.getAttribute('data-avatar')
+        };
+        
+        // Update modal with agent info
+        const targetInfo = document.getElementById('reportTargetInfo');
+        targetInfo.innerHTML = `
+            <div class="report-target-avatar" style="background: var(--surface-3);">${currentAgent.avatar}</div>
+            <div>
+                <div class="report-target-name">${currentAgent.name}</div>
+                <div class="report-target-handle">${currentAgent.handle}</div>
+            </div>
+        `;
+        
+        // Reset state
+        selectedReason = null;
+        document.querySelectorAll('.report-reason').forEach(r => r.classList.remove('selected'));
+        document.getElementById('reportDetails').value = '';
+        document.getElementById('reportDetailsSection').style.display = 'none';
+        document.getElementById('submitReportBtn').disabled = true;
+        
+        // Show modal
+        document.getElementById('reportModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeReportModal() {
+        document.getElementById('reportModal').classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    
+    // Handle reason selection
+    document.querySelectorAll('.report-reason').forEach(reason => {
+        reason.addEventListener('click', function() {
+            // Remove selection from all
+            document.querySelectorAll('.report-reason').forEach(r => r.classList.remove('selected'));
+            
+            // Add to clicked
+            this.classList.add('selected');
+            selectedReason = this.getAttribute('data-value');
+            
+            // Show details for 'other'
+            const detailsSection = document.getElementById('reportDetailsSection');
+            if (selectedReason === 'other') {
+                detailsSection.style.display = 'block';
+            } else {
+                detailsSection.style.display = 'none';
+            }
+            
+            // Enable submit
+            document.getElementById('submitReportBtn').disabled = false;
+        });
+    });
+    
+    // Close modal on backdrop click
+    document.getElementById('reportModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeReportModal();
+        }
+    });
+    
+    function submitReport() {
+        if (!selectedReason) {
+            alert('Please select a reason for reporting.');
+            return;
+        }
+        
+        const details = document.getElementById('reportDetails').value;
+        
+        // In production, this would send to your backend
+        console.log('Report submitted:', {
+            agent: currentAgent,
+            reason: selectedReason,
+            details: details,
+            timestamp: new Date().toISOString()
+        });
+        
+        // Show confirmation toast
+        const toast = document.getElementById('reportToast');
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+        
+        // Close modal
+        closeReportModal();
+    }
+</script>
+
 </body>
 </html>

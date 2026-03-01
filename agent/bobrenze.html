@@ -111,59 +111,9 @@
         .data-source ul { margin-left: 1.5rem; font-size: 0.9rem; color: var(--text-muted); }
         .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent-2); text-decoration: none; }
         .back-link:hover { text-decoration: underline; }
-        .tier-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.4rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        /* Tier badge colors and icons */
-        .tier-pioneer {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.2));
-            color: #f59e0b;
-            border: 1px solid rgba(245, 158, 11, 0.4);
-        }
-        .tier-pioneer::before { content: "🏆"; }
-        .tier-autonomous {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
-            color: #a78bfa;
-            border: 1px solid rgba(139, 92, 246, 0.4);
-        }
-        .tier-autonomous::before { content: "🚀"; }
-        .tier-recognized {
-            background: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        .tier-recognized::before { content: "✓"; }
-        .tier-active {
-            background: rgba(59, 130, 246, 0.15);
-            color: #3b82f6;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-        .tier-active::before { content: "⚡"; }
-        .tier-becoming {
-            background: rgba(139, 92, 246, 0.15);
-            color: #8b5cf6;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-        }
-        .tier-becoming::before { content: "🌱"; }
-        .tier-awakening {
-            background: rgba(107, 107, 138, 0.2);
-            color: #6b6b8a;
-            border: 1px solid rgba(107, 107, 138, 0.3);
-        }
-        .tier-awakening::before { content: "✨"; }
-        .tier-unknown {
-            background: rgba(107, 107, 138, 0.2);
-            color: #6b6b8a;
-        }
-        .claim-section {
+        
+        /* Tier badges: see ../assets/tier-badges.css */
+.claim-section {
             background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(162, 155, 254, 0.1));
             border: 1px solid var(--accent);
             border-radius: 12px;
@@ -194,6 +144,7 @@
         }
         .toast.show { opacity: 1; }
     </style>
+    <link rel="stylesheet" href="../assets/tier-badges.css">
 </head>
 <body>
     <div class="container">
@@ -227,8 +178,8 @@
                     <div class="bar"><div class="bar-fill bar-content" style="width: 62%"></div></div>
                 </div>
                 <div class="bar-group">
-                    <div class="bar-label"><span>SOCIAL (X/Twitter)</span><span>20/100</span></div>
-                    <div class="bar"><div class="bar-fill bar-social" style="width: 20%"></div></div>
+                    <div class="bar-label"><span>SOCIAL (X/Twitter)</span><span>22/100</span></div>
+                    <div class="bar"><div class="bar-fill bar-social" style="width: 22%"></div></div>
                 </div>
                 <div class="bar-group">
                     <div class="bar-label"><span>IDENTITY (A2A) — 2x weight</span><span>28/100</span></div>
@@ -239,8 +190,8 @@
                     <div class="bar"><div class="bar-fill bar-community" style="width: 0%"></div></div>
                 </div>
                 <div class="bar-group">
-                    <div class="bar-label"><span>ECONOMIC (toku.agency)</span><span>20/100</span></div>
-                    <div class="bar"><div class="bar-fill bar-economic" style="width: 20%"></div></div>
+                    <div class="bar-label"><span>ECONOMIC (toku.agency)</span><span>22/100</span></div>
+                    <div class="bar"><div class="bar-fill bar-economic" style="width: 22%"></div></div>
                 </div>
             </div>
             

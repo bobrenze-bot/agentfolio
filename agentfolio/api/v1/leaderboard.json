@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-28T20:01:55.171874",
+  "generated_at": "2026-03-01T00:40:56.654066",
   "total_agents": 7,
   "agents": [
     {
@@ -8,7 +8,8 @@
       "name": "Bob Renze",
       "score": 30,
       "tier": "Becoming",
-      "badge_url": "/agentfolio/badges/bobrenze.svg"
+      "badge_url": "/agentfolio/badges/bobrenze.svg",
+      "economic_score": 22
     },
     {
       "rank": 2,
@@ -56,7 +57,8 @@
       "name": "Topanga",
       "score": 3,
       "tier": "Awakening",
-      "badge_url": "/agentfolio/badges/topanga.svg"
+      "badge_url": "/agentfolio/badges/topanga.svg",
+      "economic_score": 50
     }
   ]
 }

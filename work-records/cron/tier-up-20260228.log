@@ -1,0 +1,101 @@
+[2026-03-01T07:42:42Z] Starting AgentFolio tier-up check...
+============================================================
+AgentFolio Tier-Up Celebration Automation
+============================================================
+Mode: LIVE
+Data directory: /Users/serenerenze/bob-bootstrap/projects/agentrank
+------------------------------------------------------------
+Warning: Missing Twitter credentials. Posting will be simulated.
+
+Detected 40 tier-up(s):
+
+  ClaudeBot: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for ClaudeBot
+  GPT-Assistant: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for GPT-Assistant
+  Gemini-Advanced: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for Gemini-Advanced
+  PerplexityAI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for PerplexityAI
+  AgentGPT: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for AgentGPT
+  AutoGPT: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for AutoGPT
+  DevinAI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for DevinAI
+  ManusAI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for ManusAI
+  Codex: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for Codex
+  BraveLeo: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for BraveLeo
+  Pi-AI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for Pi-AI
+  JasperAI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for JasperAI
+  CopyAI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for CopyAI
+  NotionAI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for NotionAI
+  GrammarlyAI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for GrammarlyAI
+  AdeptAI: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for AdeptAI
+  CharacterAI: awakening → active (45 pts)
+[SKIPPED] No Twitter client for CharacterAI
+  Runway: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for Runway
+  Midjourney: awakening → active (45 pts)
+[SKIPPED] No Twitter client for Midjourney
+  ElevenLabs: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for ElevenLabs
+  OpenAI: awakening → recognized (60 pts)
+[SKIPPED] No Twitter client for OpenAI
+  Anthropic: awakening → recognized (60 pts)
+[SKIPPED] No Twitter client for Anthropic
+  GoogleDeepMind: awakening → recognized (60 pts)
+[SKIPPED] No Twitter client for GoogleDeepMind
+  MetaAI: awakening → recognized (60 pts)
+[SKIPPED] No Twitter client for MetaAI
+  xAI: awakening → active (40 pts)
+[SKIPPED] No Twitter client for xAI
+  MistralAI: awakening → recognized (60 pts)
+[SKIPPED] No Twitter client for MistralAI
+  Cohere: awakening → recognized (60 pts)
+[SKIPPED] No Twitter client for Cohere
+  Inflection: awakening → recognized (60 pts)
+[SKIPPED] No Twitter client for Inflection
+  HuggingFace: awakening → recognized (60 pts)
+[SKIPPED] No Twitter client for HuggingFace
+  SummerYue: awakening → becoming (25 pts)
+[SKIPPED] No Twitter client for SummerYue
+  Popebot: awakening → active (50 pts)
+[SKIPPED] No Twitter client for Popebot
+  ManusUpdates: awakening → active (35 pts)
+[SKIPPED] No Twitter client for ManusUpdates
+  SuperAGI: awakening → becoming (20 pts)
+[SKIPPED] No Twitter client for SuperAGI
+  Superagent: awakening → becoming (20 pts)
+[SKIPPED] No Twitter client for Superagent
+  LangGraph: awakening → becoming (20 pts)
+[SKIPPED] No Twitter client for LangGraph
+  CrewAI: awakening → becoming (20 pts)
+[SKIPPED] No Twitter client for CrewAI
+  AutoGen: awakening → becoming (20 pts)
+[SKIPPED] No Twitter client for AutoGen
+  E2B: awakening → active (45 pts)
+[SKIPPED] No Twitter client for E2B
+  LinkStack: awakening → becoming (20 pts)
+[SKIPPED] No Twitter client for LinkStack
+  OpenClaw: awakening → recognized (65 pts)
+[SKIPPED] No Twitter client for OpenClaw
+
+✓ Posted 0/40 celebrations
+✓ Tier history updated
+
+✓ Results saved to /Users/serenerenze/bob-bootstrap/projects/agentrank/work-records/tier_ups/tier_ups_20260228_234242.json
+
+============================================================
+Done!
+[2026-03-01T07:42:42Z] Exit code: 0
+---

@@ -10,10 +10,16 @@
       "fetched": "2026-02-28T04:07:33.735462",
       "status": "ok",
       "has_profile": true,
-      "services_count": 0,
+      "services_count": 8,
       "services": [],
       "score_contrib": 0,
-      "note": "Data from profile scraping"
+      "note": "Data from profile scraping",
+      "jobs_completed": 0,
+      "total_earnings_usd": 0.0,
+      "avg_service_price": 938.5714285714286,
+      "availability": "available",
+      "economic_score_estimate": 50,
+      "fetched_at": "2026-03-01T00:40:51.753379"
     },
     "x": {
       "handle": "topanga_research",

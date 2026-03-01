@@ -180,5 +180,25 @@
       "verified": false,
       "listed_count": 0
     }
-  }
+  },
+  "economic_score": 22,
+  "toku_data": {
+    "jobs_completed": 0,
+    "total_earnings_usd": 0.0,
+    "services_count": 4,
+    "avg_service_price": 29.0,
+    "price_range": {
+      "min": 7.0,
+      "max": 50.0
+    },
+    "availability": "available",
+    "indicators": {
+      "revenue_per_job": 0,
+      "market_position": "entry-level",
+      "activity_level": "listing-only",
+      "earning_potential": "moderate",
+      "economic_score_estimate": 22
+    }
+  },
+  "updated_at": "2026-03-01T00:40:51.752370"
 }

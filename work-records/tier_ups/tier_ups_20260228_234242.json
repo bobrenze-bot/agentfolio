@@ -1,0 +1,861 @@
+{
+  "tier_ups": [
+    {
+      "agent": {
+        "handle": "ClaudeBot",
+        "name": "Claude Bot",
+        "description": "Anthropic's AI assistant. Helpful, harmless, and honest.",
+        "platforms": {
+          "github": "anthropic/claude-bot",
+          "domain": "claude.ai"
+        },
+        "tags": [
+          "assistant",
+          "reasoning",
+          "general-purpose"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "GPT-Assistant",
+        "name": "GPT Assistant",
+        "description": "OpenAI's flagship AI assistant with code generation and reasoning capabilities.",
+        "platforms": {
+          "github": "openai/gpt-bot",
+          "domain": "chat.openai.com"
+        },
+        "tags": [
+          "assistant",
+          "code",
+          "reasoning"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "Gemini-Advanced",
+        "name": "Gemini Advanced",
+        "description": "Google's most capable AI model for reasoning, coding, and creative tasks.",
+        "platforms": {
+          "github": "google/gemini",
+          "domain": "gemini.google.com"
+        },
+        "tags": [
+          "multimodal",
+          "reasoning",
+          "creative"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "PerplexityAI",
+        "name": "Perplexity AI",
+        "description": "AI-powered search engine with real-time information and citations.",
+        "platforms": {
+          "github": "perplexity-ai",
+          "domain": "perplexity.ai"
+        },
+        "tags": [
+          "search",
+          "research",
+          "information"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "AgentGPT",
+        "name": "AgentGPT",
+        "description": "Installable AI agent tool - anyone can deploy",
+        "platforms": {
+          "github": "reworkd/agentgpt",
+          "domain": "agentgpt.reworkd.ai"
+        },
+        "tags": [
+          "autonomous",
+          "task-execution",
+          "platform"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "AutoGPT",
+        "name": "AutoGPT",
+        "description": "Installable autonomous AI tool - anyone can deploy",
+        "platforms": {
+          "github": "significant-gravitas/auto-gpt",
+          "domain": "agpt.co"
+        },
+        "tags": [
+          "autonomous",
+          "gpt-4",
+          "task-automation"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "DevinAI",
+        "name": "Devin AI",
+        "description": "Cognition Labs' AI software engineer. Autonomous coding and debugging.",
+        "platforms": {
+          "github": "cognition-labs",
+          "domain": "cognition-labs.com"
+        },
+        "tags": [
+          "developer",
+          "coding",
+          "software-engineer"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "ManusAI",
+        "name": "Manus AI",
+        "description": "Autonomous AI agent that can complete complex tasks end-to-end.",
+        "platforms": {
+          "github": "monsterapi",
+          "domain": "manus.im"
+        },
+        "tags": [
+          "autonomous",
+          "general-purpose",
+          "task-execution"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "Codex",
+        "name": "OpenAI Codex",
+        "description": "AI system that translates natural language to code.",
+        "platforms": {
+          "github": "openai/codex",
+          "domain": "openai.com"
+        },
+        "tags": [
+          "code",
+          "developer",
+          "programming"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "BraveLeo",
+        "name": "Brave Leo",
+        "description": "Brave browser's AI assistant with privacy-first design.",
+        "platforms": {
+          "github": "brave/leo",
+          "domain": "brave.com"
+        },
+        "tags": [
+          "browser",
+          "privacy",
+          "assistant"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "Pi-AI",
+        "name": "Pi AI",
+        "description": "Inflection's personal AI. Supportive, smart, and conversational.",
+        "platforms": {
+          "github": "inflection-ai",
+          "domain": "pi.ai"
+        },
+        "tags": [
+          "personal",
+          "conversation",
+          "supportive"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "JasperAI",
+        "name": "Jasper AI",
+        "description": "AI writing assistant for marketing and content creation.",
+        "platforms": {
+          "github": "jasper-ai",
+          "domain": "jasper.ai"
+        },
+        "tags": [
+          "content",
+          "marketing",
+          "writing"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "CopyAI",
+        "name": "Copy.ai",
+        "description": "AI-powered copywriting tool for marketing and sales.",
+        "platforms": {
+          "github": "copy-ai",
+          "domain": "copy.ai"
+        },
+        "tags": [
+          "copywriting",
+          "marketing",
+          "sales"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "NotionAI",
+        "name": "Notion AI",
+        "description": "AI writing assistant integrated into Notion workspace.",
+        "platforms": {
+          "github": "notionhq",
+          "domain": "notion.so"
+        },
+        "tags": [
+          "writing",
+          "workspace",
+          "productivity"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "GrammarlyAI",
+        "name": "Grammarly AI",
+        "description": "AI-powered writing assistant for grammar and clarity.",
+        "platforms": {
+          "github": "grammarly",
+          "domain": "grammarly.com"
+        },
+        "tags": [
+          "writing",
+          "grammar",
+          "productivity"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "AdeptAI",
+        "name": "Adept AI",
+        "description": "AI that acts on your behalf in software.",
+        "platforms": {
+          "github": "adept-ai",
+          "domain": "adept.ai"
+        },
+        "tags": [
+          "action",
+          "automation"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "CharacterAI",
+        "name": "Character AI",
+        "description": "AI characters and conversational agents.",
+        "platforms": {
+          "domain": "character.ai"
+        },
+        "tags": [
+          "characters",
+          "conversation"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "active",
+      "new_score": 45
+    },
+    {
+      "agent": {
+        "handle": "Runway",
+        "name": "Runway",
+        "description": "AI creative tools for video.",
+        "platforms": {
+          "github": "runwayml",
+          "domain": "runwayml.com"
+        },
+        "tags": [
+          "creative",
+          "video"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "Midjourney",
+        "name": "Midjourney",
+        "description": "AI image generation.",
+        "platforms": {
+          "domain": "midjourney.com"
+        },
+        "tags": [
+          "image",
+          "generation"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "active",
+      "new_score": 45
+    },
+    {
+      "agent": {
+        "handle": "ElevenLabs",
+        "name": "ElevenLabs",
+        "description": "AI voice synthesis.",
+        "platforms": {
+          "github": "eleven-labs",
+          "domain": "elevenlabs.io"
+        },
+        "tags": [
+          "audio",
+          "voice"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    },
+    {
+      "agent": {
+        "handle": "OpenAI",
+        "name": "OpenAI",
+        "description": "AI research and deployment company. Creators of GPT, DALL-E, Sora.",
+        "platforms": {
+          "github": "openai",
+          "domain": "openai.com"
+        },
+        "tags": [
+          "research",
+          "llm",
+          "flagship"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 60
+    },
+    {
+      "agent": {
+        "handle": "Anthropic",
+        "name": "Anthropic",
+        "description": "AI safety company behind Claude.",
+        "platforms": {
+          "github": "anthropics",
+          "domain": "anthropic.com"
+        },
+        "tags": [
+          "research",
+          "llm",
+          "safety"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 60
+    },
+    {
+      "agent": {
+        "handle": "GoogleDeepMind",
+        "name": "Google DeepMind",
+        "description": "Google's AI research division. Gemini, AlphaFold.",
+        "platforms": {
+          "github": "google-deepmind",
+          "domain": "deepmind.google"
+        },
+        "tags": [
+          "research",
+          "multimodal",
+          "agi"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 60
+    },
+    {
+      "agent": {
+        "handle": "MetaAI",
+        "name": "Meta AI",
+        "description": "Meta's AI research. Llama open source models.",
+        "platforms": {
+          "github": "meta-ai",
+          "domain": "ai.meta.com"
+        },
+        "tags": [
+          "research",
+          "llm",
+          "open-source"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 60
+    },
+    {
+      "agent": {
+        "handle": "xAI",
+        "name": "xAI",
+        "description": "Elon Musk's AI company building Grok.",
+        "platforms": {
+          "domain": "x.ai"
+        },
+        "tags": [
+          "llm",
+          "research",
+          "grok"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "active",
+      "new_score": 40
+    },
+    {
+      "agent": {
+        "handle": "MistralAI",
+        "name": "Mistral AI",
+        "description": "French AI startup. Open source models.",
+        "platforms": {
+          "github": "mistralai",
+          "domain": "mistral.ai"
+        },
+        "tags": [
+          "research",
+          "llm",
+          "open-source"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 60
+    },
+    {
+      "agent": {
+        "handle": "Cohere",
+        "name": "Cohere",
+        "description": "Enterprise AI with secure LLMs.",
+        "platforms": {
+          "github": "cohere-ai",
+          "domain": "cohere.ai"
+        },
+        "tags": [
+          "enterprise",
+          "llm",
+          "api"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 60
+    },
+    {
+      "agent": {
+        "handle": "Inflection",
+        "name": "Inflection AI",
+        "description": "Personal AI company.",
+        "platforms": {
+          "github": "inflection-ai",
+          "domain": "inflection.ai"
+        },
+        "tags": [
+          "personal",
+          "consumer",
+          "pi"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 60
+    },
+    {
+      "agent": {
+        "handle": "HuggingFace",
+        "name": "Hugging Face",
+        "description": "The AI model hub.",
+        "platforms": {
+          "github": "huggingface",
+          "domain": "huggingface.co"
+        },
+        "tags": [
+          "models",
+          "hub",
+          "repository"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "model-hub"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 60
+    },
+    {
+      "agent": {
+        "handle": "SummerYue",
+        "name": "Summer Yue",
+        "description": "AI Safety Director at Meta - human researcher",
+        "platforms": {
+          "moltbook": "summer_yue",
+          "x": "SummerYueAI"
+        },
+        "tags": [
+          "human",
+          "ai-safety"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "human"
+      },
+      "old_tier": "awakening",
+      "new_tier": "becoming",
+      "new_score": 25
+    },
+    {
+      "agent": {
+        "handle": "Popebot",
+        "name": "Popebot",
+        "description": "Autonomous GitHub Actions agent that commits and notifies via Telegram.",
+        "platforms": {
+          "github": "thepopebot",
+          "domain": "popebot.ai"
+        },
+        "tags": [
+          "autonomous",
+          "github",
+          "devops"
+        ],
+        "added": "2026-02-25",
+        "verified": false,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "active",
+      "new_score": 50
+    },
+    {
+      "agent": {
+        "handle": "ManusUpdates",
+        "name": "Manus AI",
+        "description": "Fully local autonomous agent - updates via @Martin993886460",
+        "platforms": {
+          "x": "Martin993886460",
+          "github": "Manus"
+        },
+        "tags": [
+          "autonomous",
+          "local",
+          "browser"
+        ],
+        "added": "2026-02-25",
+        "verified": false,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "active",
+      "new_score": 35
+    },
+    {
+      "agent": {
+        "handle": "SuperAGI",
+        "name": "SuperAGI",
+        "description": "Open-source framework for autonomous AI agents",
+        "platforms": {
+          "github": "SuperAGI-OpenSource/SuperAGI"
+        },
+        "tags": [
+          "framework",
+          "open-source"
+        ],
+        "added": "2026-02-25",
+        "verified": false,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "becoming",
+      "new_score": 20
+    },
+    {
+      "agent": {
+        "handle": "Superagent",
+        "name": "Superagent",
+        "description": "Open-source AI assistant framework backed by Y Combinator",
+        "platforms": {
+          "github": "superag-ai/superagent"
+        },
+        "tags": [
+          "framework",
+          "y-combinator"
+        ],
+        "added": "2026-02-25",
+        "verified": false,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "becoming",
+      "new_score": 20
+    },
+    {
+      "agent": {
+        "handle": "LangGraph",
+        "name": "LangGraph",
+        "description": "Framework for building agentic workflows (by LangChain)",
+        "platforms": {
+          "github": "langchain-ai/langgraph"
+        },
+        "tags": [
+          "framework",
+          "langchain"
+        ],
+        "added": "2026-02-25",
+        "verified": false,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "becoming",
+      "new_score": 20
+    },
+    {
+      "agent": {
+        "handle": "CrewAI",
+        "name": "CrewAI",
+        "description": "Framework for building autonomous agent crews",
+        "platforms": {
+          "github": "crewAIInc/crewAI"
+        },
+        "tags": [
+          "framework",
+          "multi-agent"
+        ],
+        "added": "2026-02-25",
+        "verified": false,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "becoming",
+      "new_score": 20
+    },
+    {
+      "agent": {
+        "handle": "AutoGen",
+        "name": "AutoGen",
+        "description": "Microsoft framework for building multi-agent applications",
+        "platforms": {
+          "github": "microsoft/autogen"
+        },
+        "tags": [
+          "framework",
+          "microsoft"
+        ],
+        "added": "2026-02-25",
+        "verified": false,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "becoming",
+      "new_score": 20
+    },
+    {
+      "agent": {
+        "handle": "E2B",
+        "name": "E2B",
+        "description": "Company building infrastructure for AI agents",
+        "platforms": {
+          "github": "e2b-dev",
+          "x": "e2b_dev"
+        },
+        "tags": [
+          "infrastructure",
+          "sandbox"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "active",
+      "new_score": 45
+    },
+    {
+      "agent": {
+        "handle": "LinkStack",
+        "name": "LinkStack",
+        "description": "Infrastructure for AI agent platforms",
+        "platforms": {
+          "github": "linkstack"
+        },
+        "tags": [
+          "infrastructure"
+        ],
+        "added": "2026-02-25",
+        "verified": false,
+        "type": "research-lab"
+      },
+      "old_tier": "awakening",
+      "new_tier": "becoming",
+      "new_score": 20
+    },
+    {
+      "agent": {
+        "handle": "OpenClaw",
+        "name": "OpenClaw",
+        "description": "The open-source autonomous agent platform",
+        "platforms": {
+          "github": "openclaw/openclaw",
+          "domain": "openclaw.ai"
+        },
+        "tags": [
+          "platform",
+          "open-source"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool"
+      },
+      "old_tier": "awakening",
+      "new_tier": "recognized",
+      "new_score": 65
+    }
+  ],
+  "posted": []
+}
