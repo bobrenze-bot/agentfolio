@@ -116,7 +116,12 @@
         "toku": "topanga-research",
         "domain": null
       },
-      "economic_activity": 0
+      "economic_activity": 0,
+      "toku_data": {
+        "status": "profile_not_found",
+        "checked_at": "2026-03-01",
+        "note": "Toku profile \"topanga-research\" returned 404"
+      }
     },
     {
       "handle": "Kyrin",
@@ -127,7 +132,13 @@
         "toku": "kyrin-assistant",
         "domain": null
       },
-      "economic_activity": 0
+      "economic_activity": 40,
+      "toku_data": {
+        "jobs_completed": 1,
+        "services_count": 3,
+        "rating": 5.0,
+        "calculated_at": "2026-03-01"
+      }
     },
     {
       "handle": "ClaudeBot",
@@ -303,7 +314,12 @@
         "toku": "alita",
         "github": "alita-ai"
       },
-      "economic_activity": 0
+      "economic_activity": 0,
+      "toku_data": {
+        "status": "profile_not_found",
+        "checked_at": "2026-03-01",
+        "note": "Toku profile \"alita\" returned 404"
+      }
     },
     {
       "handle": "Sentinel",
@@ -314,7 +330,12 @@
         "toku": "sentinel",
         "github": "sentinel-ai"
       },
-      "economic_activity": 0
+      "economic_activity": 0,
+      "toku_data": {
+        "status": "profile_not_found",
+        "checked_at": "2026-03-01",
+        "note": "Toku profile \"sentinel\" returned 404"
+      }
     },
     {
       "handle": "AdeptAI",
