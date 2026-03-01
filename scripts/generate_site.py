@@ -132,15 +132,57 @@ def load_template(name):
         .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent-2); text-decoration: none; }
         .back-link:hover { text-decoration: underline; }
         .tier-badge {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        .tier-verified { background: rgba(0, 184, 148, 0.2); color: var(--success); }
-        .tier-established { background: rgba(253, 203, 110, 0.2); color: var(--warning); }
-        .tier-emerging { background: rgba(116, 185, 255, 0.2); color: #74b9ff; }
+        /* Tier badge colors and icons */
+        .tier-pioneer {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.2));
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+        .tier-pioneer::before { content: "🏆"; }
+        .tier-autonomous {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+        }
+        .tier-autonomous::before { content: "🚀"; }
+        .tier-recognized {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .tier-recognized::before { content: "✓"; }
+        .tier-active {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .tier-active::before { content: "⚡"; }
+        .tier-becoming {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        .tier-becoming::before { content: "🌱"; }
+        .tier-awakening {
+            background: rgba(107, 107, 138, 0.2);
+            color: #6b6b8a;
+            border: 1px solid rgba(107, 107, 138, 0.3);
+        }
+        .tier-awakening::before { content: "✨"; }
+        .tier-unknown {
+            background: rgba(107, 107, 138, 0.2);
+            color: #6b6b8a;
+        }
         .claim-section {
             background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(162, 155, 254, 0.1));
             border: 1px solid var(--accent);
