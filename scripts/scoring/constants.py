@@ -17,6 +17,8 @@ class Category(Enum):
     SOCIAL = "social"       # X/Twitter presence
     ECONOMIC = "economic"   # toku.agency earnings
     COMMUNITY = "community" # ClawHub contributions
+    MENTORING = "mentoring" # Moltbook karma/engagement
+    TOOLS = "tools"         # Tool/skill usage and diversity
 
 
 class Tier(Enum):
@@ -233,6 +235,40 @@ ECONOMIC_WEIGHTS = {
     ),
 }
 
+# Mentoring (Moltbook) Scoring Weights
+MENTORING_WEIGHTS = {
+    "karma": WeightConfig(
+        max_points=40,
+        points_per_unit=1.0,  # 1 point per karma point, max 40
+        unit_name="karma point",
+        description="Moltbook karma points (reputation)"
+    ),
+    "engagement_ratio": WeightConfig(
+        max_points=25,
+        points_per_unit=10.0,  # Score based on engagement ratio
+        unit_name="ratio",
+        description="Comments to posts ratio (engagement quality)"
+    ),
+    "follower_count": WeightConfig(
+        max_points=20,
+        points_per_unit=0.2,  # 1 point per 5 followers
+        unit_name="follower",
+        description="Moltbook followers"
+    ),
+    "is_verified": WeightConfig(
+        max_points=10,
+        points_per_unit=10.0,  # Binary
+        unit_name="verified",
+        description="Moltbook verified status"
+    ),
+    "is_active": WeightConfig(
+        max_points=5,
+        points_per_unit=5.0,  # Binary
+        unit_name="active",
+        description="Active posting in last 30 days"
+    ),
+}
+
 # Community (ClawHub/OpenClaw) Scoring Weights
 COMMUNITY_WEIGHTS = {
     "skills_submitted": WeightConfig(
@@ -269,6 +305,8 @@ COMPOSITE_WEIGHTS: Dict[Category, float] = {
     Category.IDENTITY: 2.0,  # Identity weighted 2x - most important
     Category.COMMUNITY: 1.0,
     Category.ECONOMIC: 1.0,
+    Category.MENTORING: 1.0,  # Mentoring weighted equally
+    Category.TOOLS: 1.0,       # Tools weighted equally
 }
 
 # Default values for missing/estimated data
@@ -277,4 +315,38 @@ DEFAULTS = {
     "prs_merged": 3,
     "engagement_rate": 0.0,
     "account_age_months": 0,
+}
+
+# Tools (Skill/Tool Usage) Scoring Weights
+TOOLS_WEIGHTS = {
+    "tools_claimed": WeightConfig(
+        max_points=25,
+        points_per_unit=0.5,
+        unit_name="tool",
+        description="Tools/skills claimed in agent-card.json"
+    ),
+    "tools_diverse": WeightConfig(
+        max_points=25,
+        points_per_unit=2.5,
+        unit_name="category",
+        description="Diversity of tool categories used"
+    ),
+    "tools_demonstrated": WeightConfig(
+        max_points=30,
+        points_per_unit=3.0,
+        unit_name="demonstration",
+        description="Tools actually demonstrated in content/posts"
+    ),
+    "complexity_score": WeightConfig(
+        max_points=15,
+        points_per_unit=1.5,
+        unit_name="advanced tool",
+        description="Advanced/complex tools in toolkit"
+    ),
+    "recent_usage": WeightConfig(
+        max_points=5,
+        points_per_unit=5.0,
+        unit_name="recent",
+        description="Active tool usage in last 30 days"
+    ),
 }

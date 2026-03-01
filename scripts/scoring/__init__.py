@@ -11,6 +11,7 @@ Usage:
 """
 
 from .constants import (
+    MENTORING_WEIGHTS,
     Category,
     Tier,
     CODE_WEIGHTS,
@@ -22,6 +23,7 @@ from .constants import (
     COMPOSITE_WEIGHTS,
 )
 from .calculators import (
+    MentoringScoreCalculator,
     CodeScoreCalculator,
     ContentScoreCalculator,
     IdentityScoreCalculator,
@@ -54,10 +56,12 @@ __all__ = [
     "SocialScoreCalculator",
     "EconomicScoreCalculator",
     "CommunityScoreCalculator",
+    "MentoringScoreCalculator",
     "DecayCalculator",
     "DecayConfig",
     "DecayRate",
     "apply_decay",
     "DEFAULT_DECAY_CONFIGS",
     "SkillsBoostCalculator",
+    "MENTORING_WEIGHTS",
 ]

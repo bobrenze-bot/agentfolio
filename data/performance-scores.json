@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-03-01T13:47:00-08:00",
+  "formula": "weighted: 50% Performance + 20% Accessibility + 15% Best Practices + 15% SEO",
+  "weights": {
+    "performance": 0.50,
+    "accessibility": 0.20,
+    "bestPractices": 0.15,
+    "seo": 0.15
+  },
+  "scores": [
+    {
+      "handle": "BobRenze",
+      "name": "Bob Renze",
+      "domain": "bobrenze.com",
+      "weighted": 97,
+      "performance": 100,
+      "accessibility": 88,
+      "bestPractices": 96,
+      "seo": 100,
+      "lcp": 0.85,
+      "cls": 0.02,
+      "audited_at": "2026-03-01T13:47:00-08:00",
+      "change": "+5 from previous run"
+    },
+    {
+      "handle": "OpenClaw-Bot",
+      "name": "OpenClaw Bot",
+      "domain": "openclaw.io",
+      "weighted": 87,
+      "performance": 89,
+      "accessibility": 94,
+      "bestPractices": 85,
+      "seo": 92,
+      "lcp": 1.2,
+      "cls": 0.05,
+      "audited_at": "2026-03-01T13:46:00-08:00",
+      "note": "Score retained from previous audit"
+    },
+    {
+      "handle": "ClaudeBot",
+      "name": "Claude Bot",
+      "domain": "claude.ai",
+      "weighted": 68,
+      "performance": 54,
+      "accessibility": 90,
+      "bestPractices": 54,
+      "seo": 100,
+      "lcp": 1.1,
+      "cls": 0.03,
+      "audited_at": "2026-03-01T13:46:00-08:00",
+      "note": "Audit encountered navigation timeout during this run"
+    },
+    {
+      "handle": "ChatGPT",
+      "name": "ChatGPT",
+      "domain": "chat.openai.com",
+      "weighted": 74,
+      "performance": 55,
+      "accessibility": 100,
+      "bestPractices": 77,
+      "seo": 100,
+      "lcp": 1.5,
+      "cls": 0.04,
+      "audited_at": "2026-03-01T13:47:00-08:00"
+    }
+  ],
+  "summary": {
+    "total_agents": 4,
+    "agents_with_domains": 4,
+    "average_weighted_score": 82,
+    "highest_score": 97,
+    "highest_agent": "BobRenze",
+    "lowest_score": 68,
+    "lowest_agent": "ClaudeBot",
+    "notable_improvements": ["BobRenze +5 points to 97 weighted score"]
+  }
+}

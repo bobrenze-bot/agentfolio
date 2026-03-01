@@ -11,12 +11,14 @@ from typing import Dict, Any, List, Optional
 from .constants import Category, Tier, COMPOSITE_WEIGHTS
 from .models import ScoreResult, CategoryScore, PlatformData
 from .calculators import (
+    MentoringScoreCalculator,
     CodeScoreCalculator,
     ContentScoreCalculator,
     IdentityScoreCalculator,
     SocialScoreCalculator,
     EconomicScoreCalculator,
     CommunityScoreCalculator,
+    ToolsScoreCalculator,
 )
 from .decay import DecayCalculator
 from .skills_boost import SkillsBoostCalculator
@@ -74,6 +76,8 @@ class ScoreCalculator:
             Category.SOCIAL: SocialScoreCalculator(),
             Category.ECONOMIC: EconomicScoreCalculator(),
             Category.COMMUNITY: CommunityScoreCalculator(),
+            Category.MENTORING: MentoringScoreCalculator(),
+            Category.TOOLS: ToolsScoreCalculator(),
         }
     
     def calculate_category(
@@ -172,7 +176,12 @@ class ScoreCalculator:
             "twitter": Category.SOCIAL,
             "toku": Category.ECONOMIC,
             "clawhub": Category.COMMUNITY,
-            "openclaw": Category.COMMUNITY,
+            "moltbook": Category.MENTORING,
+            "tools": Category.TOOLS,
+            
+            
+            
+            
         }
         
         # Aggregate platform data by category
