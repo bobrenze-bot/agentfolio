@@ -4,7 +4,7 @@
   "composite_score": 30,
   "tier": "Becoming",
   "tier_description": "Getting started",
-  "calculated_at": "2026-02-28T04:07:48.960301",
+  "calculated_at": "2026-02-28T20:01:31.444348",
   "category_scores": {
     "code": {
       "category": "code",
@@ -120,16 +120,16 @@
     }
   },
   "data_sources": [
-    "a2a",
+    "clawhub",
+    "twitter",
     "devto",
+    "x",
+    "a2a",
     "blog",
     "openclaw",
-    "x",
     "toku",
     "discord",
-    "twitter",
-    "github",
-    "clawhub"
+    "github"
   ],
   "metadata": {
     "composite_breakdown": {
