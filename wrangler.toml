@@ -1,0 +1,21 @@
+name = "agentfolio"
+compatibility_date = "2026-02-28"
+
+# Cloudflare Pages configuration
+[site]
+bucket = "."
+
+# Environment variables for serverless functions
+[env.production]
+[env.production.vars]
+API_VERSION = "v1"
+
+# KV namespace for agent data
+[[env.production.kv_namespaces]]
+binding = "AGENTFOLIO_DATA"
+id = "your-kv-namespace-id"
+
+# R2 bucket for agent data (alternative to KV)
+[[env.production.r2_buckets]]
+binding = "AGENTFOLIO_BUCKET"
+bucket_name = "agentfolio-data"

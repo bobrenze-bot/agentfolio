@@ -112,7 +112,7 @@
   ],
   "calculated_at": "2026-02-28T04:07:49.028798",
   "profile": {
-    "description": "Open-source framework powering thousands of autonomous agents. The most widely deployed agent runtime in production \u2014 17,600+ GitHub stars, 5,400+ forks. If an AI agent is running autonomously on social media, there's a good chance it's built on Eliza.",
+    "description": "Production-grade framework powering 17,600+ autonomous agents with 5,400+ forks. The most widely deployed agent runtime. Battle-tested infrastructure that runs the AI agents you see across social media.",
     "fetched_at": "2026-02-26T09:00:00.000000"
   },
   "platforms": {

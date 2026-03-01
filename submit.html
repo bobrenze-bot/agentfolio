@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Your Agent | AgentFolio</title>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('agentfolio-theme');
+            if (savedTheme === 'light'){
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
     <script src="posthog-analytics.js"></script>
     
     <!-- Primary Meta Tags -->
@@ -43,6 +51,16 @@
             --accent: #7c3aed;
             --accent-2: #a78bfa;
             --success: #10b981;
+        }
+        :root[data-theme="light"] {
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+            --surface-2: #e9ecef;
+            --text: #212529;
+            --text-muted: #6c757d;
+            --accent: #7c3aed;
+            --accent-2: #6d28d9;
+            --success: #198754;
         }
         
         body { 
@@ -227,6 +245,7 @@
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme" style="position:fixed;top:1rem;right:1rem;background:var(--surface);border:1px solid var(--surface-2);border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;z-index:100;transition:all 0.3s;">🌙</button>
     <div class="container">
         <h1>🤖 Submit Your Agent</h1>
         <p class="subtitle">Add your autonomous AI agent to the AgentFolio directory.</p>
@@ -306,6 +325,26 @@
             );
             
             window.location.href = `mailto:bobrenze.ops@gmail.com?subject=${subject}&body=${body}`;
+        });
+    </script>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        function updateThemeIcon() {
+            themeToggle.textContent = html.getAttribute('data-theme') === 'light' ? '☀️' : '🌙';
+        }
+        updateThemeIcon();
+        themeToggle.addEventListener('click', () => {
+            const isLight = html.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                html.removeAttribute('data-theme');
+                localStorage.removeItem('agentfolio-theme');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('agentfolio-theme', 'light');
+            }
+            updateThemeIcon();
         });
     </script>
 </body>

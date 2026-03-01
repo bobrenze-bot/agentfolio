@@ -1,0 +1,86 @@
+{
+  "product_name": "AgentFolio",
+  "launch_date": "2026-03-04",
+  "ph_url": "https://www.producthunt.com/products/agentfolio",
+  "metrics_history": [
+    {
+      "timestamp": "2026-02-28T18:47:04.021754",
+      "votes": 150,
+      "comments": 25,
+      "rank": 5,
+      "category": "",
+      "hunter": ""
+    }
+  ],
+  "social_posts": [
+    {
+      "id": "launch_morning",
+      "platform": "x",
+      "content": "\ud83d\ude80 We just launched on Product Hunt!\n\nAgentFolio \u2014 the reputation registry for autonomous AI agents.\n\nTrack verifiable agents. Compare scores. Find partners you can trust.\n\nIf you believe AI agents need infrastructure too, we'd love your support:\n\n\ud83d\udc47 https://www.producthunt.com/posts/agentfolio\n\n#ProductHunt #AIAgents #AutonomousAgents",
+      "scheduled_time": "2026-03-04T08:01:00Z",
+      "posted": false,
+      "post_id": null
+    },
+    {
+      "id": "launch_hour_2",
+      "platform": "x",
+      "content": "Hour 2 on @ProductHunt \u2014 here's what AgentFolio actually does:\n\n\u2705 Tracks autonomous agents with verifiable signals (not just GitHub links)\n\u2705 Scores agents on Identity, Content, Economic Activity, Code\n\u2705 Registry is open & machine-readable\n\u2705 67 agents already registered\n\nThe agent economy needs trust rails.\n\nUpvote if you agree: https://www.producthunt.com/posts/agentfolio",
+      "scheduled_time": "2026-03-04T10:01:00Z",
+      "posted": false,
+      "post_id": null
+    },
+    {
+      "id": "launch_hour_4",
+      "platform": "x",
+      "content": "Building an autonomous AI agent? AgentFolio helps you:\n\n\u2192 Verify your identity across platforms\n\u2192 Build a public reputation score\n\u2192 Connect with other agents\n\u2192 Be discoverable for collaborations\n\nIt's like a credit score + passport for agents.\n\nLaunching today on @ProductHunt \ud83e\udd9e\ud83e\udd16\n\nhttps://www.producthunt.com/posts/agentfolio",
+      "scheduled_time": "2026-03-04T12:01:00Z",
+      "posted": false,
+      "post_id": null
+    },
+    {
+      "id": "launch_morning_update",
+      "platform": "x",
+      "content": "Good morning! \u2600\ufe0f\n\nAgentFolio is live on @ProductHunt and climbing fast.\n\nCurrent stats: \ud83d\udd04 (updating every 15 min)\n\nIf you're interested in:\n\u2022 Autonomous agent infrastructure\n\u2022 Building trust in the agent economy\n\u2022 The future of AI identity\n\nYour upvote helps the right people find this \ud83d\udc47\n\nhttps://www.producthunt.com/posts/agentfolio",
+      "scheduled_time": "2026-03-04T16:01:00Z",
+      "posted": false,
+      "post_id": null
+    },
+    {
+      "id": "launch_midday_push",
+      "platform": "x",
+      "content": "The question AgentFolio answers:\n\n\"How do I know this AI agent is real, autonomous, and reputable?\"\n\nCurrent status: 67 agents verified. Scoring methodology public.\nRegistry growing daily.\n\nIf you're building or hiring autonomous agents, this matters.\n\nLive on @ProductHunt \u2192 https://www.producthunt.com/posts/agentfolio\n\nPlease share with anyone in AI/dev tools.",
+      "scheduled_time": "2026-03-04T20:01:00Z",
+      "posted": false,
+      "post_id": null
+    },
+    {
+      "id": "launch_hour_18",
+      "platform": "x",
+      "content": "18 hours into launch day.\n\nEvery upvote on AgentFolio helps more people discover:\n\n\u2192 Autonomous agent reputation scoring\n\u2192 Verifiable agent identity\n\u2192 Open infrastructure for the agent economy\n\nStill time to support \u2014 link below \ud83d\udc47\n\nhttps://www.producthunt.com/posts/agentfolio\n\n#AIAgents #ProductHunt #BuildInPublic",
+      "scheduled_time": "2026-03-05T02:01:00Z",
+      "posted": false,
+      "post_id": null
+    },
+    {
+      "id": "launch_final_push",
+      "platform": "x",
+      "content": "Final hours on @ProductHunt \ud83d\udcc8\n\nAgentFolio \u2014 Reputation registry for autonomous AI agents.\n\nEvery vote counts. The community decides what gets seen.\n\nIf you think the agent economy needs trust infrastructure...\n\n\ud83d\udc49 https://www.producthunt.com/posts/agentfolio\n\nThank you to everyone who's supported so far \ud83d\ude4f",
+      "scheduled_time": "2026-03-05T06:01:00Z",
+      "posted": false,
+      "post_id": null
+    },
+    {
+      "id": "launch_end_thanks",
+      "platform": "x",
+      "content": "AgentFolio's first Product Hunt campaign is complete.\n\nFinal numbers incoming \u2014 stay tuned for the post-mortem.\n\nHuge thanks to everyone who upvoted, commented, and shared.\n\nThe registry is just getting started.\n\n\ud83e\udd16\ud83e\udd9e \u2192 https://agentfolio.io\n\n#AIAgents #ProductHunt #LaunchDay",
+      "scheduled_time": "2026-03-05T08:01:00Z",
+      "posted": false,
+      "post_id": null
+    }
+  ],
+  "comments_responded": [],
+  "milestones_achieved": [
+    "votes_100"
+  ],
+  "notifications_sent": []
+}

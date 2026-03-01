@@ -1,0 +1,16 @@
+{
+  "name": "agentfolio-api",
+  "version": "1.0.0",
+  "description": "AgentFolio Serverless API - Cloudflare Pages Functions",
+  "main": "",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "deploy": "wrangler pages deploy . --branch=main"
+  },
+  "keywords": ["agentfolio", "api", "serverless", "cloudflare"],
+  "author": "AgentFolio Team",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

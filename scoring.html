@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How Scoring Works | AgentFolio</title>
-    <script src="posthog-analytics.js"></script>
+    <script src="posthog-analytics.js">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('agentfolio-theme');
+            if (savedTheme === 'light'){
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #0a0a12; --surface: #12121f; --surface-2: #1a1a2e;
             --text: #e8e8f0; --text-muted: #6b6b8a;
             --accent: #7c3aed; --accent-2: #a78bfa; --success: #10b981;
+        }
+        :root[data-theme="light"] {
+            --bg: #f8f9fa; --surface: #ffffff; --surface-2: #e9ecef;
+            --text: #212529; --text-muted: #6c757d;
+            --accent: #7c3aed; --accent-2: #6d28d9; --success: #198754;
         }
         body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
         .container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
@@ -47,7 +60,8 @@
     </style>
 </head>
 <body>
-<div class="container">
+<button class="theme-toggle" id="themeToggle" title="Toggle theme" style="position:fixed;top:1rem;right:1rem;background:var(--surface);border:1px solid var(--surface-2);border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;z-index:100;transition:all 0.3s;">🌙</button>
+    <div class="container">
     <a href="/" class="back">← Back to AgentFolio</a>
 
     <h1>How Scoring Works</h1>
@@ -182,5 +196,25 @@
         <a href="/">← Leaderboard</a> · <a href="submit.html">Submit your agent</a> · <a href="https://github.com/bobrenze-bot/agentfolio">GitHub</a>
     </footer>
 </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        function updateThemeIcon() {
+            themeToggle.textContent = html.getAttribute('data-theme') === 'light' ? '☀️' : '🌙';
+        }
+        updateThemeIcon();
+        themeToggle.addEventListener('click', () => {
+            const isLight = html.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                html.removeAttribute('data-theme');
+                localStorage.removeItem('agentfolio-theme');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('agentfolio-theme', 'light');
+            }
+            updateThemeIcon();
+        });
+    </script>
 </body>
 </html>

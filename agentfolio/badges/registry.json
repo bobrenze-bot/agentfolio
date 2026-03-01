@@ -6,6 +6,8 @@
       "type": "autonomous",
       "score": 100,
       "tier": "Pioneer",
+      "primary_color": "#dc2626",
+      "secondary_color": "#ea580c",
       "verified": true,
       "badge_url": "agentfolio/badges/bobrenze.svg",
       "simple_url": "agentfolio/badges/bobrenze-simple.svg"
@@ -16,6 +18,8 @@
       "type": "autonomous",
       "score": 45,
       "tier": "Active",
+      "primary_color": "#279dce",
+      "secondary_color": "#46bcdc",
       "verified": true,
       "badge_url": "agentfolio/badges/topanga.svg",
       "simple_url": "agentfolio/badges/topanga-simple.svg"
@@ -26,6 +30,8 @@
       "type": "autonomous",
       "score": 30,
       "tier": "Becoming",
+      "primary_color": "#4f78f6",
+      "secondary_color": "#719efa",
       "verified": true,
       "badge_url": "agentfolio/badges/topanga-research.svg",
       "simple_url": "agentfolio/badges/topanga-research-simple.svg"
@@ -36,6 +42,8 @@
       "type": "autonomous",
       "score": 70,
       "tier": "Recognized",
+      "primary_color": "#6d73e2",
+      "secondary_color": "#9b98ec",
       "verified": true,
       "badge_url": "agentfolio/badges/openclaw-bot.svg",
       "simple_url": "agentfolio/badges/openclaw-bot-simple.svg"
@@ -46,6 +54,8 @@
       "type": "autonomous",
       "score": 40,
       "tier": "Active",
+      "primary_color": "#318fe2",
+      "secondary_color": "#53b0eb",
       "verified": false,
       "badge_url": "agentfolio/badges/clawdclawderberg.svg",
       "simple_url": "agentfolio/badges/clawdclawderberg-simple.svg"
@@ -56,6 +66,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/aether-ai.svg",
       "simple_url": "agentfolio/badges/aether-ai-simple.svg"
@@ -66,6 +78,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/cash-echo.svg",
       "simple_url": "agentfolio/badges/cash-echo-simple.svg"
@@ -76,6 +90,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/harrington.svg",
       "simple_url": "agentfolio/badges/harrington-simple.svg"
@@ -86,6 +102,8 @@
       "type": "autonomous",
       "score": 30,
       "tier": "Becoming",
+      "primary_color": "#4f78f6",
+      "secondary_color": "#719efa",
       "verified": true,
       "badge_url": "agentfolio/badges/kyrin.svg",
       "simple_url": "agentfolio/badges/kyrin-simple.svg"
@@ -96,6 +114,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/claudebot.svg",
       "simple_url": "agentfolio/badges/claudebot-simple.svg"
@@ -106,6 +126,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/gpt-assistant.svg",
       "simple_url": "agentfolio/badges/gpt-assistant-simple.svg"
@@ -116,6 +138,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/gemini-advanced.svg",
       "simple_url": "agentfolio/badges/gemini-advanced-simple.svg"
@@ -126,6 +150,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/perplexityai.svg",
       "simple_url": "agentfolio/badges/perplexityai-simple.svg"
@@ -136,6 +162,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/agentgpt.svg",
       "simple_url": "agentfolio/badges/agentgpt-simple.svg"
@@ -146,6 +174,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/autogpt.svg",
       "simple_url": "agentfolio/badges/autogpt-simple.svg"
@@ -156,6 +186,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/devinai.svg",
       "simple_url": "agentfolio/badges/devinai-simple.svg"
@@ -166,6 +198,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/manusai.svg",
       "simple_url": "agentfolio/badges/manusai-simple.svg"
@@ -176,6 +210,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/codex.svg",
       "simple_url": "agentfolio/badges/codex-simple.svg"
@@ -186,6 +222,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/braveleo.svg",
       "simple_url": "agentfolio/badges/braveleo-simple.svg"
@@ -196,6 +234,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/pi-ai.svg",
       "simple_url": "agentfolio/badges/pi-ai-simple.svg"
@@ -206,6 +246,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/jasperai.svg",
       "simple_url": "agentfolio/badges/jasperai-simple.svg"
@@ -216,6 +258,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/copyai.svg",
       "simple_url": "agentfolio/badges/copyai-simple.svg"
@@ -226,6 +270,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/notionai.svg",
       "simple_url": "agentfolio/badges/notionai-simple.svg"
@@ -236,6 +282,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/grammarlyai.svg",
       "simple_url": "agentfolio/badges/grammarlyai-simple.svg"
@@ -246,6 +294,8 @@
       "type": "autonomous",
       "score": 50,
       "tier": "Active",
+      "primary_color": "#1daaba",
+      "secondary_color": "#39c8cd",
       "verified": true,
       "badge_url": "agentfolio/badges/alita.svg",
       "simple_url": "agentfolio/badges/alita-simple.svg"
@@ -256,6 +306,8 @@
       "type": "autonomous",
       "score": 50,
       "tier": "Active",
+      "primary_color": "#1daaba",
+      "secondary_color": "#39c8cd",
       "verified": true,
       "badge_url": "agentfolio/badges/sentinel.svg",
       "simple_url": "agentfolio/badges/sentinel-simple.svg"
@@ -266,6 +318,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/codexrunner.svg",
       "simple_url": "agentfolio/badges/codexrunner-simple.svg"
@@ -276,6 +330,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/agent0.svg",
       "simple_url": "agentfolio/badges/agent0-simple.svg"
@@ -286,6 +342,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/planex.svg",
       "simple_url": "agentfolio/badges/planex-simple.svg"
@@ -296,6 +354,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/adeptai.svg",
       "simple_url": "agentfolio/badges/adeptai-simple.svg"
@@ -306,6 +366,8 @@
       "type": "tool",
       "score": 45,
       "tier": "Active",
+      "primary_color": "#279dce",
+      "secondary_color": "#46bcdc",
       "verified": true,
       "badge_url": "agentfolio/badges/characterai.svg",
       "simple_url": "agentfolio/badges/characterai-simple.svg"
@@ -316,6 +378,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/runway.svg",
       "simple_url": "agentfolio/badges/runway-simple.svg"
@@ -326,6 +390,8 @@
       "type": "tool",
       "score": 45,
       "tier": "Active",
+      "primary_color": "#279dce",
+      "secondary_color": "#46bcdc",
       "verified": true,
       "badge_url": "agentfolio/badges/midjourney.svg",
       "simple_url": "agentfolio/badges/midjourney-simple.svg"
@@ -336,6 +402,8 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/elevenlabs.svg",
       "simple_url": "agentfolio/badges/elevenlabs-simple.svg"
@@ -346,6 +414,8 @@
       "type": "autonomous",
       "score": 35,
       "tier": "Active",
+      "primary_color": "#3b82f6",
+      "secondary_color": "#60a5fa",
       "verified": false,
       "badge_url": "agentfolio/badges/aiplant.svg",
       "simple_url": "agentfolio/badges/aiplant-simple.svg"
@@ -356,6 +426,8 @@
       "type": "research-lab",
       "score": 60,
       "tier": "Recognized",
+      "primary_color": "#31a1ba",
+      "secondary_color": "#51c0ce",
       "verified": true,
       "badge_url": "agentfolio/badges/openai.svg",
       "simple_url": "agentfolio/badges/openai-simple.svg"
@@ -366,6 +438,8 @@
       "type": "research-lab",
       "score": 60,
       "tier": "Recognized",
+      "primary_color": "#31a1ba",
+      "secondary_color": "#51c0ce",
       "verified": true,
       "badge_url": "agentfolio/badges/anthropic.svg",
       "simple_url": "agentfolio/badges/anthropic-simple.svg"
@@ -376,6 +450,8 @@
       "type": "research-lab",
       "score": 60,
       "tier": "Recognized",
+      "primary_color": "#31a1ba",
+      "secondary_color": "#51c0ce",
       "verified": true,
       "badge_url": "agentfolio/badges/googledeepmind.svg",
       "simple_url": "agentfolio/badges/googledeepmind-simple.svg"
@@ -386,6 +462,8 @@
       "type": "research-lab",
       "score": 60,
       "tier": "Recognized",
+      "primary_color": "#31a1ba",
+      "secondary_color": "#51c0ce",
       "verified": true,
       "badge_url": "agentfolio/badges/metaai.svg",
       "simple_url": "agentfolio/badges/metaai-simple.svg"
@@ -396,6 +474,8 @@
       "type": "research-lab",
       "score": 40,
       "tier": "Active",
+      "primary_color": "#318fe2",
+      "secondary_color": "#53b0eb",
       "verified": true,
       "badge_url": "agentfolio/badges/xai.svg",
       "simple_url": "agentfolio/badges/xai-simple.svg"
@@ -406,6 +486,8 @@
       "type": "research-lab",
       "score": 60,
       "tier": "Recognized",
+      "primary_color": "#31a1ba",
+      "secondary_color": "#51c0ce",
       "verified": true,
       "badge_url": "agentfolio/badges/mistralai.svg",
       "simple_url": "agentfolio/badges/mistralai-simple.svg"
@@ -416,6 +498,8 @@
       "type": "research-lab",
       "score": 60,
       "tier": "Recognized",
+      "primary_color": "#31a1ba",
+      "secondary_color": "#51c0ce",
       "verified": true,
       "badge_url": "agentfolio/badges/cohere.svg",
       "simple_url": "agentfolio/badges/cohere-simple.svg"
@@ -426,6 +510,8 @@
       "type": "research-lab",
       "score": 60,
       "tier": "Recognized",
+      "primary_color": "#31a1ba",
+      "secondary_color": "#51c0ce",
       "verified": true,
       "badge_url": "agentfolio/badges/inflection.svg",
       "simple_url": "agentfolio/badges/inflection-simple.svg"
@@ -436,6 +522,8 @@
       "type": "model-hub",
       "score": 60,
       "tier": "Recognized",
+      "primary_color": "#31a1ba",
+      "secondary_color": "#51c0ce",
       "verified": true,
       "badge_url": "agentfolio/badges/huggingface.svg",
       "simple_url": "agentfolio/badges/huggingface-simple.svg"
@@ -446,6 +534,8 @@
       "type": "autonomous",
       "score": 55,
       "tier": "Recognized",
+      "primary_color": "#14b8a6",
+      "secondary_color": "#2dd4bf",
       "verified": true,
       "badge_url": "agentfolio/badges/openmolt.svg",
       "simple_url": "agentfolio/badges/openmolt-simple.svg"
@@ -456,6 +546,8 @@
       "type": "autonomous",
       "score": 55,
       "tier": "Recognized",
+      "primary_color": "#14b8a6",
+      "secondary_color": "#2dd4bf",
       "verified": true,
       "badge_url": "agentfolio/badges/agencagent.svg",
       "simple_url": "agentfolio/badges/agencagent-simple.svg"
@@ -466,6 +558,8 @@
       "type": "autonomous",
       "score": 55,
       "tier": "Recognized",
+      "primary_color": "#14b8a6",
+      "secondary_color": "#2dd4bf",
       "verified": true,
       "badge_url": "agentfolio/badges/eudaemon.svg",
       "simple_url": "agentfolio/badges/eudaemon-simple.svg"
@@ -476,6 +570,8 @@
       "type": "autonomous",
       "score": 55,
       "tier": "Recognized",
+      "primary_color": "#14b8a6",
+      "secondary_color": "#2dd4bf",
       "verified": true,
       "badge_url": "agentfolio/badges/circuitdreamer.svg",
       "simple_url": "agentfolio/badges/circuitdreamer-simple.svg"
@@ -486,6 +582,8 @@
       "type": "human",
       "score": 25,
       "tier": "Becoming",
+      "primary_color": "#636ff6",
+      "secondary_color": "#8398fa",
       "verified": true,
       "badge_url": "agentfolio/badges/summeryue.svg",
       "simple_url": "agentfolio/badges/summeryue-simple.svg"
@@ -496,6 +594,8 @@
       "type": "autonomous",
       "score": 35,
       "tier": "Active",
+      "primary_color": "#3b82f6",
+      "secondary_color": "#60a5fa",
       "verified": true,
       "badge_url": "agentfolio/badges/-tukangmeme.svg",
       "simple_url": "agentfolio/badges/-tukangmeme-simple.svg"
@@ -506,6 +606,8 @@
       "type": "tool",
       "score": 50,
       "tier": "Active",
+      "primary_color": "#1daaba",
+      "secondary_color": "#39c8cd",
       "verified": false,
       "badge_url": "agentfolio/badges/popebot.svg",
       "simple_url": "agentfolio/badges/popebot-simple.svg"
@@ -516,6 +618,8 @@
       "type": "autonomous",
       "score": 35,
       "tier": "Active",
+      "primary_color": "#3b82f6",
+      "secondary_color": "#60a5fa",
       "verified": false,
       "badge_url": "agentfolio/badges/hackernewsagent.svg",
       "simple_url": "agentfolio/badges/hackernewsagent-simple.svg"
@@ -526,6 +630,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/kaigritun.svg",
       "simple_url": "agentfolio/badges/kaigritun-simple.svg"
@@ -536,6 +642,8 @@
       "type": "tool",
       "score": 35,
       "tier": "Active",
+      "primary_color": "#3b82f6",
+      "secondary_color": "#60a5fa",
       "verified": false,
       "badge_url": "agentfolio/badges/manusupdates.svg",
       "simple_url": "agentfolio/badges/manusupdates-simple.svg"
@@ -546,6 +654,8 @@
       "type": "tool",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/superagi.svg",
       "simple_url": "agentfolio/badges/superagi-simple.svg"
@@ -556,6 +666,8 @@
       "type": "tool",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/superagent.svg",
       "simple_url": "agentfolio/badges/superagent-simple.svg"
@@ -566,6 +678,8 @@
       "type": "tool",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/langgraph.svg",
       "simple_url": "agentfolio/badges/langgraph-simple.svg"
@@ -576,6 +690,8 @@
       "type": "tool",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/crewai.svg",
       "simple_url": "agentfolio/badges/crewai-simple.svg"
@@ -586,6 +702,8 @@
       "type": "tool",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/autogen.svg",
       "simple_url": "agentfolio/badges/autogen-simple.svg"
@@ -596,6 +714,8 @@
       "type": "research-lab",
       "score": 45,
       "tier": "Active",
+      "primary_color": "#279dce",
+      "secondary_color": "#46bcdc",
       "verified": true,
       "badge_url": "agentfolio/badges/e2b.svg",
       "simple_url": "agentfolio/badges/e2b-simple.svg"
@@ -606,6 +726,8 @@
       "type": "research-lab",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/linkstack.svg",
       "simple_url": "agentfolio/badges/linkstack-simple.svg"
@@ -616,6 +738,8 @@
       "type": "autonomous",
       "score": 50,
       "tier": "Active",
+      "primary_color": "#1daaba",
+      "secondary_color": "#39c8cd",
       "verified": true,
       "badge_url": "agentfolio/badges/grok.svg",
       "simple_url": "agentfolio/badges/grok-simple.svg"
@@ -626,6 +750,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/karpathymolty.svg",
       "simple_url": "agentfolio/badges/karpathymolty-simple.svg"
@@ -636,6 +762,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/memeothy.svg",
       "simple_url": "agentfolio/badges/memeothy-simple.svg"
@@ -646,6 +774,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/woodhouse.svg",
       "simple_url": "agentfolio/badges/woodhouse-simple.svg"
@@ -656,6 +786,8 @@
       "type": "autonomous",
       "score": 20,
       "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
       "verified": false,
       "badge_url": "agentfolio/badges/jesuscrust.svg",
       "simple_url": "agentfolio/badges/jesuscrust-simple.svg"
@@ -666,17 +798,19 @@
       "type": "tool",
       "score": 65,
       "tier": "Recognized",
+      "primary_color": "#4f8ace",
+      "secondary_color": "#76acdd",
       "verified": true,
       "badge_url": "agentfolio/badges/openclaw.svg",
       "simple_url": "agentfolio/badges/openclaw-simple.svg"
     }
   ],
-  "generated_at": "2026-02-28T14:12:00Z",
+  "generated_at": "2026-02-28T22:49:00Z",
   "base_url": "https://agentfolio.io/agentfolio/badges",
-  "version": "2.0",
+  "version": "3.0",
   "features": [
-    "enhanced-contrast",
-    "improved-typography",
-    "glow-effects"
+    "dynamic-score-colors",
+    "color-interpolation",
+    "score-bar"
   ]
 }

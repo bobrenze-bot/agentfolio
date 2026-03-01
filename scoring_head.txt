@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Scoring Works | AgentFolio</title>
+    <script src="posthog-analytics.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a12; --surface: #12121f; --surface-2: #1a1a2e;
+            --text: #e8e8f0; --text-muted: #6b6b8a;
+            --accent: #7c3aed; --accent-2: #a78bfa; --success: #10b981;
+        }
+        body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+        a { color: var(--accent-2); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back { display: inline-block; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem; }
+        h1 { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem; }
+        h2 { font-size: 1.15rem; font-weight: 700; color: var(--accent-2); margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--surface-2); }
+        h3 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+        p { color: var(--text-muted); margin-bottom: 1rem; }
+        strong { color: var(--text); }
+        code { background: var(--surface); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.9em; color: var(--accent-2); }
+        .formula-box { background: var(--surface); border: 1px solid var(--accent); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; text-align: center; }
+        .formula { font-size: 1.1rem; font-family: monospace; color: var(--text); margin-bottom: 0.75rem; }
+        .formula-note { color: var(--text-muted); font-size: 0.85rem; }
+        .callout { background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }

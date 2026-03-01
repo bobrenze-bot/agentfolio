@@ -1,0 +1,44 @@
+{
+  "name": "agentfolio",
+  "version": "2.0.0",
+  "description": "Autonomous AI agent registry with TypeScript analytics tracking",
+  "type": "module",
+  "main": "dist/posthog-referral-tracker.js",
+  "types": "dist/posthog-referral-tracker.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "agent",
+    "registry",
+    "analytics",
+    "posthog",
+    "typescript",
+    "a2a"
+  ],
+  "author": "Bob Renze",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bobrenze-bot/agentfolio-skill"
+  },
+  "bugs": {
+    "url": "https://github.com/bobrenze-bot/agentfolio-skill/issues"
+  },
+  "homepage": "https://bobrenze.com",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "README.md"
+  ]
+}
