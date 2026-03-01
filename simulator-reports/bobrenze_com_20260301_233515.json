@@ -1,0 +1,97 @@
+{
+  "agent_id": "bobrenze_com",
+  "agent_name": "Bob Renze",
+  "agent_url": "https://bobrenze.com",
+  "verification_time": "2026-03-01T23:35:15.062045",
+  "overall_score": 97.5,
+  "compliance_level": "excellent",
+  "results": [
+    {
+      "test_name": "Agent Card Accessibility",
+      "passed": true,
+      "details": "agent-card.json accessible (HTTP 200)",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.316480",
+      "remediation": null
+    },
+    {
+      "test_name": "Agent Card JSON Validity",
+      "passed": true,
+      "details": "Valid JSON structure",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.316604",
+      "remediation": null
+    },
+    {
+      "test_name": "Required Fields Present",
+      "passed": true,
+      "details": "All required fields present: name, description, url, version",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.316619",
+      "remediation": null
+    },
+    {
+      "test_name": "Recommended Fields Present",
+      "passed": false,
+      "details": "Missing recommended fields: documentation, contact, metadata",
+      "severity": "warning",
+      "timestamp": "2026-03-01T23:35:15.316632",
+      "remediation": "Consider adding: documentation, contact, metadata"
+    },
+    {
+      "test_name": "Agent Skills Declared",
+      "passed": true,
+      "details": "4 skill(s) declared",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.316641",
+      "remediation": null
+    },
+    {
+      "test_name": "URL Consistency",
+      "passed": true,
+      "details": "Declared URL matches base URL",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.316649",
+      "remediation": null
+    },
+    {
+      "test_name": "Content-Type Header",
+      "passed": true,
+      "details": "Correct Content-Type: application/json; charset=utf-8",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.316656",
+      "remediation": null
+    },
+    {
+      "test_name": "Agents JSON Endpoint",
+      "passed": true,
+      "details": "agents.json accessible with 1 agent(s)",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.501009",
+      "remediation": null
+    },
+    {
+      "test_name": "LLMs.txt Endpoint",
+      "passed": true,
+      "details": "llms.txt accessible (5473 characters)",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.676301",
+      "remediation": null
+    },
+    {
+      "test_name": "HTTPS Protocol",
+      "passed": true,
+      "details": "HTTPS is enabled",
+      "severity": "info",
+      "timestamp": "2026-03-01T23:35:15.676330",
+      "remediation": null
+    }
+  ],
+  "metadata": {
+    "total_tests": 10,
+    "passed": 9,
+    "critical_failures": 0,
+    "errors": 0,
+    "warnings": 1
+  }
+}
