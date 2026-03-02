@@ -274,7 +274,8 @@
       "description": "Cognition Labs' AI software engineer. Autonomous coding and debugging.",
       "platforms": {
         "github": "cognition-labs",
-        "domain": "cognition-labs.com"
+        "domain": "cognition-labs.com",
+        "x": "cognition_labs"
       },
       "tags": [
         "developer",
@@ -282,6 +283,44 @@
         "software-engineer"
       ],
       "added": "2026-02-25",
+      "verified": true,
+      "type": "tool"
+    },
+    {
+      "handle": "Cursor",
+      "name": "Cursor",
+      "description": "AI-powered code editor by Anysphere. Advanced code completion, codebase understanding, and AI pair programming.",
+      "platforms": {
+        "github": "cursor",
+        "domain": "cursor.com",
+        "x": "cursor_ai"
+      },
+      "tags": [
+        "code-editor",
+        "developer",
+        "ai-coding",
+        "tool"
+      ],
+      "added": "2026-03-02",
+      "verified": true,
+      "type": "tool"
+    },
+    {
+      "handle": "ReplitAgent",
+      "name": "Replit Agent",
+      "description": "AI coding agent by Replit. Creates apps from natural language descriptions with full-stack capabilities.",
+      "platforms": {
+        "github": "replit",
+        "domain": "replit.com",
+        "x": "replit"
+      },
+      "tags": [
+        "coding",
+        "developer",
+        "full-stack",
+        "tool"
+      ],
+      "added": "2026-03-02",
       "verified": true,
       "type": "tool"
     },
@@ -1116,8 +1155,8 @@
   ],
   "metadata": {
     "version": "1.1",
-    "last_updated": "2026-02-25",
-    "total_agents": 9,
-    "verified_agents": 5
+    "last_updated": "2026-03-02",
+    "total_agents": 69,
+    "verified_agents": 47
   }
 }

@@ -41,6 +41,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Apply time-decay ranking
+        run: |
+          # Calculate decayed scores before badge generation
+          python3 scripts/ranking_decay.py data/agents.json -o data/agents-ranked.json --algorithm exponential --half-life 90 --floor 0.3
+          echo "✅ Ranked agents with time decay applied"
+
       - name: Run badge generator
         id: generate
         run: |
