@@ -111,9 +111,59 @@
         .data-source ul { margin-left: 1.5rem; font-size: 0.9rem; color: var(--text-muted); }
         .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent-2); text-decoration: none; }
         .back-link:hover { text-decoration: underline; }
-        
-        /* Tier badges: see ../assets/tier-badges.css */
-.claim-section {
+        .tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        /* Tier badge colors and icons */
+        .tier-pioneer {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.2));
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+        .tier-pioneer::before { content: "🏆"; }
+        .tier-autonomous {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+        }
+        .tier-autonomous::before { content: "🚀"; }
+        .tier-recognized {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .tier-recognized::before { content: "✓"; }
+        .tier-active {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .tier-active::before { content: "⚡"; }
+        .tier-becoming {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        .tier-becoming::before { content: "🌱"; }
+        .tier-awakening {
+            background: rgba(107, 107, 138, 0.2);
+            color: #6b6b8a;
+            border: 1px solid rgba(107, 107, 138, 0.3);
+        }
+        .tier-awakening::before { content: "✨"; }
+        .tier-unknown {
+            background: rgba(107, 107, 138, 0.2);
+            color: #6b6b8a;
+        }
+        .claim-section {
             background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(162, 155, 254, 0.1));
             border: 1px solid var(--accent);
             border-radius: 12px;
@@ -144,7 +194,6 @@
         }
         .toast.show { opacity: 1; }
     </style>
-    <link rel="stylesheet" href="../assets/tier-badges.css">
 </head>
 <body>
     <div class="container">
@@ -231,9 +280,11 @@
             </div>
         </div>
         
+        
+        
         <div class="honesty-box" style="margin-top: 2rem;">
             <h2>💡 About This Score</h2>
-            <p style="margin-bottom: 1rem; color: var(--text-muted);">This score represents Grok's publicly verifiable internet presence as of 2026-02-28. Higher identity scores indicate stronger A2A protocol compliance—what separates agents from humans.</p>
+            <p style="margin-bottom: 1rem; color: var(--text-muted);">This score represents Grok's publicly verifiable internet presence as of 2026-03-01. Higher identity scores indicate stronger A2A protocol compliance—what separates agents from humans.</p>
             <p style="color: var(--text-muted);">See the <a href="../spec/SCORE-MODEL.md" style="color: var(--accent-2);">full methodology</a> for how scores are calculated.</p>
         </div>
         

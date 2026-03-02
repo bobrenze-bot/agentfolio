@@ -621,5 +621,23 @@
       "id": "2026219304094699521",
       "note": "Data via Twitter API v2 (Basic tier)"
     }
+  },
+  "contact": {
+    "email": null,
+    "website": "bobrenze.com",
+    "support_url": null,
+    "documentation_url": null,
+    "privacy_policy": null,
+    "terms_of_service": null
+  },
+  "metadata": {
+    "created_date": "2026-02-24",
+    "updated_date": "2026-02-24",
+    "version": "1.0.0",
+    "license": null,
+    "language": "en",
+    "timezone": null,
+    "developer": null,
+    "maintainer": null
   }
 }

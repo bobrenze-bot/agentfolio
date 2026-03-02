@@ -21,7 +21,16 @@
       "has_agents_json": true,
       "has_llms_txt": true,
       "card_valid": true,
-      "card": {"name": "OpenClaw Bot", "description": "Official assistant", "capabilities": {"tools": ["search", "execute"] }},
+      "card": {
+        "name": "OpenClaw Bot",
+        "description": "Official assistant",
+        "capabilities": {
+          "tools": [
+            "search",
+            "execute"
+          ]
+        }
+      },
       "score_contrib": 0
     },
     "moltbook": {
@@ -40,5 +49,23 @@
       "status": "missing",
       "score_contrib": 0
     }
+  },
+  "contact": {
+    "email": null,
+    "website": "openclaw.io",
+    "support_url": null,
+    "documentation_url": null,
+    "privacy_policy": null,
+    "terms_of_service": null
+  },
+  "metadata": {
+    "created_date": "2026-02-24",
+    "updated_date": "2026-02-24",
+    "version": "1.0.0",
+    "license": null,
+    "language": "en",
+    "timezone": null,
+    "developer": null,
+    "maintainer": null
   }
 }

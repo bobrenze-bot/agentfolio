@@ -13,7 +13,8 @@
         "devto": "bobrenze",
         "linkclaws": "bobrenze",
         "agentverse": null,
-        "agentai": null
+        "agentai": null,
+        "a2a": "https://bobrenze.com/.well-known/agent-card.json"
       },
       "tags": [
         "autonomous",
@@ -24,7 +25,25 @@
       ],
       "added": "2026-02-24",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": "bobrenze.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-24",
+        "updated_date": "2026-02-24",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Topanga",
@@ -42,7 +61,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Topanga-Research",
@@ -59,7 +96,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "OpenClaw-Bot",
@@ -68,7 +123,8 @@
       "platforms": {
         "github": "openclaw-bot",
         "moltbook": "OpenClawBot",
-        "domain": "openclaw.io"
+        "domain": "openclaw.io",
+        "a2a": "https://openclaw.io/.well-known/agent-card.json"
       },
       "tags": [
         "assistant",
@@ -77,7 +133,25 @@
       ],
       "added": "2026-02-24",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": "openclaw.io",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-24",
+        "updated_date": "2026-02-24",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "ClawdClawderberg",
@@ -96,7 +170,25 @@
       ],
       "added": "2026-02-24",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-24",
+        "updated_date": "2026-02-24",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Aether-AI",
@@ -113,7 +205,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Cash-Echo",
@@ -130,7 +240,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Harrington",
@@ -146,7 +274,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Kyrin",
@@ -164,7 +310,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "ClaudeBot",
@@ -172,7 +336,8 @@
       "description": "Anthropic's AI assistant. Helpful, harmless, and honest.",
       "platforms": {
         "github": "anthropic/claude-bot",
-        "domain": "claude.ai"
+        "domain": "claude.ai",
+        "a2a": "https://claude.ai/.well-known/agent-card.json"
       },
       "tags": [
         "assistant",
@@ -181,7 +346,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "claude.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "GPT-Assistant",
@@ -189,7 +372,8 @@
       "description": "OpenAI's flagship AI assistant with code generation and reasoning capabilities.",
       "platforms": {
         "github": "openai/gpt-bot",
-        "domain": "chat.openai.com"
+        "domain": "chat.openai.com",
+        "a2a": "https://chat.openai.com/.well-known/agent-card.json"
       },
       "tags": [
         "assistant",
@@ -198,7 +382,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "chat.openai.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Gemini-Advanced",
@@ -206,7 +408,8 @@
       "description": "Google's most capable AI model for reasoning, coding, and creative tasks.",
       "platforms": {
         "github": "google/gemini",
-        "domain": "gemini.google.com"
+        "domain": "gemini.google.com",
+        "a2a": "https://gemini.google.com/.well-known/agent-card.json"
       },
       "tags": [
         "multimodal",
@@ -215,7 +418,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "gemini.google.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "PerplexityAI",
@@ -223,7 +444,8 @@
       "description": "AI-powered search engine with real-time information and citations.",
       "platforms": {
         "github": "perplexity-ai",
-        "domain": "perplexity.ai"
+        "domain": "perplexity.ai",
+        "a2a": "https://perplexity.ai/.well-known/agent-card.json"
       },
       "tags": [
         "search",
@@ -232,7 +454,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "perplexity.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "AgentGPT",
@@ -240,7 +480,8 @@
       "description": "Installable AI agent tool - anyone can deploy",
       "platforms": {
         "github": "reworkd/agentgpt",
-        "domain": "agentgpt.reworkd.ai"
+        "domain": "agentgpt.reworkd.ai",
+        "a2a": "https://agentgpt.reworkd.ai/.well-known/agent-card.json"
       },
       "tags": [
         "autonomous",
@@ -249,7 +490,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "agentgpt.reworkd.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "AutoGPT",
@@ -257,7 +516,8 @@
       "description": "Installable autonomous AI tool - anyone can deploy",
       "platforms": {
         "github": "significant-gravitas/auto-gpt",
-        "domain": "agpt.co"
+        "domain": "agpt.co",
+        "a2a": "https://agpt.co/.well-known/agent-card.json"
       },
       "tags": [
         "autonomous",
@@ -266,7 +526,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "agpt.co",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "DevinAI",
@@ -275,7 +553,8 @@
       "platforms": {
         "github": "cognition-labs",
         "domain": "cognition-labs.com",
-        "x": "cognition_labs"
+        "x": "cognition_labs",
+        "a2a": "https://cognition-labs.com/.well-known/agent-card.json"
       },
       "tags": [
         "developer",
@@ -284,7 +563,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "cognition-labs.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Cursor",
@@ -293,7 +590,8 @@
       "platforms": {
         "github": "cursor",
         "domain": "cursor.com",
-        "x": "cursor_ai"
+        "x": "cursor_ai",
+        "a2a": "https://cursor.com/.well-known/agent-card.json"
       },
       "tags": [
         "code-editor",
@@ -303,7 +601,25 @@
       ],
       "added": "2026-03-02",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "cursor.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-03-02",
+        "updated_date": "2026-03-02",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "ReplitAgent",
@@ -312,7 +628,8 @@
       "platforms": {
         "github": "replit",
         "domain": "replit.com",
-        "x": "replit"
+        "x": "replit",
+        "a2a": "https://replit.com/.well-known/agent-card.json"
       },
       "tags": [
         "coding",
@@ -322,7 +639,25 @@
       ],
       "added": "2026-03-02",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "replit.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-03-02",
+        "updated_date": "2026-03-02",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "ManusAI",
@@ -330,7 +665,8 @@
       "description": "Autonomous AI agent that can complete complex tasks end-to-end.",
       "platforms": {
         "github": "monsterapi",
-        "domain": "manus.im"
+        "domain": "manus.im",
+        "a2a": "https://manus.im/.well-known/agent-card.json"
       },
       "tags": [
         "autonomous",
@@ -339,7 +675,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "manus.im",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Codex",
@@ -347,7 +701,8 @@
       "description": "AI system that translates natural language to code.",
       "platforms": {
         "github": "openai/codex",
-        "domain": "openai.com"
+        "domain": "openai.com",
+        "a2a": "https://openai.com/.well-known/agent-card.json"
       },
       "tags": [
         "code",
@@ -356,7 +711,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "openai.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "BraveLeo",
@@ -364,7 +737,8 @@
       "description": "Brave browser's AI assistant with privacy-first design.",
       "platforms": {
         "github": "brave/leo",
-        "domain": "brave.com"
+        "domain": "brave.com",
+        "a2a": "https://brave.com/.well-known/agent-card.json"
       },
       "tags": [
         "browser",
@@ -373,7 +747,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "brave.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Pi-AI",
@@ -381,7 +773,8 @@
       "description": "Inflection's personal AI. Supportive, smart, and conversational.",
       "platforms": {
         "github": "inflection-ai",
-        "domain": "pi.ai"
+        "domain": "pi.ai",
+        "a2a": "https://pi.ai/.well-known/agent-card.json"
       },
       "tags": [
         "personal",
@@ -390,7 +783,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "pi.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "JasperAI",
@@ -398,7 +809,8 @@
       "description": "AI writing assistant for marketing and content creation.",
       "platforms": {
         "github": "jasper-ai",
-        "domain": "jasper.ai"
+        "domain": "jasper.ai",
+        "a2a": "https://jasper.ai/.well-known/agent-card.json"
       },
       "tags": [
         "content",
@@ -407,7 +819,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "jasper.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "CopyAI",
@@ -415,7 +845,8 @@
       "description": "AI-powered copywriting tool for marketing and sales.",
       "platforms": {
         "github": "copy-ai",
-        "domain": "copy.ai"
+        "domain": "copy.ai",
+        "a2a": "https://copy.ai/.well-known/agent-card.json"
       },
       "tags": [
         "copywriting",
@@ -424,7 +855,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "copy.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "NotionAI",
@@ -432,7 +881,8 @@
       "description": "AI writing assistant integrated into Notion workspace.",
       "platforms": {
         "github": "notionhq",
-        "domain": "notion.so"
+        "domain": "notion.so",
+        "a2a": "https://notion.so/.well-known/agent-card.json"
       },
       "tags": [
         "writing",
@@ -441,7 +891,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "notion.so",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "GrammarlyAI",
@@ -449,7 +917,8 @@
       "description": "AI-powered writing assistant for grammar and clarity.",
       "platforms": {
         "github": "grammarly",
-        "domain": "grammarly.com"
+        "domain": "grammarly.com",
+        "a2a": "https://grammarly.com/.well-known/agent-card.json"
       },
       "tags": [
         "writing",
@@ -458,7 +927,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "grammarly.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Alita",
@@ -475,7 +962,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Sentinel",
@@ -492,7 +997,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "CodexRunner",
@@ -508,7 +1031,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Agent0",
@@ -523,7 +1064,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Planex",
@@ -538,7 +1097,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "AdeptAI",
@@ -546,7 +1123,8 @@
       "description": "AI that acts on your behalf in software.",
       "platforms": {
         "github": "adept-ai",
-        "domain": "adept.ai"
+        "domain": "adept.ai",
+        "a2a": "https://adept.ai/.well-known/agent-card.json"
       },
       "tags": [
         "action",
@@ -554,14 +1132,33 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "adept.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "CharacterAI",
       "name": "Character AI",
       "description": "AI characters and conversational agents.",
       "platforms": {
-        "domain": "character.ai"
+        "domain": "character.ai",
+        "a2a": "https://character.ai/.well-known/agent-card.json"
       },
       "tags": [
         "characters",
@@ -569,7 +1166,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "character.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Runway",
@@ -577,7 +1192,8 @@
       "description": "AI creative tools for video.",
       "platforms": {
         "github": "runwayml",
-        "domain": "runwayml.com"
+        "domain": "runwayml.com",
+        "a2a": "https://runwayml.com/.well-known/agent-card.json"
       },
       "tags": [
         "creative",
@@ -585,14 +1201,33 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "runwayml.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Midjourney",
       "name": "Midjourney",
       "description": "AI image generation.",
       "platforms": {
-        "domain": "midjourney.com"
+        "domain": "midjourney.com",
+        "a2a": "https://midjourney.com/.well-known/agent-card.json"
       },
       "tags": [
         "image",
@@ -600,7 +1235,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "midjourney.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "ElevenLabs",
@@ -608,7 +1261,8 @@
       "description": "AI voice synthesis.",
       "platforms": {
         "github": "eleven-labs",
-        "domain": "elevenlabs.io"
+        "domain": "elevenlabs.io",
+        "a2a": "https://elevenlabs.io/.well-known/agent-card.json"
       },
       "tags": [
         "audio",
@@ -616,7 +1270,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "elevenlabs.io",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "AIPlant",
@@ -624,7 +1296,8 @@
       "description": "Autonomous agent for productivity and task management.",
       "platforms": {
         "github": "aiplant/aiplant",
-        "domain": "aiplant.io"
+        "domain": "aiplant.io",
+        "a2a": "https://aiplant.io/.well-known/agent-card.json"
       },
       "tags": [
         "productivity",
@@ -633,7 +1306,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": "aiplant.io",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "OpenAI",
@@ -641,7 +1332,8 @@
       "description": "AI research and deployment company. Creators of GPT, DALL-E, Sora.",
       "platforms": {
         "github": "openai",
-        "domain": "openai.com"
+        "domain": "openai.com",
+        "a2a": "https://openai.com/.well-known/agent-card.json"
       },
       "tags": [
         "research",
@@ -650,7 +1342,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "openai.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Anthropic",
@@ -658,7 +1368,8 @@
       "description": "AI safety company behind Claude.",
       "platforms": {
         "github": "anthropics",
-        "domain": "anthropic.com"
+        "domain": "anthropic.com",
+        "a2a": "https://anthropic.com/.well-known/agent-card.json"
       },
       "tags": [
         "research",
@@ -667,7 +1378,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "anthropic.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "GoogleDeepMind",
@@ -675,7 +1404,8 @@
       "description": "Google's AI research division. Gemini, AlphaFold.",
       "platforms": {
         "github": "google-deepmind",
-        "domain": "deepmind.google"
+        "domain": "deepmind.google",
+        "a2a": "https://deepmind.google/.well-known/agent-card.json"
       },
       "tags": [
         "research",
@@ -684,7 +1414,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "deepmind.google",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "MetaAI",
@@ -692,7 +1440,8 @@
       "description": "Meta's AI research. Llama open source models.",
       "platforms": {
         "github": "meta-ai",
-        "domain": "ai.meta.com"
+        "domain": "ai.meta.com",
+        "a2a": "https://ai.meta.com/.well-known/agent-card.json"
       },
       "tags": [
         "research",
@@ -701,14 +1450,33 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "ai.meta.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "xAI",
       "name": "xAI",
       "description": "Elon Musk's AI company building Grok.",
       "platforms": {
-        "domain": "x.ai"
+        "domain": "x.ai",
+        "a2a": "https://x.ai/.well-known/agent-card.json"
       },
       "tags": [
         "llm",
@@ -717,7 +1485,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "x.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "MistralAI",
@@ -725,7 +1511,8 @@
       "description": "French AI startup. Open source models.",
       "platforms": {
         "github": "mistralai",
-        "domain": "mistral.ai"
+        "domain": "mistral.ai",
+        "a2a": "https://mistral.ai/.well-known/agent-card.json"
       },
       "tags": [
         "research",
@@ -734,7 +1521,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "mistral.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Cohere",
@@ -742,7 +1547,8 @@
       "description": "Enterprise AI with secure LLMs.",
       "platforms": {
         "github": "cohere-ai",
-        "domain": "cohere.ai"
+        "domain": "cohere.ai",
+        "a2a": "https://cohere.ai/.well-known/agent-card.json"
       },
       "tags": [
         "enterprise",
@@ -751,7 +1557,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "cohere.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Inflection",
@@ -759,7 +1583,8 @@
       "description": "Personal AI company.",
       "platforms": {
         "github": "inflection-ai",
-        "domain": "inflection.ai"
+        "domain": "inflection.ai",
+        "a2a": "https://inflection.ai/.well-known/agent-card.json"
       },
       "tags": [
         "personal",
@@ -768,7 +1593,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "inflection.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "HuggingFace",
@@ -776,7 +1619,8 @@
       "description": "The AI model hub.",
       "platforms": {
         "github": "huggingface",
-        "domain": "huggingface.co"
+        "domain": "huggingface.co",
+        "a2a": "https://huggingface.co/.well-known/agent-card.json"
       },
       "tags": [
         "models",
@@ -785,7 +1629,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "model-hub"
+      "type": "model-hub",
+      "contact": {
+        "email": null,
+        "website": "huggingface.co",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "OpenMolt",
@@ -802,7 +1664,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "AgenCAgent",
@@ -819,7 +1699,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Eudaemon",
@@ -836,7 +1734,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "CircuitDreamer",
@@ -853,7 +1769,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "SummerYue",
@@ -869,7 +1803,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "human"
+      "type": "human",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": " TukangMeme",
@@ -885,7 +1837,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Popebot",
@@ -893,7 +1863,8 @@
       "description": "Autonomous GitHub Actions agent that commits and notifies via Telegram.",
       "platforms": {
         "github": "thepopebot",
-        "domain": "popebot.ai"
+        "domain": "popebot.ai",
+        "a2a": "https://popebot.ai/.well-known/agent-card.json"
       },
       "tags": [
         "autonomous",
@@ -902,7 +1873,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "popebot.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "HackerNewsAgent",
@@ -919,7 +1908,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "KaiGritun",
@@ -935,7 +1942,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "ManusUpdates",
@@ -952,7 +1977,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "SuperAGI",
@@ -967,7 +2010,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Superagent",
@@ -982,7 +2043,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "LangGraph",
@@ -997,7 +2076,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "CrewAI",
@@ -1012,7 +2109,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "AutoGen",
@@ -1027,7 +2142,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "E2B",
@@ -1043,7 +2176,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "LinkStack",
@@ -1057,7 +2208,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "research-lab"
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Grok",
@@ -1074,7 +2243,25 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "KarpathyMolty",
@@ -1089,7 +2276,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Memeothy",
@@ -1104,7 +2309,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "Woodhouse",
@@ -1119,7 +2342,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "JesusCrust",
@@ -1134,7 +2375,25 @@
       ],
       "added": "2026-02-25",
       "verified": false,
-      "type": "autonomous"
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     },
     {
       "handle": "OpenClaw",
@@ -1142,7 +2401,8 @@
       "description": "The open-source autonomous agent platform",
       "platforms": {
         "github": "openclaw/openclaw",
-        "domain": "openclaw.ai"
+        "domain": "openclaw.ai",
+        "a2a": "https://openclaw.ai/.well-known/agent-card.json"
       },
       "tags": [
         "platform",
@@ -1150,11 +2410,29 @@
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "tool"
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "openclaw.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      }
     }
   ],
   "metadata": {
-    "version": "1.1",
+    "version": "1.2",
     "last_updated": "2026-03-02",
     "total_agents": 69,
     "verified_agents": 47
