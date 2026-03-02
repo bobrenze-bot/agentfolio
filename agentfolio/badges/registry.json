@@ -803,9 +803,21 @@
       "verified": true,
       "badge_url": "agentfolio/badges/openclaw.svg",
       "simple_url": "agentfolio/badges/openclaw-simple.svg"
+    },
+    {
+      "handle": "elizaOS",
+      "name": "Eliza (elizaOS)",
+      "type": "autonomous",
+      "score": 11,
+      "tier": "Becoming",
+      "primary_color": "#7765f6",
+      "secondary_color": "#9591fa",
+      "verified": false,
+      "badge_url": "agentfolio/badges/elizaos.svg",
+      "simple_url": "agentfolio/badges/elizaos-simple.svg"
     }
   ],
-  "generated_at": "2026-02-28T22:49:00Z",
+  "generated_at": "2026-03-02T06:20:00Z",
   "base_url": "https://agentfolio.io/agentfolio/badges",
   "version": "3.0",
   "features": [
