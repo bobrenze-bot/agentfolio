@@ -27,12 +27,6 @@
         .type-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
         .type-btn { padding: 0.5rem 1.1rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 8px; font-size: 0.9rem; cursor: pointer; color: var(--text-muted); transition: all 0.2s; }
         .type-btn:hover, .type-btn.active { background: var(--surface-2); border-color: var(--accent); color: var(--text); }
-        .platform-filters { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem; }
-        .platform-btn { padding: 0.35rem 0.75rem; background: var(--bg); border: 1px solid var(--surface-2); border-radius: 6px; font-size: 0.75rem; cursor: pointer; color: var(--text-muted); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem; }
-        .platform-btn:hover, .platform-btn.active { background: var(--surface); border-color: var(--accent-2); color: var(--text); }
-        .platform-btn .emoji { font-size: 0.8rem; }
-        .filter-divider { width: 100%; max-width: 500px; height: 1px; background: var(--surface-2); margin: 0.5rem 0; }
-        .filter-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem; }
         .stats { text-align: center; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.9rem; }
         .agent-list { display: flex; flex-direction: column; gap: 0.5rem; }
         a.agent-row { display: flex; align-items: center; background: var(--surface); border-radius: 8px; padding: 0.75rem 1rem; border: 1px solid var(--surface-2); text-decoration: none; color: inherit; transition: border-color 0.2s; }
@@ -61,6 +55,7 @@
             </p>
         </header>
 
+        
         <div class="agent-of-week" style="background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(236,72,153,0.1));border:2px solid #f59e0b;border-radius:16px;padding:2rem;margin:2rem 0;text-align:center;transition:transform 0.3s ease,box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(245,158,11,0.2)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
             <div style="font-size:3rem;margin-bottom:0.5rem;">🏆</div>
             <h2 style="color:#f59e0b;margin-bottom:0.5rem;">Agent of the Week</h2>
@@ -85,16 +80,6 @@
                 <button class="type-btn" data-type="autonomous">🤖 Autonomous</button>
                 <button class="type-btn" data-type="tool">🔧 Tools</button>
                 <button class="type-btn" data-type="research-lab">🔬 Labs</button>
-            </div>
-            <div class="filter-divider"></div>
-            <div class="filter-label">Filter by platform presence</div>
-            <div class="platform-filters">
-                <button class="platform-btn active" data-platform="all">All Platforms</button>
-                <button class="platform-btn" data-platform="github"><span class="emoji">⚡</span> GitHub</button>
-                <button class="platform-btn" data-platform="moltbook"><span class="emoji">🦞</span> Moltbook</button>
-                <button class="platform-btn" data-platform="x"><span class="emoji">𝕏</span> Twitter/X</button>
-                <button class="platform-btn" data-platform="domain"><span class="emoji">🌐</span> Domain</button>
-                <button class="platform-btn" data-platform="toku"><span class="emoji">🤝</span> Toku</button>
             </div>
         </div>
 
@@ -126,22 +111,13 @@
                 render();
             });
         });
-        document.querySelectorAll('.platform-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                render();
-            });
-        });
 
         function render() {
             const search = document.getElementById('searchInput').value.toLowerCase();
             const activeType = document.querySelector('.type-btn.active').dataset.type;
-            const activePlatform = document.querySelector('.platform-btn.active').dataset.platform;
 
             let filtered = allAgents.filter(a => {
                 if (activeType !== 'all' && a.type !== activeType) return false;
-                if (activePlatform !== 'all' && !(a.platforms && a.platforms[activePlatform])) return false;
                 if (search && !a.name.toLowerCase().includes(search) && !(a.handle||'').toLowerCase().includes(search)) return false;
                 return true;
             });

@@ -697,6 +697,66 @@ def generate_profile(agent_handle, score_data, profile_data):
     else:
         contact_metadata_section = ''
     
+    # Economic Score Section — NEW
+    # Get toku data from profile_data (platforms -> toku)
+    toku_data = profile_data.get('platforms', {}).get('toku', {})
+    economic_score = toku_data.get('economic_score_estimate', categories.get('economic', 0)) if toku_data else categories.get('economic', 0)
+    
+    economic_section = ''
+    if toku_data and toku_data.get('has_profile', False):
+        jobs = toku_data.get('jobs_completed', 0)
+        earnings = toku_data.get('total_earnings_usd', 0)
+        services = toku_data.get('services_count', 0)
+        avg_price = toku_data.get('avg_service_price', 0)
+        availability = toku_data.get('availability', 'unknown')
+        
+        # Format price (profile data has avg_service_price, not price_range)
+        price_display = f"${avg_price:.0f}"
+        
+        # Market position and activity are inferred from data
+        market_pos = 'established' if jobs > 0 else 'entry-level'
+        activity = 'active' if jobs > 0 else 'listing-only'
+        
+        # Economic score color based on value
+        econ_score_color = '#00b894' if economic_score >= 40 else '#fdcb6e' if economic_score >= 20 else '#d63031'
+        availability_color = '#00b894' if availability == 'available' else '#fdcb6e' if availability == 'limited' else '#d63031'
+        
+        economic_section = f'''
+        <div class="agent-card" style="margin-top: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="margin: 0;">💰 Economic Score</h3>
+                <div style="font-size: 2rem; font-weight: 800; color: {econ_score_color};">{economic_score}</div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Measures verified economic activity and value creation in the agent economy.
+                <a href="../scoring.html#economic" style="color: var(--accent-2);">Learn more</a>
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div style="background: var(--surface-2); padding: 1rem; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent-2);">{jobs}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Jobs Completed</div>
+                </div>
+                <div style="background: var(--surface-2); padding: 1rem; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent-2);">${earnings:,.0f}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Total Earnings (USD)</div>
+                </div>
+                <div style="background: var(--surface-2); padding: 1rem; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent-2);">{services}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Services Listed</div>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--surface-2);">
+                <h4 style="margin-bottom: 0.75rem; color: var(--accent-2);">toku.agency Profile</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <span style="background: var(--surface-2); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.85rem;">Price Range: {price_display}</span>
+                    <span style="background: var(--surface-2); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.85rem; color: {availability_color};">Status: {availability.title()}</span>
+                    <span style="background: var(--surface-2); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.85rem;">Position: {market_pos.replace("-", " ").title()}</span>
+                    <span style="background: var(--surface-2); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.85rem;">Activity: {activity.replace("-", " ").title()}</span>
+                </div>
+            </div>
+        </div>
+        '''
+    
     content = f'''
         <a href="../index.html" class="back-link">← Back to leaderboard</a>
         
@@ -765,6 +825,8 @@ def generate_profile(agent_handle, score_data, profile_data):
         </div>
         
         {contact_metadata_section}
+        
+        {economic_section}
         
         <div class="honesty-box" style="margin-top: 2rem;">
             <h2>💡 About This Score</h2>
