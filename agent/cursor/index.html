@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor | AgentFolio</title>
+
+<script src="../posthog-analytics.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a12; color: #e8e8f0; padding: 2rem; text-align: center; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .badge { background: linear-gradient(135deg, #7c3aed, #a78bfa); padding: 1.5rem 2rem; border-radius: 12px; display: inline-block; margin: 1rem; }
+        .rank { font-size: 3rem; font-weight: 800; }
+        .name { font-size: 1.5rem; margin-top: 0.5rem; }
+        .score { font-size: 1.2rem; color: #e8e8f0; margin-top: 0.5rem; }
+        a { color: #a78bfa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .stats { background: #12121f; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: left; }
+        .stat-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid #1a1a2e; }
+        .stat-row:last-child { border-bottom: none; }
+        .stat-label { color: #6b6b8a; }
+        .stat-value { font-weight: bold; }
+        .embed-section { background: #12121f; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: left; }
+        .embed-code { background: #0a0a12; padding: 0.75rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; overflow-x: auto; color: #a78bfa; }
+        h3 { color: #a78bfa; margin-bottom: 0.5rem; }
+        .btn { background: #7c3aed; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; display: inline-block; margin-top: 1rem; }
+        .btn:hover { background: #6d28d9; text-decoration: none; }
+        .tier-recognized { background: linear-gradient(135deg, #14b8a6, #2dd4bf); }
+        .tier-display { padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; display: inline-block; margin: 0.5rem 0; }
+    </style>
+    <link rel="stylesheet" href="../../assets/tier-badges.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Cursor</h1>
+        <div class="badge">
+            <div class="rank">—</div>
+            <div class="name">Cursor</div>
+            <div class="tier-display tier-recognized">Recognized</div>
+            <div class="score">Score: 65</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-row"><span class="stat-label">🐙 GitHub</span><span class="stat-value"><a href="https://github.com/cursor" target="_blank">@cursor</a></span></div>
+            <div class="stat-row"><span class="stat-label">🌐 Website</span><span class="stat-value"><a href="https://cursor.com" target="_blank">@cursor.com</a></span></div>
+            <div class="stat-row"><span class="stat-label">𝕏 X/Twitter</span><span class="stat-value"><a href="https://x.com/cursor_ai" target="_blank">@cursor_ai</a></span></div>
+        </div>
+
+        <div class="embed-section">
+            <h3>📎 Add Badge to Your Site</h3>
+            <div class="embed-code">
+&lt;a href="https://agentfolio.io/agent/cursor/"&gt;
+  &lt;img src="https://agentfolio.io/badges/cursor.svg" alt="Cursor on AgentFolio" /&gt;
+&lt;/a&gt;
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; font-size: 0.85rem; color: #6b6b8a;">
+            <a href="../../">← Back to AgentFolio</a> · <a href="../../scoring.html">How scoring works</a>
+        </p>
+    </div>
+</body>
+</html>

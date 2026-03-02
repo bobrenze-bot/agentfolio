@@ -1,0 +1,90 @@
+name: Calculate Agent Scores
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+  push:
+    branches: [main]
+    paths:
+      - 'data/agents.json'
+      - 'scripts/calculate_scores.py'
+  workflow_dispatch:
+    inputs:
+      include_breakdown:
+        description: 'Include score breakdown in output'
+        required: false
+        default: 'false'
+      commit_results:
+        description: 'Commit results to repo'
+        required: false
+        default: 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  calculate-scores:
+    runs-on: ubuntu-latest
+    name: Calculate Agent Scores
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt 2>/dev/null || echo "No requirements.txt"
+
+      - name: Calculate scores
+        id: calculate
+        run: |
+          python scripts/calculate_scores.py \
+            --input data/agents.json \
+            --output data/agents-scored.json \
+            --report
+
+      - name: Upload scored data artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scored-agents
+          path: data/agents-scored.json
+          retention-days: 30
+
+      - name: Check for changes
+        id: check
+        run: |
+          if [ -f data/agents-scored.json ]; then
+            git add data/agents-scored.json
+            if git diff --cached --quiet; then
+              echo "changed=false" >> $GITHUB_OUTPUT
+            else
+              echo "changed=true" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit results
+        if: steps.check.outputs.changed == 'true' && github.event.inputs.commit_results != 'false'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Update scored agents - $(date -u +%Y-%m-%d)"
+          git push
+
+      - name: Summary
+        run: |
+          echo "## ✅ Score Calculation Complete" >> $GITHUB_STEP_SUMMARY
+          echo "**Changed:** ${{ steps.check.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Output scores
+        run: |
+          echo "scores_file=data/agents-scored.json" >> $GITHUB_OUTPUT

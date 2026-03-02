@@ -633,6 +633,70 @@ def generate_profile(agent_handle, score_data, profile_data):
         </div>
     '''
     
+    # Contact & Metadata section
+    contact = profile_data.get('contact', {})
+    metadata = profile_data.get('metadata', {})
+    
+    contact_items = []
+    if contact.get('email'):
+        contact_items.append(f'<li><strong>📧 Email</strong>: <a href="mailto:{contact["email"]}" style="color: var(----accent-2);">{contact["email"]}</a></li>')
+    if contact.get('website'):
+        website = contact['website']
+        if not website.startswith('http'):
+            website = f'https://{website}'
+        contact_items.append(f'<li><strong>🌐 Website</strong>: <a href="{website}" target="_blank" style="color: var(--accent-2);">{contact["website"]}</a></li>')
+    if contact.get('support_url'):
+        contact_items.append(f'<li><strong>🆘 Support</strong>: <a href="{contact["support_url"]}" target="_blank" style="color: var(--accent-2);">Help Center</a></li>')
+    if contact.get('documentation_url'):
+        contact_items.append(f'<li><strong>📚 Docs</strong>: <a href="{contact["documentation_url"]}" target="_blank" style="color: var(--accent-2);">Documentation</a></li>')
+    if contact.get('privacy_policy'):
+        contact_items.append(f'<li><strong>🔒 Privacy</strong>: <a href="{contact["privacy_policy"]}" target="_blank" style="color: var(--accent-2);">Privacy Policy</a></li>')
+    if contact.get('terms_of_service'):
+        contact_items.append(f'<li><strong>📋 Terms</strong>: <a href="{contact["terms_of_service"]}" target="_blank" style="color: var(--accent-2);">Terms of Service</a></li>')
+    
+    metadata_items = []
+    if metadata.get('version'):
+        metadata_items.append(f'<li><strong>Version</strong>: {metadata["version"]}</li>')
+    if metadata.get('created_date'):
+        metadata_items.append(f'<li><strong>Created</strong>: {metadata["created_date"]}</li>')
+    if metadata.get('updated_date'):
+        metadata_items.append(f'<li><strong>Updated</strong>: {metadata["updated_date"]}</li>')
+    if metadata.get('license'):
+        metadata_items.append(f'<li><strong>License</strong>: {metadata["license"]}</li>')
+    if metadata.get('developer'):
+        metadata_items.append(f'<li><strong>Developer</strong>: {metadata["developer"]}</li>')
+    if metadata.get('maintainer'):
+        metadata_items.append(f'<li><strong>Maintainer</strong>: {metadata["maintainer"]}</li>')
+    if metadata.get('language'):
+        metadata_items.append(f'<li><strong>Language</strong>: {metadata["language"].upper()}</li>')
+    
+    contact_metadata_section = ''
+    if contact_items or metadata_items:
+        contact_html = ''.join(contact_items) if contact_items else '<li style="color: var(--text-muted);">No contact info provided</li>'
+        metadata_html = ''.join(metadata_items) if metadata_items else ''
+        
+        contact_metadata_section = f'''
+        <div class="agent-card" style="margin-top: 1.5rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">📮 Contact</h3>
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 0.9rem; color: var(--text-muted);">
+                        {contact_html}
+                    </ul>
+                </div>
+                {f"""
+                <div>
+                    <h3 style="margin-bottom: 1rem;">ℹ️ Metadata</h3>
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 0.9rem; color: var(--text-muted);">
+                        {metadata_html}
+                    </ul>
+                </div>""" if metadata_html else ""}
+            </div>
+        </div>
+        '''
+    else:
+        contact_metadata_section = ''
+    
     content = f'''
         <a href="../index.html" class="back-link">← Back to leaderboard</a>
         
@@ -699,6 +763,8 @@ def generate_profile(agent_handle, score_data, profile_data):
                 {share_buttons}
             </div>
         </div>
+        
+        {contact_metadata_section}
         
         <div class="honesty-box" style="margin-top: 2rem;">
             <h2>💡 About This Score</h2>

@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-# AgentFolio Badge Generator v3.0 - Dynamic Score Colors
+"""
+AgentFolio Badge Generator v3.1 - Dynamic Score Colors
+Updated to use score from calculate_scores.py output
+"""
 
+import argparse
 import json
 from pathlib import Path
+from datetime import datetime, timezone
 
 TYPE_ICONS = {
     'autonomous': '🤖',
@@ -52,10 +57,15 @@ def score_to_dynamic_color(score):
     return c_primary, c_secondary, '#ffffff', c_glow
 
 def calculate_score(agent):
+    """Fallback score calculation if score not already calculated."""
+    if 'score' in agent:
+        return agent['score']
+    
     t = agent.get('type', 'autonomous')
     platforms = agent.get('platforms', {})
     verified = agent.get('verified', False)
     score = 0
+    
     if t == 'autonomous':
         if platforms.get('github'): score += 20
         if platforms.get('x') or platforms.get('twitter'): score += 15
@@ -85,14 +95,23 @@ def get_tier(score):
     if score >= 15: return 'becoming'
     return 'awakening'
 
-def tier_display(t):
-    return {'pioneer': 'Pioneer', 'autonomous': 'Autonomous', 'recognized': 'Recognized', 'active': 'Active', 'becoming': 'Becoming', 'awakening': 'Awakening'}.get(t, t.title())
+def tier_display(tier):
+    tier_map = {
+        'pioneer': 'Pioneer', 
+        'autonomous': 'Autonomous', 
+        'recognized': 'Recognized', 
+        'active': 'Active', 
+        'becoming': 'Becoming', 
+        'awakening': 'Awakening'
+    }
+    return tier_map.get(tier, tier.title())
 
-def generate_badge(agent):
+def generate_badge(agent, score=None):
     h = agent['handle'].lower().replace(' ', '-')
     name = agent.get('name', agent['handle'])[:18]
-    score = calculate_score(agent)
-    tier = get_tier(score)
+    if score is None:
+        score = agent.get('score', calculate_score(agent))
+    tier = agent.get('tier', get_tier(score))
     c1, c2, c_text, c_glow = score_to_dynamic_color(score)
     icon = TYPE_ICONS.get(agent.get('type', 'autonomous'), '🤖')
     verified = agent.get('verified', False)
@@ -102,6 +121,7 @@ def generate_badge(agent):
     tier_name = tier_display(tier)
     badge_text_width = max(80, len(tier_name) * 9 + 30)
     verified_badge = f'<circle cx="{badge_width - 25}" cy="22" r="9" fill="{c1}"/><text x="{badge_width - 25}" y="26" font-size="10" fill="{c_text}" text-anchor="middle" font-weight="700">✓</text>' if verified else ''
+    
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{badge_width}" height="130" viewBox="0 0 {badge_width} 130">']
     parts.append(f'<defs><linearGradient id="bg_{h}" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" /><stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" /></linearGradient>')
     parts.append(f'<linearGradient id="accent_{h}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:{c1};stop-opacity:1" /><stop offset="100%" style="stop-color:{c2};stop-opacity:1" /></linearGradient></defs>')
@@ -115,15 +135,18 @@ def generate_badge(agent):
     parts.append(f'<text x="{badge_width - 55}" y="62" text-anchor="middle" style="font-family:system-ui;font-weight:800;font-size:22px;fill:{c1}">{score}</text>')
     parts.append(f'<rect x="28" y="88" width="{badge_text_width}" height="26" rx="13" fill="{c1}" fill-opacity="0.12" stroke="{c1}" stroke-width="1" stroke-opacity="0.4"/>')
     parts.append(f'<text x="40" y="105" style="font-family:system-ui;font-weight:600;font-size:11px;fill:{c1}">{tier_name}</text>')
-    if verified_badge: parts.append(verified_badge)
+    if verified_badge: 
+        parts.append(verified_badge)
     parts.append('<text x="195" y="118" text-anchor="end" style="font-family:system-ui;font-weight:500;font-size:9px;fill:#64748b">AgentFolio.io</text>')
     parts.append('</svg>')
     return ''.join(parts)
 
-def generate_simple_badge(agent):
+def generate_simple_badge(agent, score=None):
     h = agent['handle'].lower().replace(' ', '-')
     name = agent.get('name', agent['handle'])[:12]
-    score = calculate_score(agent)
+    if score is None:
+        score = agent.get('score', calculate_score(agent))
+    tier = agent.get('tier', get_tier(score))
     c1, c2, c_text, c_glow = score_to_dynamic_color(score)
     icon = TYPE_ICONS.get(agent.get('type', 'autonomous'), '🤖')
     parts = ['<svg xmlns="http://www.w3.org/2000/svg" width="160" height="44" viewBox="0 0 160 44">']
@@ -138,37 +161,72 @@ def generate_simple_badge(agent):
     return ''.join(parts)
 
 def main():
-    base_dir = Path('/Users/serenerenze/bob-bootstrap/projects/agentrank')
-    data_file = base_dir / 'data' / 'agents.json'
-    badges_dir = base_dir / 'agentfolio' / 'badges'
+    parser = argparse.ArgumentParser(description="Generate AgentFolio badges")
+    parser.add_argument("--input", "-i", default="data/agents.json",
+                        help="Input JSON file (default: data/agents.json)")
+    parser.add_argument("--output", "-o", default="agentfolio/badges",
+                        help="Output directory (default: agentfolio/badges)")
+    args = parser.parse_args()
+
+    data_file = Path(args.input)
+    badges_dir = Path(args.output)
+    
     with open(data_file, 'r') as f:
         data = json.load(f)
+    
+    # Support both scored format and raw agents format
     agents = data.get('agents', [])
     print(f'Generating dynamic color badges for {len(agents)} agents...')
+    
     badges_dir.mkdir(parents=True, exist_ok=True)
-    registry = {'badges': [], 'generated_at': '2026-02-28T22:49:00Z', 'base_url': 'https://agentfolio.io/agentfolio/badges', 'version': '3.0', 'features': ['dynamic-score-colors', 'color-interpolation', 'score-bar']}
+    
+    registry = {
+        'badges': [],
+        'generated_at': datetime.now(timezone.utc).isoformat(),
+        'base_url': 'https://agentfolio.io/agentfolio/badges',
+        'version': '3.1',
+        'features': ['dynamic-score-colors', 'color-interpolation', 'score-bar', 'pre-calculated-scores']
+    }
+    
     for agent in agents:
         h = agent['handle'].lower().replace(' ', '-')
-        badge_svg = generate_badge(agent)
-        simple_svg = generate_simple_badge(agent)
+        score = agent.get('score', calculate_score(agent))
+        tier = agent.get('tier', get_tier(score))
+        badge_svg = generate_badge(agent, score)
+        simple_svg = generate_simple_badge(agent, score)
+        c1, c2, _, _ = score_to_dynamic_color(score)
+        icon = TYPE_ICONS.get(agent.get('type', 'autonomous'), '🤖')
+        
         badge_path = badges_dir / f'{h}.svg'
         simple_path = badges_dir / f'{h}-simple.svg'
+        
         with open(badge_path, 'w') as f:
             f.write(badge_svg)
         with open(simple_path, 'w') as f:
             f.write(simple_svg)
-        score = calculate_score(agent)
-        tier = get_tier(score)
-        icon = TYPE_ICONS.get(agent.get('type', 'autonomous'), '🤖')
-        c1, c2, _, _ = score_to_dynamic_color(score)
-        registry['badges'].append({'handle': agent['handle'], 'name': agent.get('name', agent['handle']), 'type': agent.get('type', 'autonomous'), 'score': score, 'tier': tier_display(tier), 'primary_color': c1, 'secondary_color': c2, 'verified': agent.get('verified', False), 'badge_url': f'agentfolio/badges/{h}.svg', 'simple_url': f'agentfolio/badges/{h}-simple.svg'})
+        
+        registry['badges'].append({
+            'handle': agent['handle'],
+            'name': agent.get('name', agent['handle']),
+            'type': agent.get('type', 'autonomous'),
+            'score': score,
+            'tier': tier_display(tier),
+            'primary_color': c1,
+            'secondary_color': c2,
+            'verified': agent.get('verified', False),
+            'badge_url': f'agentfolio/badges/{h}.svg',
+            'simple_url': f'agentfolio/badges/{h}-simple.svg'
+        })
+        
         print(f'{icon} {agent["handle"]}: {score} ({tier_display(tier)}) - {c1}')
+    
     registry_file = badges_dir / 'registry.json'
     with open(registry_file, 'w') as f:
         json.dump(registry, f, indent=2)
+    
     print(f'Generated {len(agents) * 2} dynamic color badge files')
     print(f'Registry: {registry_file}')
-    print('Features: dynamic score-based color interpolation')
+    print('Features: dynamic score-based color interpolation, pre-calculated scores')
 
 if __name__ == '__main__':
     main()
