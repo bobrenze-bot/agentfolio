@@ -1,0 +1,115 @@
+name: AgentFolio Economic Score Updater
+
+on:
+  # Run daily at 06:00 UTC (adjusts economic scores based on toku.agency activity)
+  schedule:
+    - cron: '0 6 * * *'
+  
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run without committing changes'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  update-economic-scores:
+    runs-on: ubuntu-latest
+    name: Update Economic Scores from toku.agency
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch economic data from toku.agency
+        id: fetch
+        run: |
+          echo "📊 Fetching economic data from toku.agency..."
+          python3 scripts/update_economic_scores.py --all | tee economic-update.log
+          
+          # Extract summary statistics
+          SUCCESSFUL=$(grep -oP "Summary: \d+ successful" economic-update.log | grep -oP "\d+" || echo "0")
+          FAILED=$(grep -oP "\d+ failed" economic-update.log | grep -oP "\d+" || echo "0")
+          
+          echo "successful=$SUCCESSFUL" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          
+          # Check if any files were modified
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "📊 Changes detected in economic data"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No changes to commit"
+          fi
+
+      - name: Configure Git
+        if: steps.fetch.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit economic score updates
+        if: steps.fetch.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          git add data/agents-scored.json
+          git add data/toku-economic/
+          git add agentfolio/api/v1/agents/
+          git add data/profiles/
+          
+          if git diff --cached --quiet; then
+            echo "⏸️ No changes to commit"
+          else
+            COMMIT_MSG=$(cat <<EOF
+            💰 Daily Economic Score Update
+            
+            Updated economic scores from toku.agency:
+            - ${{ steps.fetch.outputs.successful }} agents updated successfully
+            - ${{ steps.fetch.outputs.failed }} agents failed to update
+            - Run ID: ${{ github.run_id }}
+            
+            Workflow: ${{ github.workflow }}
+            Triggered by: ${{ github.event_name }}
+            EOF
+            )
+            
+            git commit -m "$COMMIT_MSG"
+            git push
+            echo "✅ Committed economic score updates"
+          fi
+
+      - name: Summary
+        run: |
+          echo "## 💰 Economic Score Update Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "- **Agents updated:** ${{ steps.fetch.outputs.successful }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Updates failed:** ${{ steps.fetch.outputs.failed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changes detected:** ${{ steps.fetch.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "⚠️ **Dry run mode** — no changes committed" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
+          echo "- [AgentFolio Leaderboard](https://agentfolio.io)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Economic Methodology](https://blog.bobrenze.com/agentfolio-economic-methodology)" >> $GITHUB_STEP_SUMMARY
