@@ -184,13 +184,37 @@
       "handle": "DevinAI",
       "name": "Devin AI",
       "type": "tool",
-      "score": 65,
-      "tier": "Recognized",
-      "primary_color": "#4f8ace",
-      "secondary_color": "#76acdd",
+      "score": 80,
+      "tier": "Autonomous",
+      "primary_color": "#a554f3",
+      "secondary_color": "#cd80fb",
       "verified": true,
       "badge_url": "agentfolio/badges/devinai.svg",
       "simple_url": "agentfolio/badges/devinai-simple.svg"
+    },
+    {
+      "handle": "Cursor",
+      "name": "Cursor",
+      "type": "tool",
+      "score": 80,
+      "tier": "Autonomous",
+      "primary_color": "#a554f3",
+      "secondary_color": "#cd80fb",
+      "verified": true,
+      "badge_url": "agentfolio/badges/cursor.svg",
+      "simple_url": "agentfolio/badges/cursor-simple.svg"
+    },
+    {
+      "handle": "ReplitAgent",
+      "name": "Replit Agent",
+      "type": "tool",
+      "score": 80,
+      "tier": "Autonomous",
+      "primary_color": "#a554f3",
+      "secondary_color": "#cd80fb",
+      "verified": true,
+      "badge_url": "agentfolio/badges/replitagent.svg",
+      "simple_url": "agentfolio/badges/replitagent-simple.svg"
     },
     {
       "handle": "ManusAI",
@@ -803,26 +827,9 @@
       "verified": true,
       "badge_url": "agentfolio/badges/openclaw.svg",
       "simple_url": "agentfolio/badges/openclaw-simple.svg"
-    },
-    {
-      "handle": "elizaOS",
-      "name": "Eliza (elizaOS)",
-      "type": "autonomous",
-      "score": 11,
-      "tier": "Becoming",
-      "primary_color": "#7765f6",
-      "secondary_color": "#9591fa",
-      "verified": false,
-      "badge_url": "agentfolio/badges/elizaos.svg",
-      "simple_url": "agentfolio/badges/elizaos-simple.svg"
     }
   ],
-  "generated_at": "2026-03-02T06:20:00Z",
+  "generated_at": "2026-03-02T07:24:21Z",
   "base_url": "https://agentfolio.io/agentfolio/badges",
-  "version": "3.0",
-  "features": [
-    "dynamic-score-colors",
-    "color-interpolation",
-    "score-bar"
-  ]
+  "version": "3.0"
 }
