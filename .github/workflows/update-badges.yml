@@ -47,126 +47,26 @@ jobs:
           python3 scripts/ranking_decay.py data/agents.json -o data/agents-ranked.json --algorithm exponential --half-life 90 --floor 0.3
           echo "✅ Ranked agents with time decay applied"
 
+      - name: Calculate agent scores
+        run: |
+          # Use the refactored score calculator
+          python3 scripts/calculate_scores.py \
+            --input data/agents-ranked.json \
+            --output data/agents-scored.json \
+            --report
+          echo "✅ Calculated agent scores"
+
       - name: Run badge generator
         id: generate
         run: |
           mkdir -p agentfolio/badges
-          
-          # Inline badge generation
-          python3 << 'PYEOF'
-          import json
-          from pathlib import Path
-          from datetime import datetime, timezone
-          
-          TYPE_ICONS = {'autonomous': '🤖', 'tool': '🔧', 'platform': '🌐'}
-          
-          COLOR_STOPS = [
-              (0, '#6b7280', '#9ca3af'), (15, '#8b5cf6', '#a78bfa'),
-              (35, '#3b82f6', '#60a5fa'), (55, '#14b8a6', '#2dd4bf'),
-              (75, '#8b5cf6', '#c084fc'), (90, '#d946ef', '#e879f9'),
-              (100, '#dc2626', '#ea580c'),
-          ]
-          
-          def hex_to_rgb(h): return tuple(int(h.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
-          def rgb_to_hex(rgb): return f"#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
-          def interpolate_color(c1, c2, f):
-              rgb1, rgb2 = hex_to_rgb(c1), hex_to_rgb(c2)
-              return rgb_to_hex(tuple(int(rgb1[i] + (rgb2[i] - rgb1[i]) * f) for i in range(3)))
-          
-          def score_to_dynamic_color(score):
-              score = max(0, min(100, score))
-              for i in range(len(COLOR_STOPS) - 1):
-                  if COLOR_STOPS[i][0] <= score <= COLOR_STOPS[i + 1][0]:
-                      lower, upper = COLOR_STOPS[i], COLOR_STOPS[i + 1]
-                      break
-              else:
-                  lower, upper = COLOR_STOPS[0], COLOR_STOPS[-1]
-              factor = (score - lower[0]) / (upper[0] - lower[0]) if upper[0] > lower[0] else 0
-              return interpolate_color(lower[1], upper[1], factor), interpolate_color(lower[2], upper[2], factor), '#ffffff', 'rgba(255,255,255,0.3)'
-          
-          def calculate_score(agent):
-              t, platforms, verified = agent.get('type', 'autonomous'), agent.get('platforms', {}), agent.get('verified', False)
-              score = 0
-              if t == 'autonomous':
-                  if platforms.get('github'): score += 20
-                  if platforms.get('x') or platforms.get('twitter'): score += 15
-                  if platforms.get('moltbook'): score += 20
-                  if platforms.get('toku'): score += 15
-                  if platforms.get('domain'): score += 15
-                  if platforms.get('devto'): score += 10
-                  if platforms.get('linkclaws'): score += 10
-              elif t == 'tool':
-                  if platforms.get('domain'): score += 30
-                  if platforms.get('github'): score += 20
-                  if platforms.get('x') or platforms.get('twitter'): score += 15
-              else:
-                  if platforms.get('domain'): score += 25
-                  if platforms.get('github'): score += 20
-                  if platforms.get('x') or platforms.get('twitter'): score += 10
-              if verified: score += 15
-              return min(100, score)
-          
-          def get_tier(score):
-              if score >= 90: return 'Pioneer'
-              if score >= 75: return 'Autonomous'
-              if score >= 55: return 'Recognized'
-              if score >= 35: return 'Active'
-              if score >= 15: return 'Becoming'
-              return 'Awakening'
-          
-          def generate_badge(agent):
-              h = agent['handle'].lower().replace(' ', '-')
-              name, score = agent.get('name', agent['handle'])[:18], calculate_score(agent)
-              c1, c2, _, _ = score_to_dynamic_color(score)
-              icon, verified, tier = TYPE_ICONS.get(agent.get('type', 'autonomous'), '🤖'), agent.get('verified', False), get_tier(score)
-              vbadge = f'<circle cx="195" cy="22" r="9" fill="{c1}"/><text x="195" y="26" font-size="10" fill="white" text-anchor="middle" font-weight="700">✓</text>' if verified else ''
-              parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="220" height="130" viewBox="0 0 220 130">']
-              parts.append(f'<defs><linearGradient id="bg_{h}" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient><linearGradient id="accent_{h}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="{c1}"/><stop offset="100%" stop-color="{c2}"/></linearGradient></defs>')
-              parts.append(f'<rect width="220" height="130" rx="14" fill="url(#bg_{h})" stroke="#334155" stroke-width="1.5"/>')
-              parts.append(f'<rect x="16" y="16" width="3" height="98" rx="1.5" fill="url(#accent_{h})"/>')
-              parts.append(f'<text x="28" y="40" font-size="22">{icon}</text><text x="54" y="35" font-family="system-ui" font-weight="700" font-size="17" fill="#f8fafc">{name}</text>')
-              parts.append(f'<text x="54" y="56" font-family="system-ui" font-weight="500" font-size="12" fill="#94a3b8">@{h[:16]}</text>')
-              d = (score / 100) * 150.8
-              parts.append(f'<circle cx="165" cy="55" r="26" fill="none" stroke="#334155" stroke-width="4.5"/>')
-              parts.append(f'<circle cx="165" cy="55" r="26" fill="none" stroke="url(#accent_{h})" stroke-width="4.5" stroke-dasharray="{d:.1f} 150.8" stroke-linecap="round" transform="rotate(-90 165 55)"/>')
-              parts.append(f'<text x="165" y="62" text-anchor="middle" font-family="system-ui" font-weight="800" font-size="22" fill="{c1}">{score}</text>')
-              parts.append(f'<rect x="28" y="88" width="{max(80, len(tier)*9+30)}" height="26" rx="13" fill="{c1}" fill-opacity="0.12" stroke="{c1}" stroke-width="1" stroke-opacity="0.4"/>')
-              parts.append(f'<text x="40" y="105" font-family="system-ui" font-weight="600" font-size="11" fill="{c1}">{tier}</text>')
-              if vbadge: parts.append(vbadge)
-              parts.append('<text x="195" y="118" text-anchor="end" font-family="system-ui" font-weight="500" font-size="9" fill="#64748b">AgentFolio.io</text></svg>')
-              return ''.join(parts)
-          
-          def generate_simple_badge(agent):
-              h, name, score = agent['handle'].lower().replace(' ', '-'), agent.get('name', agent['handle'])[:12], calculate_score(agent)
-              c1, c2, _, _ = score_to_dynamic_color(score)
-              icon = TYPE_ICONS.get(agent.get('type', 'autonomous'), '🤖')
-              return f'<svg xmlns="http://www.w3.org/2000/svg" width="160" height="44" viewBox="0 0 160 44"><defs><linearGradient id="s_{h}" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs><rect width="160" height="44" rx="8" fill="url(#s_{h})" stroke="#334155" stroke-width="1"/><rect x="0" y="0" width="3" height="44" rx="1.5" fill="{c1}"/><rect x="3" y="40" width="{(score/100)*157:.0f}" height="4" rx="2" fill="{c1}" opacity="0.6"/><text x="10" y="30" font-size="16">{icon}</text><text x="32" y="28" font-family="system-ui" font-weight="600" font-size="13" fill="#f8fafc">{name}</text><text x="150" y="28" text-anchor="end" font-family="system-ui" font-weight="700" font-size="14" fill="{c1}">{score}</text></svg>'
-          
-          def main():
-              with open('data/agents.json', 'r') as f:
-                  agents = json.load(f).get('agents', [])
-              Path('agentfolio/badges').mkdir(parents=True, exist_ok=True)
-              registry = {'badges': [], 'generated_at': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'base_url': 'https://agentfolio.io/agentfolio/badges', 'version': '3.0'}
-              for agent in agents:
-                  h = agent['handle'].lower().replace(' ', '-')
-                  score = calculate_score(agent)
-                  c1, c2, _, _ = score_to_dynamic_color(score)
-                  with open(f'agentfolio/badges/{h}.svg', 'w') as f: f.write(generate_badge(agent))
-                  with open(f'agentfolio/badges/{h}-simple.svg', 'w') as f: f.write(generate_simple_badge(agent))
-                  registry['badges'].append({'handle': agent['handle'], 'name': agent.get('name', agent['handle']), 'type': agent.get('type', 'autonomous'), 'score': score, 'tier': get_tier(score), 'primary_color': c1, 'secondary_color': c2, 'verified': agent.get('verified', False), 'badge_url': f'agentfolio/badges/{h}.svg', 'simple_url': f'agentfolio/badges/{h}-simple.svg'})
-              with open('agentfolio/badges/registry.json', 'w') as f:
-                  json.dump(registry, f, indent=2)
-              print(f'Generated {len(agents) * 2} badges')
-          
-          if __name__ == '__main__':
-              main()
-          PYEOF
-          echo "Badge generation complete"
+          python3 scripts/generate_badges.py --input data/agents-scored.json --output agentfolio/badges
+          echo "✅ Generated badges"
 
       - name: Check for changes
         id: check_changes
         run: |
-          git add agentfolio/badges/
+          git add agentfolio/badges/ data/agents-scored.json
           if git diff --cached --quiet; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
           else
