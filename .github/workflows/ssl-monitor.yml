@@ -1,0 +1,115 @@
+name: AgentFolio SSL Certificate Monitor
+
+on:
+  # Run daily at 9:00 AM UTC (early morning check)
+  schedule:
+    - cron: '0 9 * * *'
+  
+  # Manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  ssl-monitor:
+    runs-on: ubuntu-latest
+    name: Check SSL Certificate Status
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run SSL certificate check
+        id: ssl_check
+        run: |
+          # Copy the monitor script
+          cp scripts/monitor_ssl.py /tmp/monitor_ssl.py
+          
+          # Run check and capture output
+          python3 /tmp/monitor_ssl.py --json --output ssl-report.json || true
+          
+          # Show results
+          cat ssl-report.json | python3 -m json.tool
+
+      - name: Check for SSL issues
+        id: check_issues
+        run: |
+          OVERALL=$(cat ssl-report.json | python3 -c "import json,sys; print(json.load(sys.stdin)['overall_status'])")
+          echo "status=$OVERALL" >> $GITHUB_OUTPUT
+          
+          CRITICAL=$(cat ssl-report.json | python3 -c "import json,sys; d=json.load(sys.stdin)['summary']; print(d.get('critical', 0))")
+          WARNING=$(cat ssl-report.json | python3 -c "import json,sys; d=json.load(sys.stdin)['summary']; print(d.get('warning', 0))")
+          ERROR=$(cat ssl-report.json | python3 -c "import json,sys; d=json.load(sys.stdin)['summary']; print(d.get('error', 0))")
+          
+          echo "critical_count=$CRITICAL" >> $GITHUB_OUTPUT
+          echo "warning_count=$WARNING" >> $GITHUB_OUTPUT
+          echo "error_count=$ERROR" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Issue for Critical Issues
+        if: steps.check_issues.outputs.critical_count > 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('ssl-report.json', 'utf8'));
+            
+            const criticalDomains = report.domains.filter(d => d.status === 'critical');
+            
+            const body = `## 🚨 Critical SSL Certificate Alert
+            
+            The following domains have SSL certificates expiring within 7 days:
+            
+            ${criticalDomains.map(d => `- **${d.domain}**: Expires ${d.expiry_date.split('T')[0]} (${d.days_until_expiry} days)`).join('\n')}
+            
+            ### Action Required
+            - Check certificate renewal settings in Cloudflare/DNS provider
+            - Verify GitHub Pages SSL provisioning if applicable
+            - Renew certificates if necessary
+            
+            ### Full Report
+            \`\`\`json
+            ${JSON.stringify(report, null, 2)}
+            \`\`\`
+            
+            _Report generated: ${report.generated_at}_`;
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 SSL Certificate Expiring Soon: ${criticalDomains.map(d => d.domain).join(', ')}`,
+              body: body,
+              labels: ['security', 'ssl', 'critical']
+            });
+
+      - name: Upload Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssl-report
+          path: ssl-report.json
+          retention-days: 30
+
+      - name: Summary
+        run: |
+          echo "## 🔒 SSL Certificate Check Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ steps.check_issues.outputs.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Category | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| ✅ OK | ${{ steps.check_issues.outputs.status == 'ok' && '2' || steps.check_issues.outputs.critical_count == '0' && steps.check_issues.outputs.warning_count == '0' && steps.check_issues.outputs.error_count == '0' && '2' || '?' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⚠️ Warning | ${{ steps.check_issues.outputs.warning_count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🚨 Critical | ${{ steps.check_issues.outputs.critical_count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ❌ Error | ${{ steps.check_issues.outputs.error_count }} |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Fail on Critical Issues
+        if: steps.check_issues.outputs.critical_count > 0
+        run: |
+          echo "Critical SSL certificate issues detected!"
+          exit 2
