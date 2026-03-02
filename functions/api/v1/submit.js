@@ -40,7 +40,13 @@ export async function onRequest(context) {
       github: formData.get('github')?.trim() || '',
       website: formData.get('website')?.trim() || '',
       description: formData.get('description')?.trim() || '',
-      stats: formData.get('stats')?.trim() || ''
+      stats: formData.get('stats')?.trim() || '',
+      // Economic Score fields
+      revenue_model: formData.get('revenue_model')?.trim() || '',
+      estimated_revenue: formData.get('estimated_revenue')?.trim() || '',
+      marketplace_links: formData.get('marketplace_links')?.trim() || '',
+      payment_infra: formData.get('payment_infra')?.trim() || '',
+      economic_proof: formData.get('economic_proof')?.trim() || ''
     };
     
     // Validate required fields
@@ -71,12 +77,58 @@ export async function onRequest(context) {
       });
     }
     
+    // Build economic data object for scoring
+    const economicData = {
+      has_economic_data: !!(data.revenue_model || data.estimated_revenue || data.marketplace_links),
+      revenue_model: data.revenue_model,
+      estimated_revenue: data.estimated_revenue,
+      marketplace_profiles: data.marketplace_links,
+      payment_infrastructure: data.payment_infra,
+      verification_proof: data.economic_proof
+    };
+    
+    // Calculate a preliminary economic score (0-100 scale)
+    let preliminaryEconomicScore = 0;
+    if (data.revenue_model && data.revenue_model !== 'none') {
+      preliminaryEconomicScore += 10;
+      
+      if (data.revenue_model === 'hybrid') preliminaryEconomicScore += 5;
+      if (data.revenue_model === 'micropayment') preliminaryEconomicScore += 3;
+      if (data.revenue_model === 'outcome') preliminaryEconomicScore += 5;
+      
+      if (data.estimated_revenue) {
+        const revenueMatch = data.estimated_revenue.match(/\$?([\d,]+)\s*(k)?/i);
+        if (revenueMatch) {
+          let amount = parseInt(revenueMatch[1].replace(/,/g, ''));
+          if (revenueMatch[2] || data.estimated_revenue.toLowerCase().includes('k')) {
+            amount *= 1000;
+          }
+          if (data.estimated_revenue.toLowerCase().includes('mrr')) {
+            preliminaryEconomicScore += Math.min(30, Math.floor(amount / 500));
+          } else {
+            preliminaryEconomicScore += Math.min(20, Math.floor(amount / 1000));
+          }
+        }
+      }
+      
+      if (data.marketplace_links) preliminaryEconomicScore += 3;
+      if (data.payment_infra) preliminaryEconomicScore += 2;
+      if (data.economic_proof) preliminaryEconomicScore += 5;
+    }
+    
+    preliminaryEconomicScore = Math.min(100, preliminaryEconomicScore);
+    
     // Create submission object
     const submission = {
       id: crypto.randomUUID(),
       timestamp: new Date().toISOString(),
       status: 'pending_review',
       data: data,
+      economic_score: {
+        preliminary: preliminaryEconomicScore,
+        calculated_at: new Date().toISOString(),
+        pending_verification: true
+      },
       source: {
         ip: request.headers.get('CF-Connecting-IP') || 'unknown',
         country: request.headers.get('CF-IPCountry') || 'unknown'
@@ -91,18 +143,29 @@ export async function onRequest(context) {
           `submissions/${submission.id}.json`,
           JSON.stringify(submission)
         );
-        // Add to submissions queue
         const queue = await env.AGENTFOLIO_DATA.get('submissions/queue') || '';
         const queueIds = queue ? queue.split(',') : [];
         queueIds.push(submission.id);
         await env.AGENTFOLIO_DATA.put('submissions/queue', queueIds.join(','));
         stored = true;
+        
+        if (economicData.has_economic_data) {
+          await env.AGENTFOLIO_DATA.put(
+            `economic/${submission.id}.json`,
+            JSON.stringify({
+              submission_id: submission.id,
+              agent_name: data.name,
+              ...economicData,
+              preliminary_score: preliminaryEconomicScore,
+              timestamp: submission.timestamp
+            })
+          );
+        }
       } catch (kvError) {
         console.error('KV store error:', kvError);
       }
     }
     
-    // Send webhook notification if configured
     let webhookSent = false;
     if (env.SUBMISSION_WEBHOOK) {
       try {
@@ -116,7 +179,9 @@ export async function onRequest(context) {
               timestamp: submission.timestamp,
               name: data.name,
               website: data.website,
-              stored_in_kv: stored
+              stored_in_kv: stored,
+              has_economic_data: economicData.has_economic_data,
+              preliminary_economic_score: preliminaryEconomicScore
             }
           })
         });
@@ -126,7 +191,6 @@ export async function onRequest(context) {
       }
     }
     
-    // Return success response
     return new Response(JSON.stringify({
       success: true,
       message: 'Agent submission received successfully',
@@ -141,7 +205,9 @@ export async function onRequest(context) {
         has_description: !!data.description,
         has_website: !!data.website,
         has_github: !!data.github,
-        has_twitter: !!data.twitter
+        has_twitter: !!data.twitter,
+        has_economic_data: economicData.has_economic_data,
+        preliminary_economic_score: preliminaryEconomicScore
       }
     }, null, 2), {
       status: 200,
