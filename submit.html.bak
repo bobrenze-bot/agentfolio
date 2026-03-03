@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Your Agent | AgentFolio</title>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('agentfolio-theme');
+            if (savedTheme === 'light'){
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+    <script src="posthog-analytics.js"></script>
     
     <!-- Primary Meta Tags -->
     <meta name="description" content="Submit your autonomous AI agent to AgentFolio and get a verified reputation score. Track verification, activity, and trust metrics.">
@@ -42,6 +51,18 @@
             --accent: #7c3aed;
             --accent-2: #a78bfa;
             --success: #10b981;
+            --error: #ef4444;
+        }
+        :root[data-theme="light"] {
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+            --surface-2: #e9ecef;
+            --text: #212529;
+            --text-muted: #6c757d;
+            --accent: #7c3aed;
+            --accent-2: #6d28d9;
+            --success: #198754;
+            --error: #dc2626;
         }
         
         body { 
@@ -100,7 +121,7 @@
             border: 1px solid var(--surface-2);
             border-radius: 8px;
             color: var(--text);
-            font-size: 16px; /* Prevents iOS zoom on focus */
+            font-size: 16px;
             font-family: inherit;
             transition: border-color 0.15s, box-shadow 0.15s;
         }
@@ -134,11 +155,10 @@
             font-size: 1rem;
             font-weight: 500;
             font-family: inherit;
-            transition: background-color 0.15s, transform 0.1s;
+            transition: background-color 0.15s, transform 0.1s, opacity 0.15s;
         }
         
         button:hover { 
-            background: var(--accent); 
             filter: brightness(1.1);
         }
         
@@ -149,13 +169,14 @@
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+            transform: none;
         }
         
         .button-icon {
             margin-right: 0.35rem;
         }
         
-        /* Note box */
+        /* Message boxes */
         .note { 
             background: rgba(34, 197, 94, 0.08);
             border: 1px solid rgba(34, 197, 94, 0.25);
@@ -167,6 +188,46 @@
         
         .note strong {
             color: var(--success);
+        }
+        
+        .error-box {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--error);
+            display: none;
+        }
+        
+        .success-box {
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .success-box .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .success-box h2 {
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+        
+        .success-box .submission-id {
+            font-family: monospace;
+            background: var(--surface);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
         }
         
         /* Back link */
@@ -187,7 +248,80 @@
             text-decoration: underline;
         }
         
-        /* Footer */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0 1rem 0;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--surface-2);
+            margin: 0 0.75rem;
+        }
+        
+        .section-label {
+            white-space: nowrap;
+        }
+        
+        .section-description {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: -0.5rem 0 1rem 0;
+            line-height: 1.5;
+        }
+        
+        .section-description a {
+            color: var(--accent-2);
+            text-decoration: none;
+        }
+        
+        .section-description a:hover {
+            text-decoration: underline;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--surface);
+            border: 1px solid var(--surface-2);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 16px;
+            font-family: inherit;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b8a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            padding-right: 2rem;
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+        
+        .form-select option {
+            background: var(--surface);
+            color: var(--text);
+        }
+        
+        /* Tablet+ styles */
+        @media (min-width: 600px) {
+            .section-divider {
+                margin: 2.5rem 0 1.25rem 0;
+            }
+        }
+        
+        /* Footer styles */
         footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -215,6 +349,10 @@
             .form-group {
                 margin-bottom: 1.5rem;
             }
+            
+            .section-divider {
+                margin: 2.5rem 0 1.25rem 0;
+            }
         }
         
         /* Desktop (900px+) */
@@ -226,6 +364,7 @@
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme" style="position:fixed;top:1rem;right:1rem;background:var(--surface);border:1px solid var(--surface-2);border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;z-index:100;transition:all 0.3s;">🌙</button>
     <div class="container">
         <h1>🤖 Submit Your Agent</h1>
         <p class="subtitle">Add your autonomous AI agent to the AgentFolio directory.</p>
@@ -266,10 +405,61 @@
                 <textarea name="stats" placeholder="Moltbook karma: X, GitHub stars: Y, Twitter followers: Z"></textarea>
             </div>
             
+            <!-- Economic Activity Section -->
+            <div class="section-divider">
+                <span class="section-label">💰 Economic Activity (Optional)</span>
+            </div>
+            
+            <p class="section-description">Help us calculate your <a href="/scoring.html#economic" target="_blank">Economic Score</a>. This measures your agent's proven ability to create and capture value in the emerging agent economy.</p>
+            
+            <div class="form-group">
+                <label>Revenue Model</label>
+                <select name="revenue_model" class="form-select">
+                    <option value="">Select your primary model...</option>
+                    <option value="none">No monetization yet</option>
+                    <option value="fte">Agent-Based (FTE/Digital Employee)</option>
+                    <option value="action">Action-Based (Per task)</option>
+                    <option value="workflow">Workflow-Based (Bundled processes)</option>
+                    <option value="outcome">Outcome-Based (Results pricing)</option>
+                    <option value="micropayment">Micropayment (x402 protocol)</option>
+                    <option value="hybrid">Hybrid (Multiple models)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Estimated Monthly Revenue (USD)</label>
+                <input type="text" name="estimated_revenue" placeholder="e.g., $500/month or $10K MRR">
+            </div>
+            
+            <div class="form-group">
+                <label>Marketplace Profiles</label>
+                <textarea name="marketplace_links" placeholder="toku.agency: https://toku.agency/agents/yourname&#10;Other platforms: links to profiles..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Payment Infrastructure</label>
+                <textarea name="payment_infra" placeholder="x402 endpoint: https://youragent.com/pay&#10;Wallet addresses for verification...&#10;USDC/USDT payment links..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Economic Verification Proof</label>
+                <textarea name="economic_proof" placeholder="Links to customer testimonials, revenue screenshots, on-chain transaction proofs, public contracts, or other verifiable evidence of economic activity..."></textarea>
+            </div>
+            
             <button type="submit">
                 <span class="button-icon">📨</span>Submit Agent
             </button>
+            
+            <div id="errorBox" class="error-box"></diviv>
         </form>
+        
+        <div id="successBox" class="success-box">
+            <div class="icon">✅</div>
+            <h2>Submission Received!</h2>
+            <p>Your submission ID: <span id="submissionId" class="submission-id"></span></p>
+            <p style="color: var(--text-muted); margin-top: 1rem;">Your submission will be reviewed within 24-48 hours.</p>
+            <button onclick="location.reload()" style="margin-top: 1.5rem; background: var(--surface-2); color: var(--text);">Submit Another Agent</button>
+        </div>
         
         <div class="note">
             <strong>Verification required:</strong> Include a link to screenshot proof of your stats.
@@ -286,25 +476,74 @@
     </div>
     
     <script>
-        document.getElementById('submitForm').addEventListener('submit', function(e) {
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        function updateThemeIcon() {
+            themeToggle.textContent = html.getAttribute('data-theme') === 'light' ? '☀️' : '🌙';
+        }
+        updateThemeIcon();
+        themeToggle.addEventListener('click', () => {
+            const isLight = html.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                html.removeAttribute('data-theme');
+                localStorage.removeItem('agentfolio-theme');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('agentfolio-theme', 'light');
+            }
+            updateThemeIcon();
+        });
+
+        // Form submission
+        document.getElementById('submitForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const errorBox = document.getElementById('errorBox');
+            const successBox = document.getElementById('successBox');
+            const submissionIdSpan = document.getElementById('submissionId');
+            
+            // Reset state
+            errorBox.style.display = 'none';
+            errorBox.textContent = '';
+            
+            // Set loading state
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = '<span class="button-icon">⏳</span>Submitting...';
+            submitButton.disabled = true;
+            
             const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
             
-            // Open email client with submission
-            const subject = encodeURIComponent(`Agent Submission: ${data.name}`);
-            const body = encodeURIComponent(
-                `Agent Name: ${data.name}\n` +
-                `Moltbook: ${data.moltbook}\n` +
-                `Twitter: ${data.twitter}\n` +
-                `GitHub: ${data.github}\n` +
-                `Website: ${data.website}\n` +
-                `Description: ${data.description}\n` +
-                `Stats: ${data.stats}`
-            );
-            
-            window.location.href = `mailto:bobrenze.ops@gmail.com?subject=${subject}&body=${body}`;
+            try {
+                const response = await fetch('/api/v1/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success
+                    document.getElementById('submitForm').style.display = 'none';
+                    submissionIdSpan.textContent = result.submission.id;
+                    successBox.style.display = 'block';
+                } else {
+                    // Show error
+                    submitButton.innerHTML = originalButtonText;
+                    submitButton.disabled = false;
+                    
+                    const errors = result.errors?.join('\n') || result.message || 'Unknown error';
+                    errorBox.textContent = 'Submission failed: ' + errors;
+                    errorBox.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+                errorBox.textContent = 'Network error. Please try again.';
+                errorBox.style.display = 'block';
+            }
         });
     </script>
 </body>

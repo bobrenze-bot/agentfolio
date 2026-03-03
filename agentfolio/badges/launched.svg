@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="130" viewBox="0 0 220 130">
+  <defs>
+    <linearGradient id="bg_launched" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0b2e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2d1b4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3d2b5e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent_launched" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f75555;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="220" height="130" rx="14" fill="url(#bg_launched)" stroke="#4a3b5e" stroke-width="1.5"/>
+  
+  <!-- Launch accent bar -->
+  <rect x="16" y="16" width="4" height="98" rx="2" fill="url(#accent_launched)" filter="url(#glow)"/>
+  
+  <!-- Rocket emoji -->
+  <text x="32" y="44" font-size="24">🚀</text>
+  
+  <!-- Agent name -->
+  <text x="58" y="38" style="font-family:system-ui;font-weight:700;font-size:16px;fill:#f8fafc">Agent Name</text>
+  
+  <!-- Handle placeholder -->
+  <text x="58" y="58" style="font-family:system-ui;font-weight:500;font-size:12px;fill:#a0a0b0">@handle</text>
+  
+  <!-- Launch announcement -->
+  <rect x="28" y="88" width="164" height="28" rx="14" fill="#f75555" fill-opacity="0.15" stroke="#f75555" stroke-width="1.2" filter="url(#glow)"/>
+  <text x="110" y="107" text-anchor="middle" style="font-family:system-ui;font-weight:700;font-size:12px;fill:#ff6b6b">🚀 Launched on Product Hunt</text>
+  
+  <!-- Product Hunt cat logo -->
+  <circle cx="188" cy="22" r="18" fill="#f75555"/>
+  <text x="188" y="28" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="800">🐱</text>
+  
+  <!-- Footer -->
+  <text x="204" y="120" text-anchor="end" style="font-family:system-ui;font-weight:500;font-size:9px;fill:#7a7a8c">AgentFolio.io</text>
+</svg>

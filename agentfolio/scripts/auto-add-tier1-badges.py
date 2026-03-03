@@ -1,41 +1,77 @@
 #!/usr/bin/env python3
-"""
-AgentFolio: Auto-add Tier 1 agent badges
+'''
+AgentFolio: Auto-add Tier 1 agent badges (v4 - Shared Leaderboard API)
 
-This script automates the process of adding Tier 1 agents (agents on the leaderboard)
-to the badge registry. It:
-1. Reads leaderboard.json to get Tier 1 agents
-2. Checks which agents have badge SVG files but aren't in the registry
-3. Generates appropriate badge entries with tier/color mappings
-4. Updates the registry.json file
-5. Reports what was added
+Refactored to use shared leaderboard API instead of direct file access.
+Supports both API mode (HTTP) and file mode (local) via --mode flag.
 
 Usage:
-    python3 auto-add-tier1-badges.py [--dry-run]
-"""
+    python3 auto-add-tier1-badges.py [--mode api|file] [--dry-run]
+'''
 
 import json
 import os
 import sys
 import argparse
+import urllib.request
+import urllib.error
+from datetime import datetime, timezone
 
-# Tier to color mapping (based on existing badges)
+# Configuration
+DEFAULT_API_BASE = os.getenv('AGENTFOLIO_API_URL', 'https://agentfolio.io')
+DEFAULT_DATA_DIR = os.getenv('AGENTFOLIO_DATA_DIR', '/Users/serenerenze/bob-bootstrap/projects/agentrank/agentfolio')
+
 TIER_COLORS = {
-    "Pioneer": {"primary": "#dc2626", "secondary": "#ea580c"},
-    "Autonomous": {"primary": "#a554f3", "secondary": "#cd80fb"},
-    "Recognized": {"primary": "#4f8ace", "secondary": "#76acdd"},
-    "Active": {"primary": "#279dce", "secondary": "#46bcdc"},
-    "Becoming": {"primary": "#7765f6", "secondary": "#9591fa"},
+    "Verified": {"primary": "#dc2626", "secondary": "#ea580c"},
+    "Established": {"primary": "#a554f3", "secondary": "#cd80fb"},
+    "Emerging": {"primary": "#4f8ace", "secondary": "#76acdd"},
+    "Probable": {"primary": "#279dce", "secondary": "#46bcdc"},
+    "Unknown": {"primary": "#6b7280", "secondary": "#9ca3af"},
 }
 
-def load_leaderboard(data_dir):
-    """Load the leaderboard to get Tier 1 agents"""
+SCORE_THRESHOLDS = [
+    (90, "Verified"),
+    (70, "Established"),
+    (50, "Emerging"),
+    (30, "Probable"),
+]
+
+def fetch_leaderboard_api(api_base):
+    "'''Fetch leaderboard from shared API'''
+    url = f"{api_base}/api/v1/leaderboard"
+    try:
+        with urllib.request.urlopen(url, timeout=30) as response:
+            return json.loads(response.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        print(f"Error fetching leaderboard: HTTP {e.code} - {e.reason}")
+        return None
+    except Exception as e:
+        print(f"Error fetching leaderboard: {e}")
+        return None
+
+def fetch_agent_api(api_base, handle):
+    "'''Fetch agent data from shared API'''
+    url = f"{api_base}/api/v1/agents/{handle.lower()}"
+    try:
+        with urllib.request.urlopen(url, timeout=10) as response:
+            return json.loads(response.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return None
+        print(f"Error fetching agent {handle}: HTTP {e.code}")
+        return None
+    except Exception as e:
+        print(f"Error fetching agent {handle}: {e}")
+        return None
+
+def load_leaderboard_file(data_dir):
+    "'''Legacy: Load leaderboard from file'''
     leaderboard_path = os.path.join(data_dir, "api", "v1", "leaderboard.json")
     with open(leaderboard_path, "r") as f:
         return json.load(f)
 
-def load_agent_data(data_dir, handle):
-    """Load individual agent data file"""
+def load_agent_file(data_dir, handle):
+    "'''Legacy: Load agent data from file'''
     agent_path = os.path.join(data_dir, "api", "v1", "agents", f"{handle.lower()}.json")
     if os.path.exists(agent_path):
         with open(agent_path, "r") as f:
@@ -43,66 +79,53 @@ def load_agent_data(data_dir, handle):
     return None
 
 def load_registry(data_dir):
-    """Load the badge registry"""
+    "'''Load the badge registry'''
     registry_path = os.path.join(data_dir, "badges", "registry.json")
     with open(registry_path, "r") as f:
         return json.load(f)
 
 def save_registry(data_dir, registry):
-    """Save the badge registry"""
+    "'''Save the badge registry'''
     registry_path = os.path.join(data_dir, "badges", "registry.json")
     with open(registry_path, "w") as f:
         json.dump(registry, f, indent=2)
 
 def check_badge_files_exist(data_dir, handle):
-    """Check if badge SVG files exist for an agent"""
+    "'''Check if badge SVG files exist for an agent'''
     badges_dir = os.path.join(data_dir, "badges")
-
-    # Normalize handle for file matching
     possible_names = [
         handle.lower(),
         handle.lower().replace("-", ""),
         handle.lower().replace(" ", "-"),
         handle.lower().replace(" ", ""),
     ]
-
     for name in set(possible_names):
         full_badge = os.path.join(badges_dir, f"{name}.svg")
         simple_badge = os.path.join(badges_dir, f"{name}-simple.svg")
-
         if os.path.exists(full_badge) and os.path.exists(simple_badge):
-            return name  # Return the matched badge name
-
+            return name
     return None
 
+def get_tier_from_score(score):
+    "'''Map a composite score to a badge tier'''
+    for threshold, tier in SCORE_THRESHOLDS:
+        if score >= threshold:
+            return tier
+    return "Unknown"
+
 def create_badge_entry(agent_data, badge_name):
-    """Create a badge registry entry for an agent"""
+    "'''Create a badge registry entry for an agent'''
     handle = agent_data.get("handle", "")
     name = agent_data.get("name", handle)
     score = agent_data.get("composite_score", 0)
-
-    # Map score to badge tier
-    if score >= 100:
-        badge_tier = "Pioneer"
-    elif score >= 80:
-        badge_tier = "Autonomous"
-    elif score >= 65:
-        badge_tier = "Recognized"
-    elif score >= 40:
-        badge_tier = "Active"
-    else:
-        badge_tier = "Becoming"
-
-    # Get colors for tier
-    colors = TIER_COLORS.get(badge_tier, TIER_COLORS["Becoming"])
-
-    # Check if verified via A2A
+    badge_tier = get_tier_from_score(score)
+    colors = TIER_COLORS.get(badge_tier, TIER_COLORS["Unknown"])
     verified = agent_data.get("platforms", {}).get("a2a", {}).get("has_agent_card", False)
-
+    agent_type = agent_data.get("type", "tool")
     return {
         "handle": handle,
         "name": name,
-        "type": "autonomous",
+        "type": agent_type,
         "score": score,
         "tier": badge_tier,
         "primary_color": colors["primary"],
@@ -112,86 +135,166 @@ def create_badge_entry(agent_data, badge_name):
         "simple_url": f"agentfolio/badges/{badge_name}-simple.svg"
     }
 
+def find_badge_index(registry, handle_lower):
+    "'''Find the index of a badge in the registry by handle (case-insensitive)'''
+    for i, badge in enumerate(registry["badges"]):
+        if badge.get("handle", "").lower() == handle_lower:
+            return i
+    return -1
+
+def update_badge_entry(existing_badge, agent_data, badge_name):
+    "'''Update an existing badge entry with new data'''
+    handle = agent_data.get("handle", existing_badge.get("handle", ""))
+    name = agent_data.get("name", existing_badge.get("name", handle))
+    score = agent_data.get("composite_score", existing_badge.get("score", 0))
+    badge_tier = get_tier_from_score(score)
+    current_tier = existing_badge.get("tier", "")
+    if badge_tier == current_tier:
+        colors = {
+            "primary": existing_badge.get("primary_color", TIER_COLORS["Unknown"]["primary"]),
+            "secondary": existing_badge.get("secondary_color", TIER_COLORS["Unknown"]["secondary"])
+        }
+    else:
+        colors = TIER_COLORS.get(badge_tier, TIER_COLORS["Unknown"])
+    verified = agent_data.get("platforms", {}).get("a2a", {}).get("has_agent_card", existing_badge.get("verified", False))
+    agent_type = agent_data.get("type", existing_badge.get("type", "tool"))
+    return {
+        "handle": handle,
+        "name": name,
+        "type": agent_type,
+        "score": score,
+        "tier": badge_tier,
+        "primary_color": colors["primary"],
+        "secondary_color": colors["secondary"],
+        "verified": verified,
+        "badge_url": existing_badge.get("badge_url", f"agentfolio/badges/{badge_name}.svg"),
+        "simple_url": existing_badge.get("simple_url", f"agentfolio/badges/{badge_name}-simple.svg")
+    }
+
 def main():
-    parser = argparse.ArgumentParser(description="Auto-add Tier 1 agent badges to registry")
-    parser.add_argument("--dry-run", action="store_true", help="Show what would be added without making changes")
-    parser.add_argument("--data-dir", default="/Users/serenerenze/bob-bootstrap/projects/agentrank/agentfolio", help="Path to agentfolio data directory")
+    parser = argparse.ArgumentParser(description="Auto-add/update Tier 1 agent badges to registry")
+    parser.add_argument("--mode", choices=["api", "file"], default="api", help="Data source mode (api or file)")
+    parser.add_argument("--api-base", default=DEFAULT_API_BASE, help="Base URL for API mode")
+    parser.add_argument("--data-dir", default=DEFAULT_DATA_DIR, help="Data directory path for file mode")
+    parser.add_argument("--dry-run", action="store_true", help="Show what would be added/updated without making changes")
+    parser.add_argument("--update-existing", action="store_true", default=True, help="Update existing badge entries")
+    parser.add_argument("--list-thresholds", action="store_true", help="Display score thresholds and exit")
     args = parser.parse_args()
 
-    data_dir = args.data_dir
+    if args.list_thresholds:
+        print("AgentRank Score Model - Badge Tier Thresholds")
+        print("=" * 50)
+        prev_threshold = 100
+        descriptions = {
+            "Verified": "Fully verified autonomous agent",
+            "Established": "Strong presence, likely autonomous",
+            "Emerging": "Some signals, building reputation",
+            "Probable": "Few signals, hard to verify",
+            "Unknown": "Insufficient data to assess"
+        }
+        for threshold, tier in SCORE_THRESHOLDS:
+            print(f"{tier}: {threshold}-{prev_threshold} - {descriptions[tier]}")
+            prev_threshold = threshold - 1
+        print(f"Unknown: 0-{prev_threshold} - {descriptions['Unknown']}")
+        return 0
 
-    # Load data
-    leaderboard = load_leaderboard(data_dir)
-    registry = load_registry(data_dir)
+    # Load data based on mode
+    if args.mode == "api":
+        print(f"Using API mode: {args.api_base}")
+        leaderboard = fetch_leaderboard_api(args.api_base)
+        if leaderboard is None:
+            print("Failed to fetch leaderboard from API, falling back to file mode...")
+            leaderboard = load_leaderboard_file(args.data_dir)
+        load_agent = lambda handle: fetch_agent_api(args.api_base, handle) or load_agent_file(args.data_dir, handle)
+    else:
+        print(f"Using file mode: {args.data_dir}")
+        leaderboard = load_leaderboard_file(args.data_dir)
+        load_agent = lambda handle: load_agent_file(args.data_dir, handle)
 
-    # Get existing handles in registry
-    existing_handles = {badge["handle"].lower() for badge in registry["badges"]}
-
+    registry = load_registry(args.data_dir)
+    
     added_count = 0
+    updated_count = 0
+    unchanged_count = 0
     added_agents = []
+    updated_agents = []
     errors = []
 
     # Check each Tier 1 agent
     for agent_summary in leaderboard.get("agents", []):
         handle = agent_summary.get("handle", "")
         handle_lower = handle.lower()
-
-        # Skip if already in registry
-        if handle_lower in existing_handles:
-            continue
-
-        # Check if badge files exist
-        badge_name = check_badge_files_exist(data_dir, handle)
+        
+        badge_name = check_badge_files_exist(args.data_dir, handle)
         if not badge_name:
             errors.append(f"{handle}: badge SVG files not found")
             continue
 
-        # Load full agent data
-        agent_data = load_agent_data(data_dir, handle)
+        agent_data = load_agent(handle)
         if not agent_data:
-            errors.append(f"{handle}: agent data JSON not found")
+            errors.append(f"{handle}: agent data not found")
             continue
 
-        # Create badge entry
-        badge_entry = create_badge_entry(agent_data, badge_name)
-
-        if args.dry_run:
-            print(f"[DRY RUN] Would add: {handle} -> {badge_entry['tier']} (score: {badge_entry['score']})")
+        existing_index = find_badge_index(registry, handle_lower)
+        
+        if existing_index >= 0:
+            if args.update_existing:
+                existing_badge = registry["badges"][existing_index]
+                updated_badge = update_badge_entry(existing_badge, agent_data, badge_name)
+                
+                has_changes = (
+                    existing_badge.get("score") != updated_badge["score"] or
+                    existing_badge.get("tier") != updated_badge["tier"] or
+                    existing_badge.get("verified") != updated_badge["verified"]
+                )
+                
+                if has_changes:
+                    if args.dry_run:
+                        print(f"[DRY RUN] Would update: {handle} -> {updated_badge['tier']} (score: {updated_badge['score']})")
+                    else:
+                        registry["badges"][existing_index] = updated_badge
+                    updated_count += 1
+                    updated_agents.append(handle)
+                else:
+                    unchanged_count += 1
         else:
-            registry["badges"].append(badge_entry)
-            print(f"Added: {handle} -> {badge_entry['tier']} (score: {badge_entry['score']})")
+            new_badge = create_badge_entry(agent_data, badge_name)
+            if args.dry_run:
+                print(f"[DRY RUN] Would add: {handle} -> {new_badge['tier']} (score: {new_badge['score']})")
+            else:
+                registry["badges"].append(new_badge)
+            added_count += 1
+            added_agents.append(handle)
 
-        added_count += 1
-        added_agents.append(handle)
+    # Save registry if not dry run
+    if not args.dry_run:
+        save_registry(args.data_dir, registry)
+        print(f"Registry saved successfully.")
 
-    if not args.dry_run and added_count > 0:
-        # Update metadata
-        registry["generated_at"] = "2026-03-02T06:20:00Z"
-
-        # Save updated registry
-        save_registry(data_dir, registry)
-        print(f"\n✓ Updated registry with {added_count} new badges")
-
-    # Summary
-    print(f"\n{'='*50}")
-    print(f"SUMMARY")
-    print(f"{'='*50}")
+    # Print summary
+    print()
+    print("=" * 50)
+    print(f"Mode: {args.mode.upper()}")
     print(f"Agents checked: {len(leaderboard.get('agents', []))}")
-    print(f"Already in registry: {len(leaderboard.get('agents', [])) - added_count - len([e for e in errors if 'not found' in e])}")
     print(f"New badges added: {added_count}")
-
-    if added_agents:
-        print(f"  - Added: {', '.join(added_agents)}")
-
+    print(f"Existing badges updated: {updated_count}")
+    print(f"Unchanged: {unchanged_count}")
     if errors:
-        print(f"\n⚠ Errors: {len(errors)}")
+        print(f"Errors: {len(errors)}")
+    print("=" * 50)
+    
+    if added_agents:
+        print(f"
+Added: {', '.join(added_agents)}")
+    if updated_agents:
+        print(f"Updated: {', '.join(updated_agents)}")
+    if errors:
+        print(f"
+Errors:")
         for error in errors:
             print(f"  - {error}")
 
-    if not args.dry_run and added_count == 0 and not errors:
-        print("\n✓ No new badges needed - all Tier 1 agents are already in the registry!")
-
-    return 0 if not errors else 1
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main())

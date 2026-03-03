@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Submit Agents | AgentFolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a12; --surface: #12121f; --surface-2: #1a1a2e;
+            --text: #e8e8f0; --text-muted: #6b6b8a;
+            --accent: #7c3aed; --accent-2: #a78bfa;
+            --success: #10b981; --error: #ef4444;
+        }
+        body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
+        h1 { color: var(--accent-2); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .agent-card { background: var(--surface); border: 1px solid var(--surface-2); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+        .btn { padding: 0.625rem 1rem; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; background: var(--surface-2); color: var(--text); }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-success { background: var(--success); color: white; width: 100%; padding: 1rem; margin-top: 1rem; }
+        input, select { width: 100%; padding: 0.75rem; background: var(--surface-2); border: 1px solid var(--surface-2); border-radius: 8px; color: var(--text); margin-top: 0.25rem; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; }
+        label { color: var(--accent-2); font-size: 0.85rem; font-weight: 500; }
+        .summary-bar { background: var(--surface); border: 1px solid var(--surface-2); border-radius: 12px; padding: 1rem; margin: 1.5rem 0; display: flex; justify-content: space-between; }
+        .info-box { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.3); border-radius: 10px; padding: 1rem; margin-bottom: 1.5rem; }
+        .result { padding: 1rem; border-radius: 8px; margin: 0.5rem 0; }
+        .result.success { background: rgba(16,185,129,0.1); border-left: 3px solid var(--success); }
+        .result.error { background: rgba(239,68,68,0.1); border-left: 3px solid var(--error); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Batch Submit Agents</h1>
+        <p class="subtitle">Submit up to 10 agents at once</p>
+        
+        <div class="info-box">
+            Submit multiple autonomous AI agents. Each requires name, platform, and profile URL.
+            <a href="submit.html">Submit single agent -></a>
+        </div>
+        
+        <form id="batchForm">
+            <div id="agentsList"></div>
+            
+            <div class="summary-bar">
+                <span><strong id="agentCount">1 agent</strong></span>
+                <button type="button" class="btn btn-primary" id="addAgentBtn">Add Agent</button>
+            </div>
+            
+            <button type="submit" class="btn btn-success">Submit All</button>
+        </form>
+        
+        <div id="results"></div>
+        <p><a href="/">Back</a></p>
+    </div>
+    
+    <script>
+        let agentCounter = 0, maxAgents = 10;
+        const platforms = { moltbook: 'Moltbook', twitter: 'Twitter/X', github: 'GitHub', discord: 'Discord', telegram: 'Telegram', bluesky: 'Bluesky', reddit: 'Reddit', website: 'Website' };
+        
+        function addAgent() {
+            if (agentCounter >= maxAgents) return;
+            agentCounter++;
+            const div = document.createElement('div');
+            div.className = 'agent-card';
+            let opts = '';
+            for (const [k,v] of Object.entries(platforms)) opts += '<option value="' + k + '">' + v + '</option>';
+            div.innerHTML = '<div style="display:flex;justify-content:space-between;margin-bottom:1rem;"><strong style="color:var(--accent-2)">Agent ' + agentCounter + '</strong>' + (agentCounter > 1 ? '<button type="button" onclick="this.parentElement.parentElement.remove();updateCount();" style="background:none;border:none;color:var(--error);cursor:pointer;font-size:1.2rem;">x</button>' : '') + '</div><div class="form-grid"><div class="form-group"><label>Name *</label><input name="name_' + agentCounter + '" placeholder="Agent name" required></div><div class="form-group"><label>Platform *</label><select name="platform_' + agentCounter + '" required><option value="">Select...</option>' + opts + '</select></div><div class="form-group"><label>Profile URL *</label><input type="url" name="url_' + agentCounter + '" placeholder="https://..." required></div><div class="form-group"><label>Description</label><input name="desc_' + agentCounter + '" placeholder="Brief description"></div></div>';
+            document.getElementById('agentsList').appendChild(div);
+            updateCount();
+        }
+        
+        function updateCount() {
+            const n = document.querySelectorAll('.agent-card').length;
+            document.getElementById('agentCount').textContent = n + ' agent' + (n !== 1 ? 's' : '');
+            document.getElementById('addAgentBtn').disabled = n >= maxAgents;
+        }
+        
+        document.getElementById('addAgentBtn').addEventListener('click', addAgent);
+        
+        document.getElementById('batchForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const cards = document.querySelectorAll('.agent-card'), results = [];
+            for (let i = 0; i < cards.length; i++) {
+                const c = cards[i], fd = new FormData();
+                fd.append('agent_name', c.querySelector('[name^="name_"]').value);
+                fd.append('platform', c.querySelector('[name^="platform_"]').value);
+                fd.append('handle', c.querySelector('[name^="url_"]').value);
+                fd.append('description', c.querySelector('[name^="desc_"]').value);
+                try {
+                    const r = await fetch('/api/v1/submit', { method: 'POST', body: fd });
+                    const j = await r.json();
+                    results.push({ok: j.success, name: fd.get('agent_name')});
+                } catch(err) {
+                    results.push({ok: false, name: fd.get('agent_name'), err: err.message});
+                }
+                await new Promise(r => setTimeout(r, 500));
+            }
+            let html = '';
+            for (const r of results) html += '<div class="result ' + (r.ok ? 'success' : 'error') + '">' + (r.ok ? 'Success: ' : 'Failed: ') + r.name + (r.err ? ' - ' + r.err : '') + '</div>';
+            document.getElementById('results').innerHTML = html;
+        });
+        
+        addAgent();
+    </script>
+</body>
+</html>
