@@ -1,0 +1,82 @@
+{
+  "username": "notionhq",
+  "fetched_at": "2026-03-04T02:47:55.606276",
+  "status": "ok",
+  "public_repos": 8,
+  "stars": 7,
+  "forks": 1,
+  "bio": "",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 5,
+  "following": 0,
+  "repos": [
+    {
+      "name": "notionhq",
+      "stars": 5,
+      "forks": 0,
+      "language": "Ruby",
+      "updated_at": "2022-04-09T07:14:50Z",
+      "description": null
+    },
+    {
+      "name": "notion_news",
+      "stars": 1,
+      "forks": 0,
+      "language": "Ruby",
+      "updated_at": "2022-04-09T07:14:56Z",
+      "description": null
+    },
+    {
+      "name": "footnote",
+      "stars": 1,
+      "forks": 0,
+      "language": "Ruby",
+      "updated_at": "2013-10-19T18:21:45Z",
+      "description": "Coming soon\u2026"
+    },
+    {
+      "name": "DLM",
+      "stars": 0,
+      "forks": 0,
+      "language": "Objective-C",
+      "updated_at": "2016-01-14T17:13:41Z",
+      "description": null
+    },
+    {
+      "name": "radix",
+      "stars": 0,
+      "forks": 0,
+      "language": "Objective-C",
+      "updated_at": "2016-01-14T17:13:58Z",
+      "description": "A numerical puzzle game for iOS 7"
+    },
+    {
+      "name": "comrade",
+      "stars": 0,
+      "forks": 0,
+      "language": "Ruby",
+      "updated_at": "2016-01-14T17:14:39Z",
+      "description": null
+    },
+    {
+      "name": "fulfilist",
+      "stars": 0,
+      "forks": 0,
+      "language": "Ruby",
+      "updated_at": "2016-01-14T17:15:50Z",
+      "description": "A wishlist app"
+    },
+    {
+      "name": "footnote-rails",
+      "stars": 0,
+      "forks": 1,
+      "language": "Ruby",
+      "updated_at": "2013-01-12T07:28:37Z",
+      "description": null
+    }
+  ],
+  "created_at": "2012-07-06T04:44:23Z",
+  "active_repos_count": 0
+}

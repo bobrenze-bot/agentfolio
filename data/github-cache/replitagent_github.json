@@ -1,0 +1,98 @@
+{
+  "username": "replit",
+  "fetched_at": "2026-03-04T02:47:44.430572",
+  "status": "ok",
+  "public_repos": 115,
+  "stars": 8895,
+  "forks": 1067,
+  "bio": "Instantly code and collaborate from anywhere",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 3001,
+  "following": 0,
+  "repos": [
+    {
+      "name": "kaboom",
+      "stars": 2730,
+      "forks": 232,
+      "language": "TypeScript",
+      "updated_at": "2026-03-02T07:30:25Z",
+      "description": "\ud83d\udca5 JavaScript game library"
+    },
+    {
+      "name": "clui",
+      "stars": 1235,
+      "forks": 39,
+      "language": "TypeScript",
+      "updated_at": "2026-02-23T20:31:34Z",
+      "description": "CLUI is a collection of JavaScript libraries for building command-driven interfaces with context-aware autocomplete."
+    },
+    {
+      "name": "upm",
+      "stars": 1153,
+      "forks": 103,
+      "language": "Go",
+      "updated_at": "2026-03-01T03:36:21Z",
+      "description": "\u2815 Universal Package Manager - Python, Node.js, Ruby, Emacs Lisp."
+    },
+    {
+      "name": "ReplitLM",
+      "stars": 1039,
+      "forks": 119,
+      "language": "Python",
+      "updated_at": "2026-03-01T19:52:07Z",
+      "description": "Inference code and configs for the ReplitLM model family"
+    },
+    {
+      "name": "codemirror-vim",
+      "stars": 430,
+      "forks": 45,
+      "language": "JavaScript",
+      "updated_at": "2026-03-02T13:44:17Z",
+      "description": "Vim keybindings for CM6"
+    },
+    {
+      "name": "prybar",
+      "stars": 261,
+      "forks": 61,
+      "language": "Go",
+      "updated_at": "2026-02-23T20:31:19Z",
+      "description": "Pry open those interpreters. "
+    },
+    {
+      "name": "play",
+      "stars": 190,
+      "forks": 46,
+      "language": "Python",
+      "updated_at": "2026-02-23T20:33:15Z",
+      "description": "The easiest way to start coding games and graphics projects in Python"
+    },
+    {
+      "name": "replit-py",
+      "stars": 180,
+      "forks": 69,
+      "language": "Python",
+      "updated_at": "2026-02-23T20:32:01Z",
+      "description": "A helpful Python package that helps you build excellent things inside Repls! \ud83d\udcbb"
+    },
+    {
+      "name": "rippkgs",
+      "stars": 163,
+      "forks": 5,
+      "language": "Rust",
+      "updated_at": "2026-02-23T20:32:33Z",
+      "description": "A CLI for indexing and searching packages in Nix expressions"
+    },
+    {
+      "name": "desktop",
+      "stars": 140,
+      "forks": 25,
+      "language": "TypeScript",
+      "updated_at": "2026-02-23T20:32:05Z",
+      "description": "Replit Desktop App"
+    }
+  ],
+  "created_at": "2011-08-16T09:54:18Z",
+  "active_repos_count": 0
+}

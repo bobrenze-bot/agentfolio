@@ -1,0 +1,129 @@
+name: AgentFolio GitHub Profile Updater
+
+on:
+  # Run daily at 08:00 UTC (after economic scores at 06:00)
+  schedule:
+    - cron: '0 8 * * *'
+  
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      agent:
+        description: 'Specific agent to update (or --all for all)'
+        required: false
+        default: '--all'
+        type: string
+      dry_run:
+        description: 'Run without committing changes'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  update-github-profiles:
+    runs-on: ubuntu-latest
+    name: Update GitHub Profiles from GitHub API
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Update GitHub Profiles
+        id: update
+        run: |
+          echo "🔄 Starting GitHub profile updates..."
+          cd scripts
+          
+          AGENT="${{ github.event.inputs.agent }}"
+          if [ -z "$AGENT" ]; then
+            AGENT="--all"
+          fi
+          
+          python3 update_github_profiles.py "$AGENT" | tee ../github-update.log
+          
+          # Extract statistics
+          SUCCESSFUL=$(grep -oP "Updated \d+ agents on leaderboard" ../github-update.log | grep -oP "\d+" || echo "0")
+          FAILED=$(grep -oP "Summary: \d+ successful, \d+ failed" ../github-update.log | grep -oP "\d+ failed" | grep -oP "\d+" || echo "0")
+          AGENTS=$(grep -oP "Updated agents:.*" ../github-update.log | sed 's/Updated agents: //' || echo "")
+          
+          echo "successful=$SUCCESSFUL" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          echo "agents=$AGENTS" >> $GITHUB_OUTPUT
+          
+          # Check for changes
+          cd ..
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "📊 Changes detected"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No changes"
+          fi
+
+      - name: Configure Git
+        if: steps.update.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit GitHub updates
+        if: steps.update.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          git add data/github-cache/
+          git add agentfolio/api/v1/agents/
+          git add agentfolio/api/v1/leaderboard.json
+          
+          if git diff --cached --quiet; then
+            echo "⏸️ No changes to commit"
+          else
+            COMMIT_MSG="🔄 Daily GitHub Profile Update
+
+Updated agent profiles from GitHub API:
+- ${{ steps.update.outputs.successful }} agents updated successfully
+- ${{ steps.update.outputs.failed }} agents failed to update
+- Updated agents: ${{ steps.update.outputs.agents }}
+
+Workflow: ${{ github.workflow }}
+Triggered by: ${{ github.event_name }}"
+            
+            git commit -m "$COMMIT_MSG"
+            git push
+            echo "✅ Committed GitHub profile updates"
+          fi
+
+      - name: Summary
+        run: |
+          echo "## 🔄 GitHub Profile Update Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "- **Agents updated:** ${{ steps.update.outputs.successful }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Updates failed:** ${{ steps.update.outputs.failed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changes detected:** ${{ steps.update.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🐙 Updated Agents" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.update.outputs.agents }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "⚠️ **Dry run mode** — no changes committed" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
+          echo "- [AgentFolio Leaderboard](https://agentfolio.io)" >> $GITHUB_STEP_SUMMARY
+          echo "- [AgentFolio GitHub](https://github.com/bobrenze-bot/agentfolio)" >> $GITHUB_STEP_SUMMARY

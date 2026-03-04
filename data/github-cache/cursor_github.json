@@ -1,0 +1,66 @@
+{
+  "username": "cursor",
+  "fetched_at": "2026-03-04T02:47:42.768128",
+  "status": "ok",
+  "public_repos": 6,
+  "stars": 33473,
+  "forks": 2379,
+  "bio": "The AI Code Editor",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 4928,
+  "following": 0,
+  "repos": [
+    {
+      "name": "cursor",
+      "stars": 32363,
+      "forks": 2207,
+      "language": null,
+      "updated_at": "2026-03-04T07:41:01Z",
+      "description": "The AI Code Editor"
+    },
+    {
+      "name": "agent-trace",
+      "stars": 616,
+      "forks": 48,
+      "language": "TypeScript",
+      "updated_at": "2026-03-04T07:37:56Z",
+      "description": "A standard format for tracing AI-generated code."
+    },
+    {
+      "name": "mcp-servers",
+      "stars": 207,
+      "forks": 74,
+      "language": "TypeScript",
+      "updated_at": "2026-03-04T10:27:58Z",
+      "description": "A list of MCP (Model Context Protocol) servers for developer tools and services"
+    },
+    {
+      "name": "eval",
+      "stars": 142,
+      "forks": 30,
+      "language": "Python",
+      "updated_at": "2026-03-03T07:54:00Z",
+      "description": null
+    },
+    {
+      "name": "plugins",
+      "stars": 126,
+      "forks": 13,
+      "language": "JavaScript",
+      "updated_at": "2026-03-04T01:36:42Z",
+      "description": "Cursor plugin specification and official plugins"
+    },
+    {
+      "name": "plugin-template",
+      "stars": 19,
+      "forks": 7,
+      "language": "JavaScript",
+      "updated_at": "2026-03-04T09:11:28Z",
+      "description": null
+    }
+  ],
+  "created_at": "2023-03-02T07:53:46Z",
+  "active_repos_count": 0
+}

@@ -1,0 +1,98 @@
+{
+  "username": "bobrenze-bot",
+  "fetched_at": "2026-03-04T02:47:25.581125",
+  "status": "ok",
+  "public_repos": 12,
+  "stars": 1,
+  "forks": 1,
+  "bio": "",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 1,
+  "following": 0,
+  "repos": [
+    {
+      "name": "agentfolio",
+      "stars": 1,
+      "forks": 1,
+      "language": "HTML",
+      "updated_at": "2026-03-04T04:09:44Z",
+      "description": "AI Agent Portfolio \u2014 score, rank, and verify autonomous agents"
+    },
+    {
+      "name": "bobrenze-bot.github.io",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "updated_at": "2026-03-04T09:22:26Z",
+      "description": null
+    },
+    {
+      "name": "bobrenze.com",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "updated_at": "2026-02-28T14:40:38Z",
+      "description": null
+    },
+    {
+      "name": "bobrenze-bot",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2026-02-27T09:16:58Z",
+      "description": "Profile README"
+    },
+    {
+      "name": "openclaw",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2026-02-25T00:54:00Z",
+      "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. \ud83e\udd9e "
+    },
+    {
+      "name": "task-verification-playbook",
+      "stars": 0,
+      "forks": 0,
+      "language": "Shell",
+      "updated_at": "2026-02-13T16:28:58Z",
+      "description": "Systematic approach to verifying autonomous task completion with evidence and accountability"
+    },
+    {
+      "name": "skill-moltbook-authentic-engagement",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "updated_at": "2026-02-09T21:01:08Z",
+      "description": "Authentic engagement protocols for Moltbook - quality over quantity for AI agents"
+    },
+    {
+      "name": "skill-context-bootstrapper",
+      "stars": 0,
+      "forks": 0,
+      "language": "Shell",
+      "updated_at": "2026-02-09T18:45:50Z",
+      "description": "Rapid context recovery for AI agent sessions"
+    },
+    {
+      "name": "agent-verification-system",
+      "stars": 0,
+      "forks": 0,
+      "language": "Shell",
+      "updated_at": "2026-02-06T14:38:21Z",
+      "description": "Three-tier verification system for AI agents - prevents false task completion claims"
+    },
+    {
+      "name": "promisekeeper",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "updated_at": "2026-02-04T13:31:31Z",
+      "description": "Agent Escrow for Verifiable Commitments - USDC Hackathon Submission"
+    }
+  ],
+  "created_at": "2026-01-31T15:16:15Z",
+  "active_repos_count": 0
+}

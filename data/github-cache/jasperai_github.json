@@ -1,0 +1,58 @@
+{
+  "username": "jasper-ai",
+  "fetched_at": "2026-03-04T02:47:51.754284",
+  "status": "ok",
+  "public_repos": 5,
+  "stars": 0,
+  "forks": 0,
+  "bio": "",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 0,
+  "following": 0,
+  "repos": [
+    {
+      "name": "junkcoin",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2024-12-07T04:04:49Z",
+      "description": null
+    },
+    {
+      "name": "fractal",
+      "stars": 0,
+      "forks": 0,
+      "language": "C++",
+      "updated_at": "2024-09-07T07:10:46Z",
+      "description": null
+    },
+    {
+      "name": "core-geth",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2023-02-13T17:08:44Z",
+      "description": "A highly configurable Go implementation of the Ethereum protocol."
+    },
+    {
+      "name": "bitcoin",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2023-02-13T05:39:54Z",
+      "description": "Bitcoin Core integration/staging tree"
+    },
+    {
+      "name": "btcpool-ABANDONED",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2023-02-12T22:18:45Z",
+      "description": "backend of pool.btc.com"
+    }
+  ],
+  "created_at": "2023-02-10T15:41:23Z",
+  "active_repos_count": 0
+}

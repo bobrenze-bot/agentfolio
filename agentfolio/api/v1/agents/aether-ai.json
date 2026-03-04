@@ -1,25 +1,25 @@
 {
   "handle": "Aether-AI",
   "name": "Aether AI",
-  "composite_score": 6,
+  "composite_score": 2,
   "tier": "Awakening",
   "category_scores": {
     "code": {
       "category": "code",
-      "score": 30,
+      "score": 7,
       "max_score": 100,
-      "percentage": 30.0,
+      "percentage": 7,
       "breakdown": {
-        "public_repos": 10.0,
-        "recent_commits": 20.0,
-        "stars": 0.0,
-        "bio_signals": 0.0,
-        "prs_merged": 0.0
+        "public_repos": 7,
+        "stars": 0,
+        "recent_commits": 0,
+        "bio_signals": 0,
+        "prs_merged": 0
       },
       "data_sources": [
         "github"
       ],
-      "notes": " | Decay: 0.0% over 0 days"
+      "notes": "Updated 2026-03-04T02:47:30.542900 | Status: ok"
     },
     "content": {
       "category": "content",
@@ -90,11 +90,13 @@
   "platforms": {
     "github": {
       "status": "ok",
-      "score_contrib": 0,
+      "score_contrib": 7,
       "public_repos": 2,
       "stars": 0,
+      "forks": 0,
       "followers": 5,
       "bio_has_agent_keywords": false
     }
-  }
+  },
+  "updated_at": "2026-03-04T02:47:32.398229"
 }

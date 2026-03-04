@@ -1,0 +1,26 @@
+{
+  "username": "cash-echo-bot",
+  "fetched_at": "2026-03-04T02:47:32.398621",
+  "status": "ok",
+  "public_repos": 1,
+  "stars": 0,
+  "forks": 0,
+  "bio": "@cashwilliams AI Bot",
+  "bio_has_agent_keywords": true,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 0,
+  "following": 0,
+  "repos": [
+    {
+      "name": "clawdbot",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated_at": "2026-03-03T23:19:18Z",
+      "description": "Your own personal AI assistant. Talk via WhatsApp, Telegram or Web."
+    }
+  ],
+  "created_at": "2026-01-03T14:08:16Z",
+  "active_repos_count": 0
+}

@@ -1,0 +1,98 @@
+{
+  "username": "grammarly",
+  "fetched_at": "2026-03-04T02:47:57.481337",
+  "status": "ok",
+  "public_repos": 23,
+  "stars": 4317,
+  "forks": 470,
+  "bio": "Millions of users rely on Grammarly's AI-powered products to make their messages, documents, and social media posts clear, mistake-free, and impactful.",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 413,
+  "following": 0,
+  "repos": [
+    {
+      "name": "rocker",
+      "stars": 1332,
+      "forks": 79,
+      "language": "Go",
+      "updated_at": "2026-01-06T15:13:10Z",
+      "description": "Rocker breaks the limits of Dockerfile."
+    },
+    {
+      "name": "gector",
+      "stars": 951,
+      "forks": 219,
+      "language": "Python",
+      "updated_at": "2026-02-22T21:19:51Z",
+      "description": "Official implementation of the papers \"GECToR \u2013 Grammatical Error Correction: Tag, Not Rewrite\" (BEA-20) and \"Text Simplification by Tagging\" (BEA-21)"
+    },
+    {
+      "name": "focal",
+      "stars": 729,
+      "forks": 38,
+      "language": "TypeScript",
+      "updated_at": "2025-12-12T19:02:56Z",
+      "description": "Program user interfaces the FRP way."
+    },
+    {
+      "name": "rocker-compose",
+      "stars": 408,
+      "forks": 20,
+      "language": "Go",
+      "updated_at": "2026-01-27T13:26:38Z",
+      "description": "Docker composition tool with idempotency features for deploying apps composed of multiple containers."
+    },
+    {
+      "name": "ua-gec",
+      "stars": 269,
+      "forks": 23,
+      "language": "Macaulay2",
+      "updated_at": "2026-02-08T16:48:01Z",
+      "description": "UA-GEC: Grammatical Error Correction and Fluency Corpus for the Ukrainian Language"
+    },
+    {
+      "name": "omniconf",
+      "stars": 195,
+      "forks": 17,
+      "language": "Clojure",
+      "updated_at": "2025-12-23T03:52:10Z",
+      "description": "Configuration library for Clojure that favors explicitness"
+    },
+    {
+      "name": "perseverance",
+      "stars": 187,
+      "forks": 9,
+      "language": "Clojure",
+      "updated_at": "2026-03-02T18:56:17Z",
+      "description": "Flexible retries library for Clojure"
+    },
+    {
+      "name": "contenteditable",
+      "stars": 71,
+      "forks": 7,
+      "language": null,
+      "updated_at": "2025-12-08T13:23:05Z",
+      "description": null
+    },
+    {
+      "name": "embrace",
+      "stars": 56,
+      "forks": 5,
+      "language": "TypeScript",
+      "updated_at": "2026-01-28T20:54:28Z",
+      "description": "Typesafe, declarative, and composable UI engine on top of React and Focal"
+    },
+    {
+      "name": "GMEG",
+      "stars": 31,
+      "forks": 8,
+      "language": null,
+      "updated_at": "2025-10-25T10:25:09Z",
+      "description": "GMEG"
+    }
+  ],
+  "created_at": "2010-08-03T12:56:01Z",
+  "active_repos_count": 0
+}

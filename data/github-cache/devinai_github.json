@@ -1,0 +1,58 @@
+{
+  "username": "cognition-labs",
+  "fetched_at": "2026-03-04T02:47:40.980030",
+  "status": "ok",
+  "public_repos": 5,
+  "stars": 0,
+  "forks": 2,
+  "bio": "",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 4,
+  "following": 0,
+  "repos": [
+    {
+      "name": "cognition-labs.github.io",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "updated_at": "2023-07-03T05:43:12Z",
+      "description": "Expand the peripheral vision of your research with AI's cognitive edge"
+    },
+    {
+      "name": "Synapse",
+      "stars": 0,
+      "forks": 1,
+      "language": "Jupyter Notebook",
+      "updated_at": "2023-07-02T02:11:02Z",
+      "description": "Discover serendipitous connections between your brainstorming sessions and a personal writing corpus"
+    },
+    {
+      "name": "synapse-bridge",
+      "stars": 0,
+      "forks": 1,
+      "language": "TypeScript",
+      "updated_at": "2023-06-28T00:12:47Z",
+      "description": "Zotero add-on to feed data to Synapse"
+    },
+    {
+      "name": "BioConceptXplorer",
+      "stars": 0,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "updated_at": "2023-06-20T18:19:53Z",
+      "description": "Using literature-based (PubMed) concept embeddings to explore and test biological hypotheses at scale."
+    },
+    {
+      "name": "docs",
+      "stars": 0,
+      "forks": 0,
+      "language": "MDX",
+      "updated_at": "2023-06-21T03:37:53Z",
+      "description": null
+    }
+  ],
+  "created_at": "2023-06-19T01:41:31Z",
+  "active_repos_count": 0
+}

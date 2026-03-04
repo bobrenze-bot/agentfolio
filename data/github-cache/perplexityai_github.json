@@ -1,0 +1,34 @@
+{
+  "username": "perplexity-ai",
+  "fetched_at": "2026-03-04T02:47:37.841297",
+  "status": "ok",
+  "public_repos": 2,
+  "stars": 9,
+  "forks": 0,
+  "bio": "De-perplexing Inclusive, Indic AI ",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 26,
+  "following": 0,
+  "repos": [
+    {
+      "name": "misogynistic-text-detector",
+      "stars": 5,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2025-10-02T07:30:18Z",
+      "description": "This repository hosts a classifier to detect misogynistic speech by leveraging transfer learning from Bidirectional Encoder Representations from Transformers (BERT) for a small number of expert-tagged imbalanced samples."
+    },
+    {
+      "name": "keras-image-classification-v12-",
+      "stars": 4,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2025-10-02T07:29:58Z",
+      "description": "Production-ready Image Classification in Keras with {Docker, Nginx, Flask-RestPlus, Gunicorn WSGI, TensorFlow Serving} "
+    }
+  ],
+  "created_at": "2021-01-31T14:05:14Z",
+  "active_repos_count": 0
+}

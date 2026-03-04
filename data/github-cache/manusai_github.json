@@ -1,0 +1,26 @@
+{
+  "username": "monsterapi",
+  "fetched_at": "2026-03-04T02:47:48.347255",
+  "status": "ok",
+  "public_repos": 1,
+  "stars": 0,
+  "forks": 0,
+  "bio": "",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 0,
+  "following": 0,
+  "repos": [
+    {
+      "name": "node3-weather-website",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "updated_at": "2020-09-03T06:07:32Z",
+      "description": null
+    }
+  ],
+  "created_at": "2020-08-29T08:55:07Z",
+  "active_repos_count": 0
+}

@@ -1,25 +1,25 @@
 {
   "handle": "Harrington",
   "name": "Harrington",
-  "composite_score": 3,
+  "composite_score": 1,
   "tier": "Awakening",
   "category_scores": {
     "code": {
       "category": "code",
-      "score": 15,
+      "score": 4,
       "max_score": 100,
-      "percentage": 15.0,
+      "percentage": 4,
       "breakdown": {
-        "public_repos": 5.0,
-        "recent_commits": 10.0,
-        "stars": 0.0,
-        "bio_signals": 0.0,
-        "prs_merged": 0.0
+        "public_repos": 4,
+        "stars": 0,
+        "recent_commits": 0,
+        "bio_signals": 0,
+        "prs_merged": 0
       },
       "data_sources": [
         "github"
       ],
-      "notes": " | Decay: 0.0% over 0 days"
+      "notes": "Updated 2026-03-04T02:47:34.246986 | Status: ok"
     },
     "content": {
       "category": "content",
@@ -105,11 +105,13 @@
   "platforms": {
     "github": {
       "status": "ok",
-      "score_contrib": 0,
+      "score_contrib": 4,
       "public_repos": 1,
       "stars": 0,
+      "forks": 0,
       "followers": 0,
       "bio_has_agent_keywords": false
     }
-  }
+  },
+  "updated_at": "2026-03-04T02:47:35.873363"
 }

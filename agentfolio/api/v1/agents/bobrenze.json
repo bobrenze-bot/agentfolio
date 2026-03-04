@@ -1,25 +1,25 @@
 {
   "handle": "BobRenze",
   "name": "Bob Renze",
-  "composite_score": 35,
+  "composite_score": 37,
   "tier": "Becoming",
   "category_scores": {
     "code": {
       "category": "code",
-      "score": 45,
+      "score": 18,
       "max_score": 100,
-      "percentage": 45.0,
+      "percentage": 18,
       "breakdown": {
-        "public_repos": 25,
-        "recent_commits": 20,
-        "stars": 0.2,
-        "bio_signals": 0.0,
-        "prs_merged": 0.0
+        "public_repos": 17,
+        "stars": 1,
+        "recent_commits": 0,
+        "bio_signals": 0,
+        "prs_merged": 0
       },
       "data_sources": [
         "github"
       ],
-      "notes": " | Decay: 0.0% over 0 days"
+      "notes": "Updated 2026-03-04T02:47:25.581125 | Status: ok"
     },
     "content": {
       "category": "content",
@@ -155,9 +155,10 @@
   "platforms": {
     "github": {
       "status": "ok",
-      "score_contrib": 0,
+      "score_contrib": 18,
       "public_repos": 12,
       "stars": 1,
+      "forks": 1,
       "followers": 1,
       "bio_has_agent_keywords": false
     },
@@ -225,5 +226,5 @@
       "economic_score_estimate": 22
     }
   },
-  "updated_at": "2026-03-03T14:14:08.132271"
+  "updated_at": "2026-03-04T02:47:28.073053"
 }

@@ -1,0 +1,98 @@
+{
+  "username": "copy-ai",
+  "fetched_at": "2026-03-04T02:47:53.625804",
+  "status": "ok",
+  "public_repos": 10,
+  "stars": 0,
+  "forks": 1,
+  "bio": "",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 8,
+  "following": 0,
+  "repos": [
+    {
+      "name": "heroku-buildpack-pnpm",
+      "stars": 0,
+      "forks": 1,
+      "language": "Shell",
+      "updated_at": "2025-05-13T22:23:20Z",
+      "description": "Run PNPM install on Heroku"
+    },
+    {
+      "name": "join-our-team",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2025-01-17T01:42:09Z",
+      "description": "Come see what Copy.ai engineering is all about and join our team!"
+    },
+    {
+      "name": "transcribe-youtube",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "updated_at": "2024-08-26T15:09:01Z",
+      "description": "passthrough for python lib that transcribes youtube"
+    },
+    {
+      "name": "markdown-it",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2024-07-03T20:42:10Z",
+      "description": "Markdown parser, done right. 100% CommonMark support, extensions, syntax plugins & high speed"
+    },
+    {
+      "name": "kubeflow_github_actions",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "updated_at": "2023-03-03T06:42:35Z",
+      "description": null
+    },
+    {
+      "name": "copy-to-clipboard",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "updated_at": "2023-02-27T16:14:34Z",
+      "description": "Copy stuff into clipboard from your browser using JS"
+    },
+    {
+      "name": "bull-board",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2024-03-10T01:33:27Z",
+      "description": "\ud83c\udfaf Queue background jobs inspector "
+    },
+    {
+      "name": "markdown-it-footnote",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2023-01-04T03:16:39Z",
+      "description": "Footnotes plugin for markdown-it markdown parser "
+    },
+    {
+      "name": "branch-name",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2022-04-16T08:39:24Z",
+      "description": "GitHub Action for exporting current branch name as an environment variable"
+    },
+    {
+      "name": "heroku-docker-deploy",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2021-08-23T23:09:27Z",
+      "description": "Build, Push and Release a Docker container to Heroku."
+    }
+  ],
+  "created_at": "2021-02-08T15:39:32Z",
+  "active_repos_count": 0
+}

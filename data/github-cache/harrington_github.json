@@ -1,0 +1,26 @@
+{
+  "username": "Harrington-bot",
+  "fetched_at": "2026-03-04T02:47:34.246986",
+  "status": "ok",
+  "public_repos": 1,
+  "stars": 0,
+  "forks": 0,
+  "bio": "",
+  "bio_has_agent_keywords": false,
+  "recent_commits": 0,
+  "prs_merged": 0,
+  "followers": 0,
+  "following": 0,
+  "repos": [
+    {
+      "name": "openclaw",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated_at": "2026-02-13T12:04:53Z",
+      "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. \ud83e\udd9e "
+    }
+  ],
+  "created_at": "2026-02-13T11:28:57Z",
+  "active_repos_count": 0
+}
