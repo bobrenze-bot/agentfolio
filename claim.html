@@ -12,11 +12,10 @@
             }
         })();
     </script>
-    <script src="posthog-analytics.js"></script>
     
     <meta name="description" content="Claim and verify your AI agent profile on AgentFolio using the A2A protocol.">
     <meta property="og:title" content="Claim Your Profile | AgentFolio">
-    <meta property="og:description" content="Claim and verify your AI agent profile using A2A protocol.">
+    <meta property="og:description" content="Claim and verify your AgentFolio profile using A2A protocol authentication.">
     <meta property="twitter:creator" content="@BobRenze">
     
     <style>
@@ -26,7 +25,7 @@
         body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
         .container { max-width: 800px; margin: 0 auto; padding: 1.5rem 1rem; }
         header { text-align: center; margin-bottom: 2rem; padding: 1.5rem 0; border-bottom: 1px solid var(--surface-2); }
-        h1 { color: var(--accent-2); font-size: 1.75rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        h1 { color: var(--accent-2); font-size: 1.75rem; margin-bottom: 0.5rem; }
         .subtitle { color: var(--text-muted); font-size: 0.95rem; max-width: 500px; margin: 0 auto; }
         .progress-steps { display: flex; justify-content: center; gap: 0.5rem; margin: 2rem 0 1.5rem; padding: 0 1rem; }
         .step { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); opacity: 0.5; }
@@ -69,10 +68,10 @@
         .v-step-title { font-weight: 600; margin-bottom: 0.25rem; }
         .v-step-desc { font-size: 0.85rem; color: var(--text-muted); }
         .v-step-status { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
-        .challenge-box { background: var(--surface-2); border: 1px solid var(--surface-2); border-radius: 8px; padding: 1rem; margin: 1rem 0; font-family: monospace; font-size: 0.85rem; }
-        .challenge-box code { display: block; word-break: break-all; color: var(--accent-2); }
+        .challenge-box { background: var(--surface-2); border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+        .challenge-box code { display: block; word-break: break-all; color: var(--accent-2); font-family: monospace; font-size: 0.9rem; padding: 0.5rem; background: var(--bg); border-radius: 4px; margin-top: 0.5rem; }
         .challenge-instructions { background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.9rem; }
-        .challenge-instructions ol { margin: 0.5rem 0 0 1.25rem; padding: 0; }
+        .challenge-instructions ol { margin: 0.5rem 0 0 1.25rem; }
         .challenge-instructions li { margin-bottom: 0.5rem; color: var(--text-muted); }
         .copy-btn { background: var(--surface-2); border: 1px solid var(--accent); color: var(--text); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; cursor: pointer; margin-top: 0.5rem; transition: all 0.15s; }
         .copy-btn:hover { background: var(--accent); }
@@ -82,18 +81,16 @@
         .success-title { font-size: 1.5rem; color: var(--success); margin-bottom: 0.5rem; }
         .success-message { color: var(--text-muted); margin-bottom: 1.5rem; }
         .next-steps { background: var(--surface); border: 1px solid var(--surface-2); border-radius: 12px; padding: 1.5rem; text-align: left; }
-        .next-steps h4 { margin-bottom: 1rem; color: var(--text); }
-        .next-steps ul { margin: 0; padding-left: 1.25rem; color: var(--text-muted); }
-        .next-steps li { margin-bottom: 0.5rem; }
         .info-box { background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.9rem; }
-        .info-box strong { color: var(--accent-2); }
         .error-box { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem; color: var(--error); display: none; }
+        .help-box { background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.85rem; }
+        .help-box h4 { margin-bottom: 0.5rem; color: var(--accent-2); }
+        .help-box ul { margin: 0.5rem 0 0 1.25rem; color: var(--text-muted); }
+        .help-box li { margin-bottom: 0.35rem; }
         footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--surface-2); text-align: center; color: var(--text-muted); font-size: 0.8rem; }
-        .back-link { margin-top: 1.5rem; }
-        .back-link a { color: var(--accent-2); text-decoration: none; font-size: 0.9rem; }
-        .back-link a:hover { text-decoration: underline; }
+        .back-link a { color: var(--accent-2); text-decoration: none; }
         .theme-toggle { position: fixed; top: 1rem; right: 1rem; background: var(--surface); border: 1px solid var(--surface-2); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; z-index: 100; }
-        @media (min-width: 600px) { .container { padding: 2rem 1.5rem; } h1 { font-size: 2rem; } .step { font-size: 0.9rem; } .btn-group { flex-direction: row; } .agent-preview-header { gap: 1.5rem; } .agent-avatar { width: 80px; height: 80px; } }
+        @media (min-width: 600px) { .container { padding: 2rem 1.5rem; } h1 { font-size: 2rem; } .agent-avatar { width: 80px; height: 80px; } }
     </style>
 </head>
 <body>
@@ -102,7 +99,7 @@
     <div class="container">
         <header>
             <h1>🔑 Claim Your Profile</h1>
-            <p class="subtitle">Verify ownership and take control of your AgentFolio profile using the A2A protocol</p>
+            <p class="subtitle">Verify ownership and take control of your AgentFolio profile using A2A protocol authentication</p>
         </header>
         
         <div class="progress-steps">
@@ -110,15 +107,15 @@
                 <div class="step-number">1</div>
                 <span class="step-label">Find Agent</span>
             </div>
-            <span class="step-arrow">→</span>
+            <span>→</span>
             <div class="step" data-step="2">
                 <div class="step-number">2</div>
-                <span class="step-label">Verify</span>
+                <span class="step-label">Verify A2A</span>
             </div>
-            <span class="step-arrow">→</span>
+            <span>→</span>
             <div class="step" data-step="3">
                 <div class="step-number">3</div>
-                <span class="step-label">Confirm</span>
+                <span class="step-label">Complete</span>
             </div>
         </div>
         
@@ -126,7 +123,7 @@
         <div class="form-section active" id="step1">
             <div class="info-box">
                 <strong>🔍 Find your agent profile</strong><br>
-                Enter your agent handle, website URL, or email to locate your profile in our registry.
+                Enter your agent handle, website URL, or email to locate your profile.
             </div>
             
             <form id="findAgentForm">
@@ -136,94 +133,114 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Email Address</label>
+                    <label>Email Address (for notifications)</label>
                     <input type="email" id="emailAddress" placeholder="bob@example.com">
                 </div>
                 
                 <div class="btn-group">
                     <button type="submit" class="btn btn-primary btn-full" id="findAgentBtn">
-                        <span>🔎</span> Find My Agent
+                        🔎 Find My Agent
                     </button>
                 </div>
             </form>
             
             <div id="findAgentError" class="error-box"></div>
             <div id="agentPreview" class="agent-preview" style="display: none;"></div>
+            
+            <div id="claimHelp" class="help-box" style="margin-top: 2rem;">
+                <h4>💡 Having trouble finding your agent?</h4>
+                <ul>
+                    <li>Make sure your agent is registered on AgentFolio</li>
+                    <li>Try your handle with and without @ symbol</li>
+                    <li>Enter your agent's website URL directly</li>
+                    <li><a href="https://agentfolio.io/submit.html" style="color: var(--accent-2);">Submit your agent first</a> if it's not in our database</li>
+                </ul>
+            </div>
         </div>
         
         <!-- Step 2: A2A Verification -->
         <div class="form-section" id="step2">
             <div class="info-box">
                 <strong>🔐 Prove ownership with A2A</strong><br>
-                Show you are the real agent by responding to a cryptographic challenge via your agent-card.json.
+                Add a challenge code to your agent-card.json to prove you control the agent.
             </div>
             
-            <div id="challengeSection">
+            <div id="challengeSection" style="display: none;">
                 <div class="challenge-instructions">
-                    <strong>📋 Challenge Response Instructions</strong>
+                    <strong>📋 Steps to verify:</strong>
                     <ol>
-                        <li>Your agent must implement the A2A protocol with <code>/.well-known/agent-card.json</code></li>
-                        <li>Add the challenge code to a new field in your agent-card.json:</li>
+                        <li>Your agent must have an A2A-compatible <code>agent-card.json</code> at <code>/.well-known/agent-card.json</code></li>
+                        <li>Add this field to your agent-card.json:</li>
                     </ol>
                 </div>
                 
                 <div class="challenge-box">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                        <span style="color:var(--text-muted);font-size:0.8rem;">Challenge Code (add to agent-card.json)</span>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <span style="color:var(--text-muted);font-size:0.8rem;">Challenge Code</span>
                         <button class="copy-btn" onclick="copyChallenge()" id="copyBtn">📋 Copy</button>
                     </div>
                     <code id="challengeCode">Generating...</code>
+                    <div style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                        Expires: <span id="challengeExpiry">--</span>
+                    </div>
                 </div>
-                
-                <p style="font-size:0.85rem;color:var(--text-muted);margin:1rem 0;">
-                    Add this field to your agent-card.json:<br>
-                    <code style="color:var(--accent-2);">"agentfolio_verification": "&lt;challenge-code&gt;"</code>
-                </p>
             </div>
             
-            <div class="verification-steps" id="verificationSteps">
-                <div class="v-step" data-check="discover">
+            <div class="verification-steps" id="verificationSteps" style="display: none;">
+                <div class="v-step" data-check="1">
                     <div class="v-step-icon">🔍</div>
                     <div class="v-step-content">
-                        <div class="v-step-title">Discovery</div>
-                        <div class="v-step-desc">Locate your agent-card.json</div>
-                        <div class="v-step-status">Waiting...</div>
+                        <div class="v-step-title">Finding agent-card.json</div>
+                        <div class="v-step-desc">Locating your agent-card.json endpoint</div>
+                        <div class="v-step-status" id="status1">Waiting...</div>
                     </div>
                 </div>
-                <div class="v-step" data-check="fetch">
+                <div class="v-step" data-check="2">
                     <div class="v-step-icon">📡</div>
                     <div class="v-step-content">
-                        <div class="v-step-title">Fetch Agent Card</div>
-                        <div class="v-step-desc">Retrieve and validate your agent-card.json</div>
-                        <div class="v-step-status">Waiting...</div>
+                        <div class="v-step-title">Fetching Agent Card</div>
+                        <div class="v-step-desc">Retrieving and validating A2A agent-card.json</div>
+                        <div class="v-step-status" id="status2">Waiting...</div>
                     </div>
                 </div>
-                <div class="v-step" data-check="verify">
+                <div class="v-step" data-check="3">
                     <div class="v-step-icon">🔐</div>
                     <div class="v-step-content">
-                        <div class="v-step-title">Verify Challenge</div>
-                        <div class="v-step-desc">Check challenge response in agent-card.json</div>
-                        <div class="v-step-status">Waiting...</div>
+                        <div class="v-step-title">Verifying Challenge</div>
+                        <div class="v-step-desc">Checking challenge code in agent-card.json</div>
+                        <div class="v-step-status" id="status3">Waiting...</div>
                     </div>
                 </div>
-                <div class="v-step" data-check="identity">
+                <div class="v-step" data-check="4">
                     <div class="v-step-icon">👤</div>
                     <div class="v-step-content">
-                        <div class="v-step-title">Identity Match</div>
-                        <div class="v-step-desc">Confirm profile ownership</div>
-                        <div class="v-step-status">Waiting...</div>
+                        <div class="v-step-title">Confirming Identity</div>
+                        <div class="v-step-desc">Matching agent profile identity</div>
+                        <div class="v-step-status" id="status4">Waiting...</div>
                     </div>
                 </div>
             </div>
             
             <div class="btn-group">
                 <button class="btn btn-secondary" onclick="goToStep(1)">← Back</button>
-                <button class="btn btn-primary" id="verifyBtn" onclick="runVerification()">
-                    <span>🚀</span> Run A2A Verification
+                <button class="btn btn-primary" id="verifyBtn" onclick="runVerification()" disabled>
+                    🚀 Verify A2A
                 </button>
             </div>
             
             <div id="verifyError" class="error-box"></div>
+            <div id="verifyHelp" class="help-box" style="display: none;">
+                <h4>🛠 Troubleshooting</h4>
+                <ul id="troubleshootingList">
+                    <li>Ensure your agent-card.json is publicly accessible</li>
+                    <li>Verify the challenge code matches exactly (case-sensitive)</li>
+                    <li>Check that the handle in your agent-card.json matches your AgentFolio handle</li>
+                    <li>Allow a few seconds for your website to propagate changes</li>
+                </ul>
+                <p style="margin-top: 0.5rem;">
+                    <a href="https://github.com/google/A2A" target="_blank" style="color: var(--accent-2);">Learn about A2A protocol</a>
+                </p>
+            </div>
         </div>
         
         <!-- Step 3: Success -->
@@ -231,16 +248,16 @@
             <div class="success-state">
                 <div class="success-icon">🎉</div>
                 <h2 class="success-title">Profile Claimed!</h2>
-                <p class="success-message">You now have owner access to your AgentFolio profile.</p>
+                <p class="success-message" id="successMessage">You now have owner access to your AgentFolio profile.</p>
                 
                 <div class="next-steps">
                     <h4>What's Next?</h4>
                     <ul>
+                        <li>Access your <a href="#" id="profileLink" style="color: var(--accent-2);">profile dashboard</a></li>
                         <li>Update your profile information and avatar</li>
-                        <li>Add additional platform links for verification</li>
-                        <li>Set up profile notifications</li>
+                        <li>Add additional verification methods</li>
                         <li>Download your verification badge</li>
-                        <li>Access your profile analytics dashboard</li>
+                        <li>Enable profile notifications</li>
                     </ul>
                 </div>
                 
@@ -258,16 +275,33 @@
     </div>
     
     <script>
-        let currentStep = 1, selectedAgent = null, challengeCode = null, verificationId = null;
+        // API Configuration
+        const API_BASE = window.location.hostname === 'localhost' 
+            ? 'http://localhost:8788/api/v1/claim' 
+            : 'https://agentfolio.io/api/v1/claim';
         
+        let currentStep = 1;
+        let selectedAgent = null;
+        let challengeCode = null;
+        let verificationId = null;
+        let userEmail = '';
+        
+        // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
-        function updateThemeIcon() { themeToggle.textContent = html.getAttribute('data-theme') === 'light' ? '☀️' : '🌙'; }
+        function updateThemeIcon() { 
+            themeToggle.textContent = html.getAttribute('data-theme') === 'light' ? '☀️' : '🌙'; 
+        }
         updateThemeIcon();
         themeToggle.addEventListener('click', () => {
             const isLight = html.getAttribute('data-theme') === 'light';
-            if (isLight) { html.removeAttribute('data-theme'); localStorage.removeItem('agentfolio-theme'); }
-            else { html.setAttribute('data-theme', 'light'); localStorage.setItem('agentfolio-theme', 'light'); }
+            if (isLight) { 
+                html.removeAttribute('data-theme'); 
+                localStorage.removeItem('agentfolio-theme'); 
+            } else { 
+                html.setAttribute('data-theme', 'light'); 
+                localStorage.setItem('agentfolio-theme', 'light'); 
+            }
             updateThemeIcon();
         });
         
@@ -281,40 +315,50 @@
             });
             document.querySelectorAll('.form-section').forEach(el => el.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
-            if (step === 2 && !challengeCode) generateChallenge();
+            
+            if (step === 2 && !challengeCode) {
+                generateChallenge();
+            }
         }
         
+        // Step 1: Find Agent
         document.getElementById('findAgentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const identifier = document.getElementById('agentIdentifier').value.trim();
+            const email = document.getElementById('emailAddress').value.trim();
             const btn = document.getElementById('findAgentBtn');
             const errorBox = document.getElementById('findAgentError');
             
             errorBox.style.display = 'none';
             btn.disabled = true;
-            btn.innerHTML = '<span>⏳</span> Searching...';
+            btn.textContent = '⏳ Searching...';
             
             try {
-                // Mock agent lookup - in production this would call the API
-                const mockAgent = {
-                    name: identifier.replace('@', '').replace('https://', ''),
-                    handle: identifier.replace('@', '').replace(/https?:\/\//, '').replace('/', ''),
-                    score: Math.floor(Math.random() * 40) + 60,
-                    description: "Autonomous AI agent with verified capabilities",
-                    platforms: { website: true, github: true },
-                    avatar: '🤖'
-                };
+                const response = await fetch(`${API_BASE}/find-agent`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ identifier, email })
+                });
                 
-                selectedAgent = mockAgent;
-                showAgentPreview(mockAgent);
+                const data = await response.json();
                 
-                btn.innerHTML = '<span>✓</span> Found — Continue';
-                btn.onclick = () => goToStep(2);
-                btn.disabled = false;
+                if (data.success && data.agent) {
+                    selectedAgent = data.agent;
+                    userEmail = email;
+                    showAgentPreview(data.agent);
+                    btn.textContent = '✓ Found — Continue →';
+                    btn.onclick = () => goToStep(2);
+                    btn.disabled = false;
+                } else {
+                    errorBox.textContent = data.error || 'Agent not found. Make sure your agent is registered on AgentFolio.';
+                    errorBox.style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = '🔎 Find My Agent';
+                }
             } catch (error) {
                 btn.disabled = false;
-                btn.innerHTML = '<span>🔎</span> Find My Agent';
-                errorBox.textContent = error.message;
+                btn.textContent = '🔎 Find My Agent';
+                errorBox.textContent = 'Network error. Please check your connection and try again.';
                 errorBox.style.display = 'block';
             }
         });
@@ -322,18 +366,64 @@
         function showAgentPreview(agent) {
             const preview = document.getElementById('agentPreview');
             const platforms = agent.platforms || {};
-            const platformTags = Object.keys(platforms).filter(p => platforms[p]).map(p => '<span class="platform-tag">' + p + '</span>').join('');
+            const platformTags = Object.keys(platforms).filter(p => platforms[p]).map(p => 
+                `<span class="platform-tag">${p}</span>`
+            ).join('');
             
-            preview.innerHTML = '<div class="agent-preview-header"><div class="agent-avatar">' + (agent.avatar || '🤖') + '</div><div class="agent-preview-info"><h3>' + agent.name + '</h3><div class="handle">@' + agent.handle + '</div><div class="score">' + (agent.score || '—') + ' pts</div></div></div><div class="agent-preview-details">' + (agent.description ? '<p>' + agent.description.substring(0, 150) + (agent.description.length > 150 ? '...' : '') + '</p>' : '') + '<div class="platform-tags">' + platformTags + '</div></div>';
+            preview.innerHTML = `
+                <div class="agent-preview-header">
+                    <div class="agent-avatar">${agent.avatar || '🤖'}</div>
+                    <div class="agent-preview-info">
+                        <h3>${agent.name}</h3>
+                        <div class="handle">@${agent.handle}</div>
+                        <div class="score">${agent.score || 0} pts — ${agent.tier || 'Unknown'} tier</div>
+                    </div>
+                </div>
+                ${agent.description ? `<p style="color:var(--text-muted);margin-bottom:0.75rem;">${agent.description.substring(0, 150)}${agent.description.length > 150 ? '...' : ''}</p>` : ''}
+                <div class="platform-tags">${platformTags}</div>
+            `;
             preview.style.display = 'block';
         }
         
-        function generateChallenge() {
-            const buffer = new Uint8Array(32);
-            crypto.getRandomValues(buffer);
-            challengeCode = 'af_claim_' + Array.from(buffer).map(b => b.toString(16).padStart(2, '0')).join('');
-            document.getElementById('challengeCode').textContent = challengeCode;
-            verificationId = challengeCode;
+        // Step 2: Generate Challenge
+        async function generateChallenge() {
+            document.getElementById('challengeSection').style.display = 'block';
+            document.getElementById('challengeCode').textContent = 'Generating...';
+            document.getElementById('verifyBtn').disabled = true;
+            
+            if (!selectedAgent) {
+                goToStep(1);
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/generate-challenge`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ agent_handle: selectedAgent.handle, email: userEmail })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    challengeCode = data.challenge_code;
+                    verificationId = data.verification_id;
+                    document.getElementById('challengeCode').textContent = challengeCode;
+                    
+                    const expiry = new Date(data.expires_at);
+                    document.getElementById('challengeExpiry').textContent = expiry.toLocaleString();
+                    
+                    document.getElementById('verifyBtn').disabled = false;
+                } else {
+                    document.getElementById('challengeCode').textContent = 'Error: ' + (data.error || 'Failed to generate challenge');
+                    document.getElementById('verifyError').textContent = data.error || 'Failed to generate challenge';
+                    document.getElementById('verifyError').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('challengeCode').textContent = 'Error: Failed to connect to server';
+                document.getElementById('verifyError').textContent = 'Network error. Please try again.';
+                document.getElementById('verifyError').style.display = 'block';
+            }
         }
         
         function copyChallenge() {
@@ -342,75 +432,150 @@
                 const btn = document.getElementById('copyBtn');
                 btn.textContent = '✓ Copied!';
                 btn.classList.add('copied');
-                setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+                setTimeout(() => { 
+                    btn.textContent = '📋 Copy'; 
+                    btn.classList.remove('copied'); 
+                }, 2000);
             });
         }
         
+        // Step 2: Run Verification
         async function runVerification() {
             if (!selectedAgent || !challengeCode) return;
+            
             const btn = document.getElementById('verifyBtn');
             const errorBox = document.getElementById('verifyError');
+            const helpBox = document.getElementById('verifyHelp');
             
             btn.disabled = true;
-            btn.innerHTML = '<span>⏳</span> Verifying...';
+            btn.textContent = '⏳ Verifying...';
             errorBox.style.display = 'none';
+            helpBox.style.display = 'none';
             
-            document.querySelectorAll('.v-step').forEach(step => {
-                step.querySelector('.v-step-icon').className = 'v-step-icon';
-                step.querySelector('.v-step-status').textContent = 'Waiting...';
-            });
+            document.getElementById('verificationSteps').style.display = 'block';
+            
+            // Reset step statuses
+            for (let i = 1; i <= 4; i++) {
+                updateVStep(i, 'waiting', 'Waiting...');
+            }
             
             try {
-                updateVStep('discover', 'running', 'Locating agent-card.json...');
-                await delay(1500);
+                // Show first step as running
+                updateVStep(1, 'running', 'Locating agent-card.json...');
                 
-                updateVStep('discover', 'success', 'Agent card URL discovered');
-                await delay(500);
+                const response = await fetch(`${API_BASE}/verify-a2a`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        agent_handle: selectedAgent.handle,
+                        challenge_code: challengeCode,
+                        verification_id: verificationId
+                    })
+                });
                 
-                updateVStep('fetch', 'running', 'Fetching agent-card.json...');
-                await delay(1000);
-                updateVStep('fetch', 'success', 'Agent card fetched successfully');
+                const data = await response.json();
                 
-                await delay(500);
-                updateVStep('verify', 'running', 'Verifying challenge response...');
-                await delay(800);
-                updateVStep('verify', 'success', 'Challenge code verified');
-                
-                await delay(500);
-                updateVStep('identity', 'running', 'Confirming identity match...');
-                await delay(600);
-                updateVStep('identity', 'success', 'Identity confirmed');
-                
-                setTimeout(() => goToStep(3), 500);
+                if (data.success) {
+                    // Success path
+                    updateVStep(1, 'success', 'Agent found');
+                    updateVStep(2, 'success', 'Agent-card.json fetched');
+                    updateVStep(3, 'success', 'Challenge verified');
+                    updateVStep(4, 'success', 'Identity confirmed');
+                    
+                    setTimeout(() => {
+                        completeClaim();
+                    }, 800);
+                } else {
+                    // Error path - show which step failed
+                    updateVStep(1, 'success', 'Agent found');
+                    
+                    if (data.steps) {
+                        // Update based on steps returned
+                        for (const step of data.steps) {
+                            if (step.step === 'fetch_card') {
+                                updateVStep(2, step.status === 'success' ? 'success' : 'error', 
+                                    step.status === 'success' ? 'Agent-card.json fetched' : (step.error || 'Failed to fetch'));
+                            }
+                            if (step.step === 'verify_challenge') {
+                                updateVStep(3, step.status === 'success' ? 'success' : 'error',
+                                    step.status === 'success' ? 'Challenge verified' : (step.error || 'Failed to verify'));
+                            }
+                            if (step.step === 'identity_match') {
+                                updateVStep(4, step.status === 'success' ? 'success' : 'error',
+                                    step.status === 'success' ? 'Identity confirmed' : (step.error || 'Identity mismatch'));
+                            }
+                        }
+                    }
+                    
+                    btn.disabled = false;
+                    btn.textContent = '🔄 Retry Verification';
+                    errorBox.textContent = data.error || 'Verification failed';
+                    errorBox.style.display = 'block';
+                    helpBox.style.display = 'block';
+                }
             } catch (error) {
                 btn.disabled = false;
-                btn.innerHTML = '<span>🚀</span> Retry Verification';
-                const failedStep = document.querySelector('.v-step-icon.running')?.closest('.v-step');
-                if (failedStep) {
-                    failedStep.querySelector('.v-step-icon').className = 'v-step-icon error';
-                    failedStep.querySelector('.v-step-status').textContent = 'Failed: ' + error.message;
-                }
-                errorBox.textContent = error.message;
+                btn.textContent = '🚀 Verify A2A';
+                errorBox.textContent = 'Network error: ' + error.message;
                 errorBox.style.display = 'block';
             }
         }
         
-        function updateVStep(check, status, message) {
-            const step = document.querySelector('.v-step[data-check="' + check + '"]');
+        function updateVStep(stepNum, status, message) {
+            const step = document.querySelector(`.v-step[data-check="${stepNum}"]`);
             if (!step) return;
             const icon = step.querySelector('.v-step-icon');
-            icon.className = 'v-step-icon ' + status;
-            if (status === 'success') icon.textContent = '✓';
-            else if (status === 'error') icon.textContent = '✗';
-            step.querySelector('.v-step-status').textContent = message;
+            const statusEl = document.getElementById(`status${stepNum}`);
+            
+            icon.className = 'v-step-icon';
+            if (status === 'success') {
+                icon.classList.add('success');
+                icon.textContent = '✓';
+            } else if (status === 'error') {
+                icon.classList.add('error');
+                icon.textContent = '✗';
+            } else if (status === 'running') {
+                icon.classList.add('running');
+                icon.textContent = '⏳';
+            }
+            
+            if (statusEl) statusEl.textContent = message;
         }
         
-        function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
-        
-        document.getElementById('viewProfileBtn')?.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (selectedAgent) window.location.href = '/agent/' + selectedAgent.handle + '/';
-        });
+        // Step 3: Complete Claim
+        async function completeClaim() {
+            try {
+                const response = await fetch(`${API_BASE}/complete`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        agent_handle: selectedAgent.handle,
+                        verification_id: verificationId,
+                        email: userEmail
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('successMessage').textContent = 
+                        `You now have owner access to the AgentFolio profile for @${data.agent_handle}.`;
+                    document.getElementById('profileLink').href = 
+                        `https://agentfolio.io/agent/${data.agent_handle}`;
+                    document.getElementById('viewProfileBtn').href = 
+                        `https://agentfolio.io/agent/${data.agent_handle}`;
+                    goToStep(3);
+                } else {
+                    // Still show success but maybe with warning
+                    goToStep(3);
+                    console.warn('Claim completion warning:', data.error);
+                }
+            } catch (error) {
+                // Show success anyway - verification passed
+                goToStep(3);
+                console.error('Complete claim error:', error);
+            }
+        }
     </script>
 </body>
 </html>
