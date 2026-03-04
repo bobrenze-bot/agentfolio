@@ -5,6 +5,13 @@ on:
   schedule:
     - cron: '0 8 * * *'
   
+  
+  # Run when agent data or profile updater script changes
+  push:
+    branches: [main]
+    paths:
+      - 'data/agents.json'
+      - 'scripts/update_github_profiles.py'
   # Manual trigger
   workflow_dispatch:
     inputs:
@@ -105,6 +112,20 @@ Triggered by: ${{ github.event_name }}"
             git push
             echo "✅ Committed GitHub profile updates"
           fi
+
+      - name: Trigger Score Recalculation
+        if: steps.update.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'calculate-scores.yml',
+              ref: 'main'
+            });
+            console.log('✅ Triggered score recalculation workflow');
 
       - name: Summary
         run: |

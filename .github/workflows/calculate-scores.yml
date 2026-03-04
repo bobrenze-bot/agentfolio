@@ -80,6 +80,20 @@ jobs:
           git commit -m "Update scored agents - $(date -u +%Y-%m-%d)"
           git push
 
+      - name: Trigger Badge Generation
+        if: steps.check.outputs.changed == 'true' && github.event.inputs.commit_results != 'false'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'update-badges.yml',
+              ref: 'main'
+            });
+            console.log('✅ Triggered badge generation workflow');
+
       - name: Summary
         run: |
           echo "## ✅ Score Calculation Complete" >> $GITHUB_STEP_SUMMARY
