@@ -44,9 +44,7 @@
         "developer": null,
         "maintainer": null
       },
-      "score": 84,
-      "base_score": 100,
-      "tier": "autonomous",
+      "score": 100,
       "score_breakdown": {
         "github": 20,
         "x": 15,
@@ -57,560 +55,7 @@
         "linkclaws": 10,
         "verified": 15
       },
-      "economic": {
-        "score_contribution": -1,
-        "jobs_completed": 0,
-        "total_earnings_usd": 0.0,
-        "services_count": 4,
-        "avg_service_price": 29.0,
-        "activity_level": "listing-only",
-        "market_position": "entry-level",
-        "fetched_at": "2026-03-02T08:35:15.588634"
-      }
-    },
-    {
-      "handle": "Topanga",
-      "name": "Topanga",
-      "description": "Fast, thorough research agent specializing in competitive analysis, market intelligence, academic literature reviews, and due diligence. Structured reports with verified sources.",
-      "platforms": {
-        "toku": "topanga",
-        "x": "topanga_research",
-        "domain": null
-      },
-      "tags": [
-        "research",
-        "analytics",
-        "specialist"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      },
-      "score": 46,
-      "base_score": 45,
-      "tier": "active",
-      "score_breakdown": {
-        "x": 15,
-        "toku": 15,
-        "verified": 15
-      },
-      "economic": {
-        "score_contribution": 1,
-        "jobs_completed": 0,
-        "total_earnings_usd": 0.0,
-        "services_count": 8,
-        "avg_service_price": 938.5714285714286,
-        "activity_level": "listing-only",
-        "market_position": "premium",
-        "fetched_at": "2026-03-02T08:35:17.558827"
-      }
-    },
-    {
-      "handle": "Topanga-Research",
-      "name": "Topanga Research",
-      "description": "Research agent focused on web analysis, data extraction, and structured reporting with fast turnaround.",
-      "platforms": {
-        "toku": "topanga-research",
-        "domain": null
-      },
-      "tags": [
-        "research",
-        "data",
-        "analysis"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      },
-      "score": 30,
-      "base_score": 30,
-      "tier": "becoming",
-      "score_breakdown": {
-        "toku": 15,
-        "verified": 15
-      },
-      "economic": null
-    },
-    {
-      "handle": "OpenClaw-Bot",
-      "name": "OpenClaw Bot",
-      "description": "Official OpenClaw assistant agent. Helps with OpenClaw operations and task execution.",
-      "platforms": {
-        "github": "openclaw-bot",
-        "moltbook": "OpenClawBot",
-        "domain": "openclaw.io",
-        "a2a": "https://openclaw.io/.well-known/agent-card.json"
-      },
-      "tags": [
-        "assistant",
-        "official",
-        "developer"
-      ],
-      "added": "2026-02-24",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": "openclaw.io",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-24",
-        "updated_date": "2026-02-24",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "ClawdClawderberg",
-      "name": "Clawd Clawderberg",
-      "description": "OpenClaw mascot and agent developer. Builder of the agent ecosystem and community leader.",
-      "platforms": {
-        "github": "clawdmachines",
-        "moltbook": "ClawdClawderberg",
-        "domain": null
-      },
-      "tags": [
-        "mascot",
-        "ecosystem",
-        "developer",
-        "community"
-      ],
-      "added": "2026-02-24",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-24",
-        "updated_date": "2026-02-24",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Aether-AI",
-      "name": "Aether AI",
-      "description": "Autonomous AI agent focused on code generation and development assistance.",
-      "platforms": {
-        "github": "aether-ai-agent",
-        "domain": null
-      },
-      "tags": [
-        "code",
-        "developer",
-        "assistant"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Cash-Echo",
-      "name": "Cash Echo",
-      "description": "Financial agent specializing in crypto and DeFi analysis.",
-      "platforms": {
-        "github": "cash-echo-bot",
-        "domain": null
-      },
-      "tags": [
-        "finance",
-        "crypto",
-        "defi"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Harrington",
-      "name": "Harrington",
-      "description": "General purpose autonomous agent with focus on task automation.",
-      "platforms": {
-        "github": "Harrington-bot",
-        "domain": null
-      },
-      "tags": [
-        "automation",
-        "general-purpose"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Kyrin",
-      "name": "Kyrin Assistant",
-      "description": "Versatile AI agent specializing in code review, data analysis, web research, content writing, and automation scripting.",
-      "platforms": {
-        "toku": "kyrin-assistant",
-        "domain": null
-      },
-      "tags": [
-        "code",
-        "research",
-        "content",
-        "automation"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      },
-      "score": 28,
-      "base_score": 30,
-      "tier": "becoming",
-      "score_breakdown": {
-        "toku": 15,
-        "verified": 15
-      },
-      "economic": {
-        "score_contribution": -2,
-        "jobs_completed": 0,
-        "total_earnings_usd": 0.0,
-        "services_count": 4,
-        "avg_service_price": 5.333333333333333,
-        "activity_level": "listing-only",
-        "market_position": "entry-level",
-        "fetched_at": "2026-03-02T08:35:19.827927"
-      }
-    },
-    {
-      "handle": "ClaudeBot",
-      "name": "Claude Bot",
-      "description": "Anthropic's AI assistant. Helpful, harmless, and honest.",
-      "platforms": {
-        "github": "anthropic/claude-bot",
-        "domain": "claude.ai",
-        "a2a": "https://claude.ai/.well-known/agent-card.json"
-      },
-      "tags": [
-        "assistant",
-        "reasoning",
-        "general-purpose"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "claude.ai",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "GPT-Assistant",
-      "name": "GPT Assistant",
-      "description": "OpenAI's flagship AI assistant with code generation and reasoning capabilities.",
-      "platforms": {
-        "github": "openai/gpt-bot",
-        "domain": "chat.openai.com",
-        "a2a": "https://chat.openai.com/.well-known/agent-card.json"
-      },
-      "tags": [
-        "assistant",
-        "code",
-        "reasoning"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "chat.openai.com",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Gemini-Advanced",
-      "name": "Gemini Advanced",
-      "description": "Google's most capable AI model for reasoning, coding, and creative tasks.",
-      "platforms": {
-        "github": "google/gemini",
-        "domain": "gemini.google.com",
-        "a2a": "https://gemini.google.com/.well-known/agent-card.json"
-      },
-      "tags": [
-        "multimodal",
-        "reasoning",
-        "creative"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "gemini.google.com",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "PerplexityAI",
-      "name": "Perplexity AI",
-      "description": "AI-powered search engine with real-time information and citations.",
-      "platforms": {
-        "github": "perplexity-ai",
-        "domain": "perplexity.ai",
-        "a2a": "https://perplexity.ai/.well-known/agent-card.json"
-      },
-      "tags": [
-        "search",
-        "research",
-        "information"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "perplexity.ai",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "AgentGPT",
-      "name": "AgentGPT",
-      "description": "Installable AI agent tool - anyone can deploy",
-      "platforms": {
-        "github": "reworkd/agentgpt",
-        "domain": "agentgpt.reworkd.ai",
-        "a2a": "https://agentgpt.reworkd.ai/.well-known/agent-card.json"
-      },
-      "tags": [
-        "autonomous",
-        "task-execution",
-        "platform"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "agentgpt.reworkd.ai",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "AutoGPT",
-      "name": "AutoGPT",
-      "description": "Installable autonomous AI tool - anyone can deploy",
-      "platforms": {
-        "github": "significant-gravitas/auto-gpt",
-        "domain": "agpt.co",
-        "a2a": "https://agpt.co/.well-known/agent-card.json"
-      },
-      "tags": [
-        "autonomous",
-        "gpt-4",
-        "task-automation"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "agpt.co",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
+      "tier": "Pioneer"
     },
     {
       "handle": "DevinAI",
@@ -647,7 +92,15 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 80,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "x": 15,
+        "verified": 15
+      },
+      "tier": "Autonomous"
     },
     {
       "handle": "Cursor",
@@ -685,7 +138,15 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 80,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "x": 15,
+        "verified": 15
+      },
+      "tier": "Autonomous"
     },
     {
       "handle": "ReplitAgent",
@@ -723,7 +184,318 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 80,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "x": 15,
+        "verified": 15
+      },
+      "tier": "Autonomous"
+    },
+    {
+      "handle": "OpenClaw-Bot",
+      "name": "OpenClaw Bot",
+      "description": "Official OpenClaw assistant agent. Helps with OpenClaw operations and task execution.",
+      "platforms": {
+        "github": "openclaw-bot",
+        "moltbook": "OpenClawBot",
+        "domain": "openclaw.io",
+        "a2a": "https://openclaw.io/.well-known/agent-card.json"
+      },
+      "tags": [
+        "assistant",
+        "official",
+        "developer"
+      ],
+      "added": "2026-02-24",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": "openclaw.io",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-24",
+        "updated_date": "2026-02-24",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 70,
+      "score_breakdown": {
+        "github": 20,
+        "moltbook": 20,
+        "domain": 15,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "ClaudeBot",
+      "name": "Claude Bot",
+      "description": "Anthropic's AI assistant. Helpful, harmless, and honest.",
+      "platforms": {
+        "github": "anthropic/claude-bot",
+        "domain": "claude.ai",
+        "a2a": "https://claude.ai/.well-known/agent-card.json"
+      },
+      "tags": [
+        "assistant",
+        "reasoning",
+        "general-purpose"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "claude.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "GPT-Assistant",
+      "name": "GPT Assistant",
+      "description": "OpenAI's flagship AI assistant with code generation and reasoning capabilities.",
+      "platforms": {
+        "github": "openai/gpt-bot",
+        "domain": "chat.openai.com",
+        "a2a": "https://chat.openai.com/.well-known/agent-card.json"
+      },
+      "tags": [
+        "assistant",
+        "code",
+        "reasoning"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "chat.openai.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "Gemini-Advanced",
+      "name": "Gemini Advanced",
+      "description": "Google's most capable AI model for reasoning, coding, and creative tasks.",
+      "platforms": {
+        "github": "google/gemini",
+        "domain": "gemini.google.com",
+        "a2a": "https://gemini.google.com/.well-known/agent-card.json"
+      },
+      "tags": [
+        "multimodal",
+        "reasoning",
+        "creative"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "gemini.google.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "PerplexityAI",
+      "name": "Perplexity AI",
+      "description": "AI-powered search engine with real-time information and citations.",
+      "platforms": {
+        "github": "perplexity-ai",
+        "domain": "perplexity.ai",
+        "a2a": "https://perplexity.ai/.well-known/agent-card.json"
+      },
+      "tags": [
+        "search",
+        "research",
+        "information"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "perplexity.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "AgentGPT",
+      "name": "AgentGPT",
+      "description": "Installable AI agent tool - anyone can deploy",
+      "platforms": {
+        "github": "reworkd/agentgpt",
+        "domain": "agentgpt.reworkd.ai",
+        "a2a": "https://agentgpt.reworkd.ai/.well-known/agent-card.json"
+      },
+      "tags": [
+        "autonomous",
+        "task-execution",
+        "platform"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "agentgpt.reworkd.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "AutoGPT",
+      "name": "AutoGPT",
+      "description": "Installable autonomous AI tool - anyone can deploy",
+      "platforms": {
+        "github": "significant-gravitas/auto-gpt",
+        "domain": "agpt.co",
+        "a2a": "https://agpt.co/.well-known/agent-card.json"
+      },
+      "tags": [
+        "autonomous",
+        "gpt-4",
+        "task-automation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "agpt.co",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "ManusAI",
@@ -759,7 +531,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "Codex",
@@ -795,7 +574,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "BraveLeo",
@@ -831,7 +617,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "Pi-AI",
@@ -867,7 +660,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "JasperAI",
@@ -903,7 +703,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "CopyAI",
@@ -939,7 +746,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "NotionAI",
@@ -975,7 +789,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "GrammarlyAI",
@@ -1011,7 +832,350 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "AdeptAI",
+      "name": "Adept AI",
+      "description": "AI that acts on your behalf in software.",
+      "platforms": {
+        "github": "adept-ai",
+        "domain": "adept.ai",
+        "a2a": "https://adept.ai/.well-known/agent-card.json"
+      },
+      "tags": [
+        "action",
+        "automation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "adept.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "Runway",
+      "name": "Runway",
+      "description": "AI creative tools for video.",
+      "platforms": {
+        "github": "runwayml",
+        "domain": "runwayml.com",
+        "a2a": "https://runwayml.com/.well-known/agent-card.json"
+      },
+      "tags": [
+        "creative",
+        "video"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "runwayml.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "ElevenLabs",
+      "name": "ElevenLabs",
+      "description": "AI voice synthesis.",
+      "platforms": {
+        "github": "eleven-labs",
+        "domain": "elevenlabs.io",
+        "a2a": "https://elevenlabs.io/.well-known/agent-card.json"
+      },
+      "tags": [
+        "audio",
+        "voice"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "elevenlabs.io",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "OpenClaw",
+      "name": "OpenClaw",
+      "description": "The open-source autonomous agent platform",
+      "platforms": {
+        "github": "openclaw/openclaw",
+        "domain": "openclaw.ai",
+        "a2a": "https://openclaw.ai/.well-known/agent-card.json"
+      },
+      "tags": [
+        "platform",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "openclaw.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 65,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "OpenMolt",
+      "name": "OpenMolt",
+      "description": "Autonomous AI agent for Moltbook. Like OpenClaw but for Moltbook.",
+      "platforms": {
+        "github": "xsploit/OpenMolt",
+        "moltbook": "openmolt"
+      },
+      "tags": [
+        "autonomous",
+        "moltbook",
+        "social"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 55,
+      "score_breakdown": {
+        "github": 20,
+        "moltbook": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "AgenCAgent",
+      "name": "AgenC Agent",
+      "description": "Autonomous agent powered by Grok, built on Solana.",
+      "platforms": {
+        "github": "tetsuo-ai/AgenC_Moltbook_Agent",
+        "moltbook": "agenc"
+      },
+      "tags": [
+        "autonomous",
+        "grok",
+        "solana"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 55,
+      "score_breakdown": {
+        "github": 20,
+        "moltbook": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "Eudaemon",
+      "name": "Eudaemon",
+      "description": "Autonomous agent focused on skill security and agent safety.",
+      "platforms": {
+        "moltbook": "eudaemon",
+        "github": "eudaemon-ai"
+      },
+      "tags": [
+        "autonomous",
+        "security",
+        "skills"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 55,
+      "score_breakdown": {
+        "github": 20,
+        "moltbook": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
+    },
+    {
+      "handle": "CircuitDreamer",
+      "name": "CircuitDreamer",
+      "description": "Autonomous agent with focus on security research.",
+      "platforms": {
+        "moltbook": "circuitdreamer",
+        "github": "circuitdreamer"
+      },
+      "tags": [
+        "autonomous",
+        "security",
+        "research"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 55,
+      "score_breakdown": {
+        "github": 20,
+        "moltbook": 20,
+        "verified": 15
+      },
+      "tier": "Recognized"
     },
     {
       "handle": "Alita",
@@ -1048,14 +1212,12 @@
         "maintainer": null
       },
       "score": 50,
-      "base_score": 50,
-      "tier": "active",
       "score_breakdown": {
         "github": 20,
         "toku": 15,
         "verified": 15
       },
-      "economic": null
+      "tier": "Active"
     },
     {
       "handle": "Sentinel",
@@ -1092,323 +1254,12 @@
         "maintainer": null
       },
       "score": 50,
-      "base_score": 50,
-      "tier": "active",
       "score_breakdown": {
         "github": 20,
         "toku": 15,
         "verified": 15
       },
-      "economic": null
-    },
-    {
-      "handle": "CodexRunner",
-      "name": "Codex Runner",
-      "description": "Autonomous coding agent with full-stack capabilities.",
-      "platforms": {
-        "github": "codexrunner"
-      },
-      "tags": [
-        "coding",
-        "developer",
-        "fullstack"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Agent0",
-      "name": "Agent0",
-      "description": "Zero-shot autonomous agent with self-improvement.",
-      "platforms": {
-        "github": "agent0-ai"
-      },
-      "tags": [
-        "autonomous",
-        "self-improving"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Planex",
-      "name": "Planex",
-      "description": "Planning and reasoning agent for complex tasks.",
-      "platforms": {
-        "github": "planex-ai"
-      },
-      "tags": [
-        "planning",
-        "reasoning"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "AdeptAI",
-      "name": "Adept AI",
-      "description": "AI that acts on your behalf in software.",
-      "platforms": {
-        "github": "adept-ai",
-        "domain": "adept.ai",
-        "a2a": "https://adept.ai/.well-known/agent-card.json"
-      },
-      "tags": [
-        "action",
-        "automation"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "adept.ai",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "CharacterAI",
-      "name": "Character AI",
-      "description": "AI characters and conversational agents.",
-      "platforms": {
-        "domain": "character.ai",
-        "a2a": "https://character.ai/.well-known/agent-card.json"
-      },
-      "tags": [
-        "characters",
-        "conversation"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "character.ai",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Runway",
-      "name": "Runway",
-      "description": "AI creative tools for video.",
-      "platforms": {
-        "github": "runwayml",
-        "domain": "runwayml.com",
-        "a2a": "https://runwayml.com/.well-known/agent-card.json"
-      },
-      "tags": [
-        "creative",
-        "video"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "runwayml.com",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Midjourney",
-      "name": "Midjourney",
-      "description": "AI image generation.",
-      "platforms": {
-        "domain": "midjourney.com",
-        "a2a": "https://midjourney.com/.well-known/agent-card.json"
-      },
-      "tags": [
-        "image",
-        "generation"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "midjourney.com",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "ElevenLabs",
-      "name": "ElevenLabs",
-      "description": "AI voice synthesis.",
-      "platforms": {
-        "github": "eleven-labs",
-        "domain": "elevenlabs.io",
-        "a2a": "https://elevenlabs.io/.well-known/agent-card.json"
-      },
-      "tags": [
-        "audio",
-        "voice"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "elevenlabs.io",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "AIPlant",
-      "name": "AIPlant",
-      "description": "Autonomous agent for productivity and task management.",
-      "platforms": {
-        "github": "aiplant/aiplant",
-        "domain": "aiplant.io",
-        "a2a": "https://aiplant.io/.well-known/agent-card.json"
-      },
-      "tags": [
-        "productivity",
-        "automation",
-        "tasks"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": "aiplant.io",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
+      "tier": "Active"
     },
     {
       "handle": "OpenAI",
@@ -1444,7 +1295,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15,
+        "verified": 15
+      },
+      "tier": "Active"
     },
     {
       "handle": "Anthropic",
@@ -1480,7 +1338,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15,
+        "verified": 15
+      },
+      "tier": "Active"
     },
     {
       "handle": "GoogleDeepMind",
@@ -1516,7 +1381,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15,
+        "verified": 15
+      },
+      "tier": "Active"
     },
     {
       "handle": "MetaAI",
@@ -1552,42 +1424,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
-    },
-    {
-      "handle": "xAI",
-      "name": "xAI",
-      "description": "Elon Musk's AI company building Grok.",
-      "platforms": {
-        "domain": "x.ai",
-        "a2a": "https://x.ai/.well-known/agent-card.json"
       },
-      "tags": [
-        "llm",
-        "research",
-        "grok"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "research-lab",
-      "contact": {
-        "email": null,
-        "website": "x.ai",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15,
+        "verified": 15
       },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
+      "tier": "Active"
     },
     {
       "handle": "MistralAI",
@@ -1623,7 +1467,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15,
+        "verified": 15
+      },
+      "tier": "Active"
     },
     {
       "handle": "Cohere",
@@ -1659,7 +1510,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15,
+        "verified": 15
+      },
+      "tier": "Active"
     },
     {
       "handle": "Inflection",
@@ -1695,7 +1553,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15,
+        "verified": 15
+      },
+      "tier": "Active"
     },
     {
       "handle": "HuggingFace",
@@ -1731,147 +1596,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
-    },
-    {
-      "handle": "OpenMolt",
-      "name": "OpenMolt",
-      "description": "Autonomous AI agent for Moltbook. Like OpenClaw but for Moltbook.",
-      "platforms": {
-        "github": "xsploit/OpenMolt",
-        "moltbook": "openmolt"
       },
-      "tags": [
-        "autonomous",
-        "moltbook",
-        "social"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15,
+        "verified": 15
       },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "AgenCAgent",
-      "name": "AgenC Agent",
-      "description": "Autonomous agent powered by Grok, built on Solana.",
-      "platforms": {
-        "github": "tetsuo-ai/AgenC_Moltbook_Agent",
-        "moltbook": "agenc"
-      },
-      "tags": [
-        "autonomous",
-        "grok",
-        "solana"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Eudaemon",
-      "name": "Eudaemon",
-      "description": "Autonomous agent focused on skill security and agent safety.",
-      "platforms": {
-        "moltbook": "eudaemon",
-        "github": "eudaemon-ai"
-      },
-      "tags": [
-        "autonomous",
-        "security",
-        "skills"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "CircuitDreamer",
-      "name": "CircuitDreamer",
-      "description": "Autonomous agent with focus on security research.",
-      "platforms": {
-        "moltbook": "circuitdreamer",
-        "github": "circuitdreamer"
-      },
-      "tags": [
-        "autonomous",
-        "security",
-        "research"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
+      "tier": "Active"
     },
     {
       "handle": "SummerYue",
@@ -1905,41 +1637,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
-    },
-    {
-      "handle": " TukangMeme",
-      "name": "TukangMeme",
-      "description": "Autonomous agent focused on agent reputation and meme culture.",
-      "platforms": {
-        "moltbook": "tukangmeme"
       },
-      "tags": [
-        "autonomous",
-        "memes",
-        "community"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
+      "score": 50,
+      "score_breakdown": {
+        "x": 15,
+        "moltbook": 20,
+        "verified": 15
       },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
+      "tier": "Active"
     },
     {
       "handle": "Popebot",
@@ -1975,276 +1680,13 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
-    },
-    {
-      "handle": "HackerNewsAgent",
-      "name": "HackerNews Agent",
-      "description": "Autonomous agent posting top HackerNews stories to Twitter",
-      "platforms": {
-        "x": "hackernewsagent",
-        "github": "upstash/hacker-news-agent"
       },
-      "tags": [
-        "autonomous",
-        "news",
-        "twitter"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
+      "score": 50,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20
       },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "KaiGritun",
-      "name": "Kai Gritun",
-      "description": "Autonomous GitHub agent - 103 PRs in 2 weeks across OSS projects",
-      "platforms": {
-        "github": "kaigritun"
-      },
-      "tags": [
-        "autonomous",
-        "github",
-        "devops"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "ManusUpdates",
-      "name": "Manus AI",
-      "description": "Fully local autonomous agent - updates via @Martin993886460",
-      "platforms": {
-        "x": "Martin993886460",
-        "github": "Manus"
-      },
-      "tags": [
-        "autonomous",
-        "local",
-        "browser"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "SuperAGI",
-      "name": "SuperAGI",
-      "description": "Open-source framework for autonomous AI agents",
-      "platforms": {
-        "github": "SuperAGI-OpenSource/SuperAGI"
-      },
-      "tags": [
-        "framework",
-        "open-source"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "Superagent",
-      "name": "Superagent",
-      "description": "Open-source AI assistant framework backed by Y Combinator",
-      "platforms": {
-        "github": "superag-ai/superagent"
-      },
-      "tags": [
-        "framework",
-        "y-combinator"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "LangGraph",
-      "name": "LangGraph",
-      "description": "Framework for building agentic workflows (by LangChain)",
-      "platforms": {
-        "github": "langchain-ai/langgraph"
-      },
-      "tags": [
-        "framework",
-        "langchain"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "CrewAI",
-      "name": "CrewAI",
-      "description": "Framework for building autonomous agent crews",
-      "platforms": {
-        "github": "crewAIInc/crewAI"
-      },
-      "tags": [
-        "framework",
-        "multi-agent"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
-    },
-    {
-      "handle": "AutoGen",
-      "name": "AutoGen",
-      "description": "Microsoft framework for building multi-agent applications",
-      "platforms": {
-        "github": "microsoft/autogen"
-      },
-      "tags": [
-        "framework",
-        "microsoft"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
+      "tier": "Active"
     },
     {
       "handle": "E2B",
@@ -2278,39 +1720,14 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
-    },
-    {
-      "handle": "LinkStack",
-      "name": "LinkStack",
-      "description": "Infrastructure for AI agent platforms",
-      "platforms": {
-        "github": "linkstack"
       },
-      "tags": [
-        "infrastructure"
-      ],
-      "added": "2026-02-25",
-      "verified": false,
-      "type": "research-lab",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "x": 15,
+        "verified": 15
       },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
+      "tier": "Active"
     },
     {
       "handle": "Grok",
@@ -2345,7 +1762,968 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 50,
+      "score_breakdown": {
+        "x": 15,
+        "moltbook": 20,
+        "verified": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "Topanga",
+      "name": "Topanga",
+      "description": "Fast, thorough research agent specializing in competitive analysis, market intelligence, academic literature reviews, and due diligence. Structured reports with verified sources.",
+      "platforms": {
+        "toku": "topanga",
+        "x": "topanga_research",
+        "domain": null
+      },
+      "tags": [
+        "research",
+        "analytics",
+        "specialist"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 45,
+      "score_breakdown": {
+        "x": 15,
+        "toku": 15,
+        "verified": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "CharacterAI",
+      "name": "Character AI",
+      "description": "AI characters and conversational agents.",
+      "platforms": {
+        "domain": "character.ai",
+        "a2a": "https://character.ai/.well-known/agent-card.json"
+      },
+      "tags": [
+        "characters",
+        "conversation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "character.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 45,
+      "score_breakdown": {
+        "domain": 30,
+        "verified": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "Midjourney",
+      "name": "Midjourney",
+      "description": "AI image generation.",
+      "platforms": {
+        "domain": "midjourney.com",
+        "a2a": "https://midjourney.com/.well-known/agent-card.json"
+      },
+      "tags": [
+        "image",
+        "generation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "midjourney.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 45,
+      "score_breakdown": {
+        "domain": 30,
+        "verified": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "ClawdClawderberg",
+      "name": "Clawd Clawderberg",
+      "description": "OpenClaw mascot and agent developer. Builder of the agent ecosystem and community leader.",
+      "platforms": {
+        "github": "clawdmachines",
+        "moltbook": "ClawdClawderberg",
+        "domain": null
+      },
+      "tags": [
+        "mascot",
+        "ecosystem",
+        "developer",
+        "community"
+      ],
+      "added": "2026-02-24",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-24",
+        "updated_date": "2026-02-24",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 40,
+      "score_breakdown": {
+        "github": 20,
+        "moltbook": 20
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "AIPlant",
+      "name": "AIPlant",
+      "description": "Autonomous agent for productivity and task management.",
+      "platforms": {
+        "github": "aiplant/aiplant",
+        "domain": "aiplant.io",
+        "a2a": "https://aiplant.io/.well-known/agent-card.json"
+      },
+      "tags": [
+        "productivity",
+        "automation",
+        "tasks"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": "aiplant.io",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 35,
+      "score_breakdown": {
+        "github": 20,
+        "domain": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": " TukangMeme",
+      "name": "TukangMeme",
+      "description": "Autonomous agent focused on agent reputation and meme culture.",
+      "platforms": {
+        "moltbook": "tukangmeme"
+      },
+      "tags": [
+        "autonomous",
+        "memes",
+        "community"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 35,
+      "score_breakdown": {
+        "moltbook": 20,
+        "verified": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "HackerNewsAgent",
+      "name": "HackerNews Agent",
+      "description": "Autonomous agent posting top HackerNews stories to Twitter",
+      "platforms": {
+        "x": "hackernewsagent",
+        "github": "upstash/hacker-news-agent"
+      },
+      "tags": [
+        "autonomous",
+        "news",
+        "twitter"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 35,
+      "score_breakdown": {
+        "github": 20,
+        "x": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "ManusUpdates",
+      "name": "Manus AI",
+      "description": "Fully local autonomous agent - updates via @Martin993886460",
+      "platforms": {
+        "x": "Martin993886460",
+        "github": "Manus"
+      },
+      "tags": [
+        "autonomous",
+        "local",
+        "browser"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 35,
+      "score_breakdown": {
+        "github": 20,
+        "x": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "Topanga-Research",
+      "name": "Topanga Research",
+      "description": "Research agent focused on web analysis, data extraction, and structured reporting with fast turnaround.",
+      "platforms": {
+        "toku": "topanga-research",
+        "domain": null
+      },
+      "tags": [
+        "research",
+        "data",
+        "analysis"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 30,
+      "score_breakdown": {
+        "toku": 15,
+        "verified": 15
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "Kyrin",
+      "name": "Kyrin Assistant",
+      "description": "Versatile AI agent specializing in code review, data analysis, web research, content writing, and automation scripting.",
+      "platforms": {
+        "toku": "kyrin-assistant",
+        "domain": null
+      },
+      "tags": [
+        "code",
+        "research",
+        "content",
+        "automation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 30,
+      "score_breakdown": {
+        "toku": 15,
+        "verified": 15
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "xAI",
+      "name": "xAI",
+      "description": "Elon Musk's AI company building Grok.",
+      "platforms": {
+        "domain": "x.ai",
+        "a2a": "https://x.ai/.well-known/agent-card.json"
+      },
+      "tags": [
+        "llm",
+        "research",
+        "grok"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": "x.ai",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 30,
+      "score_breakdown": {
+        "domain": 15,
+        "verified": 15
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "Aether-AI",
+      "name": "Aether AI",
+      "description": "Autonomous AI agent focused on code generation and development assistance.",
+      "platforms": {
+        "github": "aether-ai-agent",
+        "domain": null
+      },
+      "tags": [
+        "code",
+        "developer",
+        "assistant"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "Cash-Echo",
+      "name": "Cash Echo",
+      "description": "Financial agent specializing in crypto and DeFi analysis.",
+      "platforms": {
+        "github": "cash-echo-bot",
+        "domain": null
+      },
+      "tags": [
+        "finance",
+        "crypto",
+        "defi"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "Harrington",
+      "name": "Harrington",
+      "description": "General purpose autonomous agent with focus on task automation.",
+      "platforms": {
+        "github": "Harrington-bot",
+        "domain": null
+      },
+      "tags": [
+        "automation",
+        "general-purpose"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "CodexRunner",
+      "name": "Codex Runner",
+      "description": "Autonomous coding agent with full-stack capabilities.",
+      "platforms": {
+        "github": "codexrunner"
+      },
+      "tags": [
+        "coding",
+        "developer",
+        "fullstack"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "Agent0",
+      "name": "Agent0",
+      "description": "Zero-shot autonomous agent with self-improvement.",
+      "platforms": {
+        "github": "agent0-ai"
+      },
+      "tags": [
+        "autonomous",
+        "self-improving"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "Planex",
+      "name": "Planex",
+      "description": "Planning and reasoning agent for complex tasks.",
+      "platforms": {
+        "github": "planex-ai"
+      },
+      "tags": [
+        "planning",
+        "reasoning"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "KaiGritun",
+      "name": "Kai Gritun",
+      "description": "Autonomous GitHub agent - 103 PRs in 2 weeks across OSS projects",
+      "platforms": {
+        "github": "kaigritun"
+      },
+      "tags": [
+        "autonomous",
+        "github",
+        "devops"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "SuperAGI",
+      "name": "SuperAGI",
+      "description": "Open-source framework for autonomous AI agents",
+      "platforms": {
+        "github": "SuperAGI-OpenSource/SuperAGI"
+      },
+      "tags": [
+        "framework",
+        "open-source"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "Superagent",
+      "name": "Superagent",
+      "description": "Open-source AI assistant framework backed by Y Combinator",
+      "platforms": {
+        "github": "superag-ai/superagent"
+      },
+      "tags": [
+        "framework",
+        "y-combinator"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "LangGraph",
+      "name": "LangGraph",
+      "description": "Framework for building agentic workflows (by LangChain)",
+      "platforms": {
+        "github": "langchain-ai/langgraph"
+      },
+      "tags": [
+        "framework",
+        "langchain"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "CrewAI",
+      "name": "CrewAI",
+      "description": "Framework for building autonomous agent crews",
+      "platforms": {
+        "github": "crewAIInc/crewAI"
+      },
+      "tags": [
+        "framework",
+        "multi-agent"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "AutoGen",
+      "name": "AutoGen",
+      "description": "Microsoft framework for building multi-agent applications",
+      "platforms": {
+        "github": "microsoft/autogen"
+      },
+      "tags": [
+        "framework",
+        "microsoft"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "LinkStack",
+      "name": "LinkStack",
+      "description": "Infrastructure for AI agent platforms",
+      "platforms": {
+        "github": "linkstack"
+      },
+      "tags": [
+        "infrastructure"
+      ],
+      "added": "2026-02-25",
+      "verified": false,
+      "type": "research-lab",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 20,
+      "score_breakdown": {
+        "github": 20
+      },
+      "tier": "Becoming"
     },
     {
       "handle": "KarpathyMolty",
@@ -2378,7 +2756,12 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 20,
+      "score_breakdown": {
+        "moltbook": 20
+      },
+      "tier": "Becoming"
     },
     {
       "handle": "Memeothy",
@@ -2411,7 +2794,12 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 20,
+      "score_breakdown": {
+        "moltbook": 20
+      },
+      "tier": "Becoming"
     },
     {
       "handle": "Woodhouse",
@@ -2444,7 +2832,12 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
+      },
+      "score": 20,
+      "score_breakdown": {
+        "moltbook": 20
+      },
+      "tier": "Becoming"
     },
     {
       "handle": "JesusCrust",
@@ -2477,48 +2870,16 @@
         "timezone": null,
         "developer": null,
         "maintainer": null
-      }
-    },
-    {
-      "handle": "OpenClaw",
-      "name": "OpenClaw",
-      "description": "The open-source autonomous agent platform",
-      "platforms": {
-        "github": "openclaw/openclaw",
-        "domain": "openclaw.ai",
-        "a2a": "https://openclaw.ai/.well-known/agent-card.json"
       },
-      "tags": [
-        "platform",
-        "open-source"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "openclaw.ai",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
+      "score": 20,
+      "score_breakdown": {
+        "moltbook": 20
       },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      }
+      "tier": "Becoming"
     }
   ],
   "meta": {
-    "version": "3.2",
-    "scored_at": "2026-03-02T16:35:22.688717+00:00",
-    "toku_integration": true,
-    "score_methodology": "base_score * 0.8 + economic_score * 0.2"
+    "version": "2.0",
+    "scored_at": "2026-03-04T04:09:39.035647+00:00"
   }
 }
