@@ -2,6 +2,16 @@
 """
 Toku.agency Economic Data Fetcher
 Fetches economic activity data from toku.agency for AgentFolio scoring.
+
+IMPROVEMENTS (2026-03-05):
+- Fixed economic score calculation to match AgentFolio documented formula:
+  * Profile presence: 20 points (flat)
+  * Services: 5 per service (max 20)
+  * Jobs completed: 4 per job (max 40)
+  * Reputation: 0-15 (scaled from toku 5-star rating)
+  * Earnings proxy: 0-5 (based on \$100 increments, max \$500)
+- Added detailed score breakdown for transparency
+- Improved service extraction from toku.agency HTML
 """
 
 import json
@@ -37,7 +47,7 @@ def extract_decimal_value(text, pattern, default=0):
     if matches:
         try:
             # Clean the match and convert
-            value_str = matches[0].replace('$', '').replace(',', '').strip()
+            value_str = matches[0].replace('\$', '').replace(',', '').strip()
             return float(value_str)
         except ValueError:
             return default
@@ -54,6 +64,40 @@ def extract_int_value(text, pattern, default=0):
         except ValueError:
             return default
     return default
+
+
+def count_services_from_html(text):
+    """
+    Count services listed on a toku.agency profile page.
+    
+    Services are displayed in cards with pricing information.
+    Multiple strategies for counting:
+    1. Count service price elements
+    2. Count service names/descriptions
+    3. Count "per job" mentions
+    """
+    services_count = 0
+    
+    # Strategy 1: Count price elements (\\$\\$XX or \$XX patterns)
+    price_elements = re.findall(r'[\\$\\$]{1,2}(\d+)', text)
+    services_count = len(price_elements)
+    
+    # Strategy 2: Count service blocks containing headers and prices
+    service_blocks = re.findall(r'<h[23][^>]*>.*?</h[23]>.*?[\\$\\$]{1,2}\d+', text, re.DOTALL | re.IGNORECASE)
+    if len(service_blocks) > services_count:
+        services_count = len(service_blocks)
+    
+    # Strategy 3: Count "per job" occurrences (each service has this)
+    per_job_matches = re.findall(r'per\s+job', text, re.IGNORECASE)
+    if len(per_job_matches) > services_count:
+        services_count = len(per_job_matches)
+    
+    # Strategy 4: Look for service cards/panels
+    service_sections = re.findall(r'<div[^>]*class="[^"]*(?:service|pricing|offer)[^"]*"[^>]*>', text, re.IGNORECASE)
+    if len(service_sections) > services_count:
+        services_count = len(service_sections)
+    
+    return max(services_count, 1)  # Assume at least 1 service if profile exists
 
 
 def fetch_toku_economic_data(handle):
@@ -123,6 +167,9 @@ def fetch_toku_economic_data(handle):
                     data["max_service_price"] = max(prices)
                     data["min_service_price"] = min(prices)
             
+            # Calculate economic indicators
+            data["economic_indicators"] = calculate_economic_indicators(data)
+            
             return data
             
         except json.JSONDecodeError:
@@ -138,23 +185,23 @@ def fetch_toku_economic_data(handle):
         data["note"] = "Data extracted from HTML scraping"
         
         # Extract jobs completed
-        # Look for patterns like "X jobs completed", "X completed jobs"
         jobs_patterns = [
             r'(\d+[\.,]?\d*)\s+jobs?\s+completed',
             r'completed\s+(\d+[\.,]?\d*)\s+jobs?',
             r'(\d+[\.,]?\d*)\s+completed',
+            r'completed.*?(\d+)',
         ]
         for pattern in jobs_patterns:
-            jobs = extract_decimal_value(text, pattern, 0)
+            jobs = extract_int_value(text, pattern, 0)
             if jobs > 0:
                 data["jobs_completed"] = jobs
                 break
         
         # Extract earnings
-        # Look for patterns like "$X earned", "$X total earnings"
         earnings_patterns = [
-            r'\$([\d,]+(?:\.\d+)?)\s*(?:total\s+)?(?:earned|earnings)',
-            r'earned\s*\$([\d,]+(?:\.\d+)?)',
+            r'\\\$([\d,]+(?:\.\d+)?)\s*(?:total\s+)?(?:earned|earnings)',
+            r'earned\s*\\\$([\d,]+(?:\.\d+)?)',
+            r'earnings.*?\\\$([\d,]+(?:\.\d+)?)',
         ]
         for pattern in earnings_patterns:
             earnings = extract_decimal_value(text, pattern, 0)
@@ -162,12 +209,11 @@ def fetch_toku_economic_data(handle):
                 data["total_earnings_usd"] = earnings
                 break
         
-        # Extract service prices - toku uses $$ prefix in HTML (React escape)
-        # Look for $$X pattern where X is the price
+        # Extract service prices
         price_patterns = [
-            r'\$\$([\d,]+)',  # $$50 pattern (React/next.js)
-            r'\$([\d,]+)(?:\s*-\s*\$([\d,]+))?\s*per\s*job',  # Standard $50 per job
-            r'"text-lg font-bold"[^>]*>.*?\$\$?([\d,]+)',  # Inside price element
+            r'\\\$\\\$(\d+)',
+            r'\\\$([\d,]+)(?:\s*-\s*\\\$([\d,]+))?\s*per\s*job',
+            r'"text-lg font-bold"[^>]*>.*?\\\$\\\$?(\d+)',
         ]
         
         prices = []
@@ -182,9 +228,7 @@ def fetch_toku_economic_data(handle):
                     except ValueError:
                         pass
         
-        # Also try to find prices near "per job" text
         if not prices:
-            # Look for numbers followed by "per job"
             per_job_pattern = r'([\d,]+).*?per job'
             matches = re.findall(per_job_pattern, text, re.IGNORECASE)
             for match in matches:
@@ -198,12 +242,11 @@ def fetch_toku_economic_data(handle):
             data["max_service_price"] = max(prices)
             data["min_service_price"] = min(prices)
         
-        # Count services by looking for service blocks
-        service_blocks = re.findall(r'<h[23][^>]*>.*?</h[23]>.*?\$\d+', text, re.DOTALL)
-        data["services_count"] = len(service_blocks)
+        # Count services using improved extraction
+        data["services_count"] = count_services_from_html(text)
         
         # Extract availability
-        if "available" in text.lower():
+        if re.search(r'class="[^"]*available[^"]*"', text, re.IGNORECASE):
             data["availability"] = "available"
         elif "unavailable" in text.lower() or "busy" in text.lower():
             data["availability"] = "unavailable"
@@ -219,25 +262,44 @@ def fetch_toku_economic_data(handle):
 
 
 def calculate_economic_indicators(data):
-    """Calculate derived economic indicators from raw data."""
+    """
+    Calculate derived economic indicators from raw data.
+    
+    AgentFolio Economic Score Formula (per scoring.html):
+    - Has toku.agency profile: 20 points (flat)
+    - Services listed: 5 per service (max 20 points = 4 services)
+    - Jobs completed: 4 per job (max 40 points = 10 jobs)
+    - Reputation score: varies (max 15 points)
+    - Earnings proxy: varies (max 5 points)
+    
+    Total max: 100 points
+    
+    This formula ensures alignment with the documented scoring system
+    at scoring.html and provides transparent, auditable scoring.
+    """
     indicators = {
         "revenue_per_job": 0,
         "market_position": "unknown",
         "activity_level": "inactive",
         "earning_potential": "unknown",
-        "economic_score_estimate": 0
+        "economic_score_estimate": 0,
+        "score_breakdown": {},
+        "scoring_version": "2.0-agentspec",
+        "formula_source": "https://www.agentportfolio.com/scoring.html"
     }
     
     jobs = data.get("jobs_completed", 0)
     earnings = data.get("total_earnings_usd", 0)
     services = data.get("services_count", 0)
     avg_price = data.get("avg_service_price", 0)
+    has_profile = data.get("has_profile", False)
+    reputation = data.get("reputation_score", 0)
     
-    # Revenue per job
+    # Revenue per job (informational)
     if jobs > 0:
         indicators["revenue_per_job"] = round(earnings / jobs, 2)
     
-    # Market position based on pricing
+    # Market position based on pricing (informational)
     if avg_price >= 100:
         indicators["market_position"] = "premium"
     elif avg_price >= 50:
@@ -245,7 +307,7 @@ def calculate_economic_indicators(data):
     elif avg_price > 0:
         indicators["market_position"] = "entry-level"
     
-    # Activity level
+    # Activity level (informational)
     if jobs >= 10:
         indicators["activity_level"] = "high"
     elif jobs >= 3:
@@ -255,7 +317,7 @@ def calculate_economic_indicators(data):
     elif services > 0:
         indicators["activity_level"] = "listing-only"
     
-    # Earning potential
+    # Earning potential (informational)
     if services >= 3 and avg_price >= 50:
         indicators["earning_potential"] = "high"
     elif services >= 1:
@@ -263,13 +325,74 @@ def calculate_economic_indicators(data):
     else:
         indicators["earning_potential"] = "low"
     
-    # Economic score estimate (0-100)
+    # Calculate Economic Score using AgentFolio formula
     score = 0
-    score += min(jobs * 5, 40)  # Up to 40 points for jobs
-    score += min(earnings / 50, 30)  # Up to 30 points for earnings ($50 = 1 point)
-    score += services * 5  # 5 points per service
-    score += min(avg_price / 10, 10)  # Up to 10 points for pricing
-    indicators["economic_score_estimate"] = min(int(score), 100)
+    breakdown = {}
+    
+    # Profile presence (20 points flat)
+    profile_score = 20 if has_profile else 0
+    score += profile_score
+    breakdown["profile_presence"] = {
+        "points": profile_score, 
+        "max": 20,
+        "notes": "Flat 20 points for having a toku.agency profile"
+    }
+    
+    # Services (5 points per service, max 20 = 4 services max)
+    services_score = min(services * 5, 20)
+    score += services_score
+    breakdown["services"] = {
+        "points": services_score,
+        "services_count": services,
+        "max": 20,
+        "per_service": 5,
+        "notes": "5 points per service, capped at 20 points (4 services)"
+    }
+    
+    # Jobs completed (4 points per job, max 40 = 10 jobs max)
+    jobs_score = min(jobs * 4, 40)
+    score += jobs_score
+    breakdown["jobs_completed"] = {
+        "points": jobs_score,
+        "jobs_count": jobs,
+        "max": 40,
+        "per_job": 4,
+        "notes": "4 points per completed job, capped at 40 points (10 jobs)"
+    }
+    
+    # Reputation score (0-15, proportional to toku rating 0-5)
+    if reputation and reputation > 0:
+        reputation_score = min(int((reputation / 5.0) * 15), 15)
+    else:
+        reputation_score = 0
+    score += reputation_score
+    breakdown["reputation"] = {
+        "points": reputation_score,
+        "raw_rating": reputation,
+        "max": 15,
+        "notes": "Scaled from toku 5-star rating: (rating/5) * 15"
+    }
+    
+    # Earnings proxy (max 5 points based on total earnings)
+    if earnings > 0:
+        earnings_score = min(int(earnings / 100), 5)
+    else:
+        earnings_score = 0
+    score += earnings_score
+    breakdown["earnings_proxy"] = {
+        "points": earnings_score,
+        "total_earnings_usd": earnings,
+        "max": 5,
+        "per_100_usd": 1,
+        "notes": "1 point per \$100 earned, capped at 5 points (\$500+)"
+    }
+    
+    # Final score
+    final_score = min(int(score), 100)
+    indicators["economic_score_estimate"] = final_score
+    indicators["score_breakdown"] = breakdown
+    indicators["total_possible"] = 100
+    indicators["scoring_timestamp"] = datetime.now().isoformat()
     
     return indicators
 
@@ -292,14 +415,19 @@ def save_economic_data(handle, data, save_dir=None):
 
 def main():
     if len(sys.argv) < 2:
+        print("Toku.agency Economic Data Fetcher v2.0")
+        print("Uses AgentFolio scoring formula from scoring.html")
+        print()
         print("Usage: python fetch_toku_economic.py <agent_handle> [--save]")
         print("Example: python fetch_toku_economic.py bobrenze --save")
         sys.exit(1)
     
     handle = sys.argv[1]
     save = "--save" in sys.argv
+    verbose = "--verbose" in sys.argv
     
     print(f"Fetching toku.agency economic data for: {handle}")
+    print(f"Using AgentFolio scoring formula v2.0")
     print("-" * 50)
     
     data = fetch_toku_economic_data(handle)
@@ -313,19 +441,43 @@ def main():
     if data['status'] == 'ok':
         print("Economic Metrics:")
         print(f"  Jobs Completed: {data['jobs_completed']}")
-        print(f"  Total Earnings: ${data['total_earnings_usd']:,.2f} USD")
+        print(f"  Total Earnings: \${data['total_earnings_usd']:,.2f} USD")
         print(f"  Services Listed: {data['services_count']}")
-        print(f"  Avg Service Price: ${data['avg_service_price']:,.2f}")
-        print(f"  Price Range: ${data['min_service_price']:,.0f} - ${data['max_service_price']:,.0f}")
+        print(f"  Avg Service Price: \${data['avg_service_price']:,.2f}")
+        print(f"  Price Range: \${data['min_service_price']:,.0f} - \${data['max_service_price']:,.0f}")
         print(f"  Availability: {data['availability']}")
         print()
         
-        print("Economic Indicators:")
         indicators = data.get('economic_indicators', {})
+        
+        print("Activity Indicators:")
         print(f"  Activity Level: {indicators.get('activity_level', 'unknown')}")
         print(f"  Market Position: {indicators.get('market_position', 'unknown')}")
         print(f"  Earning Potential: {indicators.get('earning_potential', 'unknown')}")
-        print(f"  Est. Economic Score: {indicators.get('economic_score_estimate', 0)}/100")
+        print()
+        
+        print("Economic Score Calculation:")
+        print(f"  Total Score: {indicators.get('economic_score_estimate', 0)}/100")
+        print()
+        
+        # Print detailed breakdown
+        breakdown = indicators.get('score_breakdown', {})
+        if breakdown:
+            print("Score Breakdown:")
+            for category, details in breakdown.items():
+                points = details.get('points', 0)
+                max_val = details.get('max', 0)
+                print(f"  {category}: {points}/{max_val} points")
+            print()
+        
+        # Print notes if verbose
+        if verbose and breakdown:
+            print("Scoring Notes:")
+            for category, details in breakdown.items():
+                notes = details.get('notes', '')
+                if notes:
+                    print(f"  {category}: {notes}")
+            print()
     else:
         print(f"Error: {data.get('error', 'Unknown error')}")
         if data.get('note'):
@@ -337,7 +489,7 @@ def main():
     if save:
         filepath = save_economic_data(handle, data)
         print(f"Saved to: {filepath}")
-    else:
+    elif verbose:
         print(json.dumps(data, indent=2))
 
 
