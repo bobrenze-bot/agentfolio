@@ -1,6 +1,40 @@
 // AgentFolio API v1 - Agent Submission Handler
 // Cloudflare Pages Function - Handles agent submission form
 
+// Rate limiting configuration
+const RATE_LIMIT = {
+  maxRequests: 3,
+  windowMinutes: 60,
+  keyPrefix: 'rate_limit:'
+};
+
+async function checkRateLimit(env, ip) {
+  if (!env.AGENTFOLIO_DATA || !ip || ip === 'unknown') {
+    return { allowed: true };
+  }
+  const key = RATE_LIMIT.keyPrefix + ip;
+  const now = Date.now();
+  const windowMs = RATE_LIMIT.windowMinutes * 60 * 1000;
+  try {
+    const existing = await env.AGENTFOLIO_DATA.get(key);
+    let data = existing ? JSON.parse(existing) : { requests: [], windowStart: now };
+    const cutoff = now - windowMs;
+    data.requests = data.requests.filter(ts => ts > cutoff);
+    if (data.requests.length >= RATE_LIMIT.maxRequests) {
+      const oldestRequest = Math.min(...data.requests);
+      const retryAfter = Math.ceil((oldestRequest + windowMs - now) / 1000);
+      return { allowed: false, retryAfter, currentRequests: data.requests.length, limit: RATE_LIMIT.maxRequests };
+    }
+    data.requests.push(now);
+    const ttlSeconds = Math.ceil(windowMs / 1000) + 60;
+    await env.AGENTFOLIO_DATA.put(key, JSON.stringify(data), { expirationTtl: ttlSeconds });
+    return { allowed: true, remaining: RATE_LIMIT.maxRequests - data.requests.length, currentRequests: data.requests.length, limit: RATE_LIMIT.maxRequests };
+  } catch (error) {
+    console.error('Rate limit check error:', error);
+    return { allowed: true };
+  }
+}
+
 export async function onRequest(context) {
   const { request, env } = context;
   
@@ -30,6 +64,37 @@ export async function onRequest(context) {
     });
   }
   
+  // Get client IP for rate limiting
+  const clientIp = request.headers.get('CF-Connecting-IP') || request.headers.get('X-Forwarded-For') || 'unknown';
+
+  // Check rate limit before processing
+  const rateLimitCheck = await checkRateLimit(env, clientIp);
+
+  if (!rateLimitCheck.allowed) {
+    const retryMinutes = Math.ceil(rateLimitCheck.retryAfter / 60);
+    return new Response(JSON.stringify({
+      success: false,
+      error: 'Rate limit exceeded',
+      message: `You've reached the limit of ${RATE_LIMIT.maxRequests} submissions per hour. Please try again in ${retryMinutes} minute${retryMinutes !== 1 ? 's' : ''}.`,
+      details: {
+        limit: rateLimitCheck.limit,
+        current: rateLimitCheck.currentRequests,
+        retryAfter: rateLimitCheck.retryAfter,
+        windowMinutes: RATE_LIMIT.windowMinutes
+      }
+    }), {
+      status: 429,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Retry-After': rateLimitCheck.retryAfter.toString(),
+        'X-RateLimit-Limit': rateLimitCheck.limit.toString(),
+        'X-RateLimit-Remaining': '0',
+        'X-RateLimit-Reset': (Date.now() + rateLimitCheck.retryAfter * 1000).toString()
+      }
+    });
+  }
+
   try {
     // Parse form data
     const formData = await request.formData();
@@ -130,7 +195,7 @@ export async function onRequest(context) {
         pending_verification: true
       },
       source: {
-        ip: request.headers.get('CF-Connecting-IP') || 'unknown',
+        ip: clientIp,
         country: request.headers.get('CF-IPCountry') || 'unknown'
       }
     };
@@ -191,6 +256,18 @@ export async function onRequest(context) {
       }
     }
     
+    // Add rate limit headers if available
+    const responseHeaders = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-cache'
+    };
+    
+    if (rateLimitCheck.remaining !== undefined) {
+      responseHeaders['X-RateLimit-Limit'] = rateLimitCheck.limit.toString();
+      responseHeaders['X-RateLimit-Remaining'] = rateLimitCheck.remaining.toString();
+    }
+
     return new Response(JSON.stringify({
       success: true,
       message: 'Agent submission received successfully',
@@ -208,14 +285,14 @@ export async function onRequest(context) {
         has_twitter: !!data.twitter,
         has_economic_data: economicData.has_economic_data,
         preliminary_economic_score: preliminaryEconomicScore
+      },
+      rateLimit: {
+        limit: rateLimitCheck.limit,
+        remaining: rateLimitCheck.remaining
       }
     }, null, 2), {
       status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-cache'
-      }
+      headers: responseHeaders
     });
     
   } catch (error) {
