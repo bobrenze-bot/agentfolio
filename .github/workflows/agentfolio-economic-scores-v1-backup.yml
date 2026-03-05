@@ -1,4 +1,4 @@
-name: AgentFolio Economic Score Updater (v3 Enhanced)
+name: AgentFolio Economic Score Updater
 
 on:
   # Run daily at 06:00 UTC (adjusts economic scores based on toku.agency activity)
@@ -24,7 +24,7 @@ permissions:
 jobs:
   update-economic-scores:
     runs-on: ubuntu-latest
-    name: Update Economic Scores v3 from toku.agency
+    name: Update Economic Scores from toku.agency
     
     steps:
       - name: Checkout repository
@@ -38,14 +38,14 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Fetch economic data from toku.agency (v3)
+      - name: Fetch economic data from toku.agency
         id: fetch
         run: |
-          echo "📊 Fetching economic data from toku.agency using v3 enhanced fetcher..."
-          python3 scripts/update_economic_scores_v3.py --all | tee economic-update.log
+          echo "📊 Fetching economic data from toku.agency..."
+          python3 scripts/update_economic_scores.py --all | tee economic-update.log
           
           # Extract summary statistics
-          SUCCESSFUL=$(grep -oP "Summary: \d+ succeeded" economic-update.log | grep -oP "\d+" || echo "0")
+          SUCCESSFUL=$(grep -oP "Summary: \d+ successful" economic-update.log | grep -oP "\d+" || echo "0")
           FAILED=$(grep -oP "\d+ failed" economic-update.log | grep -oP "\d+" || echo "0")
           
           echo "successful=$SUCCESSFUL" >> $GITHUB_OUTPUT
@@ -66,24 +66,23 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      - name: Commit economic score updates (v3)
+      - name: Commit economic score updates
         if: steps.fetch.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
         run: |
+          git add data/agents-scored.json
           git add data/toku-economic/
+          git add agentfolio/api/v1/agents/
           git add data/profiles/
-          git add agentfolio/api/v1/leaderboard.json
           
           if git diff --cached --quiet; then
             echo "⏸️ No changes to commit"
           else
             COMMIT_MSG=$(cat <<EOF
-            💰 Daily Economic Score Update (v3 Enhanced)
+            💰 Daily Economic Score Update
             
-            Updated economic scores from toku.agency using enhanced v3 fetcher:
+            Updated economic scores from toku.agency:
             - ${{ steps.fetch.outputs.successful }} agents updated successfully
             - ${{ steps.fetch.outputs.failed }} agents failed to update
-            - Improved service price extraction
-            - Better economic score calculation
             - Run ID: ${{ github.run_id }}
             
             Workflow: ${{ github.workflow }}
@@ -91,16 +90,14 @@ jobs:
             EOF
             )
             
-            git commit -m "💰 Daily Economic Score Update (v3 Enhanced)
-            
-$COMMIT_MSG"
+            git commit -m "$COMMIT_MSG"
             git push
-            echo "✅ Committed v3 economic score updates"
+            echo "✅ Committed economic score updates"
           fi
 
       - name: Summary
         run: |
-          echo "## 💰 Economic Score Update Complete (v3)" >> $GITHUB_STEP_SUMMARY
+          echo "## 💰 Economic Score Update Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📊 Statistics" >> $GITHUB_STEP_SUMMARY
           echo "- **Agents updated:** ${{ steps.fetch.outputs.successful }}" >> $GITHUB_STEP_SUMMARY
@@ -112,12 +109,6 @@ $COMMIT_MSG"
             echo "⚠️ **Dry run mode** — no changes committed" >> $GITHUB_STEP_SUMMARY
           fi
           
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### 🔄 v3 Improvements" >> $GITHUB_STEP_SUMMARY
-          echo "- Better service price extraction from toku.agency" >> $GITHUB_STEP_SUMMARY
-          echo "- Enhanced economic score calculation" >> $GITHUB_STEP_SUMMARY
-          echo "- Historical trend tracking" >> $GITHUB_STEP_SUMMARY
-          echo "- Change detection and changelog" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
           echo "- [AgentFolio Leaderboard](https://agentfolio.io)" >> $GITHUB_STEP_SUMMARY
