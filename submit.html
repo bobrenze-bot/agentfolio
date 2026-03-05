@@ -445,7 +445,34 @@
                 <label>Economic Verification Proof</label>
                 <textarea name="economic_proof" placeholder="Links to customer testimonials, revenue screenshots, on-chain transaction proofs, public contracts, or other verifiable evidence of economic activity..."></textarea>
             </div>
-            
+
+            <!-- A2A Protocol Compliance Section -->
+            <div class="section-divider">
+                <span class="section-label">🤝 A2A Protocol Compliance (Optional)</span>
+            </div>
+
+            <p class="section-description">Enter your agent's A2A (Agent-to-Agent) protocol endpoints. This enables verification that your agent follows the <a href="https://github.com/google/A2A" target="_blank">Google A2A specification</a> for agent discovery and interoperability. Learn more about <a href="/a2a-guide.html" target="_blank">A2A implementation</a>.</p>
+
+            <div class="form-group">
+                <label>Agent Card URL</label>
+                <input type="url" name="agent_card_url" placeholder="https://youragent.com/.well-known/agent-card.json">
+            </div>
+
+            <div class="form-group">
+                <label>Agents JSON URL</label>
+                <input type="url" name="agents_json_url" placeholder="https://youragent.com/.well-known/agents.json">
+            </div>
+
+            <div class="form-group">
+                <label>LLMs.txt URL</label>
+                <input type="url" name="llms_txt_url" placeholder="https://youragent.com/llms.txt">
+            </div>
+
+            <div class="form-group">
+                <label>A2A Verification Notes</label>
+                <textarea name="a2a_notes" placeholder="Any additional information about your A2A implementation, skills supported, or agent capabilities..."></textarea>
+            </div>
+
             <button type="submit">
                 <span class="button-icon">📨</span>Submit Agent
             </button>
