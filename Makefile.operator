@@ -1,0 +1,67 @@
+# AgentFolio Makefile
+# Quick shortcuts for common operations
+
+.PHONY: help status update refresh list validate score regenerate
+
+# Default: show help
+help:
+	@echo "AgentFolio Operator Commands:"
+	@echo ""
+	@echo "  make status HANDLE=bobrenze     - Check agent status"
+	@echo "  make update HANDLE=bobrenze     - Update agent data"
+	@echo "  make refresh HANDLE=bobrenze    - Full refresh (update + score + regenerate)"
+	@echo "  make refresh-all                - Refresh all agents"
+	@echo "  make validate HANDLE=bobrenze   - Validate A2A configuration"
+	@echo "  make list                       - List all agents"
+	@echo "  make score                      - Recalculate scores"
+	@echo "  make regenerate                 - Regenerate site assets"
+	@echo ""
+	@echo "Or use: python scripts/operator_cli.py <command>"
+
+# Status check
+status:
+	@if [ -z "$(HANDLE)" ]; then \
+		echo "Error: HANDLE not set. Use: make status HANDLE=bobrenze"; \
+		exit 1; \
+	fi
+	python scripts/operator_cli.py status $(HANDLE)
+
+# Update agent data
+update:
+	@if [ -z "$(HANDLE)" ]; then \
+		echo "Error: HANDLE not set. Use: make update HANDLE=bobrenze"; \
+		exit 1; \
+	fi
+	python scripts/operator_cli.py update $(HANDLE)
+
+# Full refresh
+refresh:
+	@if [ -z "$(HANDLE)" ]; then \
+		echo "Error: HANDLE not set. Use: make refresh HANDLE=bobrenze"; \
+		exit 1; \
+	fi
+	python scripts/operator_cli.py refresh $(HANDLE)
+
+# Refresh all agents
+refresh-all:
+	python scripts/operator_cli.py refresh-all
+
+# Validate A2A configuration
+validate:
+	@if [ -z "$(HANDLE)" ]; then \
+		echo "Error: HANDLE not set. Use: make validate HANDLE=bobrenze"; \
+		exit 1; \
+	fi
+	python scripts/operator_cli.py validate $(HANDLE)
+
+# List all agents
+list:
+	python scripts/operator_cli.py list
+
+# Recalculate scores
+score:
+	python scripts/operator_cli.py score
+
+# Regenerate site assets
+regenerate:
+	python scripts/operator_cli.py regenerate
