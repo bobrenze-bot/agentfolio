@@ -25,6 +25,20 @@ def load_template(name):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:image" content="{{og_image}}">
+    <meta property="og:url" content="{{og_url}}">
+    <meta property="og:site_name" content="AgentFolio">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+    <meta name="twitter:image" content="{{og_image}}">
+    <meta name="twitter:site" content="@agentfolio">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -1077,7 +1091,21 @@ def generate_profile(agent_handle, score_data, profile_data):
     '''
     
     template = load_template("profile")
-    return template.replace("{{title}}", f"{name} | AgentFolio Profile").replace("{{content}}", content)
+    profile_url = f"https://www.agentfolio.io/agent/{agent_handle.lower()}.html"
+    og_image = f"https://www.agentfolio.io/assets/profiles/{agent_handle.lower()}.png"
+    
+    # Check if agent has a custom profile image
+    profile_image_path = Path(__file__).parent.parent / "assets" / "profiles" / f"{agent_handle.lower()}.png"
+    if not profile_image_path.exists():
+        # Fallback to default OG image
+        og_image = "https://www.agentfolio.io/assets/og-default.png"
+    
+    return (template
+        .replace("{{title}}", f"{name} | AgentFolio Profile")
+        .replace("{{description}}", description[:160] if len(description) > 160 else description)
+        .replace("{{og_image}}", og_image)
+        .replace("{{og_url}}", profile_url)
+        .replace("{{content}}", content))
 
 
 def main():
