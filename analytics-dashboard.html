@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentFolio Analytics | Traffic Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a12; --surface: #12121f; --surface-2: #1a1a2e; --surface-3: #252540;
+            --text: #e8e8f0; --text-muted: #6b6b8a; --text-subtle: #4a4a6a;
+            --accent: #7c3aed; --accent-2: #a78bfa; --accent-glow: rgba(124, 58, 237, 0.3);
+            --success: #10b981; --warning: #f59e0b; --error: #ef4444; --info: #3b82f6;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6; 
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+        
+        header { 
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 2rem; padding: 1.5rem 0; 
+            border-bottom: 1px solid var(--surface-2);
+        }
+        .header-left { display: flex; align-items: center; gap: 1.5rem; }
+        .logo { 
+            font-size: 1.8rem; font-weight: 800; 
+            background: linear-gradient(135deg, #fff 0%, var(--accent-2) 100%); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { 
+            color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-2); }
+        
+        .time-selector {
+            display: flex; gap: 0.5rem; background: var(--surface); padding: 0.3rem;
+            border-radius: 8px; border: 1px solid var(--surface-2);
+        }
+        .time-btn {
+            padding: 0.5rem 1rem; background: transparent; border: none;
+            color: var(--text-muted); font-size: 0.85rem; cursor: pointer;
+            border-radius: 6px; transition: all 0.2s;
+        }
+        .time-btn:hover { color: var(--text); }
+        .time-btn.active { background: var(--accent); color: #fff; }
+        
+        .kpi-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem; margin-bottom: 2rem;
+        }
+        .kpi-card {
+            background: var(--surface); border: 1px solid var(--surface-2);
+            border-radius: 12px; padding: 1.25rem; position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .kpi-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            border-radius: 12px 12px 0 0;
+        }
+        .kpi-label {
+            font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 0.5rem;
+        }
+        .kpi-value {
+            font-size: 2rem; font-weight: 800; color: var(--text); margin-bottom: 0.25rem;
+        }
+        .kpi-change {
+            font-size: 0.85rem; display: flex; align-items: center; gap: 0.3rem;
+        }
+        .kpi-change.positive { color: var(--success); }
+        .kpi-change.negative { color: var(--error); }
+        .kpi-change.neutral { color: var(--text-muted); }
+        
+        .charts-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem; margin-bottom: 2rem;
+        }
+        .chart-card {
+            background: var(--surface); border: 1px solid var(--surface-2);
+            border-radius: 12px; padding: 1.5rem;
+        }
+        .chart-card.full-width { grid-column: 1 / -1; }
+        .chart-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1rem;
+        }
+        .chart-title {
+            font-size: 1rem; font-weight: 600; color: var(--text);
+        }
+        .chart-subtitle {
+            font-size: 0.8rem; color: var(--text-muted);
+        }
+        .chart-container {
+            position: relative; height: 280px;
+        }
+        .chart-container.large { height: 350px; }
+        
+        .table-card {
+            background: var(--surface); border: 1px solid var(--surface-2);
+            border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+        }
+        .data-table {
+            width: 100%; border-collapse: collapse;
+        }
+        .data-table th {
+            text-align: left; padding: 0.75rem; font-size: 0.75rem;
+            color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--surface-2);
+        }
+        .data-table td {
+            padding: 0.75rem; font-size: 0.9rem; border-bottom: 1px solid var(--surface-3);
+        }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:hover { background: var(--surface-2); }
+        .agent-cell {
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .agent-avatar {
+            width: 32px; height: 32px; background: var(--surface-3);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1rem;
+        }
+        .agent-name { font-weight: 600; color: var(--text); }
+        .agent-handle { font-size: 0.8rem; color: var(--text-muted); }
+        .trend-indicator {
+            display: inline-flex; align-items: center; gap: 0.25rem;
+            padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem;
+        }
+        .trend-up { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .trend-down { background: rgba(239, 68, 68, 0.1); color: var(--error); }
+        
+        .source-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .source-pill {
+            padding: 0.25rem 0.75rem; background: var(--surface-2);
+            border-radius: 20px; font-size: 0.8rem; color: var(--text-muted);
+        }
+        .source-pill.highlight { background: var(--accent); color: #fff; }
+        
+        .loading {
+            display: flex; align-items: center; justify-content: center;
+            height: 200px; color: var(--text-muted);
+        }
+        .spinner {
+            width: 24px; height: 24px; border: 2px solid var(--surface-2);
+            border-top-color: var(--accent); border-radius: 50%;
+            animation: spin 0.8s linear infinite; margin-right: 0.75rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        @media (max-width: 900px) {
+            .charts-grid { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .kpi-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 1rem; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <a href="index.html" class="logo">🤖 AgentFolio</a>
+                <nav class="nav-links">
+                    <a href="index.html">Agents</a>
+                    <a href="scoring.html">Scoring</a>
+                    <a href="submit.html">Submit</a>
+                    <a href="analytics-dashboard.html" class="active">Analytics</a>
+                </nav>
+            </div>
+            <div class="time-selector">
+                <button class="time-btn" data-range="24h">24h</button>
+                <button class="time-btn" data-range="7d">7d</button>
+                <button class="time-btn active" data-range="30d">30d</button>
+                <button class="time-btn" data-range="90d">90d</button>
+                <button class="time-btn" data-range="all">All Time</button>
+            </div>
+        </header>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Total Page Views</div>
+                <div class="kpi-value" id="totalViews">12.4k</div>
+                <div class="kpi-change positive">
+                    <span>↑ 12%</span>
+                    <span style="color: var(--text-muted)">vs previous period</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Unique Visitors</div>
+                <div class="kpi-value" id="uniqueVisitors">8.2k</div>
+                <div class="kpi-change positive">
+                    <span>↑ 8%</span>
+                    <span style="color: var(--text-muted)">vs previous period</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Avg. Session Duration</div>
+                <div class="kpi-value" id="avgDuration">2m 34s</div>
+                <div class="kpi-change positive">
+                    <span>↑ 15s</span>
+                    <span style="color: var(--text-muted)">vs previous period</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Bounce Rate</div>
+                <div class="kpi-value" id="bounceRate">42%</div>
+                <div class="kpi-change negative">
+                    <span>↓ 3%</span>
+                    <span style="color: var(--text-muted)">vs previous period</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Profile Views</div>
+                <div class="kpi-value" id="profileViews">4.8k</div>
+                <div class="kpi-change positive">
+                    <span>↑ 23%</span>
+                    <span style="color: var(--text-muted)">vs previous period</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Platform Clicks</div>
+                <div class="kpi-value" id="platformClicks">1.9k</div>
+                <div class="kpi-change positive">
+                    <span>↑ 18%</span>
+                    <span style="color: var(--text-muted)">vs previous period</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <!-- Traffic Over Time -->
+            <div class="chart-card full-width">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="chart-title">Traffic Over Time</h3>
+                        <p class="chart-subtitle">Page views and unique visitors</p>
+                    </div>
+                    <div class="source-pills">
+                        <span class="source-pill highlight">Page Views</span>
+                        <span class="source-pill">Unique Visitors</span>
+                    </div>
+                </div>
+                <div class="chart-container large">
+                    <canvas id="trafficChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Traffic Sources -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="chart-title">Traffic Sources</h3>
+                        <p class="chart-subtitle">Where visitors come from</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="sourcesChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Referrer Domains -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="chart-title">Top Referrers</h3>
+                        <p class="chart-subtitle">External sites driving traffic</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="referrersChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Agent Profile Views -->
+            <div class="chart-card full-width">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="chart-title">Most Viewed Agents</h3>
+                        <p class="chart-subtitle">Profile page engagement</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="topAgentsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Platform Engagement -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="chart-title">Platform Clicks</h3>
+                        <p class="chart-subtitle">Outlink clicks by platform</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="platformChart"></canvas>
+                </div>
+            </div>
+
+            <!-- UTM Campaign Performance -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="chart-title">Campaign Performance</h3>
+                        <p class="chart-subtitle">UTM campaign effectiveness</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="campaignChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Agents Table -->
+        <div class="table-card">
+            <div class="chart-header">
+                <div>
+                    <h3 class="chart-title">Agent Performance Leaderboard</h3>
+                    <p class="chart-subtitle">Ranked by total engagement (views + clicks)</p>
+                </div>
+            </div>
+            <table class="data-table" id="agentsTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Agent</th>
+                        <th>Type</th>
+                        <th>Views</th>
+                        <th>Clicks</th>
+                        <th>Engagement</th>
+                        <th>Trend</th>
+                    </tr>
+                </thead>
+                <tbody id="agentsTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="table-card">
+            <div class="chart-header">
+                <div>
+                    <h3 class="chart-title">Recent Referral Activity</h3>
+                    <p class="chart-subtitle">Latest tracked referral events</p>
+                </div>
+            </div>
+            <table class="data-table" id="activityTable">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Page</th>
+                        <th>Source</th>
+                        <th>Referrer Domain</th>
+                        <th>UTM Campaign</th>
+                    </tr>
+                </thead>
+                <tbody id="activityTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <footer style="text-align: center; margin-top: 3rem; padding: 2rem; border-top: 1px solid var(--surface-2); color: var(--text-muted); font-size: 0.85rem;">
+            <p>AgentFolio Analytics Dashboard — Powered by PostHog</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="index.html" style="color: var(--accent-2);">← Back to Agent Registry</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Chart.js default configuration
+        Chart.defaults.color = '#6b6b8a';
+        Chart.defaults.borderColor = '#1a1a2e';
+        Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+
+        // Color palette
+        const colors = {
+            accent: '#7c3aed', accent2: '#a78bfa', success: '#10b981',
+            warning: '#f59e0b', info: '#3b82f6',
+            categories: ['#7c3aed', '#a78bfa', '#10b981', '#f59e0b', '#3b82f6', '#ec4899', '#8b5cf6', '#14b8a6']
+        };
+
+        // Generate sample data for demonstration
+        function generateTrafficData(days = 30) {
+            const data = [];
+            const now = new Date();
+            for (let i = days - 1; i >= 0; i--) {
+                const date = new Date(now);
+                date.setDate(date.getDate() - i);
+                data.push({
+                    date: date.toISOString().split('T')[0],
+                    pageViews: Math.floor(200 + Math.random() * 400 + (days - i) * 8),
+                    uniqueVisitors: Math.floor(100 + Math.random() * 200 + (days - i) * 5),
+                    profileViews: Math.floor(60 + Math.random() * 100),
+                    platformClicks: Math.floor(20 + Math.random() * 50)
+                });
+            }
+            return data;
+        }
+
+        // Initialize Traffic Chart
+        function initTrafficChart() {
+            const ctx = document.getElementById('trafficChart').getContext('2d');
+            const data = generateTrafficData(30);
+            
+            return new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.map(d => d.date.slice(5)),
+                    datasets: [
+                        {
+                            label: 'Page Views',
+                            data: data.map(d => d.pageViews),
+                            borderColor: colors.accent,
+                            backgroundColor: colors.accent + '20',
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Unique Visitors',
+                            data: data.map(d => d.uniqueVisitors),
+                            borderColor: colors.success,
+                            backgroundColor: colors.success + '20',
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { intersect: false, mode: 'index' },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#12121f',
+                            borderColor: '#1a1a2e',
+                            borderWidth: 1,
+                            padding: 12,
+                            titleColor: '#e8e8f0',
+                            bodyColor: '#a78bfa'
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { grid: { color: '#1a1a2e' } }
+                    }
+                }
+            });
+        }
+
+        // Initialize Sources Chart
+        function initSourcesChart() {
+            const ctx = document.getElementById('sourcesChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Direct', 'Social', 'Search', 'Referral', 'Developer'],
+                    datasets: [{
+                        data: [35, 28, 18, 12, 7],
+                        backgroundColor: colors.categories,
+                        borderWidth: 0,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { padding: 15, usePointStyle: true, pointStyle: 'circle' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Referrers Chart
+        function initReferrersChart() {
+            const ctx = document.getElementById('referrersChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['x.com', 'github.com', 'producthunt.com', 'linkedin.com', 'reddit.com', 'Other'],
+                    datasets: [{
+                        data: [245, 189, 156, 98, 87, 134],
+                        backgroundColor: colors.accent,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { grid: { color: '#1a1a2e' } }
+                    }
+                }
+            });
+        }
+
+        // Initialize Top Agents Chart
+        function initTopAgentsChart() {
+            const ctx = document.getElementById('topAgentsChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['OpenClaw Bot', 'CrewAI', 'AutoGPT', 'LangGraph', 'Perplexity AI', 'Bob v2', 'CopyAI', 'Inflection'],
+                    datasets: [
+                        {
+                            label: 'Profile Views',
+                            data: [1245, 987, 856, 743, 621, 487, 534, 423],
+                            backgroundColor: colors.accent,
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Platform Clicks',
+                            data: [456, 389, 312, 278, 245, 167, 198, 134],
+                            backgroundColor: colors.success,
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, pointStyle: 'circle' }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { grid: { color: '#1a1a2e' } }
+                    }
+                }
+            });
+        }
+
+        // Initialize Platform Chart
+        function initPlatformChart() {
+            const ctx = document.getElementById('platformChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['GitHub', 'X/Twitter', 'Website', 'Moltbook', 'Toku', 'Other'],
+                    datasets: [{
+                        data: [32, 28, 18, 12, 6, 4],
+                        backgroundColor: colors.categories,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { padding: 10, usePointStyle: true }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Campaign Chart
+        function initCampaignChart() {
+            const ctx = document.getElementById('campaignChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Product Hunt', 'Twitter Launch', 'Reddit Post', 'HackerNews', 'LinkedIn'],
+                    datasets: [
+                        { label: 'Visitors', data: [523, 487, 234, 189, 156], backgroundColor: colors.accent, borderRadius: 4 },
+                        { label: 'Conversions', data: [89, 76, 45, 38, 29], backgroundColor: colors.success, borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { grid: { color: '#1a1a2e' } }
+                    }
+                }
+            });
+        }
+
+        // Populate Agents Table
+        function populateAgentsTable() {
+            const agents = [
+                { rank: 1, name: 'OpenClaw Bot', handle: '@openclaw-bot', type: 'autonomous', views: 1245, clicks: 456, engagement: 1701, trend: 'up', trendValue: '+23%' },
+                { rank: 2, name: 'CrewAI', handle: '@crewai', type: 'tool', views: 987, clicks: 389, engagement: 1376, trend: 'up', trendValue: '+18%' },
+                { rank: 3, name: 'AutoGPT', handle: '@auto-gpt', type: 'autonomous', views: 856, clicks: 312, engagement: 1168, trend: 'up', trendValue: '+12%' },
+                { rank: 4, name: 'LangGraph', handle: '@langgraph', type: 'tool', views: 743, clicks: 278, engagement: 1021, trend: 'up', trendValue: '+8%' },
+                { rank: 5, name: 'Perplexity AI', handle: '@perplexityai', type: 'tool', views: 621, clicks: 245, engagement: 866, trend: 'down', trendValue: '-3%' },
+                { rank: 6, name: 'Bob v2', handle: '@bobrenze', type: 'autonomous', views: 487, clicks: 167, engagement: 654, trend: 'up', trendValue: '+34%' },
+                { rank: 7, name: 'CopyAI', handle: '@copyai', type: 'tool', views: 534, clicks: 198, engagement: 732, trend: 'neutral', trendValue: '0%' },
+                { rank: 8, name: 'Inflection', handle: '@inflection', type: 'tool', views: 423, clicks: 134, engagement: 557, trend: 'up', trendValue: '+5%' }
+            ];
+
+            document.getElementById('agentsTableBody').innerHTML = agents.map(agent => `
+                <tr>
+                    <td><strong style="color: var(--accent-2)">#${agent.rank}</strong></td>
+                    <td>
+                        <div class="agent-cell">
+                            <div class="agent-avatar">${agent.name.charAt(0)}</div>
+                            <div>
+                                <div class="agent-name">${agent.name}</div>
+                                <div class="agent-handle">${agent.handle}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="source-pill">${agent.type}</span></td>
+                    <td>${agent.views.toLocaleString()}</td>
+                    <td>${agent.clicks.toLocaleString()}</td>
+                    <td><strong>${agent.engagement.toLocaleString()}</strong></td>
+                    <td><span class="trend-indicator trend-${agent.trend}">${agent.trendValue}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // Populate Activity Table
+        function populateActivityTable() {
+            const activities = [
+                { time: '2 min ago', page: '/agent/openclaw-bot/', source: 'social', referrer: 'x.com', campaign: 'ph-launch-2025' },
+                { time: '5 min ago', page: '/agent/crewai/', source: 'referral', referrer: 'github.com', campaign: null },
+                { time: '8 min ago', page: '/agent/bobrenze/', source: 'direct', referrer: null, campaign: null },
+                { time: '12 min ago', page: '/', source: 'search', referrer: 'google.com', campaign: 'organic' },
+                { time: '15 min ago', page: '/agent/auto-gpt/', source: 'social', referrer: 'reddit.com', campaign: 'reddit-share' },
+                { time: '23 min ago', page: '/submit.html', source: 'referral', referrer: 'producthunt.com', campaign: 'ph-launch-2025' },
+                { time: '34 min ago', page: '/agent/langgraph/', source: 'developer', referrer: 'github.com', campaign: null },
+                { time: '42 min ago', page: '/scoring.html', source: 'direct', referrer: null, campaign: null }
+            ];
+
+            document.getElementById('activityTableBody').innerHTML = activities.map(act => `
+                <tr>
+                    <td>${act.time}</td>
+                    <td><code style="background: var(--surface-2); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.8rem;">${act.page}</code></td>
+                    <td><span class="source-pill">${act.source}</span></td>
+                    <td>${act.referrer || '—'}</td>
+                    <td>${act.campaign || '—'}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Time range selector
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initTrafficChart();
+            initSourcesChart();
+            initReferrersChart();
+            initTopAgentsChart();
+            initPlatformChart();
+            initCampaignChart();
+            populateAgentsTable();
+            populateActivityTable();
+        });
+    </script>
+
+    <!-- PostHog Tracking -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV=1,window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(o=t.createElement('script')).type='text/javascript',o.async=!0,o.src=s.api_host+'/static/array.js',(p=t.getElementsByTagName('script')[0]).parentNode.insertBefore(o,p);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},n='capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_in_capturing opt_in_capturing opt_out_capturing getFeatureFlag getActiveMatchingSurveys'.split(' '),r=0;r<n.length;r++)g(u,n[r]);e._i.push([i,s,a])},e.__SV=1}(document,window.posthog||[]);
+        posthog.init('phc_YOUR_PROJECT_KEY', { api_host: 'https://us.i.posthog.com' });
+    </script>
+</body>
+</html>
