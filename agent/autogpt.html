@@ -193,7 +193,243 @@
             z-index: 1000;
         }
         .toast.show { opacity: 1; }
-    </style>
+            /* ===== MOBILE RESPONSIVE STYLES ===== */
+        
+        /* Touch-friendly sizing */
+        :root {
+            --tap-min: 44px;
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 0.75rem;
+            --space-lg: 1rem;
+            --space-xl: 1.5rem;
+            --space-2xl: 2rem;
+        }
+        
+        /* Responsive typography */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        /* Mobile container adjustments */
+        @media (max-width: 768px) {
+            .container { 
+                padding: 1rem; 
+                max-width: 100%;
+            }
+            
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.25rem; }
+            
+            .profile-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .profile-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+                margin: 0 auto;
+            }
+            
+            .profile-info h2 {
+                font-size: 1.5rem;
+            }
+            
+            .profile-description {
+                font-size: 0.9rem;
+            }
+            
+            .score-number {
+                font-size: 2.5rem !important;
+            }
+            
+            .score-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .agent-card {
+                padding: 1rem;
+            }
+            
+            .bar-label {
+                font-size: 0.8rem;
+            }
+            
+            .btn {
+                padding: 0.875rem 1.25rem;
+                min-height: var(--tap-min);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .btn-small {
+                padding: 0.6rem 1rem;
+                min-height: 36px;
+            }
+            
+            .share-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .share-buttons .btn {
+                width: 100%;
+            }
+            
+            .platforms {
+                gap: 0.3rem;
+            }
+            
+            .platform-tag {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+            }
+            
+            .back-link {
+                display: inline-block;
+                margin-bottom: 1rem;
+                padding: 0.5rem 0;
+            }
+            
+            .honesty-box {
+                padding: 1rem;
+                margin-top: 2rem;
+            }
+            
+            .honesty-box h2 {
+                font-size: 1.25rem;
+            }
+            
+            .footer {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+            }
+            
+            /* Economic section mobile fixes */
+            div[style*="grid-template-columns: repeat(auto-fit"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            div[style*="grid-template-columns: repeat(3"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            /* Data source boxes */
+            .data-source {
+                padding: 0.75rem;
+            }
+            
+            /* Tier badge sizing */
+            .tier-badge {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+            
+            /* Toast positioning for mobile */
+            .toast {
+                left: 1rem;
+                right: 1rem;
+                transform: none;
+                width: auto;
+            }
+        }
+        
+        /* Small phone adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.75rem;
+            }
+            
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.25rem; }
+            
+            .profile-avatar {
+                width: 64px;
+                height: 64px;
+                font-size: 1.5rem;
+            }
+            
+            .score-number {
+                font-size: 2rem !important;
+            }
+            
+            .agent-card {
+                padding: 0.75rem;
+                border-radius: 8px;
+            }
+            
+            .bar {
+                height: 6px;
+            }
+            
+            /* Economic stats - stack on very small screens */
+            div[style*="grid-template-columns: repeat(2"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .score-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        /* Safe area insets for notched devices */
+        @supports (padding: max(0px)) {
+            @media (max-width: 768px) {
+                .container {
+                    padding-left: max(1rem, env(safe-area-inset-left));
+                    padding-right: max(1rem, env(safe-area-inset-right));
+                    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+                }
+            }
+        }
+        
+        /* Touch action improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .agent-card:hover {
+                transform: none;
+            }
+            
+            .btn:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
+        }
+        
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .bar-fill {
+                transition: none;
+            }
+            
+            .agent-card {
+                transition: none;
+            }
+            
+            .toast {
+                transition: none;
+            }
+        }
+
+        </style>
 </head>
 <body>
     <div class="container">
@@ -279,7 +515,6 @@
     
             </div>
         </div>
-        
         
         
         
