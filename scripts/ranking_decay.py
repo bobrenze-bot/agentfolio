@@ -321,10 +321,16 @@ def main():
     processed = process_agents_with_decay(agents, calculator)
     
     # Build output
+    # Handle metadata extraction for both list and dict input formats
+    if isinstance(data, list):
+        existing_metadata = {}
+    else:
+        existing_metadata = data.get('metadata', {})
+    
     output = {
         "agents": processed,
         "metadata": {
-            **data.get('metadata', {}),
+            **existing_metadata,
             "decay_config": {
                 "algorithm": args.algorithm,
                 "half_life_days": args.half_life,
