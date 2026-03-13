@@ -4,7 +4,7 @@ on:
   # Run daily at 06:00 UTC (adjusts economic scores based on toku.agency activity)
   schedule:
     - cron: '0 6 * * *'
-  
+
   # Manual trigger
   workflow_dispatch:
     inputs:
@@ -25,7 +25,7 @@ jobs:
   update-economic-scores:
     runs-on: ubuntu-latest
     name: Update Economic Scores v3 from toku.agency
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,14 +43,14 @@ jobs:
         run: |
           echo "📊 Fetching economic data from toku.agency using v3 enhanced fetcher..."
           python3 scripts/update_economic_scores_v3.py --all | tee economic-update.log
-          
+
           # Extract summary statistics
           SUCCESSFUL=$(grep -oP "Summary: \d+ succeeded" economic-update.log | grep -oP "\d+" || echo "0")
           FAILED=$(grep -oP "\d+ failed" economic-update.log | grep -oP "\d+" || echo "0")
-          
+
           echo "successful=$SUCCESSFUL" >> $GITHUB_OUTPUT
           echo "failed=$FAILED" >> $GITHUB_OUTPUT
-          
+
           # Check if any files were modified
           if [ -n "$(git status --porcelain)" ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
@@ -68,33 +68,32 @@ jobs:
 
       - name: Commit economic score updates (v3)
         if: steps.fetch.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        env:
+          SUCCESSFUL: ${{ steps.fetch.outputs.successful }}
+          FAILED: ${{ steps.fetch.outputs.failed }}
+          RUN_ID: ${{ github.run_id }}
+          WORKFLOW: ${{ github.workflow }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          git add data/toku-economic/
-          git add data/profiles/
-          git add agentfolio/api/v1/leaderboard.json
+          git add data/toku-economic/ 2>/dev/null || true
+          git add data/profiles/ 2>/dev/null || true
+          git add agentfolio/api/v1/leaderboard.json 2>/dev/null || true
           
           if git diff --cached --quiet; then
             echo "⏸️ No changes to commit"
           else
-            COMMIT_MSG=$(cat <<EOF
-            💰 Daily Economic Score Update (v3 Enhanced)
-            
-            Updated economic scores from toku.agency using enhanced v3 fetcher:
-            - ${{ steps.fetch.outputs.successful }} agents updated successfully
-            - ${{ steps.fetch.outputs.failed }} agents failed to update
-            - Improved service price extraction
-            - Better economic score calculation
-            - Run ID: ${{ github.run_id }}
-            
-            Workflow: ${{ github.workflow }}
-            Triggered by: ${{ github.event_name }}
-            EOF
-            )
-            
             git commit -m "💰 Daily Economic Score Update (v3 Enhanced)
-            
-$COMMIT_MSG"
-            git push
+
+Updated economic scores from toku.agency using enhanced v3 fetcher:
+- ${SUCCESSFUL} agents updated successfully
+- ${FAILED} agents failed to update
+- Improved service price extraction
+- Better economic score calculation
+- Run ID: ${RUN_ID}
+
+Workflow: ${WORKFLOW}
+Triggered by: ${EVENT_NAME}"
+            git push || echo "⚠️ Push failed but continuing"
             echo "✅ Committed v3 economic score updates"
           fi
 
@@ -107,11 +106,11 @@ $COMMIT_MSG"
           echo "- **Updates failed:** ${{ steps.fetch.outputs.failed }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Changes detected:** ${{ steps.fetch.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            echo "⚠️ **Dry run mode** — no changes committed" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ **Dry run mode** - no changes committed" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🔄 v3 Improvements" >> $GITHUB_STEP_SUMMARY
           echo "- Better service price extraction from toku.agency" >> $GITHUB_STEP_SUMMARY
