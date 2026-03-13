@@ -303,7 +303,11 @@ def main():
     with open(args.input_file, 'r') as f:
         data = json.load(f)
     
-    agents = data.get('agents', [])
+    # Handle both list format and dict with 'agents' key
+    if isinstance(data, list):
+        agents = data
+    else:
+        agents = data.get('agents', [])
     
     # Initialize calculator
     calculator = RankingDecayCalculator(

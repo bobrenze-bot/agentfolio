@@ -175,7 +175,11 @@ def main():
         data = json.load(f)
     
     # Support both scored format and raw agents format
-    agents = data.get('agents', [])
+    # Handle both list format and dict with 'agents' key
+    if isinstance(data, list):
+        agents = data
+    else:
+        agents = data.get('agents', [])
     print(f'Generating dynamic color badges for {len(agents)} agents...')
     
     badges_dir.mkdir(parents=True, exist_ok=True)

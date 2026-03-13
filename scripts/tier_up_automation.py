@@ -229,7 +229,11 @@ def check_and_post_tier_ups(base_dir, dry_run=False):
     with open(agents_file, 'r') as f:
         agents_data = json.load(f)
     
-    agents = agents_data.get('agents', [])
+    # Handle both list format and dict with 'agents' key
+    if isinstance(agents_data, list):
+        agents = agents_data
+    else:
+        agents = agents_data.get('agents', [])
     history = load_tier_history(base_dir)
     client = None if dry_run else initialize_twitter_client()
     
