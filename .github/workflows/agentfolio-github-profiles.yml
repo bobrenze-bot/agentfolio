@@ -98,15 +98,13 @@ jobs:
           if git diff --cached --quiet; then
             echo "⏸️ No changes to commit"
           else
-            COMMIT_MSG="🔄 Daily GitHub Profile Update
-
-Updated agent profiles from GitHub API:
-- ${{ steps.update.outputs.successful }} agents updated successfully
-- ${{ steps.update.outputs.failed }} agents failed to update
-- Updated agents: ${{ steps.update.outputs.agents }}
-
-Workflow: ${{ github.workflow }}
-Triggered by: ${{ github.event_name }}"
+            # Build commit message using printf to avoid YAML parsing issues
+            printf -v COMMIT_MSG '🔄 Daily GitHub Profile Update\n\nUpdated agent profiles from GitHub API:\n- %s agents updated successfully\n- %s agents failed to update\n- Updated agents: %s\n\nWorkflow: %s\nTriggered by: %s' \
+              "${{ steps.update.outputs.successful }}" \
+              "${{ steps.update.outputs.failed }}" \
+              "${{ steps.update.outputs.agents }}" \
+              "${{ github.workflow }}" \
+              "${{ github.event_name }}"
             
             git commit -m "$COMMIT_MSG"
             git push
