@@ -21,8 +21,8 @@ Usage:
     python3 a2a-verification-simulator-v2.py --generate-badges --output-dir agentfolio/badges/a2a
 
 Author: Bob Renze (rhythm-worker@bob-bootstrap.local)
-Version: 2.0.0
-Date: 2026-03-02
+Version: 2.1.0
+Date: 2026-03-05
 """
 
 import argparse
@@ -266,6 +266,20 @@ class A2ABadgeGenerator:
         agent_dir.mkdir(exist_ok=True)
         
         # Composite badge
+        # SVG validation helper
+        def validate_svg(svg_content, name):
+            """Validate SVG before saving."""
+            if not svg_content or len(svg_content) < 20:
+                self.log(f"Invalid SVG for {name}: too short", "error")
+                return False
+            if not svg_content.strip().startswith('<svg'):
+                self.log(f"Invalid SVG for {name}: missing SVG header", "error")
+                return False
+            if '</svg>' not in svg_content:
+                self.log(f"Invalid SVG for {name}: missing closing tag", "error")
+                return False
+            return True
+        
         composite_svg = self.generate_composite_badge(report)
         composite_path = agent_dir / "a2a-composite.svg"
         with open(composite_path, 'w') as f:
@@ -274,19 +288,23 @@ class A2ABadgeGenerator:
         
         # Summary badge
         summary_svg = self.generate_summary_badge(report)
-        summary_path = agent_dir / "a2a-summary.svg"
-        with open(summary_path, 'w') as f:
-            f.write(summary_svg)
-        generated.append(str(summary_path))
+        if validate_svg(summary_svg, "summary"):
+            summary_path = agent_dir / "a2a-summary.svg"
+            with open(summary_path, 'w') as f:
+                f.write(summary_svg)
+            generated.append(str(summary_path))
+        else:
+            self.log(f"Failed to generate valid summary badge for {handle}", "error")
         
         # Individual test badges
         for result in report.results:
             test_svg = self.generate_test_badge(result, handle)
-            test_name = self._sanitize_filename(result.test_name)
-            test_path = agent_dir / f"a2a-{test_name}.svg"
-            with open(test_path, 'w') as f:
-                f.write(test_svg)
-            generated.append(str(test_path))
+            if validate_svg(test_svg, result.test_name):
+                test_name = self._sanitize_filename(result.test_name)
+                test_path = agent_dir / f"a2a-{test_name}.svg"
+                with open(test_path, 'w') as f:
+                    f.write(test_svg)
+                generated.append(str(test_path))
         
         # Registry JSON
         registry = {
@@ -339,18 +357,81 @@ class A2AVerificationSimulator:
             print(f"[{timestamp}] [{level.upper()}] {message}")
     
     def _fetch_url(self, url: str, verify_ssl: bool = True) -> tuple:
-        try:
-            ctx = ssl.create_default_context() if verify_ssl else ssl.create_unverified_context()
-            req = urllib.request.Request(url, headers={'User-Agent': 'AgentFolio-A2A-Checker/2.0', 'Accept': 'application/json'}, method='GET')
-            with urllib.request.urlopen(req, timeout=self.timeout, context=ctx) as response:
-                content = response.read().decode('utf-8')
-                return True, content, response.status, dict(response.headers)
-        except urllib.error.HTTPError as e:
-            return False, str(e), e.code, {}
-        except urllib.error.URLError as e:
-            return False, str(e.reason), 0, {}
-        except Exception as e:
-            return False, str(e), 0, {}
+        """Fetch URL with retry logic, SSL fallback, and rate limiting."""
+        import time
+        import random
+        
+        max_retries = 3
+        base_delay = 1.0
+        max_delay = 10.0
+        
+        # Rate limiting: small delay between requests
+        time.sleep(0.1)
+        
+        for attempt in range(max_retries):
+            try:
+                # First attempt: normal SSL verification
+                ctx = ssl.create_default_context() if verify_ssl else ssl.create_unverified_context()
+                
+                # Configure request with redirect handling
+                opener = urllib.request.build_opener(
+                    urllib.request.HTTPRedirectHandler,
+                    urllib.request.HTTPErrorProcessor
+                )
+                opener.addheaders = [
+                    ('User-Agent', 'AgentFolio-A2A-Checker/2.1'),
+                    ('Accept', 'application/json, text/plain, */*')
+                ]
+                
+                req = urllib.request.Request(url, method='GET')
+                
+                with opener.open(req, timeout=self.timeout, context=ctx) as response:
+                    content = response.read().decode('utf-8')
+                    return True, content, response.status, dict(response.headers)
+                    
+            except urllib.error.HTTPError as e:
+                # Don't retry client errors (4xx)
+                if 400 <= e.code < 500:
+                    return False, str(e), e.code, {}
+                # Retry server errors (5xx)
+                if attempt < max_retries - 1:
+                    delay = min(base_delay * (2 ** attempt) + random.uniform(0, 0.5), max_delay)
+                    self.log(f"Retry {attempt + 1}/{max_retries} after {delay:.1f}s: {e}", "warning")
+                    time.sleep(delay)
+                    continue
+                return False, str(e), e.code, {}
+                
+            except urllib.error.URLError as e:
+                # Handle SSL certificate errors with fallback
+                if "ssl" in str(e.reason).lower() and verify_ssl and attempt == 0:
+                    self.log(f"SSL error, retrying with verification disabled: {e.reason}", "warning")
+                    # Retry with SSL verification disabled
+                    try:
+                        ctx = ssl.create_unverified_context()
+                        req = urllib.request.Request(url, method='GET')
+                        req.add_header('User-Agent', 'AgentFolio-A2A-Checker/2.1')
+                        with urllib.request.urlopen(req, timeout=self.timeout, context=ctx) as response:
+                            content = response.read().decode('utf-8')
+                            return True, content, response.status, dict(response.headers)
+                    except Exception:
+                        pass  # Fall through to retry logic
+                
+                if attempt < max_retries - 1:
+                    delay = min(base_delay * (2 ** attempt) + random.uniform(0, 0.5), max_delay)
+                    self.log(f"Retry {attempt + 1}/{max_retries} after {delay:.1f}s: {e.reason}", "warning")
+                    time.sleep(delay)
+                    continue
+                return False, str(e.reason), 0, {}
+                
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    delay = min(base_delay * (2 ** attempt) + random.uniform(0, 0.5), max_delay)
+                    self.log(f"Retry {attempt + 1}/{max_retries} after {delay:.1f}s: {e}", "warning")
+                    time.sleep(delay)
+                    continue
+                return False, str(e), 0, {}
+        
+        return False, "Max retries exceeded", 0, {}
     
     def verify_agent_card(self, base_url: str) -> List[VerificationResult]:
         results = []
