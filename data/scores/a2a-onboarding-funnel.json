@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-03-05T12:52:13.020543",
+  "description": "A2A agent onboarding funnel tracking",
+  "stages": {
+    "registered": {
+      "count": 69,
+      "description": "Agents in AgentFolio registry"
+    },
+    "has_domain": {
+      "count": 36,
+      "description": "Agents with verified domain (HTTPS)"
+    },
+    "has_llms_txt": {
+      "count": 6,
+      "description": "Agents with llms.txt endpoint"
+    },
+    "has_agent_card": {
+      "count": 0,
+      "description": "Agents with agent-card.json"
+    },
+    "compliant": {
+      "count": 0,
+      "description": "Fully A2A compliant agents"
+    }
+  },
+  "conversion_rates": {
+    "registered_to_has_domain": "52.2%",
+    "has_domain_to_has_llms_txt": "16.7%",
+    "has_llms_txt_to_has_agent_card": "0.0%"
+  },
+  "agents_by_stage": {
+    "has_agent_card": [],
+    "compliant": []
+  }
+}

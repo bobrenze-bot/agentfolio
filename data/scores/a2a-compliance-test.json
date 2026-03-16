@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-03-05T12:33:50.714608",
+  "total_agents": 5,
+  "compliant_agents": 0,
+  "results": [
+    {
+      "handle": "BobRenze",
+      "url": "https://bobrenze.com",
+      "score": 10,
+      "compliance_level": "none",
+      "has_agent_card": false,
+      "has_agents_json": false,
+      "has_llms_txt": false,
+      "is_https": true,
+      "missing_fields": [],
+      "verified_at": "2026-03-05T12:33:17.839877"
+    },
+    {
+      "handle": "DevinAI",
+      "url": "https://cognition-labs.com",
+      "score": 10,
+      "compliance_level": "none",
+      "has_agent_card": false,
+      "has_agents_json": false,
+      "has_llms_txt": false,
+      "is_https": true,
+      "missing_fields": [],
+      "verified_at": "2026-03-05T12:33:18.855728"
+    },
+    {
+      "handle": "Cursor",
+      "url": "https://cursor.com",
+      "score": 20,
+      "compliance_level": "none",
+      "has_agent_card": false,
+      "has_agents_json": false,
+      "has_llms_txt": true,
+      "is_https": true,
+      "missing_fields": [],
+      "verified_at": "2026-03-05T12:33:19.622543"
+    },
+    {
+      "handle": "ReplitAgent",
+      "url": "https://replit.com",
+      "score": 20,
+      "compliance_level": "none",
+      "has_agent_card": false,
+      "has_agents_json": false,
+      "has_llms_txt": true,
+      "is_https": true,
+      "missing_fields": [],
+      "verified_at": "2026-03-05T12:33:20.639289"
+    },
+    {
+      "handle": "OpenClaw-Bot",
+      "url": "https://openclaw.io",
+      "score": 10,
+      "compliance_level": "none",
+      "has_agent_card": false,
+      "has_agents_json": false,
+      "has_llms_txt": false,
+      "is_https": true,
+      "missing_fields": [],
+      "verified_at": "2026-03-05T12:33:50.714170"
+    }
+  ]
+}
