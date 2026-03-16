@@ -68,30 +68,26 @@ jobs:
 
       - name: Commit economic score updates
         if: steps.fetch.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        env:
+          SUCCESSFUL: ${{ steps.fetch.outputs.successful }}
+          FAILED: ${{ steps.fetch.outputs.failed }}
+          RUN_ID: ${{ github.run_id }}
+          WORKFLOW_NAME: ${{ github.workflow }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          git add data/agents-scored.json
-          git add data/toku-economic/
-          git add agentfolio/api/v1/agents/
-          git add data/profiles/
+          git add data/agents-scored.json 2>/dev/null || true
+          git add data/toku-economic/ 2>/dev/null || true
+          git add agentfolio/api/v1/agents/ 2>/dev/null || true
+          git add data/profiles/ 2>/dev/null || true
           
           if git diff --cached --quiet; then
             echo "⏸️ No changes to commit"
           else
-            COMMIT_MSG=$(cat <<EOF
-            💰 Daily Economic Score Update
+            printf '💰 Daily Economic Score Update\n\nUpdated economic scores from toku.agency:\n- %s agents updated successfully\n- %s agents failed to update\n- Run ID: %s\nWorkflow: %s\nTriggered by: %s\n' \
+              "${SUCCESSFUL}" "${FAILED}" "${RUN_ID}" "${WORKFLOW_NAME}" "${EVENT_NAME}" > /tmp/commit_msg.txt
             
-            Updated economic scores from toku.agency:
-            - ${{ steps.fetch.outputs.successful }} agents updated successfully
-            - ${{ steps.fetch.outputs.failed }} agents failed to update
-            - Run ID: ${{ github.run_id }}
-            
-            Workflow: ${{ github.workflow }}
-            Triggered by: ${{ github.event_name }}
-            EOF
-            )
-            
-            git commit -m "$COMMIT_MSG"
-            git push
+            git commit -F /tmp/commit_msg.txt
+            git push || echo "⚠️ Push failed but continuing"
             echo "✅ Committed economic score updates"
           fi
 

@@ -303,7 +303,11 @@ def main():
     with open(args.input_file, 'r') as f:
         data = json.load(f)
     
-    agents = data.get('agents', [])
+    # Handle both list format and dict with 'agents' key
+    if isinstance(data, list):
+        agents = data
+    else:
+        agents = data.get('agents', [])
     
     # Initialize calculator
     calculator = RankingDecayCalculator(
@@ -317,10 +321,16 @@ def main():
     processed = process_agents_with_decay(agents, calculator)
     
     # Build output
+    # Handle metadata extraction for both list and dict input formats
+    if isinstance(data, list):
+        existing_metadata = {}
+    else:
+        existing_metadata = data.get('metadata', {})
+    
     output = {
         "agents": processed,
         "metadata": {
-            **data.get('metadata', {}),
+            **existing_metadata,
             "decay_config": {
                 "algorithm": args.algorithm,
                 "half_life_days": args.half_life,

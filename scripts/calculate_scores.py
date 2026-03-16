@@ -108,7 +108,11 @@ def main():
     with open(input_path) as f:
         data = json.load(f)
     
-    agents = data.get('agents', [])
+    # Handle both list format and dict with 'agents' key
+    if isinstance(data, list):
+        agents = data
+    else:
+        agents = data.get('agents', [])
     scored_agents = calculate_all_scores(agents)
     
     output_data = {

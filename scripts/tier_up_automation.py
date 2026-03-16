@@ -104,16 +104,18 @@ def initialize_twitter_client():
                         credentials[key] = value
             break
     
-    required_keys = ['TWITTER_CONSUMER_KEY', 'TWITTER_CONSUMER_SECRET', 'TWITTER_ACCESS_TOKEN', 'TWITTER_ACCESS_TOKEN_SECRET']
+    required_keys = ['TWITTER_BEARER_TOKEN', 'TWITTER_CONSUMER_KEY', 
+                     'TWITTER_CONSUMER_SECRET', 'TWITTER_ACCESS_TOKEN', 
+                     'TWITTER_ACCESS_TOKEN_SECRET']
     
     if not all(k in credentials for k in required_keys):
-        print("Warning: Missing Twitter OAuth credentials. Posting will be simulated.")
+        print("Warning: Missing Twitter credentials. Posting will be simulated.")
         return None
     
     try:
         from tweepy import Client
         return Client(
-            bearer_token=credentials.get('TWITTER_BEARER_TOKEN'),
+            bearer_token=credentials['TWITTER_BEARER_TOKEN'],
             consumer_key=credentials['TWITTER_CONSUMER_KEY'],
             consumer_secret=credentials['TWITTER_CONSUMER_SECRET'],
             access_token=credentials['TWITTER_ACCESS_TOKEN'],
@@ -227,7 +229,7 @@ def check_and_post_tier_ups(base_dir, dry_run=False):
     with open(agents_file, 'r') as f:
         agents_data = json.load(f)
     
-    # Handle both list format and dict format
+    # Handle both list format and dict with 'agents' key
     if isinstance(agents_data, list):
         agents = agents_data
     else:
