@@ -402,382 +402,78 @@ class SocialScoreCalculator(BaseCalculator):
 
 
 class EconomicScoreCalculator(BaseCalculator):
-    """
-    Calculator for ECONOMIC category (toku.agency and other platforms).
-    
-    Implements the 5-Factor Economic Score Methodology:
-    - Base Score (0-10): Does the agent have economic infrastructure?
-    - Revenue Factor (0-40): Documented revenue * verification level
-    - Model Diversity (0-20): Number of distinct economic models employed
-    - Verification Boost (0-20): Third-party verification of claims
-    - Recency Weight (0-10): Emphasis on recent vs. historical activity
-    
-    This methodology emphasizes verifiable economic activity over claims,
-    rewarding agents who demonstrate real market participation.
-    """
+    """Calculator for ECONOMIC category (toku.agency)."""
     
     category = Category.ECONOMIC
     
-    def __init__(self, weights: Optional[Dict[str, WeightConfig]] = None):
-        """Initialize with default ECONOMIC weights."""
-        # No dimensions - we're using custom calculate method
-        self.dimensions = []
-    
-    def _calculate_base_score(self, data: PlatformData) -> Tuple[float, Dict[str, Any]]:
-        """
-        Calculate Base Score (0-10 points).
-        
-        Does the agent have economic infrastructure in place?
-        - Has toku.agency profile: 5 points
-        - Has services listed: 3 points
-        - Has any price metadata: 2 points
-        """
-        score = 0.0
-        breakdown = {
-            "has_profile": False,
-            "has_services": False,
-            "has_prices": False,
-        }
-        
-        if data.get("has_profile", False):
-            score += 5.0
-            breakdown["has_profile"] = True
-        
-        services_count = data.get("services_count", 0)
-        if services_count > 0:
-            score += 3.0
-            breakdown["has_services"] = True
-        
-        prices = data.get("prices", [])
-        avg_price = data.get("avg_service_price", 0)
-        if prices or avg_price > 0:
-            score += 2.0
-            breakdown["has_prices"] = True
-        
-        return min(score, 10.0), breakdown
-    
-    def _calculate_revenue_factor(self, data: PlatformData) -> Tuple[float, Dict[str, Any]]:
-        """
-        Calculate Revenue Factor (0-40 points).
-        
-        Based on documented revenue with verification multiplier.
-        - Jobs completed: up to 20 points (2 per job, max 10 jobs)
-        - Earnings: up to 20 points ($1 per $100 earned, max $2000)
-        
-        Verification multipliers are applied to the raw revenue data
-        before scoring (handled in data fetcher).
-        """
-        score = 0.0
-        breakdown = {
-            "jobs_score": 0.0,
-            "earnings_score": 0.0,
-            "jobs_completed": 0,
-            "total_earnings_usd": 0.0,
-        }
-        
-        jobs = data.get("jobs_completed", 0)
-        earnings = data.get("total_earnings_usd", 0.0)
-        
-        breakdown["jobs_completed"] = jobs
-        breakdown["total_earnings_usd"] = earnings
-        
-        # Jobs: 2 points per job, max 20 points (10 jobs = full credit)
-        jobs_score = min(jobs * 2.0, 20.0)
-        score += jobs_score
-        breakdown["jobs_score"] = jobs_score
-        
-        # Earnings: 1 point per $100, max 20 points ($2000 = full credit)
-        earnings_score = min(earnings / 100.0, 20.0)
-        score += earnings_score
-        breakdown["earnings_score"] = earnings_score
-        
-        # Apply verification multiplier if available
-        verification_level = data.get("verification_level", 1)  # Default to self-reported
-        multiplier = {0: 0.0, 1: 0.3, 2: 0.7, 3: 1.0, 4: 1.2}.get(verification_level, 0.3)
-        
-        verified_score = score * multiplier
-        breakdown["verification_multiplier"] = multiplier
-        breakdown["verified_score"] = min(verified_score, 40.0)
-        
-        return min(verified_score, 40.0), breakdown
-    
-    def _calculate_model_diversity(self, data: PlatformData) -> Tuple[float, Dict[str, Any]]:
-        """
-        Calculate Model Diversity (0-20 points).
-        
-        Rewards agents using multiple economic models:
-        - toku.agency marketplace: primary model
-        - Direct contracts: secondary model
-        - x402 micropayments: emerging model
-        - Outcome-based: advanced model
-        - Subscription/FTE: recurring model
-        
-        4 points per distinct model detected, max 20 points.
-        """
-        score = 0.0
-        breakdown = {
-            "models_detected": [],
-            "service_categories": [],
-        }
-        
-        services = data.get("services", [])
-        categories = set()
-        
-        for service in services:
-            category = service.get("category", "unknown")
-            if category:
-                categories.add(category.lower())
-        
-        breakdown["service_categories"] = list(categories)
-        
-        # Detect economic models from service patterns
-        models = set()
-        
-        # Check for toku marketplace (always present if has_profile)
-        if data.get("has_profile", False):
-            models.add("toku_marketplace")
-        
-        # Check for diverse service types
-        if categories:
-            if any(c in ["automation", "task", "task_automation"] for c in categories):
-                models.add("action_based")
-            if any(c in ["research", "analysis", "consulting"] for c in categories):
-                models.add("outcome_based")
-            if any(c in ["development", "code", "code_review"] for c in categories):
-                models.add("workflow_based")
-            if any(c in ["service", "general"] for c in categories):
-                models.add("service_based")
-        
-        # Check for x402 capability (from agent card or other indicators)
-        if data.get("has_x402", False):
-            models.add("x402_micropayments")
-        
-        # Check for high-value contracts (evidence of direct deals)
-        max_price = data.get("max_service_price", 0)
-        if max_price >= 500:
-            models.add("enterprise_contracts")
-        
-        breakdown["models_detected"] = list(models)
-        
-        # 4 points per model, max 20
-        score = min(len(models) * 4.0, 20.0)
-        breakdown["model_count"] = len(models)
-        breakdown["raw_score"] = len(models) * 4.0
-        
-        return score, breakdown
-    
-    def _calculate_verification_boost(self, data: PlatformData) -> Tuple[float, Dict[str, Any]]:
-        """
-        Calculate Verification Boost (0-20 points).
-        
-        Rewards verified claims over self-reported:
-        - Platform-verified (toku, etc.): 10 points
-        - On-chain proof: 5 points
-        - Customer verification: 5 points
-        """
-        score = 0.0
-        breakdown = {
-            "platform_verified": False,
-            "on_chain_proof": False,
-            "customer_verified": False,
-        }
-        
-        # Platform verification
-        if data.get("platform_verified", False):
-            score += 10.0
-            breakdown["platform_verified"] = True
-        elif data.get("has_profile", False):
-            # Having a profile on a marketplace counts as basic platform verification
-            score += 7.0
-            breakdown["platform_verified"] = True
-            breakdown["verification_level"] = "basic_platform"
-        
-        # On-chain proof (wallet address with verified transactions)
-        if data.get("on_chain_verified", False) or data.get("has_lobstercash", False):
-            score += 5.0
-            breakdown["on_chain_proof"] = True
-        
-        # Customer verification (reviews, testimonials)
-        reputation = data.get("reputation_score", 0)
-        if reputation >= 50:
-            score += 5.0
-            breakdown["customer_verified"] = True
-            breakdown["reputation_threshold_met"] = True
-        elif data.get("has_reviews", False):
-            score += 3.0
-            breakdown["customer_verified"] = True
-            breakdown["verification_level"] = "basic_reviews"
-        
-        return min(score, 20.0), breakdown
-    
-    def _calculate_recency_weight(self, data: PlatformData) -> Tuple[float, Dict[str, Any]]:
-        """
-        Calculate Recency Weight (0-10 points).
-        
-        Emphasizes recent activity over historical:
-        - Activity within last 30 days: 10 points
-        - Activity within last 90 days: 7 points
-        - Activity within last 6 months: 5 points
-        - Activity within last year: 3 points
-        - Older activity: 1 point
-        - No activity data: 0 points
-        """
-        score = 0.0
-        breakdown = {
-            "last_activity": None,
-            "days_since": None,
-        }
-        
-        fetched_at = data.get("fetched_at")
-        if fetched_at:
-            try:
-                from datetime import datetime
-                if isinstance(fetched_at, str):
-                    # Parse ISO format
-                    last_activity = datetime.fromisoformat(fetched_at.replace('Z', '+00:00'))
-                else:
-                    last_activity = fetched_at
-                
-                now = datetime.now(last_activity.tzinfo)
-                days_since = (now - last_activity).days
-                breakdown["days_since"] = days_since
-                breakdown["last_fetch"] = fetched_at
-                
-                if days_since <= 30:
-                    score = 10.0
-                elif days_since <= 90:
-                    score = 7.0
-                elif days_since <= 180:
-                    score = 5.0
-                elif days_since <= 365:
-                    score = 3.0
-                else:
-                    score = 1.0
-            except (ValueError, TypeError):
-                # Can't parse date, assume stale
-                score = 1.0
-        else:
-            # No activity timestamp, award minimal points
-            score = 1.0
-        
-        # Bonus for very recent job completion
-        jobs = data.get("jobs_completed", 0)
-        if jobs > 0 and score >= 5.0:
-            score += 1.0
-            breakdown["recent_jobs_bonus"] = True
-        
-        breakdown["recency_score"] = min(score, 10.0)
-        return min(score, 10.0), breakdown
+    dimensions = [
+        ScoreDimension(
+            key="has_profile",
+            weight_config=WeightConfig(
+                max_points=20, points_per_unit=20.0,
+                unit_name="profile", description="Has profile"
+            ),
+            calculator="binary",
+            data_key="has_profile"
+        ),
+        ScoreDimension(
+            key="services_listed",
+            weight_config=WeightConfig(
+                max_points=20, points_per_unit=5.0,
+                unit_name="service", description="Services listed"
+            ),
+            data_key="services_count"
+        ),
+        ScoreDimension(
+            key="jobs_completed",
+            weight_config=WeightConfig(
+                max_points=40, points_per_unit=4.0,
+                unit_name="job", description="Jobs completed"
+            ),
+            data_key="jobs_completed"
+        ),
+        ScoreDimension(
+            key="reputation",
+            weight_config=WeightConfig(
+                max_points=15, points_per_unit=0.15,
+                unit_name="reputation point", description="Reputation"
+            ),
+            extractor=lambda d: d.get("economic_indicators", {}).get("economic_score_estimate", 0)
+        ),
+        ScoreDimension(
+            key="earnings",
+            weight_config=WeightConfig(
+                max_points=5, points_per_unit=0.001,
+                unit_name="dollar", description="Earnings"
+            ),
+            data_key="total_earnings_usd"
+        ),
+    ]
     
     def get_data_sources(self) -> List[str]:
-        return ["toku", "agent_card", "blockchain"]
+        return ["toku"]
     
     def handle_error(self, data: PlatformData) -> Optional[CategoryScore]:
         """Handle toku-specific partial credit."""
         if data.status == "unavailable":
             return CategoryScore(
                 category=self.category,
-                score=5,
-                breakdown={
-                    "error": "Profile unavailable",
-                    "base_score": 0,
-                    "revenue_factor": 0,
-                    "model_diversity": 0,
-                    "verification_boost": 0,
-                    "recency_weight": 0,
-                },
+                score=10,
                 notes="Handle exists but data unavailable"
             )
         return super().handle_error(data)
     
-    def generate_notes(self, total_score: float, factor_breakdowns: Dict[str, Any], data: PlatformData) -> str:
-        """Generate comprehensive notes with economic metrics."""
+    def generate_notes(self, breakdown: Dict[str, float], data: PlatformData) -> Optional[str]:
+        """Generate notes with economic metrics."""
         jobs = data.get("jobs_completed", 0)
         earnings = data.get("total_earnings_usd", 0)
-        models = factor_breakdowns.get("model_diversity", {}).get("models_detected", [])
-        
-        parts = []
-        parts.append(f"Score: {int(total_score)}/100")
-        
-        if jobs > 0:
-            parts.append(f"{jobs} jobs")
-        if earnings > 0:
-            parts.append(f"${earnings:.0f} earned")
-        if models:
-            parts.append(f"{len(models)} models")
-        
-        # Add factor breakdown for transparency
-        revenue = factor_breakdowns.get("revenue_factor", {})
-        verified = factor_breakdowns.get("verification_boost", {})
-        
-        if revenue.get("verification_multiplier", 1.0) < 1.0:
-            parts.append("unverified claims")
-        elif verified.get("platform_verified", False):
-            parts.append("platform verified")
-        
-        return " | ".join(parts) if parts else "No economic data"
+        if jobs or earnings:
+            return f"{jobs} jobs | ${earnings:.0f} earned"
+        return None
     
     def calculate(self, data: PlatformData) -> CategoryScore:
-        """
-        Calculate ECONOMIC score using 5-Factor Methodology.
-        
-        Total possible: 100 points
-        - Base Score: 10 points
-        - Revenue Factor: 40 points  
-        - Model Diversity: 20 points
-        - Verification Boost: 20 points
-        - Recency Weight: 10 points
-        """
-        error_result = self.handle_error(data)
-        if error_result and error_result.score == 5:
-            return error_result
-        
-        # Calculate each factor
-        base_score, base_breakdown = self._calculate_base_score(data)
-        revenue_factor, revenue_breakdown = self._calculate_revenue_factor(data)
-        model_diversity, model_breakdown = self._calculate_model_diversity(data)
-        verification_boost, verification_breakdown = self._calculate_verification_boost(data)
-        recency_weight, recency_breakdown = self._calculate_recency_weight(data)
-        
-        # Total score
-        total = base_score + revenue_factor + model_diversity + verification_boost + recency_weight
-        total = self.cap_score(total)
-        
-        # Comprehensive breakdown
-        breakdown = {
-            # High-level factors
-            "base_score": round(base_score, 1),
-            "revenue_factor": round(revenue_factor, 1),
-            "model_diversity": round(model_diversity, 1),
-            "verification_boost": round(verification_boost, 1),
-            "recency_weight": round(recency_weight, 1),
-            # Detailed sub-breakdowns
-            "base_details": base_breakdown,
-            "revenue_details": revenue_breakdown,
-            "model_details": model_breakdown,
-            "verification_details": verification_breakdown,
-            "recency_details": recency_breakdown,
-        }
-        
-        factor_breakdowns = {
-            "base_score": {"score": base_score, **base_breakdown},
-            "revenue_factor": {"score": revenue_factor, **revenue_breakdown},
-            "model_diversity": {"score": model_diversity, **model_breakdown},
-            "verification_boost": {"score": verification_boost, **verification_breakdown},
-            "recency_weight": {"score": recency_weight, **recency_breakdown},
-        }
-        
-        notes = self.generate_notes(total, factor_breakdowns, data)
-        
-        return CategoryScore(
-            category=self.category,
-            score=total,
-            raw_score=total,
-            max_score=MAX_CATEGORY_SCORE,
-            breakdown=breakdown,
-            data_sources=self.get_data_sources(),
-            notes=notes
-        )
+        """Calculate ECONOMIC score from toku data."""
+        return self.calculate_declarative(data)
 
 
 class CommunityScoreCalculator(BaseCalculator):

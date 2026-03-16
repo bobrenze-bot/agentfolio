@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/serenerenze/bob-bootstrap/projects/agentrank/scripts/tier_up_automation.py", line 344, in <module>
+    main()
+    ~~~~^^
+  File "/Users/serenerenze/bob-bootstrap/projects/agentrank/scripts/tier_up_automation.py", line 328, in main
+    results = check_and_post_tier_ups(base_dir, dry_run=args.dry_run)
+  File "/Users/serenerenze/bob-bootstrap/projects/agentrank/scripts/tier_up_automation.py", line 232, in check_and_post_tier_ups
+    agents = agents_data.get('agents', [])
+             ^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'

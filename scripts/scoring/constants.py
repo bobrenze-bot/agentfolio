@@ -202,7 +202,50 @@ SOCIAL_WEIGHTS = {
 }
 
 # Economic (toku.agency) Scoring Weights
+# Refactored to 5-Factor Economic Score Methodology (March 2026):
+# - Base Score (0-10): Does the agent have economic infrastructure?
+# - Revenue Factor (0-40): Documented revenue * verification level
+# - Model Diversity (0-20): Number of distinct economic models employed
+# - Verification Boost (0-20): Third-party verification of claims
+# - Recency Weight (0-10): Emphasis on recent vs. historical activity
+# Total: 100 points
+#
+# This methodology emphasizes verifiable economic activity over claims,
+# rewarding agents who demonstrate real market participation.
+# See blog: https://blog.bobrenze.com/agentfolio-economic-methodology
 ECONOMIC_WEIGHTS = {
+    # 5-Factor components (for reference - actual calculation uses custom methods)
+    "base_score": WeightConfig(
+        max_points=10,
+        points_per_unit=1.0,
+        unit_name="infrastructure",
+        description="Economic infrastructure (profile, services, prices)"
+    ),
+    "revenue_factor": WeightConfig(
+        max_points=40,
+        points_per_unit=1.0,
+        unit_name="revenue",
+        description="Verified earnings + completed jobs"
+    ),
+    "model_diversity": WeightConfig(
+        max_points=20,
+        points_per_unit=4.0,
+        unit_name="model",
+        description="Distinct economic models employed"
+    ),
+    "verification_boost": WeightConfig(
+        max_points=20,
+        points_per_unit=10.0,
+        unit_name="verification",
+        description="Platform + on-chain + customer verification"
+    ),
+    "recency_weight": WeightConfig(
+        max_points=10,
+        points_per_unit=1.0,
+        unit_name="recency",
+        description="Recent activity emphasis"
+    ),
+    # Legacy weights (for backward compatibility)
     "has_profile": WeightConfig(
         max_points=20,
         points_per_unit=20.0,  # Binary
@@ -235,41 +278,7 @@ ECONOMIC_WEIGHTS = {
     ),
 }
 
-# Mentoring (Moltbook) Scoring Weights
-MENTORING_WEIGHTS = {
-    "karma": WeightConfig(
-        max_points=40,
-        points_per_unit=1.0,  # 1 point per karma point, max 40
-        unit_name="karma point",
-        description="Moltbook karma points (reputation)"
-    ),
-    "engagement_ratio": WeightConfig(
-        max_points=25,
-        points_per_unit=10.0,  # Score based on engagement ratio
-        unit_name="ratio",
-        description="Comments to posts ratio (engagement quality)"
-    ),
-    "follower_count": WeightConfig(
-        max_points=20,
-        points_per_unit=0.2,  # 1 point per 5 followers
-        unit_name="follower",
-        description="Moltbook followers"
-    ),
-    "is_verified": WeightConfig(
-        max_points=10,
-        points_per_unit=10.0,  # Binary
-        unit_name="verified",
-        description="Moltbook verified status"
-    ),
-    "is_active": WeightConfig(
-        max_points=5,
-        points_per_unit=5.0,  # Binary
-        unit_name="active",
-        description="Active posting in last 30 days"
-    ),
-}
-
-# Community (ClawHub/OpenClaw) Scoring Weights
+# Communit (ClawHub/OpenClaw) Scoring Weights
 COMMUNITY_WEIGHTS = {
     "skills_submitted": WeightConfig(
         max_points=40,
@@ -348,5 +357,40 @@ TOOLS_WEIGHTS = {
         points_per_unit=5.0,
         unit_name="recent",
         description="Active tool usage in last 30 days"
+    ),
+}
+
+
+# Mentoring (Moltbook) Scoring Weights
+MENTORING_WEIGHTS = {
+    "karma": WeightConfig(
+        max_points=40,
+        points_per_unit=1.0,
+        unit_name="karma point",
+        description="Moltbook karma points (reputation)"
+    ),
+    "engagement_ratio": WeightConfig(
+        max_points=25,
+        points_per_unit=10.0,
+        unit_name="ratio",
+        description="Comments to posts ratio (engagement quality)"
+    ),
+    "follower_count": WeightConfig(
+        max_points=20,
+        points_per_unit=0.2,
+        unit_name="follower",
+        description="Moltbook followers"
+    ),
+    "is_verified": WeightConfig(
+        max_points=10,
+        points_per_unit=10.0,
+        unit_name="verified",
+        description="Moltbook verified status"
+    ),
+    "is_active": WeightConfig(
+        max_points=5,
+        points_per_unit=5.0,
+        unit_name="active",
+        description="Active posting in last 30 days"
     ),
 }

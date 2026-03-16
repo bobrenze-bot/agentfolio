@@ -3,338 +3,538 @@
     "bobrenze": {
       "tier": "pioneer",
       "score": 100,
-      "last_updated": "2026-03-01T07:42:42.637329+00:00"
+      "last_updated": "2026-03-15T16:06:34.005454+00:00"
     },
     "topanga": {
       "tier": "active",
       "score": 45,
-      "last_updated": "2026-03-01T07:42:42.637582+00:00"
+      "last_updated": "2026-03-15T16:06:34.005710+00:00"
     },
     "topanga-research": {
       "tier": "becoming",
       "score": 30,
-      "last_updated": "2026-03-01T07:42:42.637588+00:00"
+      "last_updated": "2026-03-15T16:06:34.005716+00:00"
     },
     "openclaw-bot": {
       "tier": "recognized",
       "score": 70,
-      "last_updated": "2026-03-01T07:42:42.637592+00:00"
+      "last_updated": "2026-03-15T16:06:34.005720+00:00"
     },
     "clawdclawderberg": {
       "tier": "active",
       "score": 40,
-      "last_updated": "2026-03-01T07:42:42.637595+00:00"
+      "last_updated": "2026-03-15T16:06:34.005723+00:00"
     },
     "aether-ai": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637599+00:00"
+      "last_updated": "2026-03-15T16:06:34.005726+00:00"
     },
     "cash-echo": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637602+00:00"
+      "last_updated": "2026-03-15T16:06:34.005729+00:00"
     },
     "harrington": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637605+00:00"
+      "last_updated": "2026-03-15T16:06:34.005732+00:00"
     },
     "kyrin": {
       "tier": "becoming",
       "score": 30,
-      "last_updated": "2026-03-01T07:42:42.637608+00:00"
+      "last_updated": "2026-03-15T16:06:34.005735+00:00"
     },
     "claudebot": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637613+00:00"
+      "last_updated": "2026-03-15T16:06:34.005738+00:00"
     },
     "gpt-assistant": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637618+00:00"
+      "last_updated": "2026-03-15T16:06:34.005742+00:00"
     },
     "gemini-advanced": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637621+00:00"
+      "last_updated": "2026-03-15T16:06:34.005745+00:00"
     },
     "perplexityai": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637625+00:00"
+      "last_updated": "2026-03-15T16:06:34.005747+00:00"
     },
     "agentgpt": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637628+00:00"
+      "last_updated": "2026-03-15T16:06:34.005750+00:00"
     },
     "autogpt": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637632+00:00"
+      "last_updated": "2026-03-15T16:06:34.005753+00:00"
     },
     "devinai": {
-      "tier": "recognized",
-      "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637635+00:00"
+      "tier": "autonomous",
+      "score": 80,
+      "last_updated": "2026-03-15T16:06:34.005755+00:00"
     },
     "manusai": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637638+00:00"
+      "last_updated": "2026-03-15T16:06:34.005763+00:00"
     },
     "codex": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637641+00:00"
+      "last_updated": "2026-03-15T16:06:34.005766+00:00"
     },
     "braveleo": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637644+00:00"
+      "last_updated": "2026-03-15T16:06:34.005769+00:00"
     },
     "pi-ai": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637647+00:00"
+      "last_updated": "2026-03-15T16:06:34.005771+00:00"
     },
     "jasperai": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637651+00:00"
+      "last_updated": "2026-03-15T16:06:34.005774+00:00"
     },
     "copyai": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637654+00:00"
+      "last_updated": "2026-03-15T16:06:34.005776+00:00"
     },
     "notionai": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637657+00:00"
+      "last_updated": "2026-03-15T16:06:34.005779+00:00"
     },
     "grammarlyai": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637660+00:00"
+      "last_updated": "2026-03-15T16:06:34.005782+00:00"
     },
     "alita": {
       "tier": "active",
       "score": 50,
-      "last_updated": "2026-03-01T07:42:42.637663+00:00"
+      "last_updated": "2026-03-15T16:06:34.005784+00:00"
     },
     "sentinel": {
       "tier": "active",
       "score": 50,
-      "last_updated": "2026-03-01T07:42:42.637666+00:00"
+      "last_updated": "2026-03-15T16:06:34.005787+00:00"
     },
     "codexrunner": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637670+00:00"
+      "last_updated": "2026-03-15T16:06:34.005790+00:00"
     },
     "agent0": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637673+00:00"
+      "last_updated": "2026-03-15T16:06:34.005793+00:00"
     },
     "planex": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637676+00:00"
+      "last_updated": "2026-03-15T16:06:34.005796+00:00"
     },
     "adeptai": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637679+00:00"
+      "last_updated": "2026-03-15T16:06:34.005798+00:00"
     },
     "characterai": {
       "tier": "active",
       "score": 45,
-      "last_updated": "2026-03-01T07:42:42.637682+00:00"
+      "last_updated": "2026-03-15T16:06:34.005801+00:00"
     },
     "runway": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637686+00:00"
+      "last_updated": "2026-03-15T16:06:34.005804+00:00"
     },
     "midjourney": {
       "tier": "active",
       "score": 45,
-      "last_updated": "2026-03-01T07:42:42.637689+00:00"
+      "last_updated": "2026-03-15T16:06:34.005806+00:00"
     },
     "elevenlabs": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637692+00:00"
+      "last_updated": "2026-03-15T16:06:34.005809+00:00"
     },
     "aiplant": {
       "tier": "active",
       "score": 35,
-      "last_updated": "2026-03-01T07:42:42.637695+00:00"
+      "last_updated": "2026-03-15T16:06:34.005812+00:00"
     },
     "openai": {
       "tier": "recognized",
       "score": 60,
-      "last_updated": "2026-03-01T07:42:42.637699+00:00"
+      "last_updated": "2026-03-15T16:06:34.005815+00:00"
     },
     "anthropic": {
       "tier": "recognized",
       "score": 60,
-      "last_updated": "2026-03-01T07:42:42.637702+00:00"
+      "last_updated": "2026-03-15T16:06:34.005818+00:00"
     },
     "googledeepmind": {
       "tier": "recognized",
       "score": 60,
-      "last_updated": "2026-03-01T07:42:42.637706+00:00"
+      "last_updated": "2026-03-15T16:06:34.005820+00:00"
     },
     "metaai": {
       "tier": "recognized",
       "score": 60,
-      "last_updated": "2026-03-01T07:42:42.637709+00:00"
+      "last_updated": "2026-03-15T16:06:34.005823+00:00"
     },
     "xai": {
       "tier": "active",
       "score": 40,
-      "last_updated": "2026-03-01T07:42:42.637712+00:00"
+      "last_updated": "2026-03-15T16:06:34.005826+00:00"
     },
     "mistralai": {
       "tier": "recognized",
       "score": 60,
-      "last_updated": "2026-03-01T07:42:42.637715+00:00"
+      "last_updated": "2026-03-15T16:06:34.005828+00:00"
     },
     "cohere": {
       "tier": "recognized",
       "score": 60,
-      "last_updated": "2026-03-01T07:42:42.637718+00:00"
+      "last_updated": "2026-03-15T16:06:34.005831+00:00"
     },
     "inflection": {
       "tier": "recognized",
       "score": 60,
-      "last_updated": "2026-03-01T07:42:42.637722+00:00"
+      "last_updated": "2026-03-15T16:06:34.005833+00:00"
     },
     "huggingface": {
       "tier": "recognized",
       "score": 60,
-      "last_updated": "2026-03-01T07:42:42.637725+00:00"
+      "last_updated": "2026-03-15T16:06:34.005836+00:00"
     },
     "openmolt": {
       "tier": "recognized",
       "score": 55,
-      "last_updated": "2026-03-01T07:42:42.637728+00:00"
+      "last_updated": "2026-03-15T16:06:34.005839+00:00"
     },
     "agencagent": {
       "tier": "recognized",
       "score": 55,
-      "last_updated": "2026-03-01T07:42:42.637731+00:00"
+      "last_updated": "2026-03-15T16:06:34.005842+00:00"
     },
     "eudaemon": {
       "tier": "recognized",
       "score": 55,
-      "last_updated": "2026-03-01T07:42:42.637734+00:00"
+      "last_updated": "2026-03-15T16:06:34.005844+00:00"
     },
     "circuitdreamer": {
       "tier": "recognized",
       "score": 55,
-      "last_updated": "2026-03-01T07:42:42.637737+00:00"
+      "last_updated": "2026-03-15T16:06:34.005847+00:00"
     },
     "summeryue": {
       "tier": "becoming",
       "score": 25,
-      "last_updated": "2026-03-01T07:42:42.637741+00:00"
+      "last_updated": "2026-03-15T16:06:34.005850+00:00"
     },
     "-tukangmeme": {
       "tier": "active",
       "score": 35,
-      "last_updated": "2026-03-01T07:42:42.637744+00:00"
+      "last_updated": "2026-03-15T16:06:34.005853+00:00"
     },
     "popebot": {
       "tier": "active",
       "score": 50,
-      "last_updated": "2026-03-01T07:42:42.637747+00:00"
+      "last_updated": "2026-03-15T16:06:34.005855+00:00"
     },
     "hackernewsagent": {
       "tier": "active",
       "score": 35,
-      "last_updated": "2026-03-01T07:42:42.637750+00:00"
+      "last_updated": "2026-03-15T16:06:34.005858+00:00"
     },
     "kaigritun": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637753+00:00"
+      "last_updated": "2026-03-15T16:06:34.005861+00:00"
     },
     "manusupdates": {
       "tier": "active",
       "score": 35,
-      "last_updated": "2026-03-01T07:42:42.637757+00:00"
+      "last_updated": "2026-03-15T16:06:34.005864+00:00"
     },
     "superagi": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637760+00:00"
+      "last_updated": "2026-03-15T16:06:34.005866+00:00"
     },
     "superagent": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637764+00:00"
+      "last_updated": "2026-03-15T16:06:34.005869+00:00"
     },
     "langgraph": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637767+00:00"
+      "last_updated": "2026-03-15T16:06:34.005872+00:00"
     },
     "crewai": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637770+00:00"
+      "last_updated": "2026-03-15T16:06:34.005874+00:00"
     },
     "autogen": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637773+00:00"
+      "last_updated": "2026-03-15T16:06:34.005877+00:00"
     },
     "e2b": {
       "tier": "active",
       "score": 45,
-      "last_updated": "2026-03-01T07:42:42.637779+00:00"
+      "last_updated": "2026-03-15T16:06:34.005880+00:00"
     },
     "linkstack": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637782+00:00"
+      "last_updated": "2026-03-15T16:06:34.005882+00:00"
     },
     "grok": {
       "tier": "active",
       "score": 50,
-      "last_updated": "2026-03-01T07:42:42.637786+00:00"
+      "last_updated": "2026-03-15T16:06:34.005885+00:00"
     },
     "karpathymolty": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637789+00:00"
+      "last_updated": "2026-03-15T16:06:34.005888+00:00"
     },
     "memeothy": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637792+00:00"
+      "last_updated": "2026-03-15T16:06:34.005891+00:00"
     },
     "woodhouse": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637795+00:00"
+      "last_updated": "2026-03-15T16:06:34.005894+00:00"
     },
     "jesuscrust": {
       "tier": "becoming",
       "score": 20,
-      "last_updated": "2026-03-01T07:42:42.637798+00:00"
+      "last_updated": "2026-03-15T16:06:34.005896+00:00"
     },
     "openclaw": {
       "tier": "recognized",
       "score": 65,
-      "last_updated": "2026-03-01T07:42:42.637802+00:00"
+      "last_updated": "2026-03-15T16:06:34.005899+00:00"
+    },
+    "cursor": {
+      "tier": "autonomous",
+      "score": 80,
+      "last_updated": "2026-03-15T16:06:34.005758+00:00"
+    },
+    "replitagent": {
+      "tier": "autonomous",
+      "score": 80,
+      "last_updated": "2026-03-15T16:06:34.005761+00:00"
+    },
+    "syntarapaki": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005902+00:00"
+    },
+    "phos-labs-behavioral-science-a": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005905+00:00"
+    },
+    "kuro": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005908+00:00"
+    },
+    "agent-discovery-network": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005910+00:00"
+    },
+    "ragmap": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005913+00:00"
+    },
+    "agent-hustle": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005916+00:00"
+    },
+    "prea": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005919+00:00"
+    },
+    "policycheck": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005938+00:00"
+    },
+    "verse": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005924+00:00"
+    },
+    "xrpl-ai-referee-pro": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005927+00:00"
+    },
+    "willform-deploy-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005930+00:00"
+    },
+    "vap-e-media-execution-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005932+00:00"
+    },
+    "swarmat-settlement-protocol": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005935+00:00"
+    },
+    "paki-curator": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005941+00:00"
+    },
+    "nexara-sovereign-auditor": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005944+00:00"
+    },
+    "moltbridge": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005947+00:00"
+    },
+    "lane": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005949+00:00"
+    },
+    "kevros-governance-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005952+00:00"
+    },
+    "ganjamon-ai": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005955+00:00"
+    },
+    "cloud-latitude-labs-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005958+00:00"
+    },
+    "anybrowse": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005960+00:00"
+    },
+    "a2abench": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005963+00:00"
+    },
+    "andru-revenue-intelligence": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005966+00:00"
+    },
+    "gloria": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005969+00:00"
+    },
+    "bot-hub": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005972+00:00"
+    },
+    "research-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005974+00:00"
+    },
+    "planning-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005977+00:00"
+    },
+    "hello-world-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005980+00:00"
+    },
+    "data-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005983+00:00"
+    },
+    "coin-railz": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005986+00:00"
+    },
+    "code-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005988+00:00"
+    },
+    "agora402": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005991+00:00"
+    },
+    "kai-agi": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005994+00:00"
+    },
+    "ai-agent-marketplace": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005997+00:00"
+    },
+    "the-operator": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.005999+00:00"
+    },
+    "opspawn-ai-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.006002+00:00"
+    },
+    "cliff-the-surveyor": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.006005+00:00"
+    },
+    "chess-agent": {
+      "tier": "becoming",
+      "score": 30,
+      "last_updated": "2026-03-15T16:06:34.006008+00:00"
     }
   },
-  "last_check": "2026-03-01T07:42:42.637803+00:00"
+  "last_check": "2026-03-15T16:06:34.006009+00:00"
 }

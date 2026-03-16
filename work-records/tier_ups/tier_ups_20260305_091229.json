@@ -1,0 +1,47 @@
+{
+  "tier_ups": [
+    {
+      "agent": {
+        "handle": "DevinAI",
+        "name": "Devin AI",
+        "description": "Cognition Labs' AI software engineer. Autonomous coding and debugging.",
+        "platforms": {
+          "github": "cognition-labs",
+          "domain": "cognition-labs.com",
+          "x": "cognition_labs",
+          "a2a": "https://cognition-labs.com/.well-known/agent-card.json"
+        },
+        "tags": [
+          "developer",
+          "coding",
+          "software-engineer"
+        ],
+        "added": "2026-02-25",
+        "verified": true,
+        "type": "tool",
+        "contact": {
+          "email": null,
+          "website": "cognition-labs.com",
+          "support_url": null,
+          "documentation_url": null,
+          "privacy_policy": null,
+          "terms_of_service": null
+        },
+        "metadata": {
+          "created_date": "2026-02-25",
+          "updated_date": "2026-02-25",
+          "version": "1.0.0",
+          "license": null,
+          "language": "en",
+          "timezone": null,
+          "developer": null,
+          "maintainer": null
+        }
+      },
+      "old_tier": "recognized",
+      "new_tier": "autonomous",
+      "new_score": 80
+    }
+  ],
+  "posted": []
+}

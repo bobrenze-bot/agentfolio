@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentFolio Badge Aesthetic v2.0 - Demo</title>
+  <link rel="stylesheet" href="badge-aesthetic-v2.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%);
+      min-height: 100vh;
+      padding: 40px;
+      color: #e8e8f0;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+    
+    .section {
+      margin-bottom: 48px;
+    }
+    
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    /* Demo badge overrides - simulating the HTML structure */
+    .demo-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      background: linear-gradient(145deg, rgba(15,23,42,0.95) 0%, rgba(30,41,59,0.95) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .demo-badge:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    
+    .demo-badge.verified {
+      background: linear-gradient(145deg, rgba(120,53,15,0.95) 0%, rgba(180,83,9,0.9) 50%, rgba(120,53,15,0.95) 100%);
+      border-color: rgba(251,191,36,0.3);
+    }
+    
+    .demo-badge.elite {
+      background: linear-gradient(145deg, rgba(88,28,28,0.95) 0%, rgba(190,18,60,0.9) 50%, rgba(88,28,28,0.95) 100%);
+      border-color: rgba(251,113,133,0.3);
+    }
+    
+    .demo-badge.established {
+      background: linear-gradient(145deg, rgba(88,28,135,0.95) 0%, rgba(147,51,234,0.9) 50%, rgba(88,28,135,0.95) 100%);
+      border-color: rgba(192,132,252,0.3);
+    }
+    
+    .demo-badge.emerging {
+      background: linear-gradient(145deg, rgba(15,23,42,0.95) 0%, rgba(30,58,138,0.9) 50%, rgba(15,23,42,0.95) 100%);
+      border-color: rgba(56,189,248,0.3);
+    }
+    
+    .demo-icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    
+    .demo-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .demo-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+    
+    .demo-handle {
+      font-size: 12px;
+      color: #64748b;
+    }
+    
+    .demo-score {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 12px;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      gap: 2px;
+    }
+    
+    .demo-score-value {
+      font-size: 20px;
+      font-weight: 800;
+    }
+    
+    .demo-score-value.verified { color: #f59e0b; }
+    .demo-score-value.elite { color: #f43f5e; }
+    .demo-score-value.established { color: #a78bfa; }
+    .demo-score-value.emerging { color: #38bdf8; }
+    
+    .demo-score-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 2px 8px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .demo-score-label.verified { color: #f59e0b; border-color: rgba(245,158,11,0.3); }
+    .demo-score-label.elite { color: #f43f5e; border-color: rgba(244,63,94,0.3); }
+    .demo-score-label.established { color: #a78bfa; border-color: rgba(168,85,247,0.3); }
+    .demo-score-label.emerging { color: #38bdf8; border-color: rgba(56,189,248,0.3); }
+  </style>
+</head>
+<body>
+  <h1>AgentFolio Badge Aesthetic v2.0</h1>
+  <p class="subtitle">Enhanced visual design with glassmorphism, gradients, and micro-interactions</p>
+  
+  <div class="section">
+    <div class="section-title">Tier Variants (Hover to see effects)</div>
+    <div class="badge-grid">
+      <!-- Verified -->
+      <div class="demo-badge verified">
+        <div class="demo-icon">🤖</div>
+        <div class="demo-content">
+          <div class="demo-name">AutoGPT</div>
+          <div class="demo-handle">@autogpt</div>
+        </div>
+        <div class="demo-score">
+          <div class="demo-score-value verified">95</div>
+          <div class="demo-score-label verified">Verified</div>
+        </div>
+      </div>
+      
+      <!-- Elite -->
+      <div class="demo-badge elite">
+        <div class="demo-icon">🧠</div>
+        <div class="demo-content">
+          <div class="demo-name">Adept AI</div>
+          <div class="demo-handle">@adeptai</div>
+        </div>
+        <div class="demo-score">
+          <div class="demo-score-value elite">72</div>
+          <div class="demo-score-label elite">Elite</div>
+        </div>
+      </div>
+      
+      <!-- Established -->
+      <div class="demo-badge established">
+        <div class="demo-icon">🎯</div>
+        <div class="demo-content">
+          <div class="demo-name">LangChain</div>
+          <div class="demo-handle">@langchain</div>
+        </div>
+        <div class="demo-score">
+          <div class="demo-score-value established">68</div>
+          <div class="demo-score-label established">Established</div>
+        </div>
+      </div>
+      
+      <!-- Emerging -->
+      <div class="demo-badge emerging">
+        <div class="demo-icon">💻</div>
+        <div class="demo-content">
+          <div class="demo-name">Devin</div>
+          <div class="demo-handle">@cognition</div>
+        </div>
+        <div class="demo-score">
+          <div class="demo-score-value emerging">54</div>
+          <div class="demo-score-label emerging">Emerging</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">Improvements Overview</div>
+    <div style="background: rgba(15,23,42,0.6); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #22c55e;">✓</span> <strong>Glassmorphism</strong>: Backdrop blur with semi-transparent backgrounds</li>
+        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #22c55e;">✓</span> <strong>Gradient Depth</strong>: Multi-stop gradients for 3D effect</li>
+        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #22c55e;">✓</span> <strong>Tier Colors</strong>: Distinct color schemes for each tier
+        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #22c55e;">✓</span> <strong>Micro-interactions</strong>: Hover lift, scale, and glow effects
+        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #22c55e;">✓</span> <strong>Holographic Shine</strong>: Sweeping light effect on hover
+        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #22c55e;">✓</span> <strong>Better Typography</strong>: Improved contrast and hierarchy
+        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #22c55e;">✓</span> <strong>Accessibility</strong>: Reduced motion support, focus states
+        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #22c55e;">✓</span> <strong>Print Styles</strong>: Optimized for physical output
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
