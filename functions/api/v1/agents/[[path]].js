@@ -26,8 +26,15 @@ function buildAgentResponse(agent, profile) {
   return {
     handle: handle,
     name: agent.name || 'Unknown Agent',
+    // Include author field to fix null author bug
+    author: {
+      name: agent.name || 'Unknown Agent',
+      handle: handle,
+      type: agent.type || 'unknown'
+    },
     composite_score: agent.composite_score || agent.score || 0,
     tier: agent.tier || 'Unknown',
+    type: agent.type || 'unknown',
     category_scores: agent.category_scores || {},
     data_sources: agent.data_sources || [],
     calculated_at: agent.calculated_at || new Date().toISOString(),
@@ -35,7 +42,14 @@ function buildAgentResponse(agent, profile) {
       description: profile.description || agent.description || '',
       fetched_at: profile.fetched_at || null
     },
-    platforms: profile.platforms || {}
+    platforms: profile.platforms || agent.platforms || {},
+    economic_activity: agent.economic_activity || 0,
+    moltbook_metrics: agent.moltbook_metrics || {
+      karma: 0,
+      followers: 0,
+      following: 0,
+      post_count: 0
+    }
   };
 }
 

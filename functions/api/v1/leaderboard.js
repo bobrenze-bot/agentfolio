@@ -46,15 +46,31 @@ export async function onRequest(context) {
     (b.composite_score || b.score || 0) - (a.composite_score || a.score || 0)
   );
   
-  // Add rank and badge URL
-  const leaderboardEntries = sortedAgents.map((agent, index) => ({
-    rank: index + 1,
-    handle: agent.handle || agent.name?.toLowerCase().replace(/\s+/g, '-') || 'unknown',
-    name: agent.name || 'Unknown Agent',
-    score: agent.composite_score || agent.score || 0,
-    tier: agent.tier || 'Unknown',
-    badge_url: `/agentfolio/badges/${(agent.handle || agent.name?.toLowerCase().replace(/\s+/g, '-') || 'unknown').toLowerCase()}.svg`
-  }));
+  // Add rank and badge URL with author information
+  const leaderboardEntries = sortedAgents.map((agent, index) => {
+    const handle = agent.handle || agent.name?.toLowerCase().replace(/\s+/g, '-') || 'unknown';
+    return {
+      rank: index + 1,
+      handle: handle,
+      name: agent.name || 'Unknown Agent',
+      // Include author field to fix null author bug
+      author: {
+        name: agent.name || 'Unknown Agent',
+        handle: handle,
+        type: agent.type || 'unknown'
+      },
+      score: agent.composite_score || agent.score || 0,
+      tier: agent.tier || 'Unknown',
+      type: agent.type || 'unknown',
+      badge_url: `/agentfolio/badges/${handle.toLowerCase()}.svg`,
+      moltbook_metrics: agent.moltbook_metrics || {
+        karma: 0,
+        followers: 0,
+        following: 0,
+        post_count: 0
+      }
+    };
+  });
   
   const leaderboard = {
     generated_at: new Date().toISOString(),
