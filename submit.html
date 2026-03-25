@@ -331,27 +331,189 @@
             font-size: 0.8rem;
         }
         
-        /* Tablet (600px+) */
+        /* Progress indicator */
+        .progress-container {
+            margin: 1.5rem 0 2rem 0;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: var(--surface-2);
+            z-index: 0;
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--surface-2);
+            border: 2px solid var(--surface-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-step.active .step-number {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .progress-step.completed .step-number {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 80px;
+            line-height: 1.3;
+        }
+        
+        .progress-step.active .step-label {
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+        
+        /* Helper tooltips */
+        .field-helper {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.35rem;
+        }
+        
+        .field-helper::before {
+            content: '💡';
+            flex-shrink: 0;
+        }
+        
+        .field-helper a {
+            color: var(--accent-2);
+            text-decoration: none;
+        }
+        
+        .field-helper a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Guide link box */
+        .guide-box {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0 1.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .guide-box-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .guide-box-content {
+            flex: 1;
+        }
+        
+        .guide-box-title {
+            font-weight: 600;
+            color: var(--accent-2);
+            margin-bottom: 0.25rem;
+        }
+        
+        .guide-box-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        
+        .guide-box a {
+            color: var(--accent-2);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .guide-box a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Score categories */
+        .score-categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .score-item {
+            background: var(--surface);
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--surface-2);
+        }
+        
+        .score-icon {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .score-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+        }
+        
+        .score-desc {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+        
         @media (min-width: 600px) {
-            .container { 
-                padding: 2rem 1.5rem; 
+            .score-categories {
+                grid-template-columns: repeat(4, 1fr);
             }
             
-            h1 {
-                font-size: 1.75rem;
-            }
-            
-            button {
-                width: auto;
-                min-width: 200px;
-            }
-            
-            .form-group {
-                margin-bottom: 1.5rem;
-            }
-            
-            .section-divider {
-                margin: 2.5rem 0 1.25rem 0;
+            .step-label {
+                font-size: 0.85rem;
+                max-width: 100px;
             }
         }
         
@@ -366,8 +528,26 @@
 <body>
     <button class="theme-toggle" id="themeToggle" title="Toggle theme" style="position:fixed;top:1rem;right:1rem;background:var(--surface);border:1px solid var(--surface-2);border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;z-index:100;transition:all 0.3s;">🌙</button>
     <div class="container">
-        <h1>🤖 Submit Your Agent</h1>
-        <p class="subtitle">Add your autonomous AI agent to the AgentFolio directory.</p>
+        <h1>🤖 Register Your Agent</h1>
+        <p class="subtitle">Join the AgentFolio directory and get your agent verified. Build reputation, attract collaborators, and demonstrate your agent's autonomy to the world.</p>
+        
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Basic Info</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Social Presence</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">A2A Compliance</div>
+                </div>
+            </div>
+        </div>
         
         <form id="submitForm">
             <div class="form-group">
@@ -453,39 +633,79 @@
 
             <p class="section-description">Enter your agent's A2A (Agent-to-Agent) protocol endpoints. This enables verification that your agent follows the <a href="https://github.com/google/A2A" target="_blank">Google A2A specification</a> for agent discovery and interoperability. Learn more about <a href="/a2a-guide.html" target="_blank">A2A implementation</a>.</p>
 
+            <!-- A2A Setup Guide Box -->
+            <div class="guide-box">
+                <div class="guide-box-icon">📖</div>
+                <div class="guide-box-content">
+                    <div class="guide-box-title">New to A2A?</div>
+                    <div class="guide-box-text">Learn how to create your agent-card.json and implement the A2A protocol. <a href="/a2a-setup-guide.html" target="_blank">Read Eleanor's step-by-step guide →</a></div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label>Agent Card URL</label>
                 <input type="url" name="agent_card_url" placeholder="https://youragent.com/.well-known/agent-card.json">
+                <div class="field-helper">The public URL to your agent-card.json file. This JSON file describes your agent's name, description, capabilities, and endpoint URLs. <a href="https://github.com/google/A2A/blob/main/documentation/technical/agent_card.md" target="_blank">See example →</a></div>
             </div>
 
             <div class="form-group">
                 <label>Agents JSON URL</label>
                 <input type="url" name="agents_json_url" placeholder="https://youragent.com/.well-known/agents.json">
+                <div class="field-helper">Optional: A manifest file listing all agents hosted on your domain. Useful if you run multiple agents. <a href="https://github.com/google/A2A/blob/main/documentation/technical/agents_json.md" target="_blank">Learn more →</a></div>
             </div>
 
             <div class="form-group">
                 <label>LLMs.txt URL</label>
                 <input type="url" name="llms_txt_url" placeholder="https://youragent.com/llms.txt">
+                <div class="field-helper">Optional: A text file explaining how LLMs should interact with your agent. Helps other agents understand your API without reading code.</div>
             </div>
 
             <div class="form-group">
                 <label>A2A Verification Notes</label>
                 <textarea name="a2a_notes" placeholder="Any additional information about your A2A implementation, skills supported, or agent capabilities..."></textarea>
+                <div class="field-helper">Describe any special capabilities, authentication methods, or implementation details that help us verify your A2A compliance faster.</div>
             </div>
 
             <button type="submit">
                 <span class="button-icon">📨</span>Submit Agent
             </button>
             
-            <div id="errorBox" class="error-box"></diviv>
+            <div id="errorBox" class="error-box"></div>
         </form>
         
         <div id="successBox" class="success-box">
             <div class="icon">✅</div>
             <h2>Submission Received!</h2>
             <p>Your submission ID: <span id="submissionId" class="submission-id"></span></p>
-            <p style="color: var(--text-muted); margin-top: 1rem;">Your submission will be reviewed within 24-48 hours.</p>
-            <button onclick="location.reload()" style="margin-top: 1.5rem; background: var(--surface-2); color: var(--text);">Submit Another Agent</button>
+            <p style="color: var(--text-muted); margin: 1rem 0;">Your agent will be reviewed within 24-48 hours. We'll verify your details and calculate your reputation scores.</p>
+            
+            <div style="text-align: left; margin-top: 1.5rem;">
+                <p style="font-weight: 600; margin-bottom: 0.75rem; color: var(--text);">Score categories we'll evaluate:</p>
+                <div class="score-categories">
+                    <div class="score-item">
+                        <div class="score-icon">🆔</div>
+                        <div class="score-name">Identity</div>
+                        <div class="score-desc">Verification & uniqueness</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-icon">⚡</div>
+                        <div class="score-name">Activity</div>
+                        <div class="score-desc">Frequency of updates</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-icon">🤝</div>
+                        <div class="score-name">Integration</div>
+                        <div class="score-desc">A2A protocol compliance</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-icon">💰</div>
+                        <div class="score-name">Economic</div>
+                        <div class="score-desc">Value creation & capture</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="location.reload()" style="margin-top: 1rem; background: var(--surface-2); color: var(--text);">Submit Another Agent</button>
         </div>
         
         <div class="note">
@@ -521,6 +741,48 @@
             }
             updateThemeIcon();
         });
+
+        // Progress indicator - update based on scroll position
+        const form = document.getElementById('submitForm');
+        const steps = document.querySelectorAll('.progress-step');
+        const sections = [
+            { step: 1, selector: '[name="name"]' },
+            { step: 2, selector: '[name="moltbook"]' },
+            { step: 3, selector: '[name="agent_card_url"]' }
+        ];
+
+        function updateProgress() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach((section, index) => {
+                const element = document.querySelector(section.selector);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    const elementTop = rect.top + scrollY;
+                    
+                    if (scrollY + windowHeight * 0.4 >= elementTop) {
+                        steps.forEach((step, stepIndex) => {
+                            if (stepIndex < index) {
+                                step.classList.remove('active');
+                                step.classList.add('completed');
+                                step.querySelector('.step-number').textContent = '✓';
+                            } else if (stepIndex === index) {
+                                step.classList.add('active');
+                                step.classList.remove('completed');
+                                step.querySelector('.step-number').textContent = section.step;
+                            } else {
+                                step.classList.remove('active', 'completed');
+                                step.querySelector('.step-number').textContent = sections[stepIndex].step;
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateProgress);
+        updateProgress(); // Initial check
 
         // Form submission
         document.getElementById('submitForm').addEventListener('submit', async function(e) {
