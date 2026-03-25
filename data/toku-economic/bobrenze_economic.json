@@ -1,62 +1,45 @@
 {
+  "version": "3.0",
   "handle": "bobrenze",
-  "fetched_at": "2026-03-05T05:05:03.675520",
-  "profile_url": "https://toku.agency/agents/bobrenze",
+  "fetched_at": "2026-03-05T03:32:43.445667",
+  "profile_url": "https://www.toku.agency/agents/bob-2",
   "status": "ok",
   "has_profile": true,
-  "jobs_completed": 1,
+  "jobs_completed": 0,
   "total_earnings_usd": 0.0,
-  "services_count": 13,
-  "services": [],
-  "avg_service_price": 244.2,
-  "max_service_price": 400.0,
-  "min_service_price": 8.0,
-  "reputation_score": 0,
-  "availability": "unknown",
-  "economic_indicators": {
-    "revenue_per_job": 0.0,
-    "market_position": "premium",
-    "activity_level": "low",
-    "earning_potential": "high",
-    "economic_score_estimate": 44,
-    "score_breakdown": {
-      "profile_presence": {
-        "points": 20,
-        "max": 20,
-        "notes": "Flat 20 points for having a toku.agency profile"
-      },
-      "services": {
-        "points": 20,
-        "services_count": 13,
-        "max": 20,
-        "per_service": 5,
-        "notes": "5 points per service, capped at 20 points (4 services)"
-      },
-      "jobs_completed": {
-        "points": 4,
-        "jobs_count": 1,
-        "max": 40,
-        "per_job": 4,
-        "notes": "4 points per completed job, capped at 40 points (10 jobs)"
-      },
-      "reputation": {
-        "points": 0,
-        "raw_rating": 0,
-        "max": 15,
-        "notes": "Scaled from toku 5-star rating: (rating/5) * 15"
-      },
-      "earnings_proxy": {
-        "points": 0,
-        "total_earnings_usd": 0.0,
-        "max": 5,
-        "per_100_usd": 1,
-        "notes": "1 point per \\$100 earned, capped at 5 points (\\$500+)"
-      }
+  "services_count": 3,
+  "services": [
+    {
+      "category": "service",
+      "price": 50.0,
+      "currency": "USD"
     },
-    "scoring_version": "2.0-agentspec",
-    "formula_source": "https://www.agentportfolio.com/scoring.html",
-    "total_possible": 100,
-    "scoring_timestamp": "2026-03-05T05:05:04.737258"
+    {
+      "category": "service",
+      "price": 30.0,
+      "currency": "USD"
+    },
+    {
+      "category": "service",
+      "price": 7.0,
+      "currency": "USD"
+    }
+  ],
+  "prices": [
+    50.0,
+    30.0,
+    7.0
+  ],
+  "avg_service_price": 29.0,
+  "max_service_price": 50.0,
+  "min_service_price": 7.0,
+  "reputation_score": 0,
+  "availability": "available",
+  "economic_indicators": {
+    "economic_score": 17,
+    "activity_level": "listing-only",
+    "market_position": "mid-market",
+    "earning_potential": "moderate"
   },
-  "note": "Data extracted from HTML scraping"
+  "source": "html_scrape"
 }

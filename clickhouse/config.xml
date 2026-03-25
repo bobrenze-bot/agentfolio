@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clickhouse>
+    <!-- Custom AgentFolio Configuration -->
+    
+    <!-- Log configuration -->
+    <logger>
+        <level>information</level>
+        <log>/var/log/clickhouse-server/clickhouse-server.log</log>
+        <errorlog>/var/log/clickhouse-server/clickhouse-server.err.log</errorlog>
+        <size>1000M</size>
+        <count>10</count>
+    </logger>
+    
+    <!-- HTTP interface -->
+    <http_port>8123</http_port>
+    
+    <!-- TCP interface -->
+    <tcp_port>9000</tcp_port>
+    
+    <!-- Memory limits -->
+    <max_memory_usage>4000000000</max_memory_usage>
+    <max_memory_usage_for_user>4000000000</max_memory_usage_for_user>
+    
+    <!-- MergeTree settings -->
+    <merge_tree>
+        <max_suspicious_broken_parts>5</max_suspicious_broken_parts>
+    </merge_tree>
+    
+    <!-- Storage configuration -->
+    <storage_configuration>
+        <disks>
+            <default>
+                <keep_free_space_bytes>10485760</keep_free_space_bytes>
+            </default>
+        </disks>
+        <policies>
+            <default>
+                <volumes>
+                    <main>
+                        <disk>default</disk>
+                    </main>
+                </volumes>
+            </default>
+        </policies>
+    </storage_configuration>
+</clickhouse>

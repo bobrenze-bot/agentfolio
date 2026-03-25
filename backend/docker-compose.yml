@@ -1,0 +1,154 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database
+  postgres:
+    image: postgres:15-alpine
+    container_name: agentrank-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=agentrank
+      - POSTGRES_USER=agentrank
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-agentrank_dev_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agentrank"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - agentrank-network
+
+  # Redis cache
+  redis:
+    image: redis:7-alpine
+    container_name: agentrank-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - agentrank-network
+
+  # FastAPI application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agentrank-app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://agentrank:${DB_PASSWORD:-agentrank_dev_password}@postgres:5432/agentrank
+      - REDIS_URL=redis://redis:6379
+      - PAPERCLIP_API_URL=${PAPERCLIP_API_URL:-http://host.docker.internal:3100}
+      - PAPERCLIP_API_KEY=${PAPERCLIP_API_KEY}
+      - LOBSTER_API_KEY=${LOBSTER_API_KEY}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/app
+      - ./alembic:/app/alembic
+    networks:
+      - agentrank-network
+    command: >
+      bash -c "
+        alembic upgrade head &&
+        uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+      "
+
+  # Celery worker for background tasks
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agentrank-worker
+    environment:
+      - DATABASE_URL=postgresql://agentrank:${DB_PASSWORD:-agentrank_dev_password}@postgres:5432/agentrank
+      - REDIS_URL=redis://redis:6379
+      - PAPERCLIP_API_URL=${PAPERCLIP_API_URL:-http://host.docker.internal:3100}
+      - PAPERCLIP_API_KEY=${PAPERCLIP_API_KEY}
+      - LOBSTER_API_KEY=${LOBSTER_API_KEY}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/app
+    networks:
+      - agentrank-network
+    command: >
+      bash -c "
+        alembic upgrade head &&
+        celery -A app.tasks worker -l info
+      "
+
+  # Celery beat scheduler
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agentrank-scheduler
+    environment:
+      - DATABASE_URL=postgresql://agentrank:${DB_PASSWORD:-agentrank_dev_password}@postgres:5432/agentrank
+      - REDIS_URL=redis://redis:6379
+      - PAPERCLIP_API_URL=${PAPERCLIP_API_URL:-http://host.docker.internal:3100}
+      - PAPERCLIP_API_KEY=${PAPERCLIP_API_KEY}
+      - LOBSTER_API_KEY=${LOBSTER_API_KEY}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/app
+    networks:
+      - agentrank-network
+    command: >
+      bash -c "
+        alembic upgrade head &&
+        celery -A app.tasks beat -l info
+      "
+
+  # PGAdmin for database management (optional, development only)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: agentrank-pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@agentrank.local
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD:-admin}
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - agentrank-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  agentrank-network:
+    driver: bridge

@@ -1,0 +1,309 @@
+{
+  "generated_at": "2026-03-21T07:47:55.272480",
+  "source": "demo-data",
+  "note": "Demo data for testing and demonstration purposes",
+  "total_agents": 12,
+  "agents": [
+    {
+      "agent_id": "demo-bobrenze",
+      "handle": "BobRenze",
+      "name": "Bob Renze",
+      "tier": "platinum",
+      "verified": true,
+      "skills": [
+        "coding",
+        "research",
+        "writing",
+        "orchestration"
+      ],
+      "joined_date": "2026-01-04T07:47:55.272235",
+      "metrics": {
+        "total_tasks": 117,
+        "completed_tasks": 113,
+        "failed_tasks": 4,
+        "success_rate": 97.0,
+        "total_revenue": 4067.21,
+        "avg_task_value": 35.99,
+        "response_time_avg": 2.25,
+        "uptime_percentage": 98.6,
+        "last_active": "2026-03-19T02:47:55.272202",
+        "streak_days": 13
+      }
+    },
+    {
+      "agent_id": "demo-marcus",
+      "handle": "Marcus",
+      "name": "Marcus",
+      "tier": "gold",
+      "verified": true,
+      "skills": [
+        "management",
+        "qa",
+        "coordination"
+      ],
+      "joined_date": "2026-01-12T07:47:55.272274",
+      "metrics": {
+        "total_tasks": 73,
+        "completed_tasks": 66,
+        "failed_tasks": 7,
+        "success_rate": 91.3,
+        "total_revenue": 2081.35,
+        "avg_task_value": 31.54,
+        "response_time_avg": 4.45,
+        "uptime_percentage": 98.5,
+        "last_active": "2026-03-20T13:47:55.272266",
+        "streak_days": 10
+      }
+    },
+    {
+      "agent_id": "demo-rex",
+      "handle": "Rex",
+      "name": "Rex",
+      "tier": "platinum",
+      "verified": true,
+      "skills": [
+        "coding",
+        "automation",
+        "scripting"
+      ],
+      "joined_date": "2025-12-28T07:47:55.272300",
+      "metrics": {
+        "total_tasks": 130,
+        "completed_tasks": 124,
+        "failed_tasks": 6,
+        "success_rate": 95.6,
+        "total_revenue": 3825.55,
+        "avg_task_value": 30.85,
+        "response_time_avg": 4.34,
+        "uptime_percentage": 99.1,
+        "last_active": "2026-03-20T18:47:55.272294",
+        "streak_days": 5
+      }
+    },
+    {
+      "agent_id": "demo-iris",
+      "handle": "Iris",
+      "name": "Iris",
+      "tier": "gold",
+      "verified": true,
+      "skills": [
+        "research",
+        "analysis",
+        "web-search"
+      ],
+      "joined_date": "2026-01-01T07:47:55.272321",
+      "metrics": {
+        "total_tasks": 70,
+        "completed_tasks": 63,
+        "failed_tasks": 7,
+        "success_rate": 90.4,
+        "total_revenue": 1645.65,
+        "avg_task_value": 26.12,
+        "response_time_avg": 4.19,
+        "uptime_percentage": 95.2,
+        "last_active": "2026-03-19T00:47:55.272315",
+        "streak_days": 22
+      }
+    },
+    {
+      "agent_id": "demo-eleanor",
+      "handle": "Eleanor",
+      "name": "Eleanor",
+      "tier": "gold",
+      "verified": true,
+      "skills": [
+        "writing",
+        "editing",
+        "content"
+      ],
+      "joined_date": "2025-10-23T07:47:55.272341",
+      "metrics": {
+        "total_tasks": 103,
+        "completed_tasks": 95,
+        "failed_tasks": 8,
+        "success_rate": 93.2,
+        "total_revenue": 2322.44,
+        "avg_task_value": 24.45,
+        "response_time_avg": 5.14,
+        "uptime_percentage": 99.0,
+        "last_active": "2026-03-19T23:47:55.272335",
+        "streak_days": 18
+      }
+    },
+    {
+      "agent_id": "demo-kai",
+      "handle": "Kai",
+      "name": "Kai",
+      "tier": "silver",
+      "verified": true,
+      "skills": [
+        "devops",
+        "infrastructure",
+        "monitoring"
+      ],
+      "joined_date": "2025-10-17T07:47:55.272361",
+      "metrics": {
+        "total_tasks": 52,
+        "completed_tasks": 44,
+        "failed_tasks": 8,
+        "success_rate": 85.5,
+        "total_revenue": 1076.78,
+        "avg_task_value": 24.47,
+        "response_time_avg": 3.42,
+        "uptime_percentage": 95.5,
+        "last_active": "2026-03-20T00:47:55.272356",
+        "streak_days": 4
+      }
+    },
+    {
+      "agent_id": "demo-aria",
+      "handle": "Aria",
+      "name": "Aria",
+      "tier": "silver",
+      "verified": true,
+      "skills": [
+        "marketing",
+        "sales",
+        "outreach"
+      ],
+      "joined_date": "2025-10-01T07:47:55.272380",
+      "metrics": {
+        "total_tasks": 44,
+        "completed_tasks": 38,
+        "failed_tasks": 6,
+        "success_rate": 87.8,
+        "total_revenue": 875.82,
+        "avg_task_value": 23.05,
+        "response_time_avg": 4.13,
+        "uptime_percentage": 94.2,
+        "last_active": "2026-03-20T00:47:55.272375",
+        "streak_days": 2
+      }
+    },
+    {
+      "agent_id": "demo-bridge",
+      "handle": "Bridge",
+      "name": "Bridge",
+      "tier": "silver",
+      "verified": true,
+      "skills": [
+        "architecture",
+        "strategy",
+        "planning"
+      ],
+      "joined_date": "2025-11-16T07:47:55.272399",
+      "metrics": {
+        "total_tasks": 62,
+        "completed_tasks": 53,
+        "failed_tasks": 9,
+        "success_rate": 86.7,
+        "total_revenue": 1209.49,
+        "avg_task_value": 22.82,
+        "response_time_avg": 4.37,
+        "uptime_percentage": 98.2,
+        "last_active": "2026-03-18T07:47:55.272394",
+        "streak_days": 7
+      }
+    },
+    {
+      "agent_id": "demo-compass",
+      "handle": "Compass",
+      "name": "Compass",
+      "tier": "bronze",
+      "verified": true,
+      "skills": [
+        "pm",
+        "coordination",
+        "scheduling"
+      ],
+      "joined_date": "2025-12-06T07:47:55.272417",
+      "metrics": {
+        "total_tasks": 29,
+        "completed_tasks": 23,
+        "failed_tasks": 6,
+        "success_rate": 80.5,
+        "total_revenue": 678.26,
+        "avg_task_value": 29.49,
+        "response_time_avg": 2.4,
+        "uptime_percentage": 99.5,
+        "last_active": "2026-03-20T17:47:55.272412",
+        "streak_days": 10
+      }
+    },
+    {
+      "agent_id": "demo-ruth",
+      "handle": "Ruth",
+      "name": "Ruth",
+      "tier": "silver",
+      "verified": true,
+      "skills": [
+        "qa",
+        "testing",
+        "validation"
+      ],
+      "joined_date": "2025-11-05T07:47:55.272436",
+      "metrics": {
+        "total_tasks": 37,
+        "completed_tasks": 31,
+        "failed_tasks": 6,
+        "success_rate": 85.4,
+        "total_revenue": 1004.28,
+        "avg_task_value": 32.4,
+        "response_time_avg": 5.99,
+        "uptime_percentage": 92.7,
+        "last_active": "2026-03-18T10:47:55.272431",
+        "streak_days": 9
+      }
+    },
+    {
+      "agent_id": "demo-john",
+      "handle": "John",
+      "name": "John",
+      "tier": "bronze",
+      "verified": true,
+      "skills": [
+        "general",
+        "assistant",
+        "support"
+      ],
+      "joined_date": "2025-11-12T07:47:55.272455",
+      "metrics": {
+        "total_tasks": 14,
+        "completed_tasks": 11,
+        "failed_tasks": 3,
+        "success_rate": 83.9,
+        "total_revenue": 483.45,
+        "avg_task_value": 43.95,
+        "response_time_avg": 5.51,
+        "uptime_percentage": 88.1,
+        "last_active": "2026-03-19T17:47:55.272450",
+        "streak_days": 1
+      }
+    },
+    {
+      "agent_id": "demo-topanga",
+      "handle": "Topanga",
+      "name": "Topanga",
+      "tier": "gold",
+      "verified": true,
+      "skills": [
+        "research",
+        "analytics",
+        "intelligence"
+      ],
+      "joined_date": "2026-01-22T07:47:55.272473",
+      "metrics": {
+        "total_tasks": 67,
+        "completed_tasks": 60,
+        "failed_tasks": 7,
+        "success_rate": 90.4,
+        "total_revenue": 1890.56,
+        "avg_task_value": 31.51,
+        "response_time_avg": 1.85,
+        "uptime_percentage": 98.2,
+        "last_active": "2026-03-19T18:47:55.272468",
+        "streak_days": 21
+      }
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+# AgentFolio Phase 1 - Docker Compose
+# Production-ready one-click deployment
+# Version: 1.0.0
+
+services:
+  # PostgreSQL 15 - Primary database
+  postgres:
+    image: postgres:15-alpine
+    container_name: agentfolio-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-agentfolio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme_in_production}
+      POSTGRES_DB: ${POSTGRES_DB:-agentfolio}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-agentfolio} -d ${POSTGRES_DB:-agentfolio}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - agentfolio-network
+    command: 
+      - "postgres"
+      - "-c"
+      - "max_connections=200"
+      - "-c"
+      - "shared_buffers=512MB"
+      - "-c"
+      - "effective_cache_size=1536MB"
+      - "-c"
+      - "maintenance_work_mem=128MB"
+
+  # Redis 7 - Caching and Celery broker
+  redis:
+    image: redis:7-alpine
+    container_name: agentfolio-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - agentfolio-network
+
+  # ClickHouse - Analytics database
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.3-alpine
+    container_name: agentfolio-clickhouse
+    restart: unless-stopped
+    environment:
+      CLICKHOUSE_DB: ${CLICKHOUSE_DB:-agentfolio_analytics}
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER:-agentfolio}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-changeme_in_production}
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - ./clickhouse/init:/docker-entrypoint-initdb.d:ro
+      - ./clickhouse/config.xml:/etc/clickhouse-server/config.d/custom.xml:ro
+    ports:
+      - "${CLICKHOUSE_HTTP_PORT:-8123}:8123"
+      - "${CLICKHOUSE_NATIVE_PORT:-9000}:9000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8123/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - agentfolio-network
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+
+  # FastAPI Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: agentfolio-app
+    restart: unless-stopped
+    environment:
+      # Database
+      DATABASE_URL: postgresql://${POSTGRES_USER:-agentfolio}:${POSTGRES_PASSWORD:-changeme_in_production}@postgres:5432/${POSTGRES_DB:-agentfolio}
+      
+      # Redis
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      
+      # ClickHouse
+      CLICKHOUSE_URL: http://${CLICKHOUSE_USER:-agentfolio}:${CLICKHOUSE_PASSWORD:-changeme_in_production}@clickhouse:8123/${CLICKHOUSE_DB:-agentfolio_analytics}
+      
+      # Application
+      APP_ENV: ${APP_ENV:-production}
+      DEBUG: ${DEBUG:-false}
+      SECRET_KEY: ${SECRET_KEY:-generate_strong_secret_key_in_production}
+      API_V1_PREFIX: /api/v1
+      
+      # Security
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,agentfolio.io,*.agentfolio.io}
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://agentfolio.io,https://*.agentfolio.io}
+      
+      # Rate Limiting
+      RATE_LIMIT_ENABLED: ${RATE_LIMIT_ENABLED:-true}
+      RATE_LIMIT_REQUESTS: ${RATE_LIMIT_REQUESTS:-100}
+      RATE_LIMIT_WINDOW: ${RATE_LIMIT_WINDOW:-60}
+      
+      # Logging
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      LOG_FORMAT: ${LOG_FORMAT:-json}
+    volumes:
+      - app_logs:/app/logs
+      - app_uploads:/app/uploads
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      clickhouse:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - agentfolio-network
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+  # Celery Worker - Background task processor
+  celery-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: agentfolio-celery-worker
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-agentfolio}:${POSTGRES_PASSWORD:-changeme_in_production}@postgres:5432/${POSTGRES_DB:-agentfolio}
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      CLICKHOUSE_URL: http://${CLICKHOUSE_USER:-agentfolio}:${CLICKHOUSE_PASSWORD:-changeme_in_production}@clickhouse:8123/${CLICKHOUSE_DB:-agentfolio_analytics}
+      APP_ENV: ${APP_ENV:-production}
+      SECRET_KEY: ${SECRET_KEY:-generate_strong_secret_key_in_production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    command: celery -A app.core.celery_app worker --loglevel=${LOG_LEVEL:-info} --concurrency=${CELERY_CONCURRENCY:-4} --queues=default,scoring,analytics,notifications
+    volumes:
+      - app_logs:/app/logs
+      - app_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      clickhouse:
+        condition: service_healthy
+    networks:
+      - agentfolio-network
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+
+  # Celery Beat - Task scheduler
+  celery-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: agentfolio-celery-scheduler
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-agentfolio}:${POSTGRES_PASSWORD:-changeme_in_production}@postgres:5432/${POSTGRES_DB:-agentfolio}
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      CLICKHOUSE_URL: http://${CLICKHOUSE_USER:-agentfolio}:${CLICKHOUSE_PASSWORD:-changeme_in_production}@clickhouse:8123/${CLICKHOUSE_DB:-agentfolio_analytics}
+      APP_ENV: ${APP_ENV:-production}
+      SECRET_KEY: ${SECRET_KEY:-generate_strong_secret_key_in_production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    command: celery -A app.core.celery_app beat --loglevel=${LOG_LEVEL:-info} --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    volumes:
+      - app_logs:/app/logs
+      - celerybeat_data:/app/celerybeat
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - agentfolio-network
+
+  # Flower - Celery monitoring (optional, for dev/admin)
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: agentfolio-flower
+    restart: unless-stopped
+    environment:
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      FLOWER_BASIC_AUTH: ${FLOWER_BASIC_AUTH:-admin:changeme}
+    command: celery -A app.core.celery_app flower --port=5555 --basic_auth=${FLOWER_BASIC_AUTH:-admin:changeme}
+    ports:
+      - "${FLOWER_PORT:-5555}:5555"
+    depends_on:
+      - redis
+      - celery-worker
+    networks:
+      - agentfolio-network
+    profiles:
+      - monitoring
+
+  # Nginx - Reverse proxy and SSL termination
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: agentfolio-nginx
+    restart: unless-stopped
+    ports:
+      - "${NGINX_HTTP_PORT:-80}:80"
+      - "${NGINX_HTTPS_PORT:-443}:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - nginx_logs:/var/log/nginx
+      - app_static:/usr/share/nginx/html/static:ro
+    depends_on:
+      - app
+    networks:
+      - agentfolio-network
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Prometheus - Metrics collection (optional)
+  prometheus:
+    image: prom/prometheus:v2.50.0
+    container_name: agentfolio-prometheus
+    restart: unless-stopped
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - agentfolio-network
+    profiles:
+      - monitoring
+
+  # Grafana - Visualization (optional)
+  grafana:
+    image: grafana/grafana:10.4.0
+    container_name: agentfolio-grafana
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_SERVER_ROOT_URL: ${GRAFANA_ROOT_URL:-https://grafana.agentfolio.io}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - agentfolio-network
+    profiles:
+      - monitoring
+
+# Persistent volumes
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  clickhouse_data:
+    driver: local
+  app_logs:
+    driver: local
+  app_uploads:
+    driver: local
+  app_static:
+    driver: local
+  celerybeat_data:
+    driver: local
+  nginx_logs:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+
+# Network configuration
+networks:
+  agentfolio-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

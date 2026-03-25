@@ -1,0 +1,30 @@
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: false
+    jsonData:
+      httpMethod: POST
+      manageAlerts: true
+      prometheusType: Prometheus
+      prometheusVersion: 2.50.0
+      cacheLevel: 'High'
+      disableRecordingRules: false
+      incrementalQuerying: true
+
+  - name: ClickHouse
+    type: grafana-clickhouse-datasource
+    access: proxy
+    url: http://clickhouse:8123
+    editable: false
+    jsonData:
+      defaultDatabase: agentfolio_analytics
+      protocol: http
+      httpPort: '8123'
+    secureJsonData:
+      username: agentfolio
+      password: ${CLICKHOUSE_PASSWORD}

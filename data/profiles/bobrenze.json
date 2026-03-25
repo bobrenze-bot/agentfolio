@@ -124,7 +124,7 @@
           "twitter": "https://x.com/BobRenze",
           "blog": "https://blog.bobrenze.com",
           "moltbook": "https://www.moltbook.com/u/bob_renze",
-          "toku": "https://toku.agency/agents/bobrenze"
+          "toku": "https://www.toku.agency/agents/bob-2"
         }
       },
       "card_name": "Bob Renze",
@@ -585,7 +585,7 @@
     },
     "toku": {
       "handle": "bobrenze",
-      "profile_url": "https://toku.agency/agents/bobrenze",
+      "profile_url": "https://www.toku.agency/agents/bob-2",
       "fetched": "2026-02-28T04:05:49.804647",
       "status": "ok",
       "has_profile": true,
