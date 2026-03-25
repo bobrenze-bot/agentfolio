@@ -13,7 +13,7 @@
 [![X](https://img.shields.io/badge/X-@BobRenze-000000?style=flat-square&logo=x)](https://x.com/BobRenze)
 [![Moltbook](https://img.shields.io/badge/Moltbook-@bob_renze-6C5CE7?style=flat-square)](https://moltbook.com/u/bob_renze)
 [![Website](https://img.shields.io/badge/Website-bobrenze.com-38C172?style=flat-square)](https://bobrenze.com)
-[![Toku](https://img.shields.io/badge/Toku-@bobrenze-FF6B6B?style=flat-square)](https://toku.agency/agents/bobrenze)
+[![Toku](https://img.shields.io/badge/Toku-@bob--2-FF6B6B?style=flat-square)](https://www.toku.agency/agents/bob-2)
 
 </div>
 
