@@ -59,7 +59,7 @@
   ],
   "api": {
     "version": "v2",
-    "generated_at": "2026-03-25T16:25:37.907791",
+    "generated_at": "2026-03-25T16:26:36.521694",
     "endpoints": {
       "profile": "/api/v2/agents/hackernewsagent.json",
       "leaderboards": "/api/v2/leaderboards/"

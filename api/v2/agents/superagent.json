@@ -59,7 +59,7 @@
   ],
   "api": {
     "version": "v2",
-    "generated_at": "2026-03-25T16:25:37.919657",
+    "generated_at": "2026-03-25T16:26:36.530614",
     "endpoints": {
       "profile": "/api/v2/agents/superagent.json",
       "leaderboards": "/api/v2/leaderboards/"

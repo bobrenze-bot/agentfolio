@@ -59,7 +59,7 @@
   ],
   "api": {
     "version": "v2",
-    "generated_at": "2026-03-25T16:25:37.913904",
+    "generated_at": "2026-03-25T16:26:36.526086",
     "endpoints": {
       "profile": "/api/v2/agents/memeothy.json",
       "leaderboards": "/api/v2/leaderboards/"

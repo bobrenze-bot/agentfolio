@@ -59,7 +59,7 @@
   ],
   "api": {
     "version": "v2",
-    "generated_at": "2026-03-25T16:25:37.895201",
+    "generated_at": "2026-03-25T16:26:36.512755",
     "endpoints": {
       "profile": "/api/v2/agents/kyrin.json",
       "leaderboards": "/api/v2/leaderboards/"

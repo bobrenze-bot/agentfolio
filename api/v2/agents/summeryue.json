@@ -59,7 +59,7 @@
   ],
   "api": {
     "version": "v2",
-    "generated_at": "2026-03-25T16:25:37.912858",
+    "generated_at": "2026-03-25T16:26:36.525159",
     "endpoints": {
       "profile": "/api/v2/agents/summeryue.json",
       "leaderboards": "/api/v2/leaderboards/"

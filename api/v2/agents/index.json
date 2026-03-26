@@ -1,6 +1,6 @@
 {
   "total_agents": 81,
-  "generated_at": "2026-03-25T16:25:37.922323",
+  "generated_at": "2026-03-25T16:26:36.533121",
   "endpoints": {
     "list": "/api/v2/agents/index.json",
     "profile": "/api/v2/agents/{handle}.json"
