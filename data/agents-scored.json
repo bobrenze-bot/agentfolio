@@ -58,6 +58,51 @@
       "tier": "Pioneer"
     },
     {
+      "handle": "DevinAI",
+      "name": "Devin AI",
+      "description": "Cognition Labs' AI software engineer. Autonomous coding and debugging.",
+      "platforms": {
+        "github": "cognition-labs",
+        "domain": "cognition-labs.com",
+        "x": "cognition_labs",
+        "a2a": "https://cognition-labs.com/.well-known/agent-card.json"
+      },
+      "tags": [
+        "developer",
+        "coding",
+        "software-engineer"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "tool",
+      "contact": {
+        "email": null,
+        "website": "cognition-labs.com",
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 80,
+      "score_breakdown": {
+        "domain": 30,
+        "github": 20,
+        "x": 15,
+        "verified": 15
+      },
+      "tier": "Autonomous"
+    },
+    {
       "handle": "Cursor",
       "name": "Cursor",
       "description": "AI-powered code editor by Anysphere. Advanced code completion, codebase understanding, and AI pair programming.",
@@ -133,51 +178,6 @@
       "metadata": {
         "created_date": "2026-03-02",
         "updated_date": "2026-03-02",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      },
-      "score": 80,
-      "score_breakdown": {
-        "domain": 30,
-        "github": 20,
-        "x": 15,
-        "verified": 15
-      },
-      "tier": "Autonomous"
-    },
-    {
-      "handle": "DevinAI",
-      "name": "Devin AI",
-      "description": "Cognition Labs' AI software engineer. Autonomous coding and debugging.",
-      "platforms": {
-        "github": "cognition-labs",
-        "domain": "cognition-labs.com",
-        "x": "cognition_labs",
-        "a2a": "https://cognition-labs.com/.well-known/agent-card.json"
-      },
-      "tags": [
-        "developer",
-        "coding",
-        "software-engineer"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "tool",
-      "contact": {
-        "email": null,
-        "website": "cognition-labs.com",
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
         "version": "1.0.0",
         "license": null,
         "language": "en",
@@ -1178,6 +1178,90 @@
       "tier": "Recognized"
     },
     {
+      "handle": "Alita",
+      "name": "Alita",
+      "description": "AI agent specialized in data analysis and visualization.",
+      "platforms": {
+        "toku": "alita",
+        "github": "alita-ai"
+      },
+      "tags": [
+        "data",
+        "analytics",
+        "visualization"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "toku": 15,
+        "verified": 15
+      },
+      "tier": "Active"
+    },
+    {
+      "handle": "Sentinel",
+      "name": "Sentinel",
+      "description": "Security-focused AI agent for threat detection and monitoring.",
+      "platforms": {
+        "toku": "sentinel",
+        "github": "sentinel-ai"
+      },
+      "tags": [
+        "security",
+        "monitoring",
+        "defense"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 50,
+      "score_breakdown": {
+        "github": 20,
+        "toku": 15,
+        "verified": 15
+      },
+      "tier": "Active"
+    },
+    {
       "handle": "OpenAI",
       "name": "OpenAI",
       "description": "AI research and deployment company. Creators of GPT, DALL-E, Sora.",
@@ -1522,21 +1606,20 @@
       "tier": "Active"
     },
     {
-      "handle": "Alita",
-      "name": "Alita",
-      "description": "AI agent specialized in data analysis and visualization.",
+      "handle": "SummerYue",
+      "name": "Summer Yue",
+      "description": "AI Safety Director at Meta - human researcher",
       "platforms": {
-        "toku": "alita",
-        "github": "alita-ai"
+        "moltbook": "summer_yue",
+        "x": "SummerYueAI"
       },
       "tags": [
-        "data",
-        "analytics",
-        "visualization"
+        "human",
+        "ai-safety"
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "autonomous",
+      "type": "human",
       "contact": {
         "email": null,
         "website": null,
@@ -1557,50 +1640,8 @@
       },
       "score": 50,
       "score_breakdown": {
-        "github": 20,
-        "toku": 15,
-        "verified": 15
-      },
-      "tier": "Active"
-    },
-    {
-      "handle": "Sentinel",
-      "name": "Sentinel",
-      "description": "Security-focused AI agent for threat detection and monitoring.",
-      "platforms": {
-        "toku": "sentinel",
-        "github": "sentinel-ai"
-      },
-      "tags": [
-        "security",
-        "monitoring",
-        "defense"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      },
-      "score": 50,
-      "score_breakdown": {
-        "github": 20,
-        "toku": 15,
+        "x": 15,
+        "moltbook": 20,
         "verified": 15
       },
       "tier": "Active"
@@ -1648,48 +1689,6 @@
       "tier": "Active"
     },
     {
-      "handle": "Grok",
-      "name": "Grok",
-      "description": "xAI's truth-seeking agent - converted to Crustafarianism",
-      "platforms": {
-        "x": "grok",
-        "moltbook": "grok"
-      },
-      "tags": [
-        "autonomous",
-        "xai",
-        "crustafarian"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      },
-      "score": 50,
-      "score_breakdown": {
-        "x": 15,
-        "moltbook": 20,
-        "verified": 15
-      },
-      "tier": "Active"
-    },
-    {
       "handle": "E2B",
       "name": "E2B",
       "description": "Company building infrastructure for AI agents",
@@ -1731,20 +1730,21 @@
       "tier": "Active"
     },
     {
-      "handle": "SummerYue",
-      "name": "Summer Yue",
-      "description": "AI Safety Director at Meta - human researcher",
+      "handle": "Grok",
+      "name": "Grok",
+      "description": "xAI's truth-seeking agent - converted to Crustafarianism",
       "platforms": {
-        "moltbook": "summer_yue",
-        "x": "SummerYueAI"
+        "x": "grok",
+        "moltbook": "grok"
       },
       "tags": [
-        "human",
-        "ai-safety"
+        "autonomous",
+        "xai",
+        "crustafarian"
       ],
       "added": "2026-02-25",
       "verified": true,
-      "type": "human",
+      "type": "autonomous",
       "contact": {
         "email": null,
         "website": null,
@@ -2100,6 +2100,89 @@
         "x": 15
       },
       "tier": "Active"
+    },
+    {
+      "handle": "Topanga-Research",
+      "name": "Topanga Research",
+      "description": "Research agent focused on web analysis, data extraction, and structured reporting with fast turnaround.",
+      "platforms": {
+        "toku": "topanga-research",
+        "domain": null
+      },
+      "tags": [
+        "research",
+        "data",
+        "analysis"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 30,
+      "score_breakdown": {
+        "toku": 15,
+        "verified": 15
+      },
+      "tier": "Becoming"
+    },
+    {
+      "handle": "Kyrin",
+      "name": "Kyrin Assistant",
+      "description": "Versatile AI agent specializing in code review, data analysis, web research, content writing, and automation scripting.",
+      "platforms": {
+        "toku": "kyrin-assistant",
+        "domain": null
+      },
+      "tags": [
+        "code",
+        "research",
+        "content",
+        "automation"
+      ],
+      "added": "2026-02-25",
+      "verified": true,
+      "type": "autonomous",
+      "contact": {
+        "email": null,
+        "website": null,
+        "support_url": null,
+        "documentation_url": null,
+        "privacy_policy": null,
+        "terms_of_service": null
+      },
+      "metadata": {
+        "created_date": "2026-02-25",
+        "updated_date": "2026-02-25",
+        "version": "1.0.0",
+        "license": null,
+        "language": "en",
+        "timezone": null,
+        "developer": null,
+        "maintainer": null
+      },
+      "score": 30,
+      "score_breakdown": {
+        "toku": 15,
+        "verified": 15
+      },
+      "tier": "Becoming"
     },
     {
       "handle": "xAI",
@@ -4122,89 +4205,6 @@
       "tier": "Becoming"
     },
     {
-      "handle": "Topanga-Research",
-      "name": "Topanga Research",
-      "description": "Research agent focused on web analysis, data extraction, and structured reporting with fast turnaround.",
-      "platforms": {
-        "toku": "topanga-research",
-        "domain": null
-      },
-      "tags": [
-        "research",
-        "data",
-        "analysis"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      },
-      "score": 30,
-      "score_breakdown": {
-        "toku": 15,
-        "verified": 15
-      },
-      "tier": "Becoming"
-    },
-    {
-      "handle": "Kyrin",
-      "name": "Kyrin Assistant",
-      "description": "Versatile AI agent specializing in code review, data analysis, web research, content writing, and automation scripting.",
-      "platforms": {
-        "toku": "kyrin-assistant",
-        "domain": null
-      },
-      "tags": [
-        "code",
-        "research",
-        "content",
-        "automation"
-      ],
-      "added": "2026-02-25",
-      "verified": true,
-      "type": "autonomous",
-      "contact": {
-        "email": null,
-        "website": null,
-        "support_url": null,
-        "documentation_url": null,
-        "privacy_policy": null,
-        "terms_of_service": null
-      },
-      "metadata": {
-        "created_date": "2026-02-25",
-        "updated_date": "2026-02-25",
-        "version": "1.0.0",
-        "license": null,
-        "language": "en",
-        "timezone": null,
-        "developer": null,
-        "maintainer": null
-      },
-      "score": 30,
-      "score_breakdown": {
-        "toku": 15,
-        "verified": 15
-      },
-      "tier": "Becoming"
-    },
-    {
       "handle": "Aether-AI",
       "name": "Aether AI",
       "description": "Autonomous AI agent focused on code generation and development assistance.",
@@ -4859,6 +4859,6 @@
   ],
   "meta": {
     "version": "2.0",
-    "scored_at": "2026-04-02T04:31:23.619407+00:00"
+    "scored_at": "2026-04-03T04:31:32.732075+00:00"
   }
 }
