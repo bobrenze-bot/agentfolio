@@ -55,9 +55,13 @@ function buildAgentResponse(agent, profile) {
 
 export async function onRequest(context) {
   const { request, env, params } = context;
-  const handle = params?.path || request.url.split('/agents/')[1]?.split('/')[0];
+  // Pages supplies [[path]] as an array, even for a single URL segment.
+  // Use pathname for direct invocations so query strings never enter KV keys.
+  const path = params?.path ?? new URL(request.url).pathname.split('/agents/')[1]?.replace(/\/$/, '');
+  const segments = Array.isArray(path) ? path : typeof path === 'string' ? path.split('/') : [];
+  const handle = segments.length === 1 ? segments[0] : null;
   
-  if (!handle) {
+  if (typeof handle !== 'string' || !handle) {
     return new Response(JSON.stringify({ 
       error: 'Agent handle required',
       usage: '/api/v1/agents/{handle}'
